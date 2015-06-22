@@ -15,24 +15,35 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var profilePictureImageView: UIImageView!
     @IBOutlet weak var selectPhotoButton: UIButton!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var whatsupTextField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fullNameTextField.alpha = 0
         profilePictureImageView.alpha = 0
         selectPhotoButton.alpha = 0
+        whatsupTextField.alpha = 0
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if(prefs.valueForKey("Selection")!.isEqualToString("Profile Picture")){
-            UIView.animateWithDuration(1.0, animations: {
+            UIView.animateWithDuration(0, animations: {
                 self.selectPhotoButton.alpha = 1.0
                 self.profilePictureImageView.alpha = 1.0
             })
         } else if (prefs.valueForKey("Selection")!.isEqualToString("Full Name")){
-            UIView.animateWithDuration(1.0, animations: {
+            self.fullNameTextField.text = prefs.valueForKey("Full_Name_Selected") as! String
+            UIView.animateWithDuration(0, animations: {
                 self.fullNameTextField.alpha = 1.0
+            
+            })
+        } else if (prefs.valueForKey("Selection")!.isEqual("Whatsup")){
+            self.whatsupTextField.text = prefs.valueForKey("Whatsup") as! String
+            UIView.animateWithDuration(0, animations: {
+                self.whatsupTextField.alpha = 1.0
             })
         }
     }
@@ -56,11 +67,98 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         
         if(prefs.valueForKey("Selection")!.isEqualToString("Full Name")){
             
-            var fullName: NSString = fullNameTextField.text as String
-            prefs.setObject(fullName, forKey: "Full_Name_Selected") 
-            self.performSegueWithIdentifier("goto_overview3", sender: self)
+            var fullName = fullNameTextField.text as String
+            var email = prefs.valueForKey("email") as! String
             
-        } else if(prefs.valueForKey("Selection")!.isEqualToString("Profile Picture")){
+            var post: NSString = "email=\(email)&fullName=\(fullName)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProfile3.php")!
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String(postData.length)
+            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+            
+            if(urlData != nil){
+                
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                    NSLog("Success %ld", success)
+                    
+                    if(success == 0){
+                        self.performSegueWithIdentifier("goto_overview3", sender: self)
+                    }
+                    
+                    if(success == 1){
+                        NSLog("Update SUCCESS!")
+                        self.performSegueWithIdentifier("goto_overview3", sender: self)
+                    }
+                }
+            }
+            
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
+            
+            var whatsUp = whatsupTextField.text as String
+            var email = prefs.valueForKey("email") as! String
+            
+            var post: NSString = "email=\(email)&whatsup=\(whatsUp)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateWhatsup.php")!
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String(postData.length)
+            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+            
+            if(urlData != nil){
+                
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                    NSLog("Success %ld", success)
+                    
+                    if(success == 0){
+                        self.performSegueWithIdentifier("goto_overview3", sender: self)
+                    }
+                    
+                    if(success == 1){
+                        NSLog("Update SUCCESS!")
+                        self.performSegueWithIdentifier("goto_overview3", sender: self)
+                    }
+                }
+            }
+            
+            
+        }else if(prefs.valueForKey("Selection")!.isEqualToString("Profile Picture")){
             
             myImageUploadRequest()
             self.performSegueWithIdentifier("goto_overview3", sender: self)
@@ -142,6 +240,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         fileName.setObject(filename, forKey: "imageURL")
         let fullImageUrl = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(filename)" as String
         fileName.setObject(fullImageUrl, forKey: "ProfileImage")
+//        println("the image url should be \(fileName.valueForKey("ProfileImage"))")
     
         let mimetype = "image/jpg"
         

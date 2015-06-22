@@ -16,7 +16,7 @@ class DetailUpdateTVC: UITableViewController {
         super.viewDidLoad()
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        get_data_from_url("http://mentormee.info/dbTestConnect/profilePopulateScript5.php")
+        get_data_from_url("http://mentormee.info/dbTestConnect/universityProgramProgramSpecUpdate.php")
 
     }
 
@@ -67,6 +67,9 @@ class DetailUpdateTVC: UITableViewController {
             
             let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
             println("this array contains: \(jsonData.count)")
+            println(jsonData[0].valueForKey("UniversityName"))
+            println(jsonData[0].valueForKey("Program"))
+            println(jsonData[0].valueForKey("ProgramSpecialization"))
             
             for (var i = 0; i < jsonData.count; i++){
                 if let jsonData_obj = jsonData[i] as? NSDictionary
@@ -89,13 +92,146 @@ class DetailUpdateTVC: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let row = indexPath.row
         let selection = UserData[row]
+    
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let userInput = prefs.valueForKey("Selection") as! String
-                
-        var identifier:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        identifier.setObject(selection, forKey:userInput)
         
-        self.performSegueWithIdentifier("goto_overview", sender: self)
+        if(prefs.valueForKey("Selection") as! String == "University"){
+            
+            var universityName = UserData[row]
+            var userID = prefs.valueForKey("userID") as! String
+            
+            var post: NSString = "userID=\(userID)&universityName=\(universityName)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateUniversityName.php")! //need to update university_id
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String(postData.length)
+            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+            
+            if(urlData != nil){
+                
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                    NSLog("Success %ld", success)
+                    
+                    if(success == 1){
+                        NSLog("Update SUCCESS!")
+                        self.performSegueWithIdentifier("goto_overview", sender: self)
+                    }
+                }
+            }
+        }
+        
+        if(prefs.valueForKey("Selection") as! String == "Faculty"){
+            
+            var facultyName = UserData[row]
+            println("The name is \(facultyName)")
+            var email = prefs.valueForKey("email") as! String
+            
+            var post: NSString = "email=\(email)&faculty=\(facultyName)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateFacultyName.php")! //update program_id
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String(postData.length)
+            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+            
+            if(urlData != nil){
+                
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                    NSLog("Success %ld", success)
+                    
+                    if(success == 1){
+                        NSLog("Update SUCCESS!")
+                        self.performSegueWithIdentifier("goto_overview", sender: self)
+                    }
+                }
+            }
+        }
+        
+        if(prefs.valueForKey("Selection") as! String == "Program"){
+            
+            var programName = UserData[row]
+            var email = prefs.valueForKey("email") as! String
+            
+            var post: NSString = "email=\(email)&program=\(programName)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProgramName2.php")! //update program_id
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String(postData.length)
+            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+            
+            if(urlData != nil){
+                
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                    NSLog("Success %ld", success)
+                    
+                    if(success == 1){
+                        NSLog("Update SUCCESS!")
+                        self.performSegueWithIdentifier("goto_overview", sender: self)
+                    }
+                }
+            }
+        }
+        
+//        
+//        let userInput = prefs.valueForKey("Selection") as! String
+//                
+//        var identifier:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//        identifier.setObject(selection, forKey:userInput)
+//        
+//        self.performSegueWithIdentifier("goto_overview", sender: self)
     }
     
     @IBAction func backButtonTapped(sender: AnyObject) {

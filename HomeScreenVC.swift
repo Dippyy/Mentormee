@@ -31,7 +31,7 @@ class HomeScreenVC: UIViewController {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible=false
         
-        UIView.animateWithDuration(1.5, animations: {
+        UIView.animateWithDuration(0, animations: {
             self.profileImageView.alpha = 1.0
             self.fullNameLabel.alpha = 1.0
             self.universityNameLabel.alpha = 1.0
@@ -40,11 +40,18 @@ class HomeScreenVC: UIViewController {
         
         
         let prefs1: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let emailToSend = prefs1.valueForKey("email") as! String
         
-        var post: NSString = "email=\(emailToSend)"
+        if(prefs1.valueForKey("email") == nil){
+            self.performSegueWithIdentifier("goto_login", sender: self)
+        } else {
+        
+//        let emailToSend = prefs1.valueForKey("email") as! String
+        let userID = prefs1.valueForKey("userID") as! String
+        
+//        var post: NSString = "email=\(emailToSend)"
+        var post: NSString = "userID=\(userID)"
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/profilePopulateScript2.php")!
+        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/homeScreenUpdate2.php")!
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -72,44 +79,72 @@ class HomeScreenVC: UIViewController {
                 
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                 
-                var firstName: String = jsonData[0].valueForKey("full_name") as! String
-                if(firstName != ""){
-                var fullName: String = firstName
-                fullNameLabel.text = fullName
-                println(fullName)
+                var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                var lastName: String = jsonData[0].valueForKey("LastName") as! String
+                var fullName: String = firstName + " " + lastName
+                
+                if(fullName != ""){
+                    var fullName: String = fullName
+                    fullNameLabel.text = fullName
+                    println(fullName)
                 } else {
                     fullNameLabel.text = "Full Name"
                 }
                 
-                var program: String = jsonData[0].valueForKey("program") as! String
-                if(program != ""){
-                programNameLabel.text = program
-                println(program)
-                } else {
-                    programNameLabel.text = "Program of Study"
+                var universityID: String = jsonData[1].valueForKey("University_id") as! String // converts the strings to ints
+                var programID: String = jsonData[1].valueForKey("Program_id") as! String
+                let uniID: Int? = universityID.toInt()
+                let progID: Int? = programID.toInt()
+                
+                var post: NSString = "universityID=\(uniID!)&programID=\(progID!)"
+                NSLog("PostData: %@",post);
+                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+                var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+                var postLength:NSString = String( postData.length )
+                var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                
+                request.HTTPMethod = "POST"
+                request.HTTPBody = postData
+                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                
+                var responseError: NSError?
+                var response: NSURLResponse?
+                
+                var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+                
+                if(urlData != nil){
+                    let res = response as! NSHTTPURLResponse!
+                    NSLog("Response code: %ld", res.statusCode)
+                    
+                    if(res.statusCode >= 200 && res.statusCode < 300){
+                        
+                        var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                        NSLog("Response ==> %@", responseData)
+                        var error:NSError?
+                        
+                        let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                        
+                        var program: String = jsonData[1].valueForKey("ProgramSpecialization") as! String
+                        println(program)
+                        if(program != ""){
+                            programNameLabel.text = program
+                            println(program)
+                        } else {
+                            programNameLabel.text = "Program of Study"
+                        }
+
+                        var universityName: String = jsonData[0].valueForKey("UniversityName") as! String
+                        println(universityName)
+                        if(universityName != "") {
+                            universityNameLabel.text = universityName
+                            println(universityName)
+                        } else {
+                            universityNameLabel.text = "University"
+                        }
+                    }
                 }
-                
-                var universityName: String = jsonData[0].valueForKey("university_name") as! String
-                if(universityName != "") {
-                universityNameLabel.text = universityName
-                println(universityName)
-                } else {
-                    universityNameLabel.text = "University"
-                }
-                
-                let pictureURL = jsonData[0].valueForKey("picture") as! String
-                
-                if(pictureURL != "") {
-                    let imageURL = jsonData[0].valueForKey("picture") as! String
-                    let fullURL = "http://mentormee.info/dbTestConnect/\(imageURL)"
-                    var url = NSURL(string: fullURL)
-                    var data = NSData(contentsOfURL: url!)
-                    profileImageView.image = UIImage(data:data!)
-                } else {
-                    profileImageView.image = (UIImage(named: "profile_default.jpg"))
-                }
-                
-                
             }
         }
         
@@ -125,10 +160,11 @@ class HomeScreenVC: UIViewController {
         
         
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+        var isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         
         if (isLoggedIn != 1) {
             self.performSegueWithIdentifier("goto_login", sender: self)
+        }
         }
     }
 
@@ -137,13 +173,21 @@ class HomeScreenVC: UIViewController {
     }
     
     @IBAction func viewPublicProfile(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_reviews", sender: self)
     }
     @IBAction func setupProfileTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("goto_profileupdate", sender: self)
     }
     @IBAction func viewActiveMenteesTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_mentee", sender: self)
     }
     @IBAction func logoutButtonTapped(sender: AnyObject) {
+        
+        fullNameLabel.text = ""
+        universityNameLabel.text = ""
+        programNameLabel.text = ""
+        profileImageView.image = UIImage(named: "profile_default.jpg")
+        
         self.performSegueWithIdentifier("goto_login", sender: self)
     }
     

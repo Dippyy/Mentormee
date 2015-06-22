@@ -20,6 +20,8 @@
 		E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */; };
 		E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */; };
 		E162BD8F1B2DE18C00968EE0 /* profile_default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */; };
+		E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD901B309BD300968EE0 /* PublicProfileVC.swift */; };
+		E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD921B30C03500968EE0 /* MenteeViewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTablesVC.swift; sourceTree = "<group>"; };
 		E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamePictureVC.swift; sourceTree = "<group>"; };
 		E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = profile_default.jpg; path = ../../Desktop/profile_default.jpg; sourceTree = "<group>"; };
+		E162BD901B309BD300968EE0 /* PublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProfileVC.swift; sourceTree = "<group>"; };
+		E162BD921B30C03500968EE0 /* MenteeViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeViewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,8 @@
 		E162BD571B28A51900968EE0 /* Mentormee_ver2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				E162BD921B30C03500968EE0 /* MenteeViewVC.swift */,
+				E162BD901B309BD300968EE0 /* PublicProfileVC.swift */,
 				E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */,
 				E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */,
 				E162BD881B2B81D500968EE0 /* DetailUpdateTVC.swift */,
@@ -236,6 +242,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
+				E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */,
+				E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */,
 				E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */,
 				E162BD7B1B28A59600968EE0 /* HomeScreenVC.swift in Sources */,
 				E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */,

@@ -24,7 +24,7 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidAppear(animated: Bool) {
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animateWithDuration(0, animations: {
             self.myTableView.alpha = 1.0
         })
         
@@ -69,16 +69,95 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cell = myTableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         let row = indexPath.row
+        
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         if(prefs.valueForKey("Selection")!.isEqualToString("Gender")){
-            cell.textLabel?.text = genderTable[row]
-            prefs.setObject(genderTable[row], forKey: "Gender_Selected")
-            self.performSegueWithIdentifier("goto_overview2", sender: self)
-        } else if(prefs.valueForKey("Selection")!.isEqualToString("Year")){
-            cell.textLabel?.text = yearOfStudy[row]
-            prefs.setObject(yearOfStudy[row], forKey: "Year_Selected")
-            self.performSegueWithIdentifier("goto_overview2", sender: self)
+                
+                var genderSelected = genderTable[row]
+                var email = prefs.valueForKey("email") as! String
+                
+                var post: NSString = "email=\(email)&genderSelect=\(genderSelected)"
+                var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/genderNameUpdate.php")!
+                var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+                var postLength:NSString = String(postData.length)
+                var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+                
+                request.HTTPMethod = "POST"
+                request.HTTPBody = postData
+                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                
+                var responseError: NSError?
+                var response: NSURLResponse?
+                var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+                
+                if(urlData != nil){
+                    
+                    let res = response as! NSHTTPURLResponse!
+                    NSLog("Response code: %ld", res.statusCode)
+                    
+                    if(res.statusCode >= 200 && res.statusCode < 300){
+                        
+                        var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                        NSLog("Response ==> %@", responseData)
+                        var error:NSError?
+                        let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                        let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                        NSLog("Success %ld", success)
+                        
+                        if(success == 1){
+                            NSLog("Update SUCCESS!")
+                            self.performSegueWithIdentifier("goto_overview2", sender: self)
+                    }
+                }
+            }
+
+        }
+        
+        if(prefs.valueForKey("Selection")!.isEqualToString("Year")){
+            
+            var genderSelected = yearOfStudy[row]
+            var email = prefs.valueForKey("email") as! String
+            
+            var post: NSString = "email=\(email)&yearOfStudy=\(genderSelected)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/yearOfStudyUpdate.php")!
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String(postData.length)
+            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+            
+            if(urlData != nil){
+                
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                    NSLog("Success %ld", success)
+                    
+                    if(success == 1){
+                        NSLog("Update SUCCESS!")
+                        self.performSegueWithIdentifier("goto_overview2", sender: self)
+                    }
+                }
+            }
+
         }
     }
     

@@ -19,8 +19,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mentorButton: UIButton!
-    @IBOutlet weak var mentormeeLogo: UIImageView!
-    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         
@@ -34,11 +32,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         existingUserButton.alpha = 0
         loginButton.alpha = 0
         backButton.alpha = 0
-        mentormeeLogo.alpha = 1.0
+//        mentormeeLogo.alpha = 1.0
         
         let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        clearAllKeys.removeObjectForKey("Upload")
+        clearAllKeys.removeObjectForKey("picture")
+        clearAllKeys.removeObjectForKey("ProfileImage")
         clearAllKeys.removeObjectForKey("Full_Name_Selected")
         clearAllKeys.removeObjectForKey("University")
         clearAllKeys.removeObjectForKey("Faculty")
@@ -67,6 +66,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
@@ -85,7 +85,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         var buttonHeight: CGFloat = self.existingUserButton.frame.size.height;
         var visibleRect: CGRect = self.view.frame
         visibleRect.size.height -= keyboardSize.height
-        self.mentormeeLogo.alpha = 0
         
         if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
             var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
@@ -97,20 +96,20 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailField.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
         passwordField.resignFirstResponder()
         passwordConfirmField.resignFirstResponder()
-        mentormeeLogo.alpha = 1.0
+//        mentormeeLogo.alpha = 1.0
         self.scrollView.setContentOffset(CGPointZero, animated: true)
     }
     @IBAction func mentorButtonTapped(sender: UIButton) {
         
         sender.highlighted = false
-        UIView.animateWithDuration(0.75,
+        UIView.animateWithDuration(0,
             delay: 0,
             options: .CurveLinear & .AllowUserInteraction & .BeginFromCurrentState,
             animations: {
                 sender.alpha = 0
             }, completion: nil)
         
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animateWithDuration(0, animations: {
             self.emailField.alpha = 1.0
             self.passwordField.alpha = 1.0
             self.passwordConfirmField.alpha = 1.0
@@ -130,7 +129,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func ExistingUserTapped(sender: AnyObject) {
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animateWithDuration(0, animations: {
             self.signupButton.alpha = 0
             self.passwordConfirmField.alpha = 0
             self.existingUserButton.alpha = 0
@@ -139,7 +138,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         })
     }
     @IBAction func backButtonTapped(sender: AnyObject) {
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animateWithDuration(0, animations: {
             self.signupButton.alpha = 1.0
             self.passwordConfirmField.alpha = 1.0
             self.existingUserButton.alpha = 1.0
@@ -166,7 +165,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)"
             NSLog("PostData: %@",post);
             
-            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginScript.php")!
+            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginScript2.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String( postData.length )
             var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -193,7 +192,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
                     let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
                     NSLog("Success: %ld", success);
-                    
+
                     if(success == 1){
                         NSLog("Login SUCCESS");
                         var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -246,6 +245,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         var email:NSString = emailField.text as NSString
         var password:NSString = passwordField.text as NSString
         var passwordConfirm: NSString = passwordConfirmField.text as NSString
+        var mentorStatus:NSString = "Mentor"
         
         if (email.isEqualToString("") || password.isEqualToString("") || passwordConfirm.isEqualToString("")) {
             
@@ -265,12 +265,22 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             alertView.addButtonWithTitle("OK")
             alertView.show()
             
-        } else {
+        } else if(password.length <= 8){
             
-            var post:NSString = "email=\(email)&password=\(password)&password_c=\(passwordConfirm)"
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Sign Up Failed!"
+            alertView.message = "Passwords is no long enough!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+            
+        }else {
+            
+            var post:NSString = "email=\(email)&password=\(password)&password_c=\(passwordConfirm)&mentorStatus=\(mentorStatus)"
             NSLog("PostData: %@", post)
             
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScript2.php")!
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScript4.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -290,6 +300,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 
                 let res = response as! NSHTTPURLResponse!
                 NSLog("Response code: %ld", res.statusCode)
+                
                 if(res.statusCode >= 200 && res.statusCode < 300){
                     var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
                     NSLog("Response ==> %@", responseData)
@@ -299,10 +310,49 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     NSLog("Success %ld", success)
                     
                     if(success == 1){
-                        NSLog("Sign up SUCCESS")
-                        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                        prefs.setObject(email, forKey: "email")
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        
+                        NSLog("Sign up SUCCESS time to FETCH USERID")
+                        
+                        let emailToSend = email
+                        
+                        var post: NSString = "email=\(emailToSend)"
+                        NSLog("PostData: %@",post);
+                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID.php")!
+                        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+                        var postLength:NSString = String( postData.length )
+                        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                        
+                        request.HTTPMethod = "POST"
+                        request.HTTPBody = postData
+                        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                        request.setValue("application/json", forHTTPHeaderField: "Accept")
+                        
+                        var responseError: NSError?
+                        var response: NSURLResponse?
+                        
+                        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+                        
+                        if(urlData != nil){
+                            let res = response as! NSHTTPURLResponse!
+                            NSLog("Response code: %ld", res.statusCode)
+                            
+                            if(res.statusCode >= 200 && res.statusCode < 300){
+                                
+                                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                                NSLog("Response ==> %@", responseData)
+                                var error:NSError?
+                                
+                                let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                
+                                let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                                
+                                prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
+                                println(prefs.valueForKey("userID") as! String)
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                        }
+
                     }else {
                         var error_msg: NSString
                         if jsonData["error_message"] as? NSString != nil {
