@@ -19,6 +19,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mentorButton: UIButton!
+    @IBOutlet weak var menteeButton: UIButton!
 
     override func viewDidLoad() {
         
@@ -36,14 +37,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        clearAllKeys.removeObjectForKey("picture")
-        clearAllKeys.removeObjectForKey("ProfileImage")
-        clearAllKeys.removeObjectForKey("Full_Name_Selected")
-        clearAllKeys.removeObjectForKey("University")
-        clearAllKeys.removeObjectForKey("Faculty")
-        clearAllKeys.removeObjectForKey("Program")
-        clearAllKeys.removeObjectForKey("Year_Selected")
-        clearAllKeys.removeObjectForKey("Gender_Selected")
+//        clearAllKeys.removeObjectForKey("picture")
+//        clearAllKeys.removeObjectForKey("ProfileImage")
+//        clearAllKeys.removeObjectForKey("Full_Name_Selected")
+//        clearAllKeys.removeObjectForKey("University")
+//        clearAllKeys.removeObjectForKey("Faculty")
+//        clearAllKeys.removeObjectForKey("Program")
+//        clearAllKeys.removeObjectForKey("Year_Selected")
+//        clearAllKeys.removeObjectForKey("Gender_Selected")
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         
@@ -117,7 +118,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             self.existingUserButton.alpha = 1.0
         })
  
-        
+        menteeButton.alpha = 0
         passwordField.alpha = 1
         passwordConfirmField.alpha = 1
         
