@@ -19,8 +19,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mentorButton: UIButton!
-    @IBOutlet weak var mentormeeLogo: UIImageView!
-    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         
@@ -34,11 +32,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         existingUserButton.alpha = 0
         loginButton.alpha = 0
         backButton.alpha = 0
-        mentormeeLogo.alpha = 1.0
+//        mentormeeLogo.alpha = 1.0
         
         let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        clearAllKeys.removeObjectForKey("Upload")
+        clearAllKeys.removeObjectForKey("picture")
+        clearAllKeys.removeObjectForKey("ProfileImage")
         clearAllKeys.removeObjectForKey("Full_Name_Selected")
         clearAllKeys.removeObjectForKey("University")
         clearAllKeys.removeObjectForKey("Faculty")
@@ -85,7 +84,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         var buttonHeight: CGFloat = self.existingUserButton.frame.size.height;
         var visibleRect: CGRect = self.view.frame
         visibleRect.size.height -= keyboardSize.height
-        self.mentormeeLogo.alpha = 0
         
         if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
             var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
@@ -97,7 +95,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailField.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
         passwordField.resignFirstResponder()
         passwordConfirmField.resignFirstResponder()
-        mentormeeLogo.alpha = 1.0
+//        mentormeeLogo.alpha = 1.0
         self.scrollView.setContentOffset(CGPointZero, animated: true)
     }
     @IBAction func mentorButtonTapped(sender: UIButton) {
@@ -270,7 +268,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)&password_c=\(passwordConfirm)"
             NSLog("PostData: %@", post)
             
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScript2.php")!
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScript3.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -290,6 +288,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 
                 let res = response as! NSHTTPURLResponse!
                 NSLog("Response code: %ld", res.statusCode)
+                
                 if(res.statusCode >= 200 && res.statusCode < 300){
                     var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
                     NSLog("Response ==> %@", responseData)
@@ -302,6 +301,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         NSLog("Sign up SUCCESS")
                         var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
                         prefs.setObject(email, forKey: "email")
+                        prefs.setInteger(1, forKey: "ISLOGGEDIN")
+                        prefs.synchronize()
                         self.dismissViewControllerAnimated(true, completion: nil)
                     }else {
                         var error_msg: NSString

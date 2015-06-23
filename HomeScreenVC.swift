@@ -40,6 +40,12 @@ class HomeScreenVC: UIViewController {
         
         
         let prefs1: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//        let emailToSend: String = "robert.dippolito@email.com"
+        
+        if(prefs1.valueForKey("email") == nil){
+            self.performSegueWithIdentifier("goto_login", sender: self)
+        } else {
+        
         let emailToSend = prefs1.valueForKey("email") as! String
         
         var post: NSString = "email=\(emailToSend)"
@@ -74,17 +80,17 @@ class HomeScreenVC: UIViewController {
                 
                 var firstName: String = jsonData[0].valueForKey("full_name") as! String
                 if(firstName != ""){
-                var fullName: String = firstName
-                fullNameLabel.text = fullName
-                println(fullName)
+                    var fullName: String = firstName
+                    fullNameLabel.text = fullName
+                    println(fullName)
                 } else {
                     fullNameLabel.text = "Full Name"
                 }
                 
                 var program: String = jsonData[0].valueForKey("program") as! String
                 if(program != ""){
-                programNameLabel.text = program
-                println(program)
+                    programNameLabel.text = program
+                    println(program)
                 } else {
                     programNameLabel.text = "Program of Study"
                 }
@@ -96,13 +102,10 @@ class HomeScreenVC: UIViewController {
                 } else {
                     universityNameLabel.text = "University"
                 }
-                
-                let pictureURL = jsonData[0].valueForKey("picture") as! String
-                
-                if(pictureURL != "") {
+                                
+                if(jsonData[0].valueForKey("picture") as! String != "") {
                     let imageURL = jsonData[0].valueForKey("picture") as! String
-                    let fullURL = "http://mentormee.info/dbTestConnect/\(imageURL)"
-                    var url = NSURL(string: fullURL)
+                    var url = NSURL(string: imageURL)
                     var data = NSData(contentsOfURL: url!)
                     profileImageView.image = UIImage(data:data!)
                 } else {
@@ -125,10 +128,11 @@ class HomeScreenVC: UIViewController {
         
         
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+        var isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         
         if (isLoggedIn != 1) {
             self.performSegueWithIdentifier("goto_login", sender: self)
+        }
         }
     }
 
@@ -137,11 +141,13 @@ class HomeScreenVC: UIViewController {
     }
     
     @IBAction func viewPublicProfile(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_reviews", sender: self)
     }
     @IBAction func setupProfileTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("goto_profileupdate", sender: self)
     }
     @IBAction func viewActiveMenteesTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_mentee", sender: self)
     }
     @IBAction func logoutButtonTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("goto_login", sender: self)

@@ -12,15 +12,67 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var myTableView: UITableView!
     
-    let profileUpdate = ["Profile Picture","Full Name","University", "Faculty", "Program", "Year","Gender"]
+    let profileUpdate = ["Profile Picture","Full Name","University", "Faculty", "Program","Whatsup", "Year","Gender"]
     let textCellIdentifier = "cell"
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         myTableView.delegate = self
         myTableView.dataSource = self
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let emailToSend = prefs.valueForKey("email") as! String
+        
+        var post: NSString = "email=\(emailToSend)"
+        NSLog("PostData: %@",post);
+        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/profilePopulateScript2.php")!
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String( postData.length )
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+        
+        if(urlData != nil){
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                
+                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+                
+                let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                
+                let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                
+                prefs.setObject(jsonData[0].valueForKey("university_name"), forKey: "University")
+                prefs.setObject(jsonData[0].valueForKey("program"), forKey: "Faculty")
+                prefs.setObject(jsonData[0].valueForKey("program_detailed"), forKey: "Program")
+                prefs.setObject(jsonData[0].valueForKey("year"), forKey: "Year_Selected")
+                prefs.setObject(jsonData[0].valueForKey("gender"), forKey: "Gender_Selected")
+                
+                prefs.setObject(jsonData[0].valueForKey("full_name"), forKey: "Full_Name_Selected")
+                prefs.setObject(jsonData[0].valueForKey("extra"), forKey: "Whatsup")
+                prefs.setObject(jsonData[0].valueForKey("picture"), forKey: "Profile Picture")
+//                println(prefs.valueForKey("Profile Picture") as! String)
 
+            }
+        }
 
+                
+        
         }
 
     override func didReceiveMemoryWarning() {
@@ -42,65 +94,38 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         cell.textLabel?.text = profileUpdate[row]
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        if(prefs.objectForKey("University") != nil){
-            let universityName = prefs.valueForKey("University") as! String
-            if(cell.textLabel?.text == "University"){
-                cell.detailTextLabel?.text = universityName
-                return cell
-            }
+        if(cell.textLabel?.text == "University"){
+            cell.detailTextLabel?.text = prefs.valueForKey("University") as? String
+        } else if(cell.textLabel?.text == "Faculty"){
+            cell.detailTextLabel?.text = prefs.valueForKey("Faculty") as? String
+        } else if(cell.textLabel?.text == "Program"){
+            cell.detailTextLabel?.text = prefs.valueForKey("Program") as? String
+        }  else if(cell.textLabel?.text == "Gender"){
+            cell.detailTextLabel?.text = prefs.valueForKey("Gender_Selected") as? String
+        } else if(cell.textLabel?.text == "Year"){
+            cell.detailTextLabel?.text = prefs.valueForKey("Year_Selected") as? String
+        } else if(cell.textLabel?.text == "Full Name"){
+            cell.detailTextLabel?.text = prefs.valueForKey("Full_Name_Selected") as? String
         }
         
-        if(prefs.objectForKey("Faculty") != nil){
-            let facultyName = prefs.valueForKey("Faculty") as! String
-            if(cell.textLabel?.text == "Faculty"){
-                cell.detailTextLabel?.text = facultyName
-                return cell
-            }
-        }
         
-        if(prefs.objectForKey("Program") != nil){
-            let facultyName = prefs.valueForKey("Program") as! String
-            if(cell.textLabel?.text == "Program"){
-                cell.detailTextLabel?.text = facultyName
-                return cell
+        else if(cell.textLabel?.text == "Profile Picture"){
+            if(prefs.valueForKey("Profile Picture") as? String != ""){
+                cell.detailTextLabel?.text = "Uploaded"
+            } else {
+                cell.detailTextLabel?.text = "Upload a Picture"
             }
-        }
-        
-        if(prefs.objectForKey("Year_Selected") != nil){
-            let yearOfStudy = prefs.valueForKey("Year_Selected") as! String
-            if(cell.textLabel?.text == "Year"){
-                cell.detailTextLabel?.text = yearOfStudy
-                return cell
-            }
-        }
-        
-        if(prefs.objectForKey("Gender_Selected") != nil){
-            let gender = prefs.valueForKey("Gender_Selected") as! String
-            if(cell.textLabel?.text == "Gender"){
-                cell.detailTextLabel?.text = gender
-                return cell
-            }
-        }
-        
-        if(prefs.objectForKey("Full_Name_Selected") != nil){
-            let fullName = prefs.valueForKey("Full_Name_Selected") as! String
-            if(cell.textLabel?.text == "Full Name"){
-                cell.detailTextLabel?.text = fullName
-                return cell
-            }
-        }
-        
-        if(prefs.objectForKey("Upload") != nil){
-            let uploadSuccess = prefs.valueForKey("Upload") as! String
-            if(cell.textLabel?.text == "Profile Picture"){
-                cell.detailTextLabel?.text = uploadSuccess
-                return cell
+        } else if(cell.textLabel?.text == "Whatsup"){
+            if(prefs.valueForKey("Whatsup") != nil){
+                cell.detailTextLabel?.text = "Set"
+            } else {
+                cell.detailTextLabel?.text = "Whats on your mind?"
             }
         }
         
         return cell
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         myTableView.deselectRowAtIndexPath(indexPath, animated: true)
 
@@ -131,36 +156,42 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         } else if (cell.textLabel?.text == "Full Name"){
             prefs.setObject(cell.textLabel?.text, forKey: "Selection")
             self.performSegueWithIdentifier("goto_namepicture", sender: self)
+        } else if (cell.textLabel?.text == "Whatsup"){
+            prefs.setObject(cell.textLabel?.text, forKey: "Selection")
+            self.performSegueWithIdentifier("goto_namepicture", sender: self)
         }
         
+    }
+    @IBAction func backToProfileTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func backButtonPressed(sender: AnyObject) {
         
         let storedData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        let imageURL = storedData.valueForKey("imageURL") as! String
-        println(imageURL)
-        var imageToSend = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(imageURL)"
-        println(imageToSend)
-//        storedData.setObject(imageToSend, forKey: "ProfilePicture")
-        let fullName = storedData.valueForKey("Full_Name_Selected") as! String
-        println(fullName)
-        let universityName = storedData.valueForKey("university") as! String
-        println(universityName)
-        let facultyName = storedData.valueForKey("Faculty") as! String
-        println(facultyName)
-        let programName = storedData.valueForKey("Program") as! String
-        println(programName)
-        let yearOfStudy = storedData.valueForKey("Year_Selected") as! String
-        println(yearOfStudy)
-        let genderSelected = storedData.valueForKey("Gender_Selected") as! String
-        println(genderSelected)
-        let emailIdentifier = storedData.valueForKey("email") as! String
-        println(emailIdentifier)
+        if(storedData.valueForKey("ProfileImage") != nil) {
+            let imageURL = storedData.valueForKey("ProfileImage") as! String
+            println(imageURL)
+            storedData.setObject(imageURL, forKey: "imageToSend")
+//        var imageToSend = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(imageURL)"
+        } else {
+            let imageURL = storedData.valueForKey("Profile Picture") as! String
+            storedData.setObject(imageURL, forKey: "imageToSend")
+        }
         
-        println("\(imageToSend)")
+        let imageURL = storedData.valueForKey("imageToSend") as! String
         
-        var post: NSString = "email=\(emailIdentifier)&imageURL=\(imageToSend)&fullName=\(fullName)&universityName=\(universityName)&faculty=\(facultyName)&program=\(programName)&yearOfStudy=\(yearOfStudy)&genderSelect=\(genderSelected)"
+        var fullName = storedData.valueForKey("Full_Name_Selected") as! String
+        var universityName = storedData.valueForKey("University") as! String
+        var facultyName = storedData.valueForKey("Faculty") as! String
+        var programName = storedData.valueForKey("Program") as! String
+        var yearOfStudy = storedData.valueForKey("Year_Selected") as! String
+        var genderSelected = storedData.valueForKey("Gender_Selected") as! String
+        var whatsup = storedData.valueForKey("Whatsup") as! String
+        var emailIdentifier = storedData.valueForKey("email") as! String
+        
+        var post: NSString = "email=\(emailIdentifier)&imageURL=\(imageURL)&fullName=\(fullName)&universityName=\(universityName)&faculty=\(facultyName)&program=\(programName)&yearOfStudy=\(yearOfStudy)&genderSelect=\(genderSelected)&whatsup=\(whatsup)"
+
         var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProfile2.php")!
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
@@ -187,13 +218,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 NSLog("Response ==> %@", responseData)
                 var error:NSError?
                 let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+
                 let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
                 NSLog("Success %ld", success)
-                self.performSegueWithIdentifier("goto_homepage", sender: self)
                 
                 if(success == 1){
                     NSLog("Update SUCCESS!")
-                    self.performSegueWithIdentifier("editto_home", sender: self)
+                    self.performSegueWithIdentifier("goto_homepage", sender: self)
                 } else {
                     var error_msg: NSString
                     if jsonData["error_message"] as? NSString != nil {
@@ -201,12 +232,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     } else {
                         error_msg = "Unknown Error"
                     }
-                    var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Signup Failed"
-                    alertView.message = error_msg as String
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
+                        self.performSegueWithIdentifier("goto_homepage", sender: self)
+//                    var alertView:UIAlertView = UIAlertView()
+//                    alertView.title = "Signup Failed"
+//                    alertView.message = error_msg as String
+//                    alertView.delegate = self
+//                    alertView.addButtonWithTitle("OK")
+//                    alertView.show()
                 }
             } else {
                 var alertView:UIAlertView = UIAlertView()
@@ -226,8 +258,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             alertView.delegate = self
             alertView.addButtonWithTitle("OK")
             alertView.show()
-            
-        }
+            }
     }
     
 
