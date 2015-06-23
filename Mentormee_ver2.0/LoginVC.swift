@@ -165,7 +165,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)"
             NSLog("PostData: %@",post);
             
-            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginScript2.php")!
+            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginScript3.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String( postData.length )
             var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
