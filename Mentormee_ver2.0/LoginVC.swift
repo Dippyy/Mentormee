@@ -37,14 +37,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        clearAllKeys.removeObjectForKey("picture")
-        clearAllKeys.removeObjectForKey("ProfileImage")
-        clearAllKeys.removeObjectForKey("Full_Name_Selected")
-        clearAllKeys.removeObjectForKey("University")
-        clearAllKeys.removeObjectForKey("Faculty")
-        clearAllKeys.removeObjectForKey("Program")
-        clearAllKeys.removeObjectForKey("Year_Selected")
-        clearAllKeys.removeObjectForKey("Gender_Selected")
+//        clearAllKeys.removeObjectForKey("picture")
+//        clearAllKeys.removeObjectForKey("ProfileImage")
+//        clearAllKeys.removeObjectForKey("Full_Name_Selected")
+//        clearAllKeys.removeObjectForKey("University")
+//        clearAllKeys.removeObjectForKey("Faculty")
+//        clearAllKeys.removeObjectForKey("Program")
+//        clearAllKeys.removeObjectForKey("Year_Selected")
+//        clearAllKeys.removeObjectForKey("Gender_Selected")
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         
