@@ -182,7 +182,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     func myImageUploadRequest(){
         
-        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload2.php")
+        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload3.php")
         let request = NSMutableURLRequest(URL:myUrl!)
         request.HTTPMethod = "POST"
         
@@ -246,6 +246,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         fileName.setObject(filename, forKey: "imageURL")
         let fullImageUrl = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(filename)" as String
         fileName.setObject(fullImageUrl, forKey: "ProfileImage")
+        println(fileName.valueForKey("ProfileImage"))
 //        println("the image url should be \(fileName.valueForKey("ProfileImage"))")
     
         let mimetype = "image/jpg"

@@ -229,19 +229,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         let imageURL = storedData.valueForKey("imageToSend") as! String
-        
-        var fullName = storedData.valueForKey("Full Name") as! String
-        var universityName = storedData.valueForKey("University") as! String
-        var facultyName = storedData.valueForKey("Program") as! String
-        var programName = storedData.valueForKey("ProgramSpecialization") as! String
-        var yearOfStudy = storedData.valueForKey("Graduation Year") as! String
-        var genderSelected = storedData.valueForKey("Gender") as! String
-        var whatsup = storedData.valueForKey("Whatsup") as! String
         var userID = storedData.valueForKey("userID") as! String
         
-        var post: NSString = "userID=\(userID)&imageURL=\(imageURL)&fullName=\(fullName)&universityName=\(universityName)&faculty=\(facultyName)&program=\(programName)&yearOfStudy=\(yearOfStudy)&genderSelect=\(genderSelected)&whatsup=\(whatsup)"
+        println(userID)
+        
+        var post: NSString = "userID=\(userID)&imageURL=\(imageURL)"
 
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProfile2.php")!
+        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/saveUserInfo.php")!
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
