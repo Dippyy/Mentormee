@@ -15,7 +15,7 @@ class MenteeViewVC: UIViewController {
     @IBOutlet weak var universityLabel: UILabel!
     @IBOutlet weak var programLabel: UILabel!
     @IBOutlet weak var backgroundLabel: UILabel!
-    //sample check in
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
