@@ -12,7 +12,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var myTableView: UITableView!
     
-    let profileUpdate = ["Profile Picture","Full Name","UniversityName", "Faculty", "Program","Whatsup", "Year","Gender"]
+    let profileUpdate = ["Profile Picture","Full Name","University", "Faculty", "Program","Whatsup", "Year","Gender"]
     let textCellIdentifier = "cell"
     
     override func viewDidLoad() {
@@ -111,9 +111,9 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                         
                         let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                         
-                        prefs.setObject(jsonData[0].valueForKey("UniversityName"), forKey: "University")
+                        prefs.setObject(jsonData[0].valueForKey("University"), forKey: "University")
+                        prefs.setObject(jsonData[1].valueForKey("Faculty"), forKey: "Faculty")
                         prefs.setObject(jsonData[1].valueForKey("Program"), forKey: "Program")
-                        prefs.setObject(jsonData[1].valueForKey("ProgramSpecialization"), forKey: "ProgramSpecialization")
 
                     }
                     
@@ -147,9 +147,9 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         if(cell.textLabel?.text == "University"){
             cell.detailTextLabel?.text = prefs.valueForKey("University") as? String
         } else if(cell.textLabel?.text == "Faculty"){
-            cell.detailTextLabel?.text = prefs.valueForKey("Program") as? String
+            cell.detailTextLabel?.text = prefs.valueForKey("Faculty") as? String
         } else if(cell.textLabel?.text == "Program"){
-            cell.detailTextLabel?.text = prefs.valueForKey("ProgramSpecialization") as? String
+            cell.detailTextLabel?.text = prefs.valueForKey("Program") as? String
         }  else if(cell.textLabel?.text == "Gender"){
             cell.detailTextLabel?.text = prefs.valueForKey("Gender") as? String
         } else if(cell.textLabel?.text == "Year"){

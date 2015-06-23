@@ -67,9 +67,9 @@ class DetailUpdateTVC: UITableViewController {
             
             let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
             println("this array contains: \(jsonData.count)")
-            println(jsonData[0].valueForKey("UniversityName"))
-            println(jsonData[0].valueForKey("Program"))
-            println(jsonData[0].valueForKey("ProgramSpecialization"))
+            println(jsonData[0].valueForKey("University") as! String)
+            println(jsonData[1].valueForKey("Faculty") as! String)
+            println(jsonData[1].valueForKey("Program") as! String)
             
             for (var i = 0; i < jsonData.count; i++){
                 if let jsonData_obj = jsonData[i] as? NSDictionary
@@ -97,11 +97,13 @@ class DetailUpdateTVC: UITableViewController {
         
         if(prefs.valueForKey("Selection") as! String == "University"){
             
-            var universityName = UserData[row]
+//            var universityName = UserData[row]
+            var uniID: Int = row + 1
+            
             var userID = prefs.valueForKey("userID") as! String
             
-            var post: NSString = "userID=\(userID)&universityName=\(universityName)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateUniversityName.php")! //need to update university_id
+            var post: NSString = "userID=\(userID)&universityID=\(uniID)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateUniversityName2.php")! //need to update university_id
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -140,12 +142,14 @@ class DetailUpdateTVC: UITableViewController {
         
         if(prefs.valueForKey("Selection") as! String == "Faculty"){
             
-            var facultyName = UserData[row]
-            println("The name is \(facultyName)")
+//            var facultyName = UserData[row]
+            var facultyID: Int = row + 1
             var email = prefs.valueForKey("email") as! String
             
-            var post: NSString = "email=\(email)&faculty=\(facultyName)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateFacultyName.php")! //update program_id
+            println(facultyID)
+            
+            var post: NSString = "email=\(email)&faculty=\(facultyID)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateFacultyName2.php")! //update program_id
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -184,10 +188,12 @@ class DetailUpdateTVC: UITableViewController {
         
         if(prefs.valueForKey("Selection") as! String == "Program"){
             
-            var programName = UserData[row]
-            var email = prefs.valueForKey("email") as! String
+//            var programName = UserData[row]
+            var programID: Int = row + 1
             
-            var post: NSString = "email=\(email)&program=\(programName)"
+            var userID = prefs.valueForKey("userID") as! String
+            
+            var post: NSString = "userID=\(userID)&program=\(programID)"
             var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProgramName2.php")! //update program_id
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)

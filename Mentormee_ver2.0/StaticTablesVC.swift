@@ -75,10 +75,12 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(prefs.valueForKey("Selection")!.isEqualToString("Gender")){
                 
                 var genderSelected = genderTable[row]
-                var email = prefs.valueForKey("email") as! String
+                println("WE ARE GETTING INTO THIS PART OF THE CODE")
+                var userID = prefs.valueForKey("userID") as! String
                 
-                var post: NSString = "email=\(email)&genderSelect=\(genderSelected)"
-                var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/genderNameUpdate.php")!
+                var post: NSString = "userID=\(userID)&genderSelect=\(genderSelected)"
+                println(post)
+                var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/genderNameUpdate2.php")!
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                 var postLength:NSString = String(postData.length)
                 var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -118,11 +120,12 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if(prefs.valueForKey("Selection")!.isEqualToString("Year")){
             
-            var genderSelected = yearOfStudy[row]
-            var email = prefs.valueForKey("email") as! String
+            var gradYear: Int = 2018 - row
             
-            var post: NSString = "email=\(email)&yearOfStudy=\(genderSelected)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/yearOfStudyUpdate.php")!
+            var userID = prefs.valueForKey("userID") as! String
+            
+            var post: NSString = "userID=\(userID)&yearOfStudy=\(gradYear)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/yearOfStudyUpdate2.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

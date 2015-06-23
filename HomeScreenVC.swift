@@ -126,7 +126,7 @@ class HomeScreenVC: UIViewController {
                         
                         let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                         
-                        var program: String = jsonData[1].valueForKey("ProgramSpecialization") as! String
+                        var program: String = jsonData[1].valueForKey("Program") as! String
                         println(program)
                         if(program != ""){
                             programNameLabel.text = program
@@ -135,7 +135,7 @@ class HomeScreenVC: UIViewController {
                             programNameLabel.text = "Program of Study"
                         }
 
-                        var universityName: String = jsonData[0].valueForKey("UniversityName") as! String
+                        var universityName: String = jsonData[0].valueForKey("University") as! String
                         println(universityName)
                         if(universityName != "") {
                             universityNameLabel.text = universityName

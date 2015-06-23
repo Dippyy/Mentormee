@@ -35,7 +35,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 self.profilePictureImageView.alpha = 1.0
             })
         } else if (prefs.valueForKey("Selection")!.isEqualToString("Full Name")){
-            self.fullNameTextField.text = prefs.valueForKey("Full_Name_Selected") as! String
+            self.fullNameTextField.text = prefs.valueForKey("Full Name") as! String
             UIView.animateWithDuration(0, animations: {
                 self.fullNameTextField.alpha = 1.0
             
@@ -67,11 +67,17 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         
         if(prefs.valueForKey("Selection")!.isEqualToString("Full Name")){
             
-            var fullName = fullNameTextField.text as String
-            var email = prefs.valueForKey("email") as! String
+            var fullName: String = fullNameTextField.text as String
+            var userID = prefs.valueForKey("userID") as! String
             
-            var post: NSString = "email=\(email)&fullName=\(fullName)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProfile3.php")!
+            var nameArray = fullName.componentsSeparatedByString(" ")
+            var firstName:String = nameArray[0]
+            println("THE FIRST NAME IS \(firstName)")
+            var lastName:String = nameArray[1]
+            println("THE LAST NAME IS \(lastName)")
+
+            var post: NSString = "userID=\(userID)&firstName=\(firstName)&lastName=\(lastName)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateName.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -114,10 +120,10 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
             
             var whatsUp = whatsupTextField.text as String
-            var email = prefs.valueForKey("email") as! String
+            var userID = prefs.valueForKey("userID") as! String
             
-            var post: NSString = "email=\(email)&whatsup=\(whatsUp)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateWhatsup.php")!
+            var post: NSString = "userID=\(userID)&whatsup=\(whatsUp)"
+            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateWhatsup2.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
