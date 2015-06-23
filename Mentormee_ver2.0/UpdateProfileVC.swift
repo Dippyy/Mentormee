@@ -222,7 +222,6 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             let imageURL = storedData.valueForKey("ProfileImage") as! String
             println(imageURL)
             storedData.setObject(imageURL, forKey: "imageToSend")
-//        var imageToSend = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(imageURL)"
         } else {
             let imageURL = storedData.valueForKey("Profile Picture") as! String
             storedData.setObject(imageURL, forKey: "imageToSend")

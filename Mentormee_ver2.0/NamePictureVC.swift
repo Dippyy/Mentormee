@@ -246,7 +246,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         fileName.setObject(filename, forKey: "imageURL")
         let fullImageUrl = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(filename)" as String
         fileName.setObject(fullImageUrl, forKey: "ProfileImage")
-        println(fileName.valueForKey("ProfileImage"))
+        
 //        println("the image url should be \(fileName.valueForKey("ProfileImage"))")
     
         let mimetype = "image/jpg"

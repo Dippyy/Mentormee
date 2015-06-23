@@ -91,6 +91,11 @@ class HomeScreenVC: UIViewController {
                     fullNameLabel.text = "Full Name"
                 }
                 
+                let imageString: String = jsonData[0].valueForKey("Picture") as! String
+                let url2 = NSURL(string: imageString)
+                let data = NSData(contentsOfURL: url2!)
+                profileImageView.image = UIImage(data: data!)
+                
                 var universityID: String = jsonData[1].valueForKey("University_id") as! String // converts the strings to ints
                 var programID: String = jsonData[1].valueForKey("Program_id") as! String
                 let uniID: Int? = universityID.toInt()
@@ -143,6 +148,7 @@ class HomeScreenVC: UIViewController {
                         } else {
                             universityNameLabel.text = "University"
                         }
+                        
                     }
                 }
             }
