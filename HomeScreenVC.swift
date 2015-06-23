@@ -14,6 +14,10 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var universityNameLabel: UILabel!
     @IBOutlet weak var programNameLabel: UILabel!
+    @IBOutlet weak var ViewProfileButton: UIButton!
+    @IBOutlet weak var SetUpProfileButton: UIButton!
+    @IBOutlet weak var ViewMenteesButton: UIButton!
+    @IBOutlet weak var LogoutButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -23,6 +27,11 @@ class HomeScreenVC: UIViewController {
         fullNameLabel.alpha = 0
         universityNameLabel.alpha = 0
         programNameLabel.alpha = 0
+        ViewProfileButton.alpha = 0
+        SetUpProfileButton.alpha = 0
+        ViewMenteesButton.alpha = 0
+        LogoutButton.alpha = 0
+        
         
         
     }
@@ -31,11 +40,15 @@ class HomeScreenVC: UIViewController {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible=false
         
-        UIView.animateWithDuration(0, animations: {
+        UIView.animateWithDuration(1, animations: {
             self.profileImageView.alpha = 1.0
             self.fullNameLabel.alpha = 1.0
             self.universityNameLabel.alpha = 1.0
             self.programNameLabel.alpha = 1.0
+            self.ViewProfileButton.alpha = 1.0
+            self.SetUpProfileButton.alpha = 1.0
+            self.ViewMenteesButton.alpha = 1.0
+            self.LogoutButton.alpha = 1.0
         })
         
         

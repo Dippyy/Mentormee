@@ -289,6 +289,10 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="LogoutButton" destination="UJc-Ug-Znj" id="93L-2y-D89"/>
+                        <outlet property="SetUpProfileButton" destination="Kii-qE-5dA" id="t4S-ds-j1b"/>
+                        <outlet property="ViewMenteesButton" destination="1uN-EP-iIv" id="Wv3-2V-Poz"/>
+                        <outlet property="ViewProfileButton" destination="78C-n6-w8c" id="h6j-IS-0pf"/>
                         <outlet property="fullNameLabel" destination="q8z-jm-hVC" id="3Tg-KP-uy8"/>
                         <outlet property="profileImageView" destination="yf7-v7-9hr" id="tzf-tE-hht"/>
                         <outlet property="programNameLabel" destination="agI-qg-HOk" id="L0c-yu-xMd"/>
@@ -449,7 +453,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Nsm-vJ-sdg" detailTextLabel="EhD-B1-sDT" style="IBUITableViewCellStyleValue1" id="dgm-og-GUb">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dgm-og-GUb" id="cTv-VG-GGU">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -1355,7 +1359,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Skk-EY-haz"/>
+        <segue reference="YLa-RA-Fux"/>
         <segue reference="y0T-o3-Fw2"/>
     </inferredMetricsTieBreakers>
 </document>
