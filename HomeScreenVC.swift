@@ -4,7 +4,7 @@
 //
 //  Created by Robert D'Ippolito on 2015-06-10.
 //  Copyright (c) 2015 Robert D'Ippolito. All rights reserved.
-//
+//  Alex test merge
 
 import UIKit
 
@@ -41,7 +41,7 @@ class HomeScreenVC: UIViewController {
         
         let prefs1: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        if(prefs1.valueForKey("email") == nil){
+        if(prefs1.valueForKey("userID") == nil){
             self.performSegueWithIdentifier("goto_login", sender: self)
         } else {
         
