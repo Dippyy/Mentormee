@@ -67,9 +67,9 @@ class DetailUpdateTVC: UITableViewController {
             
             let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
             println("this array contains: \(jsonData.count)")
-            println(jsonData[0].valueForKey("UniversityName"))
+            println(jsonData[0].valueForKey("University"))
+            println(jsonData[0].valueForKey("Faculty"))
             println(jsonData[0].valueForKey("Program"))
-            println(jsonData[0].valueForKey("ProgramSpecialization"))
             
             for (var i = 0; i < jsonData.count; i++){
                 if let jsonData_obj = jsonData[i] as? NSDictionary
