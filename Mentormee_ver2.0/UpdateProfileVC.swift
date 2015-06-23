@@ -93,7 +93,6 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                 request.setValue("application/json", forHTTPHeaderField: "Accept")
-                
                 var responseError: NSError?
                 var response: NSURLResponse?
                 
