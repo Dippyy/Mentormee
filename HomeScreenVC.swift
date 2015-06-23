@@ -41,7 +41,7 @@ class HomeScreenVC: UIViewController {
         
         let prefs1: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        if(prefs1.valueForKey("email") == nil){
+        if(prefs1.valueForKey("userID") == nil){
             self.performSegueWithIdentifier("goto_login", sender: self)
         } else {
         

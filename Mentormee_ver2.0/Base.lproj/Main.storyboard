@@ -373,7 +373,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQK-lK-Sk1">
-                                        <rect key="frame" x="0.0" y="520" width="168" height="48"/>
+                                        <rect key="frame" x="0.0" y="520" width="155" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -400,7 +400,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Iw-6D-YQv">
-                                        <rect key="frame" x="171" y="520" width="149" height="47"/>
+                                        <rect key="frame" x="163" y="520" width="157" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -423,6 +423,7 @@
                         <outlet property="emailField" destination="kin-q4-8XO" id="YKE-ZI-064"/>
                         <outlet property="existingUserButton" destination="DVa-n8-NvW" id="mC7-R2-8eq"/>
                         <outlet property="loginButton" destination="JC7-za-QNP" id="kaw-U6-9dj"/>
+                        <outlet property="menteeButton" destination="5Iw-6D-YQv" id="C9R-0E-QR0"/>
                         <outlet property="mentorButton" destination="mQK-lK-Sk1" id="60h-gb-3Aj"/>
                         <outlet property="passwordConfirmField" destination="2Ox-QW-u5J" id="XyF-ZW-9Vj"/>
                         <outlet property="passwordField" destination="SDF-fn-5o6" id="5R8-9R-ivd"/>

@@ -19,6 +19,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mentorButton: UIButton!
+    @IBOutlet weak var menteeButton: UIButton!
 
     override func viewDidLoad() {
         
@@ -117,7 +118,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             self.existingUserButton.alpha = 1.0
         })
  
-        
+        menteeButton.alpha = 0
         passwordField.alpha = 1
         passwordConfirmField.alpha = 1
         
