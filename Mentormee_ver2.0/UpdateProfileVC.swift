@@ -76,10 +76,19 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 prefs.setObject(jsonData[2].valueForKey("University_id"), forKey: "UniID")
                 prefs.setObject(jsonData[2].valueForKey("Program_id"), forKey: "ProgID")
                 
-                var universityID: String = jsonData[2].valueForKey("University_id") as! String // converts the strings to ints
+                var universityID: String = jsonData[2].valueForKey("University_id") as! String// converts the strings to ints
                 var programID: String = jsonData[2].valueForKey("Program_id") as! String
-                let uniID: Int? = universityID.toInt()
-                let progID: Int? = programID.toInt()
+                var uniID: Int? = universityID.toInt()
+                var progID: Int? = programID.toInt()
+                
+                
+                
+//                if (uniID!.isEqualToNumber(0)){
+//                    prefs.setObject(1, forKey: "uniID")
+//                    var uniID = prefs.valueForKey("uniID") as! NSNumber
+//                }
+                
+//                println("This is why we are crashing \(uniID)")
                 
                 var post: NSString = "universityID=\(uniID!)&programID=\(progID!)"
                 NSLog("PostData: %@",post);
