@@ -77,9 +77,9 @@ class HomeScreenVC: UIViewController {
                 
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                 
+                // ERROR HANDLER FOR FULL NAME
+
                     var firstName: String = jsonData[0].valueForKey("FirstName") as! String
-                    
-                
                     var lastName: String = jsonData[0].valueForKey("LastName") as! String
                     var fullName: String = firstName + " " + lastName
                 
@@ -89,12 +89,21 @@ class HomeScreenVC: UIViewController {
                         println(fullName)
                     } else {
                         fullNameLabel.text = "Full Name"
-                    } 
+                    }
                 
-                let imageString: String = jsonData[0].valueForKey("Picture") as! String
-                let url2 = NSURL(string: imageString)
-                let data = NSData(contentsOfURL: url2!)
-                profileImageView.image = UIImage(data: data!)
+                // ERROR HANDLER FOR PROFILE PICTURE
+            
+                if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
+                
+                    profileImageView.image = UIImage(named: "profile_default.jpg")
+
+                } else {
+                
+                    let imageString: String = jsonData[0].valueForKey("Picture") as! String
+                    let url2 = NSURL(string: imageString)
+                    let data = NSData(contentsOfURL: url2!)
+                    profileImageView.image = UIImage(data: data!)
+                }
                 
                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 
@@ -117,25 +126,7 @@ class HomeScreenVC: UIViewController {
                     let progID: Int? = programID.toInt()
                     prefs.setObject(progID, forKey: "progID")
                 }
-                
-                
-//                if let programID: String = jsonData[1].valueForKey("Program_id") as? String{
-//                let progID: Int? = programID.toInt()
-//                    prefs.setObject(progID, forKey: "programID")
-//                } else {
-//                    let programID: Int? = 1
-//                    prefs.setObject(programID, forKey: "programID")
-//                }
-//
-//                var uniID = prefs.valueForKey("uniID") as! NSNumber
-//                println("uniID is \(uniID)")
-//                let progID = prefs.valueForKey("programID") as! NSNumber
-//                println("program ID is \(progID)")
-//
-//                if (uniID.isEqualToNumber(0)){
-//                    prefs.setObject(1, forKey: "uniID")
-//                    var uniID = prefs.valueForKey("uniID") as! NSNumber
-//                }
+        
                 
                 let uniID = prefs.valueForKey("uniID") as! Int
                 let progID = prefs.valueForKey("progID") as! Int

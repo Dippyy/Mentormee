@@ -136,10 +136,25 @@ class PublicProfileVC: UIViewController {
                 var extraText: String = jsonData[2].valueForKey("WhatsUp") as! String
                 whatsupText.text = extraText
                 
-                let imageString: String = jsonData[0].valueForKey("Picture") as! String
-                let url2 = NSURL(string: imageString)
-                let data = NSData(contentsOfURL: url2!)
-                profileImageView.image = UIImage(data: data!)
+                
+                
+                if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
+                    
+                    profileImageView.image = UIImage(named: "profile_default.jpg")
+                    
+                } else {
+                    
+                    let imageString: String = jsonData[0].valueForKey("Picture") as! String
+                    let url2 = NSURL(string: imageString)
+                    let data = NSData(contentsOfURL: url2!)
+                    profileImageView.image = UIImage(data: data!)
+                }
+                
+                
+//                let imageString: String = jsonData[0].valueForKey("Picture") as! String
+//                let url2 = NSURL(string: imageString)
+//                let data = NSData(contentsOfURL: url2!)
+//                profileImageView.image = UIImage(data: data!)
                 
                 
             }

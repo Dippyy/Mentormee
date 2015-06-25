@@ -144,11 +144,12 @@ class DetailUpdateTVC: UITableViewController {
             
 //            var facultyName = UserData[row]
             var facultyID: Int = row + 1
-            var email = prefs.valueForKey("email") as! String
+//            var email = prefs.valueForKey("email") as! String
+            var userID = prefs.valueForKey("userID") as! String
             
             println(facultyID)
             
-            var post: NSString = "email=\(email)&faculty=\(facultyID)"
+            var post: NSString = "userID=\(userID)&faculty=\(facultyID)"
             var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateFacultyName2.php")! //update program_id
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
