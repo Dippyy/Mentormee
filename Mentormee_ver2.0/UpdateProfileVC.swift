@@ -76,12 +76,30 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 prefs.setObject(jsonData[2].valueForKey("University_id"), forKey: "UniID")
                 prefs.setObject(jsonData[2].valueForKey("Program_id"), forKey: "ProgID")
                 
-                var universityID: String = jsonData[2].valueForKey("University_id") as! String // converts the strings to ints
-                var programID: String = jsonData[2].valueForKey("Program_id") as! String
-                let uniID: Int? = universityID.toInt()
-                let progID: Int? = programID.toInt()
+                // ERROR HANDLER FOR NO UNIVERSITY ID ON FIRST SIGNUP
                 
-                var post: NSString = "universityID=\(uniID!)&programID=\(progID!)"
+                if(jsonData[2].valueForKey("University_id")!.isEqualToString("0")){
+                    let universityID = 1
+                    prefs.setObject(universityID, forKey: "uniID2")
+                } else {
+                    let universityID: String = jsonData[2].valueForKey("University_id") as! String
+                    let uniID: Int? = universityID.toInt()
+                    prefs.setObject(uniID, forKey: "uniID2")
+                }
+                
+                if(jsonData[2].valueForKey("Program_id")!.isEqualToString("0")){
+                    let programID = 1
+                    prefs.setObject(programID, forKey: "progID2")
+                } else {
+                    let programID: String = jsonData[2].valueForKey("Program_id") as! String
+                    let progID: Int? = programID.toInt()
+                    prefs.setObject(progID, forKey: "progID2")
+                }
+                
+                let uniID = prefs.valueForKey("uniID2") as! Int
+                let progID = prefs.valueForKey("progID2") as! Int
+                
+                var post: NSString = "universityID=\(uniID)&programID=\(progID)"
                 NSLog("PostData: %@",post);
                 var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -153,7 +171,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }  else if(cell.textLabel?.text == "Gender"){
             cell.detailTextLabel?.text = prefs.valueForKey("Gender") as? String
         } else if(cell.textLabel?.text == "Year"){
+            
+            if(prefs.valueForKey("Graduation Year") as! String == "0"){
+                cell.detailTextLabel?.text = "Grad year"
+            } else {
             cell.detailTextLabel?.text = prefs.valueForKey("Graduation Year") as? String
+            }
+            
         } else if(cell.textLabel?.text == "Full Name"){
             cell.detailTextLabel?.text = prefs.valueForKey("Full Name") as? String
         }
@@ -166,7 +190,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 cell.detailTextLabel?.text = "Upload a Picture"
             }
         } else if(cell.textLabel?.text == "Whatsup"){
-            if(prefs.valueForKey("Whatsup") != nil){
+            if(prefs.valueForKey("Whatsup") as? String != ""){
                 cell.detailTextLabel?.text = "Set"
             } else {
                 cell.detailTextLabel?.text = "Whats on your mind?"
@@ -222,26 +246,19 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             let imageURL = storedData.valueForKey("ProfileImage") as! String
             println(imageURL)
             storedData.setObject(imageURL, forKey: "imageToSend")
-//        var imageToSend = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(imageURL)"
         } else {
             let imageURL = storedData.valueForKey("Profile Picture") as! String
             storedData.setObject(imageURL, forKey: "imageToSend")
         }
         
         let imageURL = storedData.valueForKey("imageToSend") as! String
-        
-        var fullName = storedData.valueForKey("Full Name") as! String
-        var universityName = storedData.valueForKey("University") as! String
-        var facultyName = storedData.valueForKey("Program") as! String
-        var programName = storedData.valueForKey("ProgramSpecialization") as! String
-        var yearOfStudy = storedData.valueForKey("Graduation Year") as! String
-        var genderSelected = storedData.valueForKey("Gender") as! String
-        var whatsup = storedData.valueForKey("Whatsup") as! String
         var userID = storedData.valueForKey("userID") as! String
         
-        var post: NSString = "userID=\(userID)&imageURL=\(imageURL)&fullName=\(fullName)&universityName=\(universityName)&faculty=\(facultyName)&program=\(programName)&yearOfStudy=\(yearOfStudy)&genderSelect=\(genderSelected)&whatsup=\(whatsup)"
+        println(userID)
+        
+        var post: NSString = "userID=\(userID)&imageURL=\(imageURL)"
 
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProfile2.php")!
+        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/saveUserInfo.php")!
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

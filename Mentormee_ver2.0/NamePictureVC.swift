@@ -70,10 +70,16 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             var fullName: String = fullNameTextField.text as String
             var userID = prefs.valueForKey("userID") as! String
             
-            var nameArray = fullName.componentsSeparatedByString(" ")
-            var firstName:String = nameArray[0]
+//            var nameArray = fullName.componentsSeparatedByString(" ")
+//            var firstName:String = nameArray[0]
+//            println("THE FIRST NAME IS \(firstName)")
+//            var lastName:String = nameArray[1]
+//            println("THE LAST NAME IS \(lastName)")
+            
+            var fullNameArr = split(fullName) {$0 == " "}
+            var firstName: String = fullNameArr[0]
             println("THE FIRST NAME IS \(firstName)")
-            var lastName:String = nameArray[1]
+            var lastName: String! = fullNameArr.count > 1 ? fullNameArr[1] : nil
             println("THE LAST NAME IS \(lastName)")
 
             var post: NSString = "userID=\(userID)&firstName=\(firstName)&lastName=\(lastName)"
@@ -175,14 +181,14 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         profilePictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let upload:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        upload.setObject("Uploaded", forKey: "Upload")
+//        let upload:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//        upload.setObject("Uploaded", forKey: "Upload")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func myImageUploadRequest(){
         
-        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload2.php")
+        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload4.php")
         let request = NSMutableURLRequest(URL:myUrl!)
         request.HTTPMethod = "POST"
         
@@ -240,12 +246,14 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 body.appendString("\(value)\r\n")
             }
         }
+        
         let email = prefs.valueForKey("email") as! String
         let filename = "user-profile-\(email).jpg"
         let fileName = NSUserDefaults.standardUserDefaults()
-        fileName.setObject(filename, forKey: "imageURL")
+//        fileName.setObject(filename, forKey: "imageURL")
         let fullImageUrl = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(filename)" as String
         fileName.setObject(fullImageUrl, forKey: "ProfileImage")
+        
 //        println("the image url should be \(fileName.valueForKey("ProfileImage"))")
     
         let mimetype = "image/jpg"

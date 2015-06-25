@@ -35,10 +35,11 @@ class PublicProfileVC: UIViewController {
         profileImageView.clipsToBounds = true
         
         let storedData:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let emailIdentifier = storedData.valueForKey("email") as! String
+        let userID = storedData.valueForKey("userID") as! String
         
-        var post: NSString = "email=\(emailIdentifier)"
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updatePublicProfile.php")!
+        var post: NSString = "userID=\(userID)"
+        println(post)
+        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updatePublicProfile3.php")!
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -65,40 +66,118 @@ class PublicProfileVC: UIViewController {
                 
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                 
+                var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                var lastName: String = jsonData[0].valueForKey("LastName") as! String
+                var fullName: String = firstName + " " + lastName
                 
-                if(jsonData[0].valueForKey("full_name") as! String != ""){
-                var fullNameValue: String = jsonData[0].valueForKey("full_name") as! String
-                fullNameLabel.text = fullNameValue
-                } else {
+                if(firstName.isEmpty && lastName.isEmpty){
                     fullNameLabel.text = "Full Name"
-                }
-                
-                if(jsonData[0].valueForKey("program") as! String != ""){
-                var program: String = jsonData[0].valueForKey("program") as! String
-                programLabel.text = program
                 } else {
-                    programLabel.text = "Program of Study"
+                    var fullName: String = fullName
+                    fullNameLabel.text = fullName
+                    println(fullName)
                 }
                 
-                if(jsonData[0].valueForKey("university_name") as! String != ""){
-                var universityName: String = jsonData[0].valueForKey("university_name") as! String
-                universityLabel.text = universityName
+                let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                
+                if(jsonData[1].valueForKey("University_id")!.isEqualToString("0")){
+                    let universityID = 1
+                    prefs.setObject(universityID, forKey: "uniID")
                 } else {
-                    universityLabel.text = "University"
+                    let universityID: String = jsonData[1].valueForKey("University_id") as! String
+                    let uniID: Int? = universityID.toInt()
+                    prefs.setObject(uniID, forKey: "uniID")
                 }
                 
-                if(jsonData[0].valueForKey("picture") as! String != ""){
-                let imageURL = jsonData[0].valueForKey("picture") as! String
-                var url = NSURL(string: imageURL)
-//                var url = NSURL(string: fullURL)
-                var data = NSData(contentsOfURL: url!)
-                profileImageView.image = UIImage(data: data!)
+                if(jsonData[1].valueForKey("Program_id")!.isEqualToString("0")){
+                    let programID = 1
+                    prefs.setObject(programID, forKey: "progID")
                 } else {
-                    profileImageView.image = UIImage(named: "profile_default.jpg")
+                    let programID: String = jsonData[1].valueForKey("Program_id") as! String
+                    let progID: Int? = programID.toInt()
+                    prefs.setObject(progID, forKey: "progID")
                 }
                 
-                var extraText: String = jsonData[0].valueForKey("extra") as! String
+//                var universityID: String = jsonData[1].valueForKey("University_id") as! String // converts the strings to ints
+//                var programID: String = jsonData[1].valueForKey("Program_id") as! String
+//                let uniID: Int? = universityID.toInt()
+//                let progID: Int? = programID.toInt()
+                
+                let uniID = prefs.valueForKey("uniID") as! Int
+                let progID = prefs.valueForKey("progID") as! Int
+                
+                var post: NSString = "universityID=\(uniID)&programID=\(progID)"
+                NSLog("PostData: %@",post);
+                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+                var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+                var postLength:NSString = String( postData.length )
+                var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                
+                request.HTTPMethod = "POST"
+                request.HTTPBody = postData
+                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                
+                var responseError: NSError?
+                var response: NSURLResponse?
+                
+                var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+                
+                if(urlData != nil){
+                    let res = response as! NSHTTPURLResponse!
+                    NSLog("Response code: %ld", res.statusCode)
+                    
+                    if(res.statusCode >= 200 && res.statusCode < 300){
+                        
+                        var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                        NSLog("Response ==> %@", responseData)
+                        var error:NSError?
+                        
+                        let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                        
+                        var program: String = jsonData[1].valueForKey("Program") as! String
+                        println(program)
+                        if(program != ""){
+                            programLabel.text = program
+                            println(program)
+                        } else {
+                            programLabel.text = "Program of Study"
+                        }
+                        
+                        var universityName: String = jsonData[0].valueForKey("University") as! String
+                        println(universityName)
+                        if(universityName != "") {
+                            universityLabel.text = universityName
+                            println(universityName)
+                        } else {
+                            universityLabel.text = "University"
+                        }
+                    }
+                }
+                
+                var extraText: String = jsonData[2].valueForKey("WhatsUp") as! String
                 whatsupText.text = extraText
+                
+                
+                
+                if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
+                    
+                    profileImageView.image = UIImage(named: "profile_default.jpg")
+                    
+                } else {
+                    
+                    let imageString: String = jsonData[0].valueForKey("Picture") as! String
+                    let url2 = NSURL(string: imageString)
+                    let data = NSData(contentsOfURL: url2!)
+                    profileImageView.image = UIImage(data: data!)
+                }
+                
+                
+//                let imageString: String = jsonData[0].valueForKey("Picture") as! String
+//                let url2 = NSURL(string: imageString)
+//                let data = NSData(contentsOfURL: url2!)
+//                profileImageView.image = UIImage(data: data!)
                 
                 
             }

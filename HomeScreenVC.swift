@@ -45,10 +45,8 @@ class HomeScreenVC: UIViewController {
             self.performSegueWithIdentifier("goto_login", sender: self)
         } else {
         
-//        let emailToSend = prefs1.valueForKey("email") as! String
         let userID = prefs1.valueForKey("userID") as! String
         
-//        var post: NSString = "email=\(emailToSend)"
         var post: NSString = "userID=\(userID)"
         NSLog("PostData: %@",post);
         var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/homeScreenUpdate2.php")!
@@ -79,24 +77,60 @@ class HomeScreenVC: UIViewController {
                 
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                 
-                var firstName: String = jsonData[0].valueForKey("FirstName") as! String
-                var lastName: String = jsonData[0].valueForKey("LastName") as! String
-                var fullName: String = firstName + " " + lastName
+                // ERROR HANDLER FOR FULL NAME
+
+                    var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                    var lastName: String = jsonData[0].valueForKey("LastName") as! String
+                    var fullName: String = firstName + " " + lastName
                 
-                if(fullName != ""){
-                    var fullName: String = fullName
-                    fullNameLabel.text = fullName
-                    println(fullName)
+                    if(firstName.isEmpty && lastName.isEmpty){
+                        fullNameLabel.text = "Full Name"
+                    } else {
+                        var fullName: String = fullName
+                        fullNameLabel.text = fullName
+                        println(fullName)
+                    }
+                
+                // ERROR HANDLER FOR PROFILE PICTURE
+                    if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
+                
+                        profileImageView.image = UIImage(named: "profile_default.jpg")
+
+                    }   else {
+                
+                            let imageString: String = jsonData[0].valueForKey("Picture") as! String
+                            let url2 = NSURL(string: imageString)
+                            let data = NSData(contentsOfURL: url2!)
+                            profileImageView.image = UIImage(data: data!)
+                    }
+                
+                let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                
+                  // ERROR HANDLER FOR NO UNIVERSITY ID & PROGRAM ID ON FIRST SIGNUP
+                
+                if(jsonData[1].valueForKey("University_id")!.isEqualToString("0")){
+                    let universityID = 1
+                    prefs.setObject(universityID, forKey: "uniID")
                 } else {
-                    fullNameLabel.text = "Full Name"
+                    let universityID: String = jsonData[1].valueForKey("University_id") as! String
+                    let uniID: Int? = universityID.toInt()
+                    prefs.setObject(uniID, forKey: "uniID")
                 }
                 
-                var universityID: String = jsonData[1].valueForKey("University_id") as! String // converts the strings to ints
-                var programID: String = jsonData[1].valueForKey("Program_id") as! String
-                let uniID: Int? = universityID.toInt()
-                let progID: Int? = programID.toInt()
+                if(jsonData[1].valueForKey("Program_id")!.isEqualToString("0")){
+                    let programID = 1
+                    prefs.setObject(programID, forKey: "progID")
+                } else {
+                    let programID: String = jsonData[1].valueForKey("Program_id") as! String
+                    let progID: Int? = programID.toInt()
+                    prefs.setObject(progID, forKey: "progID")
+                }
+        
                 
-                var post: NSString = "universityID=\(uniID!)&programID=\(progID!)"
+                let uniID = prefs.valueForKey("uniID") as! Int
+                let progID = prefs.valueForKey("progID") as! Int
+                
+                var post: NSString = "universityID=\(uniID)&programID=\(progID)"
                 NSLog("PostData: %@",post);
                 var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -143,6 +177,7 @@ class HomeScreenVC: UIViewController {
                         } else {
                             universityNameLabel.text = "University"
                         }
+                        
                     }
                 }
             }

@@ -7,21 +7,21 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>80B50355-C8EC-4A3B-9663-39458D6390A3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Mentormee_ver2.0</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>72DAD1EAF3DE6F9ECEAE0BD1BA3C41F960A8B20D</key>
-		<string>http://github.com/Dippyy/MentorMee_ver1.3</string>
+		<string>https://github.com/Dippyy/Mentormee.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Mentormee_ver2.0.xcodeproj</string>
+	<string>Mentormee_ver2.0.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>72DAD1EAF3DE6F9ECEAE0BD1BA3C41F960A8B20D</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://github.com/Dippyy/MentorMee_ver1.3</string>
+	<string>https://github.com/Dippyy/Mentormee.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>72DAD1EAF3DE6F9ECEAE0BD1BA3C41F960A8B20D</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Mentormee_ver2.0</string>
+			<string>Mentormee</string>
 		</dict>
 	</array>
 </dict>

@@ -165,7 +165,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)"
             NSLog("PostData: %@",post);
             
-            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginScript2.php")!
+            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginTest.php")!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String( postData.length )
             var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -190,17 +190,64 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     NSLog("Response ==> %@", responseData);
                     var error: NSError?
                     let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
+
                     let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
                     NSLog("Success: %ld", success);
+                    
+
 
                     if(success == 1){
-                        NSLog("Login SUCCESS");
-                        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-                        prefs.setObject(email, forKey: "email")
                         
-                        prefs.setInteger(1, forKey: "ISLOGGEDIN")
-                        prefs.synchronize()
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        NSLog("Login SUCCESS");
+                        
+                        NSLog("LOGIN SUCCESS time to FETCH USERID")
+                        
+                        let emailToSend = email
+                        
+                        var post: NSString = "email=\(emailToSend)"
+                        NSLog("PostData: %@",post);
+                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID.php")!
+                        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+                        var postLength:NSString = String( postData.length )
+                        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                        
+                        request.HTTPMethod = "POST"
+                        request.HTTPBody = postData
+                        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                        request.setValue("application/json", forHTTPHeaderField: "Accept")
+                        
+                        var responseError: NSError?
+                        var response: NSURLResponse?
+                        
+                        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+                        
+                        if(urlData != nil){
+                            let res = response as! NSHTTPURLResponse!
+                            NSLog("Response code: %ld", res.statusCode)
+                            
+                            if(res.statusCode >= 200 && res.statusCode < 300){
+                                
+                                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                                NSLog("Response ==> %@", responseData)
+                                var error:NSError?
+                                
+                                let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                
+                                let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                                
+                                prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
+                                prefs.setObject(email, forKey: "email")
+                                println(prefs.valueForKey("userID") as! String)
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                        }
+//                        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//                        prefs.setObject(email, forKey: "email")
+//                        
+//                        prefs.setInteger(1, forKey: "ISLOGGEDIN")
+//                        prefs.synchronize()
+//                        self.dismissViewControllerAnimated(true, completion: nil)
                         
                     } else {
                         var error_msg:NSString
@@ -317,7 +364,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         
                         var post: NSString = "email=\(emailToSend)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID.php")!
+                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID2.php")!
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -348,7 +395,54 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
+                                prefs.setObject(email, forKey: "email")
                                 println(prefs.valueForKey("userID") as! String)
+//                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                        }
+                        
+                        NSLog("Sign up ID RECEIVED TIME TO INPUT DATA INTO TABLES")
+                        
+                        
+                        let prefs = NSUserDefaults.standardUserDefaults()
+                        let userID = prefs.valueForKey("userID") as! String
+//                        let userID = jsonData[0]?.valueForKey("userID") as! String
+//                        let IDToSend = userID.toInt()
+                        
+                        var postID: NSString = "userID=\(userID)"
+                        NSLog("PostData: %@",postID);
+                        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createNewAccount.php")!
+                        var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
+                        var postLengthID:NSString = String( postDataID.length )
+                        var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)
+                        
+                        requestID.HTTPMethod = "POST"
+                        requestID.HTTPBody = postDataID
+                        requestID.setValue(postLengthID as String, forHTTPHeaderField: "Content-Length")
+                        requestID.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                        requestID.setValue("application/json", forHTTPHeaderField: "Accept")
+                        
+                        var responseErrorID: NSError?
+                        var responseID: NSURLResponse?
+                        
+                        var urlDataID: NSData? = NSURLConnection.sendSynchronousRequest(requestID, returningResponse:&responseID, error:&responseErrorID)
+                        
+                        if(urlDataID != nil){
+                            let res = responseID as! NSHTTPURLResponse!
+                            NSLog("Response code: %ld", res.statusCode)
+                            
+                            if(res.statusCode >= 200 && res.statusCode < 300){
+                                
+                                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                                NSLog("Response ==> %@", responseData)
+                                var error:NSError?
+                                
+                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                
+                                let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                                
+//                                prefs.setObject(jsonDataID[0].valueForKey("ID"), forKey: "userID")
+//                                println(prefs.valueForKey("userID") as! String)
                                 self.dismissViewControllerAnimated(true, completion: nil)
                             }
                         }
