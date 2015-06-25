@@ -171,7 +171,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }  else if(cell.textLabel?.text == "Gender"){
             cell.detailTextLabel?.text = prefs.valueForKey("Gender") as? String
         } else if(cell.textLabel?.text == "Year"){
+            
+            if(prefs.valueForKey("Graduation Year") as! String == "0"){
+                cell.detailTextLabel?.text = "Grad year"
+            } else {
             cell.detailTextLabel?.text = prefs.valueForKey("Graduation Year") as? String
+            }
+            
         } else if(cell.textLabel?.text == "Full Name"){
             cell.detailTextLabel?.text = prefs.valueForKey("Full Name") as? String
         }
@@ -184,7 +190,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 cell.detailTextLabel?.text = "Upload a Picture"
             }
         } else if(cell.textLabel?.text == "Whatsup"){
-            if(prefs.valueForKey("Whatsup") != nil){
+            if(prefs.valueForKey("Whatsup") as? String != ""){
                 cell.detailTextLabel?.text = "Set"
             } else {
                 cell.detailTextLabel?.text = "Whats on your mind?"

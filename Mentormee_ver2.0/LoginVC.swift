@@ -237,6 +237,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
+                                prefs.setObject(email, forKey: "email")
                                 println(prefs.valueForKey("userID") as! String)
                                 self.dismissViewControllerAnimated(true, completion: nil)
                             }
@@ -394,6 +395,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
+                                prefs.setObject(email, forKey: "email")
                                 println(prefs.valueForKey("userID") as! String)
 //                                self.dismissViewControllerAnimated(true, completion: nil)
                             }

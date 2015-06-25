@@ -83,31 +83,30 @@ class HomeScreenVC: UIViewController {
                     var lastName: String = jsonData[0].valueForKey("LastName") as! String
                     var fullName: String = firstName + " " + lastName
                 
-                    if(fullName != ""){
+                    if(firstName.isEmpty && lastName.isEmpty){
+                        fullNameLabel.text = "Full Name"
+                    } else {
                         var fullName: String = fullName
                         fullNameLabel.text = fullName
                         println(fullName)
-                    } else {
-                        fullNameLabel.text = "Full Name"
                     }
                 
                 // ERROR HANDLER FOR PROFILE PICTURE
-            
-                if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
+                    if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
                 
-                    profileImageView.image = UIImage(named: "profile_default.jpg")
+                        profileImageView.image = UIImage(named: "profile_default.jpg")
 
-                } else {
+                    }   else {
                 
-                    let imageString: String = jsonData[0].valueForKey("Picture") as! String
-                    let url2 = NSURL(string: imageString)
-                    let data = NSData(contentsOfURL: url2!)
-                    profileImageView.image = UIImage(data: data!)
-                }
+                            let imageString: String = jsonData[0].valueForKey("Picture") as! String
+                            let url2 = NSURL(string: imageString)
+                            let data = NSData(contentsOfURL: url2!)
+                            profileImageView.image = UIImage(data: data!)
+                    }
                 
                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 
-                  // ERROR HANDLER FOR NO UNIVERSITY ID ON FIRST SIGNUP
+                  // ERROR HANDLER FOR NO UNIVERSITY ID & PROGRAM ID ON FIRST SIGNUP
                 
                 if(jsonData[1].valueForKey("University_id")!.isEqualToString("0")){
                     let universityID = 1

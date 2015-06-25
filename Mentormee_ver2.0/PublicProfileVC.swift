@@ -70,20 +70,43 @@ class PublicProfileVC: UIViewController {
                 var lastName: String = jsonData[0].valueForKey("LastName") as! String
                 var fullName: String = firstName + " " + lastName
                 
-                if(fullName != ""){
+                if(firstName.isEmpty && lastName.isEmpty){
+                    fullNameLabel.text = "Full Name"
+                } else {
                     var fullName: String = fullName
                     fullNameLabel.text = fullName
                     println(fullName)
-                } else {
-                    fullNameLabel.text = "Full Name"
                 }
                 
-                var universityID: String = jsonData[1].valueForKey("University_id") as! String // converts the strings to ints
-                var programID: String = jsonData[1].valueForKey("Program_id") as! String
-                let uniID: Int? = universityID.toInt()
-                let progID: Int? = programID.toInt()
+                let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 
-                var post: NSString = "universityID=\(uniID!)&programID=\(progID!)"
+                if(jsonData[1].valueForKey("University_id")!.isEqualToString("0")){
+                    let universityID = 1
+                    prefs.setObject(universityID, forKey: "uniID")
+                } else {
+                    let universityID: String = jsonData[1].valueForKey("University_id") as! String
+                    let uniID: Int? = universityID.toInt()
+                    prefs.setObject(uniID, forKey: "uniID")
+                }
+                
+                if(jsonData[1].valueForKey("Program_id")!.isEqualToString("0")){
+                    let programID = 1
+                    prefs.setObject(programID, forKey: "progID")
+                } else {
+                    let programID: String = jsonData[1].valueForKey("Program_id") as! String
+                    let progID: Int? = programID.toInt()
+                    prefs.setObject(progID, forKey: "progID")
+                }
+                
+//                var universityID: String = jsonData[1].valueForKey("University_id") as! String // converts the strings to ints
+//                var programID: String = jsonData[1].valueForKey("Program_id") as! String
+//                let uniID: Int? = universityID.toInt()
+//                let progID: Int? = programID.toInt()
+                
+                let uniID = prefs.valueForKey("uniID") as! Int
+                let progID = prefs.valueForKey("progID") as! Int
+                
+                var post: NSString = "universityID=\(uniID)&programID=\(progID)"
                 NSLog("PostData: %@",post);
                 var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
