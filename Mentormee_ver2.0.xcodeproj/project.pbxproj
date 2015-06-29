@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB075A4D1B3B7A24001385C1 /* Test_Connection2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB075A4C1B3B7A24001385C1 /* Test_Connection2VC.swift */; };
 		CB0EB6771B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6731B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift */; };
 		CB0EB6781B39ECBC000851A7 /* MenteeMentorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */; };
 		CB0EB6791B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */; };
 		CB0EB67A1B39ECBC000851A7 /* MenteeSignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */; };
+		CBF1EC041B3B33A600EC6C0F /* Test_ConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1EC031B3B33A600EC6C0F /* Test_ConnectionVC.swift */; };
 		E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD5A1B28A51900968EE0 /* AppDelegate.swift */; };
 		E162BD601B28A51900968EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E162BD5E1B28A51900968EE0 /* Main.storyboard */; };
 		E162BD621B28A51900968EE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E162BD611B28A51900968EE0 /* Images.xcassets */; };
@@ -37,10 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB075A4C1B3B7A24001385C1 /* Test_Connection2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_Connection2VC.swift; sourceTree = "<group>"; };
 		CB0EB6731B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeAdditionalInfoViewController.swift; sourceTree = "<group>"; };
 		CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeMentorSearchViewController.swift; sourceTree = "<group>"; };
 		CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewCell.swift; sourceTree = "<group>"; };
 		CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewController.swift; sourceTree = "<group>"; };
+		CBF1EC031B3B33A600EC6C0F /* Test_ConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_ConnectionVC.swift; sourceTree = "<group>"; };
 		E162BD551B28A51900968EE0 /* Mentormee_ver2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mentormee_ver2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E162BD591B28A51900968EE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E162BD5A1B28A51900968EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				E162BD901B309BD300968EE0 /* PublicProfileVC.swift */,
 				E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */,
 				E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */,
+				CBF1EC031B3B33A600EC6C0F /* Test_ConnectionVC.swift */,
+				CB075A4C1B3B7A24001385C1 /* Test_Connection2VC.swift */,
 				E162BD881B2B81D500968EE0 /* DetailUpdateTVC.swift */,
 				E162BD841B2A2C2300968EE0 /* UpdateProfileVC.swift */,
 				E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */,
@@ -246,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB0EB67A1B39ECBC000851A7 /* MenteeSignUpTableViewController.swift in Sources */,
+				CB075A4D1B3B7A24001385C1 /* Test_Connection2VC.swift in Sources */,
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
 				CB0EB6771B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift in Sources */,
+				CBF1EC041B3B33A600EC6C0F /* Test_ConnectionVC.swift in Sources */,
 				E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */,
 				E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */,
 				E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */,
