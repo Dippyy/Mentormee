@@ -21,12 +21,10 @@
 		E162BD711B28A51900968EE0 /* Mentormee_ver2_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD701B28A51900968EE0 /* Mentormee_ver2_0Tests.swift */; };
 		E162BD7B1B28A59600968EE0 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */; };
 		E162BD7D1B28A9E300968EE0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD7C1B28A9E300968EE0 /* LoginVC.swift */; };
-		E162BD811B2A189400968EE0 /* student_headshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E162BD801B2A189400968EE0 /* student_headshot.jpg */; };
 		E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD841B2A2C2300968EE0 /* UpdateProfileVC.swift */; };
 		E162BD891B2B81D500968EE0 /* DetailUpdateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD881B2B81D500968EE0 /* DetailUpdateTVC.swift */; };
 		E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */; };
 		E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */; };
-		E162BD8F1B2DE18C00968EE0 /* profile_default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,12 +56,10 @@
 		E162BD701B28A51900968EE0 /* Mentormee_ver2_0Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mentormee_ver2_0Tests.swift; sourceTree = "<group>"; };
 		E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenVC.swift; path = ../HomeScreenVC.swift; sourceTree = "<group>"; };
 		E162BD7C1B28A9E300968EE0 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		E162BD801B2A189400968EE0 /* student_headshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = student_headshot.jpg; path = ../../Desktop/student_headshot.jpg; sourceTree = "<group>"; };
 		E162BD841B2A2C2300968EE0 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
 		E162BD881B2B81D500968EE0 /* DetailUpdateTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailUpdateTVC.swift; path = ../DetailUpdateTVC.swift; sourceTree = "<group>"; };
 		E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTablesVC.swift; sourceTree = "<group>"; };
 		E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamePictureVC.swift; sourceTree = "<group>"; };
-		E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = profile_default.jpg; path = ../../Desktop/profile_default.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +86,6 @@
 				E162BD571B28A51900968EE0 /* Mentormee_ver2.0 */,
 				E162BD6D1B28A51900968EE0 /* Mentormee_ver2.0Tests */,
 				E162BD561B28A51900968EE0 /* Products */,
-				E162BD801B2A189400968EE0 /* student_headshot.jpg */,
-				E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,10 +229,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E162BD601B28A51900968EE0 /* Main.storyboard in Resources */,
-				E162BD811B2A189400968EE0 /* student_headshot.jpg in Resources */,
 				E162BD651B28A51900968EE0 /* LaunchScreen.xib in Resources */,
 				E162BD621B28A51900968EE0 /* Images.xcassets in Resources */,
-				E162BD8F1B2DE18C00968EE0 /* profile_default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
