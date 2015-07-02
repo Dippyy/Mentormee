@@ -11,13 +11,15 @@ import UIKit
 
 class MenteeSignUpTableViewController: UIViewController{
     
-    @IBOutlet weak var SignUp: UIBarButtonItem!
+    @IBOutlet weak var SignUp: UIButton!
     
     @IBOutlet weak var firstName: UITextField!
     
     @IBOutlet weak var lastName: UITextField!
     
+    
     @IBOutlet weak var emailField: UITextField!
+    
     
     @IBOutlet weak var passwordField: UITextField!
     

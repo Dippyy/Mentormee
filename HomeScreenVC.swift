@@ -76,7 +76,7 @@ class HomeScreenVC: UIViewController {
                 NSLog("Response ==> %@", responseData)
                 var error:NSError?
                 
-                let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                /**let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                 
                 var firstName: String = jsonData[0].valueForKey("full_name") as! String
                 if(firstName != ""){
@@ -111,7 +111,7 @@ class HomeScreenVC: UIViewController {
                 } else {
                     profileImageView.image = (UIImage(named: "profile_default.jpg"))
                 }
-                
+                */
                 
             }
         }

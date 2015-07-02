@@ -19,6 +19,4 @@ class MenteeSignUpTableViewCell:UITableViewCell{
     @IBOutlet weak var Password: UITextField!
     
     @IBOutlet weak var RetypePassword: UITextField!
-    
-    
 }
