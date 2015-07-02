@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190114C71B45B04D00A2A64C /* MentorUserDataSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190114C61B45B04D00A2A64C /* MentorUserDataSearchController.swift */; };
+		190114CE1B45B05A00A2A64C /* MenteeAdditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190114C81B45B05A00A2A64C /* MenteeAdditionalInfoViewController.swift */; };
+		190114CF1B45B05A00A2A64C /* MenteeMentorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190114C91B45B05A00A2A64C /* MenteeMentorSearchViewController.swift */; };
+		190114D01B45B05A00A2A64C /* MenteeSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190114CA1B45B05A00A2A64C /* MenteeSignUpTableViewCell.swift */; };
+		190114D11B45B05A00A2A64C /* MenteeSignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190114CB1B45B05A00A2A64C /* MenteeSignUpTableViewController.swift */; };
+		190114D21B45B05A00A2A64C /* MenteeViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190114CC1B45B05A00A2A64C /* MenteeViewVC.swift */; };
+		190114D31B45B05A00A2A64C /* PublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190114CD1B45B05A00A2A64C /* PublicProfileVC.swift */; };
 		E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD5A1B28A51900968EE0 /* AppDelegate.swift */; };
 		E162BD601B28A51900968EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E162BD5E1B28A51900968EE0 /* Main.storyboard */; };
 		E162BD621B28A51900968EE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E162BD611B28A51900968EE0 /* Images.xcassets */; };
@@ -33,6 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190114C61B45B04D00A2A64C /* MentorUserDataSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorUserDataSearchController.swift; sourceTree = "<group>"; };
+		190114C81B45B05A00A2A64C /* MenteeAdditionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeAdditionalInfoViewController.swift; sourceTree = "<group>"; };
+		190114C91B45B05A00A2A64C /* MenteeMentorSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeMentorSearchViewController.swift; sourceTree = "<group>"; };
+		190114CA1B45B05A00A2A64C /* MenteeSignUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewCell.swift; sourceTree = "<group>"; };
+		190114CB1B45B05A00A2A64C /* MenteeSignUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewController.swift; sourceTree = "<group>"; };
+		190114CC1B45B05A00A2A64C /* MenteeViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeViewVC.swift; sourceTree = "<group>"; };
+		190114CD1B45B05A00A2A64C /* PublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProfileVC.swift; sourceTree = "<group>"; };
 		E162BD551B28A51900968EE0 /* Mentormee_ver2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mentormee_ver2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E162BD591B28A51900968EE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E162BD5A1B28A51900968EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +114,13 @@
 				E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */,
 				E162BD7C1B28A9E300968EE0 /* LoginVC.swift */,
 				E162BD5E1B28A51900968EE0 /* Main.storyboard */,
+				190114C81B45B05A00A2A64C /* MenteeAdditionalInfoViewController.swift */,
+				190114C91B45B05A00A2A64C /* MenteeMentorSearchViewController.swift */,
+				190114CA1B45B05A00A2A64C /* MenteeSignUpTableViewCell.swift */,
+				190114CB1B45B05A00A2A64C /* MenteeSignUpTableViewController.swift */,
+				190114CC1B45B05A00A2A64C /* MenteeViewVC.swift */,
+				190114CD1B45B05A00A2A64C /* PublicProfileVC.swift */,
+				190114C61B45B04D00A2A64C /* MentorUserDataSearchController.swift */,
 				E162BD611B28A51900968EE0 /* Images.xcassets */,
 				E162BD631B28A51900968EE0 /* LaunchScreen.xib */,
 				E162BD581B28A51900968EE0 /* Supporting Files */,
@@ -236,12 +257,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
+				190114D31B45B05A00A2A64C /* PublicProfileVC.swift in Sources */,
 				E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */,
 				E162BD7B1B28A59600968EE0 /* HomeScreenVC.swift in Sources */,
 				E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */,
+				190114D01B45B05A00A2A64C /* MenteeSignUpTableViewCell.swift in Sources */,
 				E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */,
 				E162BD891B2B81D500968EE0 /* DetailUpdateTVC.swift in Sources */,
+				190114D11B45B05A00A2A64C /* MenteeSignUpTableViewController.swift in Sources */,
+				190114CE1B45B05A00A2A64C /* MenteeAdditionalInfoViewController.swift in Sources */,
+				190114CF1B45B05A00A2A64C /* MenteeMentorSearchViewController.swift in Sources */,
 				E162BD7D1B28A9E300968EE0 /* LoginVC.swift in Sources */,
+				190114D21B45B05A00A2A64C /* MenteeViewVC.swift in Sources */,
+				190114C71B45B04D00A2A64C /* MentorUserDataSearchController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +465,7 @@
 				E162BD761B28A51900968EE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E162BD771B28A51900968EE0 /* Build configuration list for PBXNativeTarget "Mentormee_ver2.0Tests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +474,7 @@
 				E162BD791B28A51900968EE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
