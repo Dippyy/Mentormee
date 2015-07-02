@@ -10,5 +10,9 @@ import UIKit
 
 class MenteeMentorSearchViewController: UITableViewController{
     
+    @IBOutlet weak var titleField: UILabel!
+    
+    @IBOutlet weak var detail: UILabel!
+    
     
 }

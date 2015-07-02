@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190114C21B45AE6E00A2A64C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 190114C01B45AE6E00A2A64C /* LaunchScreen.xib */; };
+		190114C31B45AE6E00A2A64C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190114C11B45AE6E00A2A64C /* Main.storyboard */; };
+		196338931B39D04800B8313B /* MenteeAdditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1963388F1B39D04800B8313B /* MenteeAdditionalInfoViewController.swift */; };
+		196338941B39D04800B8313B /* MenteeSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196338901B39D04800B8313B /* MenteeSignUpTableViewCell.swift */; };
+		196338951B39D04800B8313B /* MenteeSignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196338911B39D04800B8313B /* MenteeSignUpTableViewController.swift */; };
+		196338961B39D04800B8313B /* MenteeMentorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196338921B39D04800B8313B /* MenteeMentorSearchViewController.swift */; };
 		E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD5A1B28A51900968EE0 /* AppDelegate.swift */; };
 		E162BD601B28A51900968EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E162BD5E1B28A51900968EE0 /* Main.storyboard */; };
 		E162BD621B28A51900968EE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E162BD611B28A51900968EE0 /* Images.xcassets */; };
@@ -14,12 +20,10 @@
 		E162BD711B28A51900968EE0 /* Mentormee_ver2_0Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD701B28A51900968EE0 /* Mentormee_ver2_0Tests.swift */; };
 		E162BD7B1B28A59600968EE0 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */; };
 		E162BD7D1B28A9E300968EE0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD7C1B28A9E300968EE0 /* LoginVC.swift */; };
-		E162BD811B2A189400968EE0 /* student_headshot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E162BD801B2A189400968EE0 /* student_headshot.jpg */; };
 		E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD841B2A2C2300968EE0 /* UpdateProfileVC.swift */; };
 		E162BD891B2B81D500968EE0 /* DetailUpdateTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD881B2B81D500968EE0 /* DetailUpdateTVC.swift */; };
 		E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */; };
 		E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */; };
-		E162BD8F1B2DE18C00968EE0 /* profile_default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */; };
 		E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD901B309BD300968EE0 /* PublicProfileVC.swift */; };
 		E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD921B30C03500968EE0 /* MenteeViewVC.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		190114C01B45AE6E00A2A64C /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		190114C11B45AE6E00A2A64C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		1963388F1B39D04800B8313B /* MenteeAdditionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeAdditionalInfoViewController.swift; sourceTree = "<group>"; };
+		196338901B39D04800B8313B /* MenteeSignUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewCell.swift; sourceTree = "<group>"; };
+		196338911B39D04800B8313B /* MenteeSignUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewController.swift; sourceTree = "<group>"; };
+		196338921B39D04800B8313B /* MenteeMentorSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeMentorSearchViewController.swift; sourceTree = "<group>"; };
 		E162BD551B28A51900968EE0 /* Mentormee_ver2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mentormee_ver2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E162BD591B28A51900968EE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E162BD5A1B28A51900968EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,12 +56,10 @@
 		E162BD701B28A51900968EE0 /* Mentormee_ver2_0Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mentormee_ver2_0Tests.swift; sourceTree = "<group>"; };
 		E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenVC.swift; path = ../HomeScreenVC.swift; sourceTree = "<group>"; };
 		E162BD7C1B28A9E300968EE0 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		E162BD801B2A189400968EE0 /* student_headshot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = student_headshot.jpg; path = ../../Desktop/student_headshot.jpg; sourceTree = "<group>"; };
 		E162BD841B2A2C2300968EE0 /* UpdateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileVC.swift; sourceTree = "<group>"; };
 		E162BD881B2B81D500968EE0 /* DetailUpdateTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailUpdateTVC.swift; path = ../DetailUpdateTVC.swift; sourceTree = "<group>"; };
 		E162BD8A1B2B908400968EE0 /* StaticTablesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTablesVC.swift; sourceTree = "<group>"; };
 		E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamePictureVC.swift; sourceTree = "<group>"; };
-		E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = profile_default.jpg; path = ../../Desktop/profile_default.jpg; sourceTree = "<group>"; };
 		E162BD901B309BD300968EE0 /* PublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProfileVC.swift; sourceTree = "<group>"; };
 		E162BD921B30C03500968EE0 /* MenteeViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeViewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,8 +88,6 @@
 				E162BD571B28A51900968EE0 /* Mentormee_ver2.0 */,
 				E162BD6D1B28A51900968EE0 /* Mentormee_ver2.0Tests */,
 				E162BD561B28A51900968EE0 /* Products */,
-				E162BD801B2A189400968EE0 /* student_headshot.jpg */,
-				E162BD8E1B2DE18C00968EE0 /* profile_default.jpg */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +103,12 @@
 		E162BD571B28A51900968EE0 /* Mentormee_ver2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				1963388F1B39D04800B8313B /* MenteeAdditionalInfoViewController.swift */,
+				196338901B39D04800B8313B /* MenteeSignUpTableViewCell.swift */,
+				196338911B39D04800B8313B /* MenteeSignUpTableViewController.swift */,
+				190114C01B45AE6E00A2A64C /* LaunchScreen.xib */,
+				190114C11B45AE6E00A2A64C /* Main.storyboard */,
+				196338921B39D04800B8313B /* MenteeMentorSearchViewController.swift */,
 				E162BD921B30C03500968EE0 /* MenteeViewVC.swift */,
 				E162BD901B309BD300968EE0 /* PublicProfileVC.swift */,
 				E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */,
@@ -219,11 +231,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190114C21B45AE6E00A2A64C /* LaunchScreen.xib in Resources */,
+				190114C31B45AE6E00A2A64C /* Main.storyboard in Resources */,
 				E162BD601B28A51900968EE0 /* Main.storyboard in Resources */,
-				E162BD811B2A189400968EE0 /* student_headshot.jpg in Resources */,
 				E162BD651B28A51900968EE0 /* LaunchScreen.xib in Resources */,
 				E162BD621B28A51900968EE0 /* Images.xcassets in Resources */,
-				E162BD8F1B2DE18C00968EE0 /* profile_default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,10 +254,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
+				196338931B39D04800B8313B /* MenteeAdditionalInfoViewController.swift in Sources */,
 				E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */,
 				E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */,
+				196338941B39D04800B8313B /* MenteeSignUpTableViewCell.swift in Sources */,
 				E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */,
 				E162BD7B1B28A59600968EE0 /* HomeScreenVC.swift in Sources */,
+				196338961B39D04800B8313B /* MenteeMentorSearchViewController.swift in Sources */,
+				196338951B39D04800B8313B /* MenteeSignUpTableViewController.swift in Sources */,
 				E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */,
 				E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */,
 				E162BD891B2B81D500968EE0 /* DetailUpdateTVC.swift in Sources */,
@@ -445,6 +461,7 @@
 				E162BD761B28A51900968EE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E162BD771B28A51900968EE0 /* Build configuration list for PBXNativeTarget "Mentormee_ver2.0Tests" */ = {
 			isa = XCConfigurationList;
@@ -453,6 +470,7 @@
 				E162BD791B28A51900968EE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
