@@ -20,6 +20,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mentorButton: UIButton!
     @IBOutlet weak var menteeButton: UIButton!
+    @IBOutlet weak var ConnectTestButton: UIButton!
 
     override func viewDidLoad() {
         
@@ -128,6 +129,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func ConnectTestButtonTapped(sender: AnyObject) {
+       self.performSegueWithIdentifier("goto_testconnection", sender: self)
+        
+    }
     
     @IBAction func ExistingUserTapped(sender: AnyObject) {
         UIView.animateWithDuration(0, animations: {
