@@ -69,17 +69,11 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             
             var fullName: String = fullNameTextField.text as String
             var userID = prefs.valueForKey("userID") as! String
-            
-//            var nameArray = fullName.componentsSeparatedByString(" ")
-//            var firstName:String = nameArray[0]
-//            println("THE FIRST NAME IS \(firstName)")
-//            var lastName:String = nameArray[1]
-//            println("THE LAST NAME IS \(lastName)")
-            
+                    
             var fullNameArr = split(fullName) {$0 == " "}
             var firstName: String = fullNameArr[0]
             println("THE FIRST NAME IS \(firstName)")
-            var lastName: String! = fullNameArr.count > 1 ? fullNameArr[1] : nil
+            var lastName: String! = fullNameArr.count > 1 ? fullNameArr[1] : ""
             println("THE LAST NAME IS \(lastName)")
 
             var post: NSString = "userID=\(userID)&firstName=\(firstName)&lastName=\(lastName)"
