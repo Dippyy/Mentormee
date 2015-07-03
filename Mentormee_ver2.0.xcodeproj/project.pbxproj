@@ -12,6 +12,12 @@
 		CB0EB6781B39ECBC000851A7 /* MenteeMentorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */; };
 		CB0EB6791B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */; };
 		CB0EB67A1B39ECBC000851A7 /* MenteeSignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */; };
+		CB0EE3FF1B46E0FD00CDF664 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE3FE1B46E0FD00CDF664 /* QuartzCore.framework */; };
+		CB0EE4061B46E13B00CDF664 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4011B46E13B00CDF664 /* QuartzCore.framework */; };
+		CB0EE4071B46E13B00CDF664 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4021B46E13B00CDF664 /* Foundation.framework */; };
+		CB0EE4081B46E13B00CDF664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4031B46E13B00CDF664 /* CoreGraphics.framework */; };
+		CB0EE4091B46E13B00CDF664 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4041B46E13B00CDF664 /* UIKit.framework */; };
+		CB0EE40A1B46E13B00CDF664 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4051B46E13B00CDF664 /* XCTest.framework */; };
 		CBF1EC041B3B33A600EC6C0F /* Test_ConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1EC031B3B33A600EC6C0F /* Test_ConnectionVC.swift */; };
 		E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD5A1B28A51900968EE0 /* AppDelegate.swift */; };
 		E162BD601B28A51900968EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E162BD5E1B28A51900968EE0 /* Main.storyboard */; };
@@ -44,6 +50,13 @@
 		CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeMentorSearchViewController.swift; sourceTree = "<group>"; };
 		CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewCell.swift; sourceTree = "<group>"; };
 		CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewController.swift; sourceTree = "<group>"; };
+		CB0EE3FE1B46E0FD00CDF664 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB0EE4011B46E13B00CDF664 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CB0EE4021B46E13B00CDF664 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CB0EE4031B46E13B00CDF664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CB0EE4041B46E13B00CDF664 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CB0EE4051B46E13B00CDF664 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CB6DA4981B46E2F900E6E4EE /* Mentormee_ver2.0-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mentormee_ver2.0-Bridging-Header.h"; sourceTree = "<group>"; };
 		CBF1EC031B3B33A600EC6C0F /* Test_ConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_ConnectionVC.swift; sourceTree = "<group>"; };
 		E162BD551B28A51900968EE0 /* Mentormee_ver2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mentormee_ver2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E162BD591B28A51900968EE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,17 +89,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0EE4081B46E13B00CDF664 /* CoreGraphics.framework in Frameworks */,
+				CB0EE40A1B46E13B00CDF664 /* XCTest.framework in Frameworks */,
+				CB0EE4061B46E13B00CDF664 /* QuartzCore.framework in Frameworks */,
+				CB0EE4071B46E13B00CDF664 /* Foundation.framework in Frameworks */,
+				CB0EE3FF1B46E0FD00CDF664 /* QuartzCore.framework in Frameworks */,
+				CB0EE4091B46E13B00CDF664 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB0EE4001B46E10600CDF664 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				CB0EE4011B46E13B00CDF664 /* QuartzCore.framework */,
+				CB0EE4021B46E13B00CDF664 /* Foundation.framework */,
+				CB0EE4031B46E13B00CDF664 /* CoreGraphics.framework */,
+				CB0EE4041B46E13B00CDF664 /* UIKit.framework */,
+				CB0EE4051B46E13B00CDF664 /* XCTest.framework */,
+				CB0EE3FE1B46E0FD00CDF664 /* QuartzCore.framework */,
+			);
+			name = Framework;
+			path = Mentormee_ver2.0Tests;
+			sourceTree = "<group>";
+		};
 		E162BD4C1B28A51900968EE0 = {
 			isa = PBXGroup;
 			children = (
 				E162BD571B28A51900968EE0 /* Mentormee_ver2.0 */,
 				E162BD6D1B28A51900968EE0 /* Mentormee_ver2.0Tests */,
+				CB0EE4001B46E10600CDF664 /* Framework */,
 				E162BD561B28A51900968EE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +155,7 @@
 				E162BD611B28A51900968EE0 /* Images.xcassets */,
 				E162BD631B28A51900968EE0 /* LaunchScreen.xib */,
 				E162BD581B28A51900968EE0 /* Supporting Files */,
+				CB6DA4981B46E2F900E6E4EE /* Mentormee_ver2.0-Bridging-Header.h */,
 			);
 			path = Mentormee_ver2.0;
 			sourceTree = "<group>";
@@ -392,9 +427,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Mentormee_ver2.0/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mentormee_ver2.0/Mentormee_ver2.0-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -402,9 +440,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Mentormee_ver2.0/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mentormee_ver2.0/Mentormee_ver2.0-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -415,6 +455,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -434,6 +475,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				INFOPLIST_FILE = Mentormee_ver2.0Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

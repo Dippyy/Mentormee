@@ -171,6 +171,10 @@ class Test_ConnectionVC: UIViewController, UIPickerViewDelegate {
         println(comparisonField)
         println(topThreeMentors)
         
+        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject(topThreeMentors, forKey: "topThreeMentors")
+
+        
         return topThreeMentors
         
         
