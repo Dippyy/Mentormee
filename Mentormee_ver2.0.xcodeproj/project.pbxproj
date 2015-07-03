@@ -18,6 +18,7 @@
 		CB0EE4081B46E13B00CDF664 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4031B46E13B00CDF664 /* CoreGraphics.framework */; };
 		CB0EE4091B46E13B00CDF664 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4041B46E13B00CDF664 /* UIKit.framework */; };
 		CB0EE40A1B46E13B00CDF664 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4051B46E13B00CDF664 /* XCTest.framework */; };
+		CB64B43D1B47269500F37A7B /* FirstPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB64B43C1B47269500F37A7B /* FirstPageVC.swift */; };
 		CBF1EC041B3B33A600EC6C0F /* Test_ConnectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF1EC031B3B33A600EC6C0F /* Test_ConnectionVC.swift */; };
 		E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD5A1B28A51900968EE0 /* AppDelegate.swift */; };
 		E162BD601B28A51900968EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E162BD5E1B28A51900968EE0 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		CB0EE4031B46E13B00CDF664 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		CB0EE4041B46E13B00CDF664 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CB0EE4051B46E13B00CDF664 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CB64B43C1B47269500F37A7B /* FirstPageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstPageVC.swift; sourceTree = "<group>"; };
 		CB6DA4981B46E2F900E6E4EE /* Mentormee_ver2.0-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mentormee_ver2.0-Bridging-Header.h"; sourceTree = "<group>"; };
 		CBF1EC031B3B33A600EC6C0F /* Test_ConnectionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_ConnectionVC.swift; sourceTree = "<group>"; };
 		E162BD551B28A51900968EE0 /* Mentormee_ver2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mentormee_ver2.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 				E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */,
 				E162BD7C1B28A9E300968EE0 /* LoginVC.swift */,
 				E162BD5E1B28A51900968EE0 /* Main.storyboard */,
+				CB64B43C1B47269500F37A7B /* FirstPageVC.swift */,
 				E162BD611B28A51900968EE0 /* Images.xcassets */,
 				E162BD631B28A51900968EE0 /* LaunchScreen.xib */,
 				E162BD581B28A51900968EE0 /* Supporting Files */,
@@ -296,6 +299,7 @@
 				E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */,
 				E162BD7B1B28A59600968EE0 /* HomeScreenVC.swift in Sources */,
 				E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */,
+				CB64B43D1B47269500F37A7B /* FirstPageVC.swift in Sources */,
 				E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */,
 				E162BD891B2B81D500968EE0 /* DetailUpdateTVC.swift in Sources */,
 				CB0EB6791B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift in Sources */,

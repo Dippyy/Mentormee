@@ -129,10 +129,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func ConnectTestButtonTapped(sender: AnyObject) {
-       self.performSegueWithIdentifier("goto_testconnection", sender: self)
-        
-    }
     
     @IBAction func ExistingUserTapped(sender: AnyObject) {
         UIView.animateWithDuration(0, animations: {
