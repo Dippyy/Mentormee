@@ -65,7 +65,7 @@ class MentorUserDataSearchController:UITableViewController{
         println("sender detail: ")
         let urlToSend = NSURL(string:url)
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()  //NSUserDefault = Dictionary
-        var post: NSString = "selection=\(senderField)"
+        var post: NSString = "selection=\(searchField)"
         println("post is: \(post)")
         var postData: NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength : NSString = String(postData.length)
