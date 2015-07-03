@@ -21,6 +21,8 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         myTableView.delegate = self
         myTableView.dataSource = self
         
+//------------------------ Updates the detail text fields of the user update screen ------------------------------------------
+        
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
 //        let emailToSend = prefs.valueForKey("email") as! String
@@ -76,12 +78,30 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 prefs.setObject(jsonData[2].valueForKey("University_id"), forKey: "UniID")
                 prefs.setObject(jsonData[2].valueForKey("Program_id"), forKey: "ProgID")
                 
-                var universityID: String = jsonData[2].valueForKey("University_id") as! String // converts the strings to ints
-                var programID: String = jsonData[2].valueForKey("Program_id") as! String
-                let uniID: Int? = universityID.toInt()
-                let progID: Int? = programID.toInt()
+                // ERROR HANDLER FOR NO UNIVERSITY ID ON FIRST SIGNUP
                 
-                var post: NSString = "universityID=\(uniID!)&programID=\(progID!)"
+                if(jsonData[2].valueForKey("University_id")!.isEqualToString("0")){
+                    let universityID = 1
+                    prefs.setObject(universityID, forKey: "uniID2")
+                } else {
+                    let universityID: String = jsonData[2].valueForKey("University_id") as! String
+                    let uniID: Int? = universityID.toInt()
+                    prefs.setObject(uniID, forKey: "uniID2")
+                }
+                
+                if(jsonData[2].valueForKey("Program_id")!.isEqualToString("0")){
+                    let programID = 1
+                    prefs.setObject(programID, forKey: "progID2")
+                } else {
+                    let programID: String = jsonData[2].valueForKey("Program_id") as! String
+                    let progID: Int? = programID.toInt()
+                    prefs.setObject(progID, forKey: "progID2")
+                }
+                
+                let uniID = prefs.valueForKey("uniID2") as! Int
+                let progID = prefs.valueForKey("progID2") as! Int
+                
+                var post: NSString = "universityID=\(uniID)&programID=\(progID)"
                 NSLog("PostData: %@",post);
                 var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -137,6 +157,8 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return profileUpdate.count
     }
     
+//--------------- Sets the value of the detailed text fields based on variables that are stored locally -------------------------
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = myTableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
@@ -153,7 +175,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }  else if(cell.textLabel?.text == "Gender"){
             cell.detailTextLabel?.text = prefs.valueForKey("Gender") as? String
         } else if(cell.textLabel?.text == "Year"){
+            
+            if(prefs.valueForKey("Graduation Year") as! String == "0"){
+                cell.detailTextLabel?.text = "Grad year"
+            } else {
             cell.detailTextLabel?.text = prefs.valueForKey("Graduation Year") as? String
+            }
+            
         } else if(cell.textLabel?.text == "Full Name"){
             cell.detailTextLabel?.text = prefs.valueForKey("Full Name") as? String
         }
@@ -166,7 +194,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 cell.detailTextLabel?.text = "Upload a Picture"
             }
         } else if(cell.textLabel?.text == "Whatsup"){
-            if(prefs.valueForKey("Whatsup") != nil){
+            if(prefs.valueForKey("Whatsup") as? String != ""){
                 cell.detailTextLabel?.text = "Set"
             } else {
                 cell.detailTextLabel?.text = "Whats on your mind?"
@@ -175,6 +203,8 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         return cell
     }
+    
+// ------------------------------ Performs the segues based on the selected label ------------------------------------------------
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         myTableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -211,9 +241,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
     }
+    
     @IBAction func backToProfileTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("goto_homepage", sender: self)
         }
+    
+//----------------------------- saves the image url to the database under Picture -----------------------------------------
+//---------------- Note: MOVE THIS LOGIC TO THE NamePictureVC WHEN THE 'SAVE' BUTTON IS PRESSED -----------------------
     @IBAction func backButtonPressed(sender: AnyObject) {
         
         let storedData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -222,7 +256,6 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             let imageURL = storedData.valueForKey("ProfileImage") as! String
             println(imageURL)
             storedData.setObject(imageURL, forKey: "imageToSend")
-//        var imageToSend = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(imageURL)"
         } else {
             let imageURL = storedData.valueForKey("Profile Picture") as! String
             storedData.setObject(imageURL, forKey: "imageToSend")

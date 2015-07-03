@@ -16,7 +16,7 @@ class DetailUpdateTVC: UITableViewController {
         super.viewDidLoad()
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        get_data_from_url("http://mentormee.info/dbTestConnect/universityProgramProgramSpecUpdate.php")
+        get_data_from_url("http://mentormee.info/dbTestConnect/programUpdate.php")
 
     }
 
@@ -39,16 +39,24 @@ class DetailUpdateTVC: UITableViewController {
         cell.textLabel?.text = UserData[indexPath.row]
         return cell
     }
+
+// -------------- Reads through Program_Data/University_Data tables and puts the contents into an array ----------------------
     
     func get_data_from_url(url:String){
         
         let urlToSend = NSURL(string:url)
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let userInput = prefs.valueForKey("Selection") as! String
+        var post: NSString = "selection=\(userInput)"
+        NSLog("PostData: %@",post);
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String( postData.length )
         
         var request: NSMutableURLRequest = NSMutableURLRequest(URL: urlToSend!)
         
         request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -66,11 +74,12 @@ class DetailUpdateTVC: UITableViewController {
             var error: NSError?
             
             let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
-            println("this array contains: \(jsonData.count)")
-            println(jsonData[0].valueForKey("University") as! String)
-            println(jsonData[1].valueForKey("Faculty") as! String)
-            println(jsonData[1].valueForKey("Program") as! String)
-            
+        
+//            println("this array contains: \(jsonData.count)")
+//            println(jsonData[0].valueForKey("University") as! String)
+//            println(jsonData[1].valueForKey("Faculty") as! String)
+//            println(jsonData[1].valueForKey("Program") as! String)
+//            
             for (var i = 0; i < jsonData.count; i++){
                 if let jsonData_obj = jsonData[i] as? NSDictionary
                 {
@@ -81,7 +90,7 @@ class DetailUpdateTVC: UITableViewController {
                     }
                 }
             }
-            
+        
         } else{
             println("url data is empty")
         }
@@ -95,14 +104,18 @@ class DetailUpdateTVC: UITableViewController {
     
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
+        
+// If the user selects University the selected university_id will be saved in the mentors capabilities table
         if(prefs.valueForKey("Selection") as! String == "University"){
             
 //            var universityName = UserData[row]
             var uniID: Int = row + 1
             
             var userID = prefs.valueForKey("userID") as! String
-            
             var post: NSString = "userID=\(userID)&universityID=\(uniID)"
+            
+            println(post)
+            
             var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateUniversityName2.php")! //need to update university_id
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
@@ -140,15 +153,18 @@ class DetailUpdateTVC: UITableViewController {
             }
         }
         
+// If the user selects Faculty the selected program_id will be saved in the mentors capabilities table
+        
         if(prefs.valueForKey("Selection") as! String == "Faculty"){
             
 //            var facultyName = UserData[row]
             var facultyID: Int = row + 1
-            var email = prefs.valueForKey("email") as! String
+//            var email = prefs.valueForKey("email") as! String
+            var userID = prefs.valueForKey("userID") as! String
             
             println(facultyID)
             
-            var post: NSString = "email=\(email)&faculty=\(facultyID)"
+            var post: NSString = "userID=\(userID)&faculty=\(facultyID)"
             var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateFacultyName2.php")! //update program_id
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
@@ -185,6 +201,8 @@ class DetailUpdateTVC: UITableViewController {
                 }
             }
         }
+        
+// If the user selects Program the selected program_id will be saved in the mentors capabilities table
         
         if(prefs.valueForKey("Selection") as! String == "Program"){
             

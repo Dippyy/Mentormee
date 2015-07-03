@@ -27,6 +27,9 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         
     }
     
+//--------- Based on the selection made from the previous view controller the corresponding ------------------
+//---------                         fields will appear                                      ------------------
+    
     override func viewDidAppear(animated: Bool) {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if(prefs.valueForKey("Selection")!.isEqualToString("Profile Picture")){
@@ -52,6 +55,8 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         super.didReceiveMemoryWarning()
     }
     
+// Selects and stores a picture from the users photo library, will prompt user to access their photos
+    
     @IBAction func selectPhotoButtonTapped(sender: AnyObject) {
         
         var myPickerController = UIImagePickerController()
@@ -61,6 +66,8 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         self.presentViewController(myPickerController, animated: true, completion: nil)
     }
     
+// Uploads the picture/name/whatsup text to the DB
+    
     @IBAction func saveButtonTapped(sender: AnyObject) {
        
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -69,11 +76,11 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             
             var fullName: String = fullNameTextField.text as String
             var userID = prefs.valueForKey("userID") as! String
-            
-            var nameArray = fullName.componentsSeparatedByString(" ")
-            var firstName:String = nameArray[0]
+                    
+            var fullNameArr = split(fullName) {$0 == " "}
+            var firstName: String = fullNameArr[0]
             println("THE FIRST NAME IS \(firstName)")
-            var lastName:String = nameArray[1]
+            var lastName: String! = fullNameArr.count > 1 ? fullNameArr[1] : ""
             println("THE LAST NAME IS \(lastName)")
 
             var post: NSString = "userID=\(userID)&firstName=\(firstName)&lastName=\(lastName)"
@@ -172,17 +179,22 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     }
     
+// Sets the imageview to whatever picture was selected by the user
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         profilePictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let upload:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        upload.setObject("Uploaded", forKey: "Upload")
+//        let upload:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//        upload.setObject("Uploaded", forKey: "Upload")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+// Uploads the image to the DB (format -> dbTestConnect/userprofilepic/uploads/2015/user-profile-(email).jpg)
+    
     func myImageUploadRequest(){
         
-        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload3.php")
+        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload4.php")
         let request = NSMutableURLRequest(URL:myUrl!)
         request.HTTPMethod = "POST"
         
@@ -240,13 +252,14 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 body.appendString("\(value)\r\n")
             }
         }
+        
         let email = prefs.valueForKey("email") as! String
         let filename = "user-profile-\(email).jpg"
         let fileName = NSUserDefaults.standardUserDefaults()
-        fileName.setObject(filename, forKey: "imageURL")
+//        fileName.setObject(filename, forKey: "imageURL")
         let fullImageUrl = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(filename)" as String
         fileName.setObject(fullImageUrl, forKey: "ProfileImage")
-        println(fileName.valueForKey("ProfileImage"))
+        
 //        println("the image url should be \(fileName.valueForKey("ProfileImage"))")
     
         let mimetype = "image/jpg"

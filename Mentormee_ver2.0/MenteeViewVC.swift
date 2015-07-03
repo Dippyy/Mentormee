@@ -15,9 +15,11 @@ class MenteeViewVC: UIViewController {
     @IBOutlet weak var universityLabel: UILabel!
     @IBOutlet weak var programLabel: UILabel!
     @IBOutlet weak var backgroundLabel: UILabel!
-
+    //sample check in
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+// MAKES IMAGEVIEW CIRCULAR
         
         myImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         myImageView.contentMode = UIViewContentMode.ScaleAspectFit
@@ -38,8 +40,10 @@ class MenteeViewVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+// Pulls the mentee information from the DB and displays their information
+        
         let storedData:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMentee.php")!
+        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMentee2.php")!
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
         
         request.HTTPMethod = "POST"
@@ -63,10 +67,10 @@ class MenteeViewVC: UIViewController {
                 
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                 
-                let matchCheck = jsonData[0].valueForKey("NoOfMentees") as! String
+//                let matchCheck = jsonData[0].valueForKey("NoOfMentees") as! String
                 
-                if(matchCheck != "None"){
-                    
+//                if(matchCheck != "None"){
+                
                 UIView.animateWithDuration(0, animations: {
                     
                     self.myImageView.alpha =  1.0
@@ -76,41 +80,54 @@ class MenteeViewVC: UIViewController {
                     self.backgroundLabel.alpha = 0.3
                     
                     })
-                    
-                    var fullNameValue: String = jsonData[0].valueForKey("full_name") as! String
-                    fullNameLabel.text = fullNameValue
-                    
-                    var highschoolName: String = jsonData[0].valueForKey("highschool") as! String
-                    universityLabel.text = highschoolName
-                    
-                    var grade: String = jsonData[0].valueForKey("grade") as! String
-                    programLabel.text = grade
-                    
-                    if(jsonData[0].valueForKey("picture") as! String != ""){
-                    var imgURL: String = jsonData[0].valueForKey("picture") as! String
-                    var url = NSURL(string: imgURL)
-                    var imgData = NSData(contentsOfURL: url!)
-                    myImageView.image = UIImage(data: imgData!)
-                    } else {
-                        myImageView.image = UIImage(named: "profile_default.jpg")
-                    }
-                    
+                
+                var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                var lastName: String = jsonData[0].valueForKey("LastName") as! String
+                var fullName: String = firstName + " " + lastName
+                
+                if(fullName != ""){
+                    var fullName: String = fullName
+                    fullNameLabel.text = fullName
+                    println(fullName)
                 } else {
-                    
-                    println("No Match yet! :(")
-                    fullNameLabel.hidden = true
-                    universityLabel.hidden = true
-                    programLabel.hidden = true
-                    
-                    var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "No Match"
-                    alertView.message = "No Match yet! :("
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
-                    
-                    
+                    fullNameLabel.text = "Full Name"
                 }
+                
+                    var highschoolName: String = jsonData[0].valueForKey("HighSchool") as! String
+                    universityLabel.text = highschoolName
+                
+//--------------------- NOTE: PICTURE AND GRADE SHOULD BE WORKING CORRECTLY ---------------------------------
+                    
+//                    var grade: String = jsonData[0].valueForKey("grade") as! String
+//                    programLabel.text = grade
+                
+//                    if(jsonData[0].valueForKey("picture") as! String != ""){
+//                    var imgURL: String = jsonData[0].valueForKey("picture") as! String
+//                    var url = NSURL(string: imgURL)
+//                    var imgData = NSData(contentsOfURL: url!)
+//                    myImageView.image = UIImage(data: imgData!)
+//                    } else {
+                        myImageView.image = UIImage(named: "profile_default.jpg")
+//                    }
+                    
+//                }
+//            
+//            else {
+//                    
+//                    println("No Match yet! :(")
+//                    fullNameLabel.hidden = true
+//                    universityLabel.hidden = true
+//                    programLabel.hidden = true
+//                    
+//                    var alertView:UIAlertView = UIAlertView()
+//                    alertView.title = "No Match"
+//                    alertView.message = "No Match yet! :("
+//                    alertView.delegate = self
+//                    alertView.addButtonWithTitle("OK")
+//                    alertView.show()
+//                    
+//                    
+//                }
                 
             }
         }
