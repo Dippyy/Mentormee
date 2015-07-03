@@ -69,17 +69,25 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    // functions to control how the keyboard behaves when the textfields are tapped
+    
     func registerForKeyboardNotifications() -> Void {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
         
     }
+    
+    // functions to control how the keyboard behaves when the textfields are tapped
+
     func deregisterFromKeyboardNotifications() -> Void {
         println("Deregistering!")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillHideNotification, object: nil)
         
     }
+    
+    // functions to control how the keyboard behaves when the textfields are tapped
+
     func keyboardWasShown(notification: NSNotification) {
         var info: Dictionary = notification.userInfo!
         var keyboardSize: CGSize = (info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size)!
@@ -94,6 +102,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             
         }
     }
+    
+    // functions to control how the keyboard behaves when the textfields are tapped
+
     func hideKeyboard() {
         emailField.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
         passwordField.resignFirstResponder()
@@ -101,7 +112,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 //        mentormeeLogo.alpha = 1.0
         self.scrollView.setContentOffset(CGPointZero, animated: true)
     }
+    
+    // when the mentor button is tapped the cooresponding textfields and buttons will appear
+
     @IBAction func mentorButtonTapped(sender: UIButton) {
+        
+        // an animation function
         
         sender.highlighted = false
         UIView.animateWithDuration(0,
@@ -110,6 +126,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             animations: {
                 sender.alpha = 0
             }, completion: nil)
+        
+        // toggles the transparency of corresponding textfields and buttons
         
         UIView.animateWithDuration(0, animations: {
             self.emailField.alpha = 1.0
@@ -128,11 +146,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    // performs a seague to test connection
     
     @IBAction func ConnectTestButtonTapped(sender: AnyObject) {
        self.performSegueWithIdentifier("goto_testconnection", sender: self)
         
     }
+    
+    // toggles transparency
     
     @IBAction func ExistingUserTapped(sender: AnyObject) {
         UIView.animateWithDuration(0, animations: {
@@ -152,6 +173,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             self.backButton.alpha = 0
         })
     }
+    
+    // login button to sign in user and check to see if their email and password match what is in the database
+    
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -292,6 +316,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
+    // signup -> gives the DB email/password/password and mentor status
+    // fetches the userID of the mentor based on the email
+    // creates a row in Capabilities/Mentor/Mentee and inputs the userID into the row in the corresponding column
     
     @IBAction func signupButtonTapped(sender: AnyObject) {
         

@@ -21,6 +21,8 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         myTableView.delegate = self
         myTableView.dataSource = self
         
+//------------------------ Updates the detail text fields of the user update screen ------------------------------------------
+        
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
 //        let emailToSend = prefs.valueForKey("email") as! String
@@ -155,6 +157,8 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return profileUpdate.count
     }
     
+//--------------- Sets the value of the detailed text fields based on variables that are stored locally -------------------------
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = myTableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
@@ -199,6 +203,8 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         return cell
     }
+    
+// ------------------------------ Performs the segues based on the selected label ------------------------------------------------
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         myTableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -235,9 +241,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
     }
+    
     @IBAction func backToProfileTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("goto_homepage", sender: self)
         }
+    
+//----------------------------- saves the image url to the database under Picture -----------------------------------------
+//---------------- Note: MOVE THIS LOGIC TO THE NamePictureVC WHEN THE 'SAVE' BUTTON IS PRESSED -----------------------
     @IBAction func backButtonPressed(sender: AnyObject) {
         
         let storedData: NSUserDefaults = NSUserDefaults.standardUserDefaults()

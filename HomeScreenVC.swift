@@ -196,6 +196,7 @@ class HomeScreenVC: UIViewController {
             }
         }
         
+        //MAKES THE IMAGEVIEW CIRCULAR
         profileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         profileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
@@ -206,7 +207,7 @@ class HomeScreenVC: UIViewController {
         profileImageView.clipsToBounds = true
 
         
-        
+        //Checks to see if the user has logged in before, if not it will take the user to the login screen
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         
@@ -229,6 +230,8 @@ class HomeScreenVC: UIViewController {
     @IBAction func viewActiveMenteesTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("goto_mentee", sender: self)
     }
+    
+    // clears the fields in the mentor home screen and all variables stored locally
     @IBAction func logoutButtonTapped(sender: AnyObject) {
         
         fullNameLabel.text = ""

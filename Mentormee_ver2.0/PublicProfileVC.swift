@@ -25,6 +25,8 @@ class PublicProfileVC: UIViewController {
         super.viewDidLoad()
         myScrollView.contentSize.height = 750
         
+// MAKES IMAGEVIEW CIRCULAR
+        
         profileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         profileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
@@ -33,6 +35,8 @@ class PublicProfileVC: UIViewController {
         profileImageView.layer.borderColor = UIColor.orangeColor().CGColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        
+//----------- Checks the DB for First Name/Last Name/University/Program/Whatsup ------------------------
         
         let storedData:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let userID = storedData.valueForKey("userID") as! String
