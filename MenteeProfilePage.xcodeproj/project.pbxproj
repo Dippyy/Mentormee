@@ -8,11 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		E1E1D4181B3DA4FD00C9D010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4171B3DA4FD00C9D010 /* AppDelegate.swift */; };
-		E1E1D41A1B3DA4FD00C9D010 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4191B3DA4FD00C9D010 /* ViewController.swift */; };
 		E1E1D41D1B3DA4FD00C9D010 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1E1D41B1B3DA4FD00C9D010 /* Main.storyboard */; };
 		E1E1D41F1B3DA4FD00C9D010 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E1D41E1B3DA4FD00C9D010 /* Images.xcassets */; };
 		E1E1D4221B3DA4FD00C9D010 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E1D4201B3DA4FD00C9D010 /* LaunchScreen.xib */; };
 		E1E1D42E1B3DA4FD00C9D010 /* MenteeProfilePageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D42D1B3DA4FD00C9D010 /* MenteeProfilePageTests.swift */; };
+		E1E1D4381B3DAC0F00C9D010 /* PopulateMentorInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4371B3DAC0F00C9D010 /* PopulateMentorInfoVC.swift */; };
+		E1E1D43A1B3DCB7100C9D010 /* profile_default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1E1D4391B3DCB7100C9D010 /* profile_default.jpg */; };
+		E1E1D43C1B3DCDFD00C9D010 /* mentorProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D43B1B3DCDFD00C9D010 /* mentorProfileView.swift */; };
+		E1E1D4AA1B42F45600C9D010 /* menteeProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4A91B42F45600C9D010 /* menteeProfileView.swift */; };
+		E1E1D4AC1B43055E00C9D010 /* MenteePublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4AB1B43055E00C9D010 /* MenteePublicProfileVC.swift */; };
+		E1E1D4AE1B43057F00C9D010 /* UpdateMenteeProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4AD1B43057F00C9D010 /* UpdateMenteeProfileVC.swift */; };
+		E1E1D4B01B431AD800C9D010 /* TextEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4AF1B431AD800C9D010 /* TextEntryViewController.swift */; };
+		E1E1D4B21B445A4F00C9D010 /* staticTableUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4B11B445A4F00C9D010 /* staticTableUpdateVC.swift */; };
+		E1E1D4B41B457F0900C9D010 /* ProfilePictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4B31B457F0800C9D010 /* ProfilePictureVC.swift */; };
+		E1E1D4B61B45ABBA00C9D010 /* MenteeSignupPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4B51B45ABBA00C9D010 /* MenteeSignupPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +38,22 @@
 		E1E1D4121B3DA4FD00C9D010 /* MenteeProfilePage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenteeProfilePage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E1D4161B3DA4FD00C9D010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E1D4171B3DA4FD00C9D010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1E1D4191B3DA4FD00C9D010 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1E1D41C1B3DA4FD00C9D010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1E1D41E1B3DA4FD00C9D010 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E1E1D4211B3DA4FD00C9D010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E1E1D4271B3DA4FD00C9D010 /* MenteeProfilePageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MenteeProfilePageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E1D42C1B3DA4FD00C9D010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1E1D42D1B3DA4FD00C9D010 /* MenteeProfilePageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenteeProfilePageTests.swift; sourceTree = "<group>"; };
+		E1E1D4371B3DAC0F00C9D010 /* PopulateMentorInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopulateMentorInfoVC.swift; path = MenteeProfilePage.xcodeproj/../PopulateMentorInfoVC.swift; sourceTree = SOURCE_ROOT; };
+		E1E1D4391B3DCB7100C9D010 /* profile_default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile_default.jpg; sourceTree = "<group>"; };
+		E1E1D43B1B3DCDFD00C9D010 /* mentorProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mentorProfileView.swift; sourceTree = "<group>"; };
+		E1E1D4A91B42F45600C9D010 /* menteeProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = menteeProfileView.swift; path = ../menteeProfileView.swift; sourceTree = "<group>"; };
+		E1E1D4AB1B43055E00C9D010 /* MenteePublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteePublicProfileVC.swift; sourceTree = "<group>"; };
+		E1E1D4AD1B43057F00C9D010 /* UpdateMenteeProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMenteeProfileVC.swift; sourceTree = "<group>"; };
+		E1E1D4AF1B431AD800C9D010 /* TextEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextEntryViewController.swift; path = ../TextEntryViewController.swift; sourceTree = "<group>"; };
+		E1E1D4B11B445A4F00C9D010 /* staticTableUpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = staticTableUpdateVC.swift; sourceTree = "<group>"; };
+		E1E1D4B31B457F0800C9D010 /* ProfilePictureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureVC.swift; sourceTree = "<group>"; };
+		E1E1D4B51B45ABBA00C9D010 /* MenteeSignupPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenteeSignupPage.swift; path = ../MenteeSignupPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +80,7 @@
 				E1E1D4141B3DA4FD00C9D010 /* MenteeProfilePage */,
 				E1E1D42A1B3DA4FD00C9D010 /* MenteeProfilePageTests */,
 				E1E1D4131B3DA4FD00C9D010 /* Products */,
+				E1E1D4391B3DCB7100C9D010 /* profile_default.jpg */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,8 +96,16 @@
 		E1E1D4141B3DA4FD00C9D010 /* MenteeProfilePage */ = {
 			isa = PBXGroup;
 			children = (
+				E1E1D4B51B45ABBA00C9D010 /* MenteeSignupPage.swift */,
+				E1E1D4B31B457F0800C9D010 /* ProfilePictureVC.swift */,
+				E1E1D4A91B42F45600C9D010 /* menteeProfileView.swift */,
+				E1E1D4AF1B431AD800C9D010 /* TextEntryViewController.swift */,
+				E1E1D4B11B445A4F00C9D010 /* staticTableUpdateVC.swift */,
+				E1E1D4AD1B43057F00C9D010 /* UpdateMenteeProfileVC.swift */,
+				E1E1D4AB1B43055E00C9D010 /* MenteePublicProfileVC.swift */,
 				E1E1D4171B3DA4FD00C9D010 /* AppDelegate.swift */,
-				E1E1D4191B3DA4FD00C9D010 /* ViewController.swift */,
+				E1E1D43B1B3DCDFD00C9D010 /* mentorProfileView.swift */,
+				E1E1D4371B3DAC0F00C9D010 /* PopulateMentorInfoVC.swift */,
 				E1E1D41B1B3DA4FD00C9D010 /* Main.storyboard */,
 				E1E1D41E1B3DA4FD00C9D010 /* Images.xcassets */,
 				E1E1D4201B3DA4FD00C9D010 /* LaunchScreen.xib */,
@@ -195,6 +222,7 @@
 				E1E1D41D1B3DA4FD00C9D010 /* Main.storyboard in Resources */,
 				E1E1D4221B3DA4FD00C9D010 /* LaunchScreen.xib in Resources */,
 				E1E1D41F1B3DA4FD00C9D010 /* Images.xcassets in Resources */,
+				E1E1D43A1B3DCB7100C9D010 /* profile_default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,8 +240,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1E1D41A1B3DA4FD00C9D010 /* ViewController.swift in Sources */,
+				E1E1D4B21B445A4F00C9D010 /* staticTableUpdateVC.swift in Sources */,
+				E1E1D4AA1B42F45600C9D010 /* menteeProfileView.swift in Sources */,
+				E1E1D4AC1B43055E00C9D010 /* MenteePublicProfileVC.swift in Sources */,
 				E1E1D4181B3DA4FD00C9D010 /* AppDelegate.swift in Sources */,
+				E1E1D4B01B431AD800C9D010 /* TextEntryViewController.swift in Sources */,
+				E1E1D4381B3DAC0F00C9D010 /* PopulateMentorInfoVC.swift in Sources */,
+				E1E1D43C1B3DCDFD00C9D010 /* mentorProfileView.swift in Sources */,
+				E1E1D4AE1B43057F00C9D010 /* UpdateMenteeProfileVC.swift in Sources */,
+				E1E1D4B61B45ABBA00C9D010 /* MenteeSignupPage.swift in Sources */,
+				E1E1D4B41B457F0900C9D010 /* ProfilePictureVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +445,7 @@
 				E1E1D4331B3DA4FD00C9D010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1E1D4341B3DA4FD00C9D010 /* Build configuration list for PBXNativeTarget "MenteeProfilePageTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +454,7 @@
 				E1E1D4361B3DA4FD00C9D010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
