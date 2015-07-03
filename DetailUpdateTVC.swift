@@ -39,6 +39,8 @@ class DetailUpdateTVC: UITableViewController {
         cell.textLabel?.text = UserData[indexPath.row]
         return cell
     }
+
+// -------------- Reads through Program_Data/University_Data tables and puts the contents into an array ----------------------
     
     func get_data_from_url(url:String){
         
@@ -102,6 +104,8 @@ class DetailUpdateTVC: UITableViewController {
     
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
+        
+// If the user selects University the selected university_id will be saved in the mentors capabilities table
         if(prefs.valueForKey("Selection") as! String == "University"){
             
 //            var universityName = UserData[row]
@@ -149,6 +153,8 @@ class DetailUpdateTVC: UITableViewController {
             }
         }
         
+// If the user selects Faculty the selected program_id will be saved in the mentors capabilities table
+        
         if(prefs.valueForKey("Selection") as! String == "Faculty"){
             
 //            var facultyName = UserData[row]
@@ -195,6 +201,8 @@ class DetailUpdateTVC: UITableViewController {
                 }
             }
         }
+        
+// If the user selects Program the selected program_id will be saved in the mentors capabilities table
         
         if(prefs.valueForKey("Selection") as! String == "Program"){
             

@@ -38,6 +38,7 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 1
     }
     
+    // Depending on what the user selected (Gender/Year) the number of cells is equal to the count of each array
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if(prefs.valueForKey("Selection")!.isEqualToString("Gender")){
@@ -49,6 +50,7 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 0
     }
     
+    // The values of these cells are based on the contents of the arrays (genderTable/yearOfStudy) -> see top for declaration
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -64,6 +66,7 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    // Whatever is selected from the table is pushed to the DB under the Gender and GraduationYear columns
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         myTableView.deselectRowAtIndexPath(indexPath, animated: true)
         

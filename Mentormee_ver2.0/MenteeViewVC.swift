@@ -19,6 +19,8 @@ class MenteeViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+// MAKES IMAGEVIEW CIRCULAR
+        
         myImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         myImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
@@ -37,6 +39,8 @@ class MenteeViewVC: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+// Pulls the mentee information from the DB and displays their information
         
         let storedData:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMentee2.php")!
@@ -91,6 +95,8 @@ class MenteeViewVC: UIViewController {
                 
                     var highschoolName: String = jsonData[0].valueForKey("HighSchool") as! String
                     universityLabel.text = highschoolName
+                
+//--------------------- NOTE: PICTURE AND GRADE SHOULD BE WORKING CORRECTLY ---------------------------------
                     
 //                    var grade: String = jsonData[0].valueForKey("grade") as! String
 //                    programLabel.text = grade

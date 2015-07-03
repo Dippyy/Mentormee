@@ -27,6 +27,9 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         
     }
     
+//--------- Based on the selection made from the previous view controller the corresponding ------------------
+//---------                         fields will appear                                      ------------------
+    
     override func viewDidAppear(animated: Bool) {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if(prefs.valueForKey("Selection")!.isEqualToString("Profile Picture")){
@@ -52,6 +55,8 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         super.didReceiveMemoryWarning()
     }
     
+// Selects and stores a picture from the users photo library, will prompt user to access their photos
+    
     @IBAction func selectPhotoButtonTapped(sender: AnyObject) {
         
         var myPickerController = UIImagePickerController()
@@ -60,6 +65,8 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         
         self.presentViewController(myPickerController, animated: true, completion: nil)
     }
+    
+// Uploads the picture/name/whatsup text to the DB
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
        
@@ -172,6 +179,8 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     }
     
+// Sets the imageview to whatever picture was selected by the user
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         profilePictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -179,6 +188,9 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
 //        upload.setObject("Uploaded", forKey: "Upload")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+// Uploads the image to the DB (format -> dbTestConnect/userprofilepic/uploads/2015/user-profile-(email).jpg)
     
     func myImageUploadRequest(){
         
