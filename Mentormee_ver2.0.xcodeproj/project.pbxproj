@@ -34,6 +34,12 @@
 		E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD901B309BD300968EE0 /* PublicProfileVC.swift */; };
 		E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD921B30C03500968EE0 /* MenteeViewVC.swift */; };
 		E1E1D4E81B4AF3E300C9D010 /* MentorUserDataSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */; };
+		E1E1D4EA1B4AFCE200C9D010 /* PopulateMentorInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4E91B4AFCE200C9D010 /* PopulateMentorInfoVC.swift */; };
+		E1E1D4EC1B4AFDD600C9D010 /* MenteeSignupPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4EB1B4AFDD600C9D010 /* MenteeSignupPage.swift */; };
+		E1E1D4EE1B4B009F00C9D010 /* UpdateMenteeProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4ED1B4B009F00C9D010 /* UpdateMenteeProfileVC.swift */; };
+		E1E1D4F01B4B026000C9D010 /* ProfilePictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4EF1B4B026000C9D010 /* ProfilePictureVC.swift */; };
+		E1E1D4F21B4B05F000C9D010 /* TextEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4F11B4B05F000C9D010 /* TextEntryViewController.swift */; };
+		E1E1D4F41B4B07AE00C9D010 /* staticTableUpdateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4F31B4B07AE00C9D010 /* staticTableUpdateVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +85,12 @@
 		E162BD901B309BD300968EE0 /* PublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProfileVC.swift; sourceTree = "<group>"; };
 		E162BD921B30C03500968EE0 /* MenteeViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeViewVC.swift; sourceTree = "<group>"; };
 		E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorUserDataSearchController.swift; sourceTree = "<group>"; };
+		E1E1D4E91B4AFCE200C9D010 /* PopulateMentorInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopulateMentorInfoVC.swift; sourceTree = "<group>"; };
+		E1E1D4EB1B4AFDD600C9D010 /* MenteeSignupPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignupPage.swift; sourceTree = "<group>"; };
+		E1E1D4ED1B4B009F00C9D010 /* UpdateMenteeProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateMenteeProfileVC.swift; sourceTree = "<group>"; };
+		E1E1D4EF1B4B026000C9D010 /* ProfilePictureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureVC.swift; sourceTree = "<group>"; };
+		E1E1D4F11B4B05F000C9D010 /* TextEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEntryViewController.swift; sourceTree = "<group>"; };
+		E1E1D4F31B4B07AE00C9D010 /* staticTableUpdateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = staticTableUpdateVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +169,12 @@
 				E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */,
 				E162BD7C1B28A9E300968EE0 /* LoginVC.swift */,
 				E162BD5E1B28A51900968EE0 /* Main.storyboard */,
+				E1E1D4F31B4B07AE00C9D010 /* staticTableUpdateVC.swift */,
+				E1E1D4F11B4B05F000C9D010 /* TextEntryViewController.swift */,
+				E1E1D4EF1B4B026000C9D010 /* ProfilePictureVC.swift */,
+				E1E1D4ED1B4B009F00C9D010 /* UpdateMenteeProfileVC.swift */,
+				E1E1D4EB1B4AFDD600C9D010 /* MenteeSignupPage.swift */,
+				E1E1D4E91B4AFCE200C9D010 /* PopulateMentorInfoVC.swift */,
 				CB64B43C1B47269500F37A7B /* FirstPageVC.swift */,
 				E162BD611B28A51900968EE0 /* Images.xcassets */,
 				E162BD631B28A51900968EE0 /* LaunchScreen.xib */,
@@ -293,11 +311,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB0EB67A1B39ECBC000851A7 /* MenteeSignUpTableViewController.swift in Sources */,
+				E1E1D4EE1B4B009F00C9D010 /* UpdateMenteeProfileVC.swift in Sources */,
+				E1E1D4F21B4B05F000C9D010 /* TextEntryViewController.swift in Sources */,
 				CB075A4D1B3B7A24001385C1 /* Test_Connection2VC.swift in Sources */,
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
 				CB0EB6771B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift in Sources */,
 				CBF1EC041B3B33A600EC6C0F /* Test_ConnectionVC.swift in Sources */,
+				E1E1D4EA1B4AFCE200C9D010 /* PopulateMentorInfoVC.swift in Sources */,
 				E1E1D4E81B4AF3E300C9D010 /* MentorUserDataSearchController.swift in Sources */,
+				E1E1D4F01B4B026000C9D010 /* ProfilePictureVC.swift in Sources */,
 				E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */,
 				E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */,
 				E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */,
@@ -309,6 +331,8 @@
 				CB0EB6791B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift in Sources */,
 				CB0EB6781B39ECBC000851A7 /* MenteeMentorSearchViewController.swift in Sources */,
 				E162BD7D1B28A9E300968EE0 /* LoginVC.swift in Sources */,
+				E1E1D4EC1B4AFDD600C9D010 /* MenteeSignupPage.swift in Sources */,
+				E1E1D4F41B4B07AE00C9D010 /* staticTableUpdateVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
