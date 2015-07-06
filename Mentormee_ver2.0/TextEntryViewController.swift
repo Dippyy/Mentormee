@@ -82,7 +82,6 @@ class TextEntryViewController: UIViewController {
         if let whatsUp: String = prefs.valueForKey("Selection") as? String {
             if (prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
                 self.longTextField.text = prefs.valueForKey("Whatsup Mentee") as! String
-                println(prefs.valueForKey("WhatsUp Mentee") as! String)
             }
         }
         
