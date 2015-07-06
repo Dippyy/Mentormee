@@ -239,6 +239,20 @@ class HomeScreenVC: UIViewController {
         programNameLabel.text = ""
         profileImageView.image = UIImage(named: "profile_default.jpg")
         
+        let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        clearAllKeys.removeObjectForKey("ISLOGGEDIN")
+
+        
+        //        clearAllKeys.removeObjectForKey("picture")
+        //        clearAllKeys.removeObjectForKey("ProfileImage")
+        //        clearAllKeys.removeObjectForKey("Full_Name_Selected")
+        //        clearAllKeys.removeObjectForKey("University")
+        //        clearAllKeys.removeObjectForKey("Faculty")
+        //        clearAllKeys.removeObjectForKey("Program")
+        //        clearAllKeys.removeObjectForKey("Year_Selected")
+        //        clearAllKeys.removeObjectForKey("Gender_Selected")
+        
         self.performSegueWithIdentifier("goto_login", sender: self)
     }
     

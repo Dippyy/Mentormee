@@ -305,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1185" y="-100"/>
+            <point key="canvasLocation" x="-1271" y="-78"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="pL8-oD-6CY">
@@ -416,20 +416,6 @@
                                             <segue destination="JOd-Hs-Fbj" kind="modal" id="ffA-VR-uu5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DwR-Aj-12O">
-                                        <rect key="frame" x="83" y="165" width="155" height="48"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Connect_Test">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="ConnectTestButtonTapped:" destination="qUE-nw-BRk" eventType="touchUpInside" id="yLF-hE-pmI"/>
-                                            <action selector="mentorButtonTapped:" destination="qUE-nw-BRk" eventType="touchUpInside" id="D3f-YD-p0q"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -437,7 +423,6 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="ConnectTestButton" destination="DwR-Aj-12O" id="r5i-Ff-0m7"/>
                         <outlet property="backButton" destination="Nu3-tf-78u" id="wrP-mc-CC5"/>
                         <outlet property="emailField" destination="kin-q4-8XO" id="YKE-ZI-064"/>
                         <outlet property="existingUserButton" destination="DVa-n8-NvW" id="mC7-R2-8eq"/>
@@ -449,11 +434,12 @@
                         <outlet property="scrollView" destination="KRx-Gm-omO" id="VF9-mh-zBQ"/>
                         <outlet property="signupButton" destination="WBo-3f-OuE" id="TTX-VY-ch1"/>
                         <segue destination="Afg-a6-aCj" kind="modal" identifier="goto_testconnection" id="Uum-TZ-rsu"/>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="goto_mentorhome" id="Lfx-qB-WZt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiJ-FE-0pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-715" y="-100"/>
+            <point key="canvasLocation" x="-644" y="-78"/>
         </scene>
         <!--Test ConnectionVC-->
         <scene sceneID="nX5-yA-Ime">
@@ -761,7 +747,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell3" id="2cJ-SM-3uV">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2cJ-SM-3uV" id="b8q-tn-Lpj">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1120,12 +1106,15 @@
                                 </state>
                                 <connections>
                                     <action selector="MentorButton:" destination="Fjg-RR-oS4" eventType="touchUpInside" id="N0i-TG-Vgt"/>
-                                    <segue destination="qUE-nw-BRk" kind="modal" modalTransitionStyle="crossDissolve" animates="NO" id="t72-7f-jSn"/>
+                                    <segue destination="qUE-nw-BRk" kind="modal" identifier="goto_loginpage" modalTransitionStyle="crossDissolve" animates="NO" id="t72-7f-jSn"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="goto_mentorhome2" id="kPv-Uq-54L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUz-M4-Afj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1444,7 +1433,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yot-vm-oIm">
-                                        <rect key="frame" x="0.0" y="86" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yot-vm-oIm" id="XPu-2L-gzZ">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -1460,7 +1449,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TMc-Yy-aVp">
-                                        <rect key="frame" x="0.0" y="130" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="66" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TMc-Yy-aVp" id="M6N-4k-Awy">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -1476,7 +1465,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dwp-id-LKe">
-                                        <rect key="frame" x="0.0" y="174" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="110" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dwp-id-LKe" id="VoU-VX-iVM">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -1492,7 +1481,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="V07-23-Ncm">
-                                        <rect key="frame" x="0.0" y="218" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="154" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V07-23-Ncm" id="6sY-9y-LBt">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -1508,7 +1497,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HQC-Ff-5YH">
-                                        <rect key="frame" x="0.0" y="262" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="198" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HQC-Ff-5YH" id="MO0-d4-tIm">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -1524,7 +1513,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vg9-DS-jQh">
-                                        <rect key="frame" x="0.0" y="306" width="300" height="44"/>
+                                        <rect key="frame" x="0.0" y="242" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vg9-DS-jQh" id="RAu-tn-anD">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
@@ -1540,7 +1529,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Settings" rowHeight="86" id="p2j-em-9Fv">
-                                        <rect key="frame" x="0.0" y="350" width="300" height="86"/>
+                                        <rect key="frame" x="0.0" y="286" width="300" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p2j-em-9Fv" id="Uco-Br-GCz">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="85"/>
@@ -1556,7 +1545,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="41" id="98D-Lr-h2S">
-                                        <rect key="frame" x="0.0" y="436" width="300" height="41"/>
+                                        <rect key="frame" x="0.0" y="372" width="300" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="98D-Lr-h2S" id="Z1g-CA-DZR">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
@@ -1615,9 +1604,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YLa-RA-Fux"/>
-        <segue reference="y0T-o3-Fw2"/>
+        <segue reference="Uum-TZ-rsu"/>
         <segue reference="t72-7f-jSn"/>
-        <segue reference="Hfg-Bw-JRH"/>
+        <segue reference="Lfx-qB-WZt"/>
+        <segue reference="y0T-o3-Fw2"/>
+        <segue reference="YLa-RA-Fux"/>
     </inferredMetricsTieBreakers>
 </document>

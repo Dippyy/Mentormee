@@ -19,8 +19,22 @@ class FirstPageVC: UIViewController {
         super.viewDidLoad()
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let isLoggedIn = prefs.valueForKey("ISLOGGEDIN") as! Int
+        if let status = prefs.valueForKey("Status") as? String {
         
-        if()
+        if(isLoggedIn == 1 && status == "Mentor") {
+            self.performSegueWithIdentifier("goto_mentorhome2", sender: self)
+        } else if (isLoggedIn == 1 && status == "Mentee") {
+            self.performSegueWithIdentifier("", sender: self)
+        } else if (isLoggedIn == 0 && status == "Mentor"){
+            self.performSegueWithIdentifier("goto_mentorhome", sender: self)
+        } else if (isLoggedIn == 0 && status == "Mentee"){
+            self.performSegueWithIdentifier("", sender: self)
+        }
+            
+        } else {
+            println("no account!")
+        }
         
 
         // Do any additional setup after loading the view.

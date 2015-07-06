@@ -26,12 +26,15 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
  
-        emailField.alpha = 0
-        passwordField.alpha = 0
-        passwordConfirmField.alpha = 0
+        emailField.alpha = 1.0
+        passwordField.alpha = 1.0
+        passwordConfirmField.alpha = 1.0
         
-        signupButton.alpha = 0
-        existingUserButton.alpha = 0
+        menteeButton.alpha = 0
+        mentorButton.alpha = 0
+        
+        signupButton.alpha = 1.0
+        existingUserButton.alpha = 1.0
         loginButton.alpha = 0
         backButton.alpha = 0
 //        mentormeeLogo.alpha = 1.0
@@ -115,36 +118,36 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     // when the mentor button is tapped the cooresponding textfields and buttons will appear
 
-    @IBAction func mentorButtonTapped(sender: UIButton) {
-        
-        // an animation function
-        
-        sender.highlighted = false
-        UIView.animateWithDuration(0,
-            delay: 0,
-            options: .CurveLinear & .AllowUserInteraction & .BeginFromCurrentState,
-            animations: {
-                sender.alpha = 0
-            }, completion: nil)
-        
-        // toggles the transparency of corresponding textfields and buttons
-        
-        UIView.animateWithDuration(0, animations: {
-            self.emailField.alpha = 1.0
-            self.passwordField.alpha = 1.0
-            self.passwordConfirmField.alpha = 1.0
-            self.signupButton.alpha = 1.0
-            self.existingUserButton.alpha = 1.0
-        })
- 
-        menteeButton.alpha = 0
-        passwordField.alpha = 1
-        passwordConfirmField.alpha = 1
-        
-        signupButton.alpha = 1
-        existingUserButton.alpha = 1
-        
-    }
+//    @IBAction func mentorButtonTapped(sender: UIButton) {
+//        
+//        // an animation function
+//        
+//        sender.highlighted = false
+//        UIView.animateWithDuration(0,
+//            delay: 0,
+//            options: .CurveLinear & .AllowUserInteraction & .BeginFromCurrentState,
+//            animations: {
+//                sender.alpha = 0
+//            }, completion: nil)
+//        
+//        // toggles the transparency of corresponding textfields and buttons
+//        
+//        UIView.animateWithDuration(0, animations: {
+//            self.emailField.alpha = 1.0
+//            self.passwordField.alpha = 1.0
+//            self.passwordConfirmField.alpha = 1.0
+//            self.signupButton.alpha = 1.0
+//            self.existingUserButton.alpha = 1.0
+//        })
+// 
+//        menteeButton.alpha = 0
+//        passwordField.alpha = 1
+//        passwordConfirmField.alpha = 1
+//        
+//        signupButton.alpha = 1
+//        existingUserButton.alpha = 1
+//        
+//    }
     
     // performs a seague to test connection
     
@@ -264,8 +267,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
                                 prefs.setObject(email, forKey: "email")
+                                prefs.setObject("Mentor", forKey: "Status")
                                 println(prefs.valueForKey("userID") as! String)
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                self.performSegueWithIdentifier("goto_mentorhome", sender: self)
                             }
                         }
 //                        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
