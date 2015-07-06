@@ -211,9 +211,9 @@ class HomeScreenVC: UIViewController {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         
-        if (isLoggedIn != 1) {
-            self.performSegueWithIdentifier("goto_login", sender: self)
-        }
+//        if (isLoggedIn != 1) {
+//            self.performSegueWithIdentifier("goto_login", sender: self)
+//        }
         }
     }
 
@@ -241,7 +241,9 @@ class HomeScreenVC: UIViewController {
         
         let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        clearAllKeys.removeObjectForKey("ISLOGGEDIN")
+//        clearAllKeys.removeObjectForKey("ISLOGGEDIN")
+//        clearAllKeys.setObject("MentorLoggedOut", forKey: "Status")
+        clearAllKeys.removeObjectForKey("Status")
 
         
         //        clearAllKeys.removeObjectForKey("picture")
@@ -253,7 +255,9 @@ class HomeScreenVC: UIViewController {
         //        clearAllKeys.removeObjectForKey("Year_Selected")
         //        clearAllKeys.removeObjectForKey("Gender_Selected")
         
-        self.performSegueWithIdentifier("goto_login", sender: self)
+//        self.performSegueWithIdentifier("goto_login", sender: self)
+        self.performSegueWithIdentifier("goto_TEMPSEGUE", sender: self)
+
     }
     
     

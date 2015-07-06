@@ -267,8 +267,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
                                 prefs.setObject(email, forKey: "email")
-                                prefs.setObject("Mentor", forKey: "Status")
-                                println(prefs.valueForKey("userID") as! String)
+//                                prefs.setObject("Mentor", forKey: "Status")
+//                                println(prefs.valueForKey("userID") as! String)
+                                prefs.setObject("MentorLoggedIn", forKey: "Status")
                                 self.performSegueWithIdentifier("goto_mentorhome", sender: self)
                             }
                         }
@@ -431,6 +432,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
                                 prefs.setObject(email, forKey: "email")
                                 println(prefs.valueForKey("userID") as! String)
+                                
+                                prefs.setObject("MentorLoggedIn", forKey: "Status")
+
 //                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
                         }
@@ -477,7 +481,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 
 //                                prefs.setObject(jsonDataID[0].valueForKey("ID"), forKey: "userID")
 //                                println(prefs.valueForKey("userID") as! String)
-                                self.dismissViewControllerAnimated(true, completion: nil)
+//                                self.dismissViewControllerAnimated(true, completion: nil)
+                                prefs.setObject("MentorLoggedIn", forKey: "Status")
+                                self.performSegueWithIdentifier("goto_mentorhome", sender: self)
                             }
                         }
 

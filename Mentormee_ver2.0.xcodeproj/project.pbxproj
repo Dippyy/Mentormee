@@ -33,6 +33,7 @@
 		E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */; };
 		E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD901B309BD300968EE0 /* PublicProfileVC.swift */; };
 		E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E162BD921B30C03500968EE0 /* MenteeViewVC.swift */; };
+		E1E1D4E81B4AF3E300C9D010 /* MentorUserDataSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamePictureVC.swift; sourceTree = "<group>"; };
 		E162BD901B309BD300968EE0 /* PublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProfileVC.swift; sourceTree = "<group>"; };
 		E162BD921B30C03500968EE0 /* MenteeViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeViewVC.swift; sourceTree = "<group>"; };
+		E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorUserDataSearchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				CB0EB6731B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift */,
 				CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */,
+				E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */,
 				CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */,
 				CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */,
 				E162BD921B30C03500968EE0 /* MenteeViewVC.swift */,
@@ -294,6 +297,7 @@
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
 				CB0EB6771B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift in Sources */,
 				CBF1EC041B3B33A600EC6C0F /* Test_ConnectionVC.swift in Sources */,
+				E1E1D4E81B4AF3E300C9D010 /* MentorUserDataSearchController.swift in Sources */,
 				E162BD911B309BD300968EE0 /* PublicProfileVC.swift in Sources */,
 				E162BD931B30C03500968EE0 /* MenteeViewVC.swift in Sources */,
 				E162BD851B2A2C2300968EE0 /* UpdateProfileVC.swift in Sources */,
