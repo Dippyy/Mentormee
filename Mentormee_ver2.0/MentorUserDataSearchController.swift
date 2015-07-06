@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import iAd
+import QuartzCore
 
-class MentorUserDataSearchController:UITableViewController{
+class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var senderField:String!
     var temp_array:Array< String > = Array < String >()
@@ -17,18 +19,23 @@ class MentorUserDataSearchController:UITableViewController{
     var cars = [String]()
     var url = "http://mentormee.info/dbTestConnect/programUpdate.php"
     
-    @IBOutlet var userDataTableView: UITableView!{
-        didSet{
-            userDataTableView.dataSource = self
-        }
-    }
+    @IBOutlet weak var userDataPickerView: UIPickerView!
+    
+    @IBOutlet weak var pickerLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        userDataPickerView.dataSource = self
+        userDataPickerView.delegate = self
+        
         cars=["BMW", "Audi", "Toyota"]
         println("Printing VAL!! \(senderField)")
-        if(senderField == "Program"){
+        if (senderField == "Specialization"){
+            getDataFromURL(url, searchField: "Program")
+        }
+        
+        /*if(senderField == "Program"){
             println("sender field is Program")
             getDataFromURL(url, searchField: "Faculty")
         } else if (senderField == "Specialization"){
@@ -37,29 +44,35 @@ class MentorUserDataSearchController:UITableViewController{
             getDataFromURL(url, searchField: "University")
         }else if (senderField == "Hometown"){
             getDataFromURL(url, searchField: "Hometown")
-        }
+        }*/
     }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView,
+        numberOfRowsInComponent component: Int) -> Int{
+        return temp_array.count
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return temp_array[row]
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return temp_array.count
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerLabel.text = temp_array[row]
+        let selected = temp_array[row] as String
+        selectedItem = selected
+        performSegueWithIdentifier("goto_searchcriteria", sender: self)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = userDataTableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! UITableViewCell
-        
-        cell.textLabel?.text = temp_array[indexPath.row]
-        
-        return cell
-    }
     
     func getDataFromURL(var url:String, var searchField:String){
         println("sender detail: ")
@@ -70,7 +83,7 @@ class MentorUserDataSearchController:UITableViewController{
         var postData: NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength : NSString = String(postData.length)
         
-         var request: NSMutableURLRequest = NSMutableURLRequest(URL: urlToSend!)
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL: urlToSend!)
         request.HTTPMethod = "POST"
         request.HTTPBody = postData
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
@@ -103,13 +116,13 @@ class MentorUserDataSearchController:UITableViewController{
             println("url data is empty")
         }
         /**if(searchField == "Program"){
-            
+        
         } else if (searchField == "Faculty"){
-            
+        
         }else if(searchField == "University"){
-            
+        
         }else if(senderField == "Hometown"){
-            
+        
         }*/
         
     }
@@ -122,15 +135,6 @@ class MentorUserDataSearchController:UITableViewController{
             vc.userSelectionText = selectedItem
         }
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selected = temp_array[indexPath.row] as String
-        selectedItem = selected
-        performSegueWithIdentifier("goto_searchcriteria", sender: self)
-    }
-    
-    
-
     
     
 }

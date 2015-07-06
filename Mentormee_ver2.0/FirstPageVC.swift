@@ -19,6 +19,7 @@ class FirstPageVC: UIViewController {
         super.viewDidLoad()
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setInteger(1, forKey: "ISLOGGEDIN")
         let isLoggedIn = prefs.valueForKey("ISLOGGEDIN") as! Int
         if let status = prefs.valueForKey("Status") as? String {
         
