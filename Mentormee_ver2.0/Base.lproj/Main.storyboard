@@ -1550,11 +1550,12 @@
                         <outlet property="textBoxTwo2" destination="uyg-qc-0mA" id="X5M-VR-BXJ"/>
                         <outlet property="textBoxTwo3" destination="45T-RH-ci8" id="wRb-AH-bun"/>
                         <segue destination="ZPM-N5-R1A" kind="modal" identifier="goto_menteesignup" id="0K5-dH-Xaz"/>
+                        <segue destination="6Ev-fV-S2E" kind="modal" identifier="goto_loginhome2" id="qWt-W3-Yai"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSp-Th-tr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="-90"/>
+            <point key="canvasLocation" x="1510" y="-90"/>
         </scene>
         <!--Mentee Signup Page-->
         <scene sceneID="Rbi-FV-xfH">
@@ -1700,17 +1701,17 @@
                                     <action selector="publicProfileTapped:" destination="FsD-xa-pdU" eventType="touchUpInside" id="maG-bv-REk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cKw-Ls-F4W">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1A3-ji-Cqc">
                                 <rect key="frame" x="8" y="408" width="304" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.88791749340000004" green="0.59898753140000005" blue="0.24500831710000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Log out">
+                                <state key="normal" title="Find a New Match!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logoutTapped:" destination="FsD-xa-pdU" eventType="touchUpInside" id="fjM-oP-3Na"/>
+                                    <action selector="findNewMentorTapped:" destination="FsD-xa-pdU" eventType="touchUpInside" id="QaA-Nh-8lj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iyu-Py-zry">
@@ -1726,6 +1727,19 @@
                                     <action selector="setupProfileTapped:" destination="FsD-xa-pdU" eventType="touchUpInside" id="hsB-gn-bCV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cKw-Ls-F4W">
+                                <rect key="frame" x="8" y="462" width="304" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.88791749340000004" green="0.59898753140000005" blue="0.24500831710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="FsD-xa-pdU" eventType="touchUpInside" id="fjM-oP-3Na"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1737,6 +1751,7 @@
                         <outlet property="menteeProfileImageView" destination="2q5-Cp-GYz" id="UdZ-Vs-JVh"/>
                         <segue destination="2Fu-LK-KWq" kind="modal" identifier="goto_menteepublicprofile" id="ENk-PV-2kt"/>
                         <segue destination="gmm-Xb-K8y" kind="modal" identifier="goto_menteeprofileupdate" id="YT3-P1-PZI"/>
+                        <segue destination="rqZ-G5-Vjq" kind="modal" identifier="goto_newmatch" id="c5c-Zz-6gF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XA-x3-po2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1883,7 +1898,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell4" textLabel="06z-71-p8B" detailTextLabel="fjm-re-Txn" style="IBUITableViewCellStyleValue1" id="rOP-DO-eG9">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rOP-DO-eG9" id="2qe-V1-Gy2">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2290,7 +2305,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell5" id="Fpd-jX-cbn">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fpd-jX-cbn" id="vlj-EU-BXI">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -2401,12 +2416,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8R1-gO-Zd5"/>
-        <segue reference="Lfx-qB-WZt"/>
-        <segue reference="YLa-RA-Fux"/>
-        <segue reference="Xdx-pW-bqc"/>
-        <segue reference="vcc-Ju-SNB"/>
-        <segue reference="LL6-qy-h4P"/>
+        <segue reference="YT3-P1-PZI"/>
+        <segue reference="qWt-W3-Yai"/>
+        <segue reference="c5c-Zz-6gF"/>
         <segue reference="ZVp-Ir-Fwn"/>
+        <segue reference="Lfx-qB-WZt"/>
+        <segue reference="8R1-gO-Zd5"/>
+        <segue reference="YLa-RA-Fux"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -108,5 +108,8 @@ class menteeProfileView: UIViewController {
     @IBAction func logoutTapped(sender: AnyObject) {
         
     }
+    @IBAction func findNewMentorTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_newmatch", sender: self)
+    }
     
 }

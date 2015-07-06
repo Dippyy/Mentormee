@@ -37,7 +37,9 @@ class FirstPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject("NeverMatched", forKey: "matchCheck")
 //        prefs.setInteger(1, forKey: "ISLOGGEDIN")
 //        let isLoggedIn = prefs.valueForKey("ISLOGGEDIN") as! Int
 //        if let status = prefs.valueForKey("Status") as? String {

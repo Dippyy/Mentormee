@@ -235,7 +235,14 @@ class Test_Connection2VC: UIViewController {
 
     @IBAction func connectButtonTappedTemporary(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("goto_menteesignup", sender: self)
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if(prefs.valueForKey("matchCheck") as! String == "NeverMatched"){
+            self.performSegueWithIdentifier("goto_menteesignup", sender: self)
+        } else if (prefs.valueForKey("matchCheck") as! String == "MatchedPreviously"){
+            self.performSegueWithIdentifier("goto_loginhome2", sender: self)
+        }
+        
     }
     
     

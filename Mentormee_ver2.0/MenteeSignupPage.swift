@@ -343,6 +343,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
                                 prefs.setObject(email, forKey: "email")
                                 println(prefs.valueForKey("userID") as! String)
+                                prefs.setObject("MatchedPreviously", forKey: "matchCheck")
                                 //                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
                         }
