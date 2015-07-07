@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB075A4D1B3B7A24001385C1 /* Test_Connection2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB075A4C1B3B7A24001385C1 /* Test_Connection2VC.swift */; };
-		CB0EB6771B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6731B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift */; };
 		CB0EB6781B39ECBC000851A7 /* MenteeMentorSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */; };
-		CB0EB6791B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */; };
-		CB0EB67A1B39ECBC000851A7 /* MenteeSignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */; };
 		CB0EE3FF1B46E0FD00CDF664 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE3FE1B46E0FD00CDF664 /* QuartzCore.framework */; };
 		CB0EE4061B46E13B00CDF664 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4011B46E13B00CDF664 /* QuartzCore.framework */; };
 		CB0EE4071B46E13B00CDF664 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB0EE4021B46E13B00CDF664 /* Foundation.framework */; };
@@ -57,10 +54,7 @@
 
 /* Begin PBXFileReference section */
 		CB075A4C1B3B7A24001385C1 /* Test_Connection2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test_Connection2VC.swift; sourceTree = "<group>"; };
-		CB0EB6731B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeAdditionalInfoViewController.swift; sourceTree = "<group>"; };
 		CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeMentorSearchViewController.swift; sourceTree = "<group>"; };
-		CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewCell.swift; sourceTree = "<group>"; };
-		CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteeSignUpTableViewController.swift; sourceTree = "<group>"; };
 		CB0EE3FE1B46E0FD00CDF664 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB0EE4011B46E13B00CDF664 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB0EE4021B46E13B00CDF664 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,11 +153,8 @@
 		E162BD571B28A51900968EE0 /* Mentormee_ver2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				CB0EB6731B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift */,
 				CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */,
 				E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */,
-				CB0EB6751B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift */,
-				CB0EB6761B39ECBC000851A7 /* MenteeSignUpTableViewController.swift */,
 				E162BD921B30C03500968EE0 /* MenteeViewVC.swift */,
 				E162BD901B309BD300968EE0 /* PublicProfileVC.swift */,
 				E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */,
@@ -319,12 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB0EB67A1B39ECBC000851A7 /* MenteeSignUpTableViewController.swift in Sources */,
 				E1E1D4EE1B4B009F00C9D010 /* UpdateMenteeProfileVC.swift in Sources */,
 				E1E1D4F21B4B05F000C9D010 /* TextEntryViewController.swift in Sources */,
 				CB075A4D1B3B7A24001385C1 /* Test_Connection2VC.swift in Sources */,
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
-				CB0EB6771B39ECBC000851A7 /* MenteeAdditionalInfoViewController.swift in Sources */,
 				E1E1D4F81B4B10FE00C9D010 /* mentorProfileView.swift in Sources */,
 				CBF1EC041B3B33A600EC6C0F /* Test_ConnectionVC.swift in Sources */,
 				E1E1D4EA1B4AFCE200C9D010 /* PopulateMentorInfoVC.swift in Sources */,
@@ -340,7 +329,6 @@
 				E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */,
 				E1E1D4FA1B4B12B800C9D010 /* MenteePublicProfileVC.swift in Sources */,
 				E162BD891B2B81D500968EE0 /* DetailUpdateTVC.swift in Sources */,
-				CB0EB6791B39ECBC000851A7 /* MenteeSignUpTableViewCell.swift in Sources */,
 				CB0EB6781B39ECBC000851A7 /* MenteeMentorSearchViewController.swift in Sources */,
 				E162BD7D1B28A9E300968EE0 /* LoginVC.swift in Sources */,
 				E1E1D4EC1B4AFDD600C9D010 /* MenteeSignupPage.swift in Sources */,
