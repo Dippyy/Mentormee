@@ -95,6 +95,10 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
                     prefs.setObject(interests, forKey: "Interests Mentee")
                 }
                 
+                if let profilePic: String = jsonData[0].valueForKey("Picture") as? String {
+                    prefs.setObject(profilePic, forKey: "Profile Picture Mentee")
+                }
+                
                 if let whatsUp: String = jsonData[1].valueForKey("WhatsUp") as? String {
                     prefs.setObject(jsonData[1].valueForKey("WhatsUp"), forKey: "Whatsup Mentee")
                 }
@@ -177,13 +181,13 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
                 cell.detailTextLabel?.text = "Set up Contact Info"
             }
         } else if(cell.textLabel?.text == "Interests"){
-            if(prefs.valueForKey("Interests Mentee") as? String != nil){
+            if(prefs.valueForKey("Interests Mentee") as? String != ""){
                 cell.detailTextLabel?.text = "Interests Set"
             } else {
                 cell.detailTextLabel?.text = "What are you interested in?"
             }
         } else if(cell.textLabel?.text == "Profile Picture"){
-            if(prefs.valueForKey("Profile Picture") as? String != nil){
+            if(prefs.valueForKey("Profile Picture Mentee") as? String != ""){
                 cell.detailTextLabel?.text = "Uploaded"
             } else {
                 cell.detailTextLabel?.text = "Upload a Picture"
