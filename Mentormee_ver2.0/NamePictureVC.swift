@@ -48,6 +48,21 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             UIView.animateWithDuration(0, animations: {
                 self.whatsupTextField.alpha = 1.0
             })
+        } else if (prefs.valueForKey("Selection")!.isEqual("Skype")){
+            self.fullNameTextField.text = prefs.valueForKey("Skype") as! String
+            UIView.animateWithDuration(0, animations: {
+                self.fullNameTextField.alpha = 1.0
+            })
+        } else if (prefs.valueForKey("Selection")!.isEqual("Facebook")){
+            self.fullNameTextField.text = prefs.valueForKey("Facebook") as! String
+            UIView.animateWithDuration(0, animations: {
+                self.fullNameTextField.alpha = 1.0
+            })
+        } else if (prefs.valueForKey("Selection")!.isEqual("Email")){
+            self.fullNameTextField.text = prefs.valueForKey("email") as! String
+            UIView.animateWithDuration(0, animations: {
+                self.fullNameTextField.alpha = 1.0
+            })
         }
     }
 
@@ -126,52 +141,86 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
             
-            var whatsUp = whatsupTextField.text as String
+            var whatsupMentor: String = whatsupTextField.text as String
+            var updateInfo: String = "whatsUpMentor"
             var userID = prefs.valueForKey("userID") as! String
+            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateWhatsup2.php"
+            update_table_info(urlToSend, userID: userID, updateField: whatsupMentor, updateVariable: updateInfo)
             
-            var post: NSString = "userID=\(userID)&whatsup=\(whatsUp)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateWhatsup2.php")!
-            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-            var postLength:NSString = String(postData.length)
-            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+//            var whatsUp = whatsupTextField.text as String
+//            var userID = prefs.valueForKey("userID") as! String
+//            
+//            var post: NSString = "userID=\(userID)&whatsup=\(whatsUp)"
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateWhatsup2.php")!
+//            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+//            var postLength:NSString = String(postData.length)
+//            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+//            
+//            request.HTTPMethod = "POST"
+//            request.HTTPBody = postData
+//            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+//            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//            request.setValue("application/json", forHTTPHeaderField: "Accept")
+//            
+//            var responseError: NSError?
+//            var response: NSURLResponse?
+//            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+//            
+//            if(urlData != nil){
+//                
+//                let res = response as! NSHTTPURLResponse!
+//                NSLog("Response code: %ld", res.statusCode)
+//                
+//                if(res.statusCode >= 200 && res.statusCode < 300){
+//                    
+//                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+//                    NSLog("Response ==> %@", responseData)
+//                    var error:NSError?
+//                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+//                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+//                    NSLog("Success %ld", success)
+//                    
+//                    if(success == 0){
+//                        self.performSegueWithIdentifier("goto_overview3", sender: self)
+//                    }
+//                    
+//                    if(success == 1){
+//                        NSLog("Update SUCCESS!")
+//                        self.performSegueWithIdentifier("goto_overview3", sender: self)
+//                    }
+//                }
+//            }
             
-            request.HTTPMethod = "POST"
-            request.HTTPBody = postData
-            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
             
-            var responseError: NSError?
-            var response: NSURLResponse?
-            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("Facebook")){
             
-            if(urlData != nil){
-                
-                let res = response as! NSHTTPURLResponse!
-                NSLog("Response code: %ld", res.statusCode)
-                
-                if(res.statusCode >= 200 && res.statusCode < 300){
-                    
-                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
-                    NSLog("Response ==> %@", responseData)
-                    var error:NSError?
-                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
-                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
-                    NSLog("Success %ld", success)
-                    
-                    if(success == 0){
-                        self.performSegueWithIdentifier("goto_overview3", sender: self)
-                    }
-                    
-                    if(success == 1){
-                        NSLog("Update SUCCESS!")
-                        self.performSegueWithIdentifier("goto_overview3", sender: self)
-                    }
-                }
-            }
+            var facebookID: String = fullNameTextField.text as String
+            var updateInfo: String = "FacebookID"
+            var userID = prefs.valueForKey("userID") as! String
+            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateFacebookID.php"
+            update_table_info(urlToSend, userID: userID, updateField: facebookID, updateVariable: updateInfo)
             
+            // updates the Skype
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("Skype")){
             
-        }else if(prefs.valueForKey("Selection")!.isEqualToString("Profile Picture")){
+            var skypeID: String = fullNameTextField.text as String
+            var updateInfo: String = "skypeID"
+            var userID = prefs.valueForKey("userID") as! String
+            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateSkypeID.php"
+            update_table_info(urlToSend, userID: userID, updateField: skypeID, updateVariable: updateInfo)
+            
+            // updates the email
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("Email")){
+            
+            var emailID: String = fullNameTextField.text as String
+            var updateInfo: String = "emailID"
+            var userID = prefs.valueForKey("userID") as! String
+            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateEmailID.php"
+            update_table_info(urlToSend, userID: userID, updateField: emailID, updateVariable: updateInfo)
+            let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            prefs.setObject(emailID, forKey: "email")
+            
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("Profile Picture")){
             
             myImageUploadRequest()
             self.performSegueWithIdentifier("goto_overview3", sender: self)
@@ -278,7 +327,51 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         return "Boundary-\(NSUUID().UUIDString)"
     }
     
+    // this function takes the userID, updatefield (the content) and the updatevariable (what is being updated)
+    func update_table_info(url: String, userID: String, updateField: String, updateVariable: String){
+        
+        var post: NSString = "userID=\(userID)&\(updateVariable)=\(updateField)"
+        println(post)
+        var url:NSURL = NSURL(string: url)!
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length)
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+        
+        if(urlData != nil){
+            
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                
+                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                
+                if(success == 1){
+                    NSLog("Update SUCCESS!")
+                    self.performSegueWithIdentifier("goto_overview3", sender: self)
+                    
+                }
+            }
+        }
+    }
+    
+    
 }
+
 
     extension NSMutableData {
         func appendString(string: String) {

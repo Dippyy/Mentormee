@@ -12,7 +12,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var myTableView: UITableView!
     
-    let profileUpdate = ["Profile Picture","Full Name","University", "Faculty", "Program","Whatsup", "Year","Gender"]
+    let profileUpdate = ["Profile Picture","Full Name","Contact Info","University", "Faculty", "Program","Whatsup", "Year","Gender"]
     let textCellIdentifier = "cell"
     
     override func viewDidLoad() {
@@ -193,6 +193,12 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             } else {
                 cell.detailTextLabel?.text = "Upload a Picture"
             }
+        } else if(cell.textLabel?.text == "Contact Info"){
+            if(prefs.valueForKey("Contact Info") as? String != ""){
+                cell.detailTextLabel?.text = "Contact Info Set"
+            } else {
+                cell.detailTextLabel?.text = "Set Contact Info"
+            }
         } else if(cell.textLabel?.text == "Whatsup"){
             if(prefs.valueForKey("Whatsup") as? String != ""){
                 cell.detailTextLabel?.text = "Set"
@@ -223,6 +229,9 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         } else if (cell.textLabel?.text == "Program"){
             prefs.setObject(cell.textLabel?.text, forKey: "Selection")
             self.performSegueWithIdentifier("goto_detailupdate", sender: self)
+        } else if (cell.textLabel?.text == "Contact Info"){
+            prefs.setObject(cell.textLabel?.text, forKey: "Selection")
+            self.performSegueWithIdentifier("goto_statictable", sender: self)
         } else if (cell.textLabel?.text == "Gender"){
             prefs.setObject(cell.textLabel?.text, forKey: "Selection")
             self.performSegueWithIdentifier("goto_statictable", sender: self)

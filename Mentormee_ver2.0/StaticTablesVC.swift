@@ -14,6 +14,7 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let genderTable = ["Male","Female"]
     let yearOfStudy = ["First Year","Second Year","Third Year", "Fourth Year", "Graduate"]
+    let contactInfo = ["Skype","Facebook","Email"]
     let textCellIdentifier = "cell3"
     
     override func viewDidLoad() {
@@ -47,6 +48,9 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         else if(prefs.valueForKey("Selection")!.isEqualToString("Year")){
             return yearOfStudy.count
         }
+        else if(prefs.valueForKey("Selection")!.isEqualToString("Contact Info")){
+            return contactInfo.count
+        }
         return 0
     }
     
@@ -61,6 +65,67 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return cell
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Year")){
             cell.textLabel?.text = yearOfStudy[row]
+            return cell
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("Contact Info")){
+            cell.textLabel?.text = contactInfo[row]
+            
+            let userID = prefs.valueForKey("userID") as! String
+            let userIDToSend = userID.toInt()
+            
+            var post: NSString = "userID=\(userIDToSend!)"
+            
+            NSLog("PostData: %@",post);
+            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/populateContractInfo.php")!
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String( postData.length )
+            var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+            
+            if(urlData != nil){
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    
+                    let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                    
+                    let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                    prefs.setObject(jsonData[0].valueForKey("Facebook"), forKey: "Facebook")
+                    prefs.setObject(jsonData[0].valueForKey("Skype"), forKey: "Skype")
+                    
+                    
+                    if let facebookID = prefs.valueForKey("Facebook") as? String {
+                        if(cell.textLabel?.text == "Facebook"){
+                            cell.detailTextLabel?.text = facebookID
+                        }
+                    }
+                    if let skypeID = prefs.valueForKey("Skype") as? String {
+                        if(cell.textLabel?.text == "Skype"){
+                            cell.detailTextLabel?.text = skypeID
+                        }
+                    }
+                    if let emailID = prefs.valueForKey("email") as? String {
+                        if(cell.textLabel?.text == "Email"){
+                            cell.detailTextLabel?.text = emailID
+                        }
+                    }
+                }
+            }
+            
             return cell
         }
         return cell
@@ -163,7 +228,13 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 }
             }
-
+        }
+        if(prefs.valueForKey("Selection")!.isEqualToString("Contact Info")){
+            
+            let selectedContactDevice = contactInfo[row] as String
+            prefs.setObject(selectedContactDevice, forKey: "Selection")
+            self.performSegueWithIdentifier("goto_singleFieldSelect2", sender: self)
+            
         }
     }
     

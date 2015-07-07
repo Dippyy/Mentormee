@@ -110,24 +110,7 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
                 if let whatsUp: String = jsonData[1].valueForKey("GraduationYear") as? String {
                     prefs.setObject(jsonData[1].valueForKey("GraduationYear"), forKey: "Graduation Year Mentee")
                 }
-                
-//                prefs.setObject(jsonData[0].valueForKey("FirstName"), forKey: "First Name Mentee")
-//                prefs.setObject(jsonData[0].valueForKey("LastName"), forKey: "Last Name Mentee")
-//                var firstName: String = prefs.valueForKey("First Name Mentee") as! String
-//                var lastName: String = prefs.valueForKey("Last Name Mentee") as! String
-//                var fullName: String = firstName + " " + lastName
-//                prefs.setObject(fullName, forKey: "Full Name Mentee")
-//                prefs.setObject(jsonData[0].valueForKey("HighSchool"), forKey: "Highschool Mentee")
-//                prefs.setObject(jsonData[0].valueForKey("Skype"), forKey: "Contact Info Mentee")
-//                prefs.setObject(jsonData[0].valueForKey("Interests"), forKey: "Interests Mentee")
-                
-//                prefs.setObject(jsonData[1].valueForKey("WhatsUp"), forKey: "Whatsup Mentee")
-//                prefs.setObject(jsonData[1].valueForKey("CurrentSituation"), forKey: "Current Situation")
-//                prefs.setObject(jsonData[1].valueForKey("FutureOptions"), forKey: "Future Options")
 
-//                prefs.setObject(jsonData[1].valueForKey("GraduationYear"), forKey: "Graduation Year Mentee")
-                
-                
             }
             
         }

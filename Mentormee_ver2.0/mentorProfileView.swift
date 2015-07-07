@@ -22,7 +22,7 @@ class mentorProfileView: UIViewController {
         super.viewDidLoad()
         myScrollView.contentSize.height = 750
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let mentorID = prefs.valueForKey("mentorUserID") as! Int
+        let mentorID = prefs.valueForKey("mentorUserID") as! String
         
         mentorProfileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         mentorProfileImageView.contentMode = UIViewContentMode.ScaleAspectFit

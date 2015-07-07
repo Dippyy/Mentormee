@@ -244,6 +244,7 @@ class HomeScreenVC: UIViewController {
 //        clearAllKeys.removeObjectForKey("ISLOGGEDIN")
 //        clearAllKeys.setObject("MentorLoggedOut", forKey: "Status")
         clearAllKeys.removeObjectForKey("Status")
+        clearAllKeys.removeObjectForKey("ProfileImage")
 
         
         //        clearAllKeys.removeObjectForKey("picture")

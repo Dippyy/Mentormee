@@ -28,6 +28,11 @@ class staticTableUpdateVC: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_profileupdate2", sender: self)
+    }
+    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -49,11 +54,71 @@ class staticTableUpdateVC: UIViewController, UITableViewDelegate, UITableViewDat
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let cell = myTableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! UITableViewCell
         let row = indexPath.row
+        
         if(prefs.valueForKey("Selection")!.isEqualToString("Grade")){
             cell.textLabel?.text = yearOfStudy[row]
             return cell
+            
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Contact Info")){
+            
             cell.textLabel?.text = contactInfo[row]
+            
+            let userID = prefs.valueForKey("userID") as! String
+            let userIDToSend = userID.toInt()
+            
+            var post: NSString = "userID=\(userIDToSend!)"
+            
+            NSLog("PostData: %@",post);
+            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/populateContractInfo.php")!
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String( postData.length )
+            var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+            var responseError: NSError?
+            var response: NSURLResponse?
+            
+            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+            
+            if(urlData != nil){
+                let res = response as! NSHTTPURLResponse!
+                NSLog("Response code: %ld", res.statusCode)
+                
+                if(res.statusCode >= 200 && res.statusCode < 300){
+                    
+                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                    NSLog("Response ==> %@", responseData)
+                    var error:NSError?
+                    
+                    let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                    
+                    let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                    prefs.setObject(jsonData[0].valueForKey("Facebook"), forKey: "Facebook")
+                    prefs.setObject(jsonData[0].valueForKey("Skype"), forKey: "Skype")
+
+                    
+                    if let facebookID = prefs.valueForKey("Facebook") as? String {
+                        if(cell.textLabel?.text == "Facebook"){
+                            cell.detailTextLabel?.text = facebookID
+                        }
+                    }
+                    if let skypeID = prefs.valueForKey("Skype") as? String {
+                        if(cell.textLabel?.text == "Skype"){
+                            cell.detailTextLabel?.text = skypeID
+                        }
+                    }
+                    if let emailID = prefs.valueForKey("email") as? String {
+                        if(cell.textLabel?.text == "Email"){
+                            cell.detailTextLabel?.text = emailID
+                        }
+                    }
+                }
+            }
             return cell
         }
         return cell

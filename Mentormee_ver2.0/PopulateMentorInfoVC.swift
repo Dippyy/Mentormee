@@ -23,6 +23,8 @@ class PopulateMentorInfoVC: UIViewController {
         //This is an array of values that I am assuming will already be populated
         
         var InputData:String = "57"
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject(InputData, forKey: "mentorUserID")
         
         //This setups the imageview so it appears circular
         
