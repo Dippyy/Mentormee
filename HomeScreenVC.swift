@@ -16,8 +16,8 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var programNameLabel: UILabel!
     @IBOutlet weak var ViewProfileButton: UIButton!
     @IBOutlet weak var SetUpProfileButton: UIButton!
-    @IBOutlet weak var ViewMenteesButton: UIButton!
     @IBOutlet weak var LogoutButton: UIButton!
+    @IBOutlet weak var signUpLabelToSignup: UILabel!
     
     
     override func viewDidLoad() {
@@ -29,9 +29,8 @@ class HomeScreenVC: UIViewController {
         programNameLabel.alpha = 0
         ViewProfileButton.alpha = 0
         SetUpProfileButton.alpha = 0
-        ViewMenteesButton.alpha = 0
         LogoutButton.alpha = 0
-        
+        signUpLabelToSignup.hidden = true
         
         
     }
@@ -40,6 +39,8 @@ class HomeScreenVC: UIViewController {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible=false
         
+        
+        
         UIView.animateWithDuration(1, animations: {
             self.profileImageView.alpha = 1.0
             self.fullNameLabel.alpha = 1.0
@@ -47,7 +48,6 @@ class HomeScreenVC: UIViewController {
             self.programNameLabel.alpha = 1.0
             self.ViewProfileButton.alpha = 1.0
             self.SetUpProfileButton.alpha = 1.0
-            self.ViewMenteesButton.alpha = 1.0
             self.LogoutButton.alpha = 1.0
         })
         
@@ -124,6 +124,16 @@ class HomeScreenVC: UIViewController {
                 if(jsonData[1].valueForKey("University_id")!.isEqualToString("0")){
                     let universityID = 1
                     prefs.setObject(universityID, forKey: "uniID")
+                    
+                    signUpLabelToSignup.hidden = false
+                    
+                    var alertView:UIAlertView = UIAlertView()
+                    alertView.title = "First Login Mentor"
+                    alertView.message = "We noticed you have not set your University / Program yet! To help us match you with a mentee please set these fields!"
+                    alertView.delegate = self
+                    alertView.addButtonWithTitle("OK")
+                    alertView.show()
+                    
                 } else {
                     let universityID: String = jsonData[1].valueForKey("University_id") as! String
                     let uniID: Int? = universityID.toInt()

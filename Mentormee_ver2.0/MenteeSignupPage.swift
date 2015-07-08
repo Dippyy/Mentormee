@@ -94,7 +94,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonToLoginTapped(sender: AnyObject) {
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         var email:NSString = emailTextField.text
         var password:NSString = passwordTextField.text
         

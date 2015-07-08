@@ -237,10 +237,55 @@ class Test_Connection2VC: UIViewController {
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        if(prefs.valueForKey("matchCheck") as! String == "NeverMatched"){
-            self.performSegueWithIdentifier("goto_menteesignup", sender: self)
-        } else if (prefs.valueForKey("matchCheck") as! String == "MatchedPreviously"){
-            self.performSegueWithIdentifier("goto_loginhome2", sender: self)
+        let menteeUserID = prefs.valueForKey("userID") as! String
+        let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
+        let mentorUserID:AnyObject = mentorArray[0]
+        let mentorUserIDString: String = String(mentorUserID as! NSString)
+    
+        var post:NSString = "menteeUserID=\(menteeUserID)&mentorUserID=\(mentorUserID)"
+        NSLog("PostData: %@", post)
+        
+        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/createMentorshipJoin.php")!
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length)
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+        
+        if(urlData != nil){
+            
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                NSLog("Success %ld", success)
+                
+                if(success == 1){
+                    
+                prefs.setObject(mentorUserIDString, forKey: "MentorMatched")
+                
+                prefs.setObject("MentorLoggedIn", forKey: "Status")
+                if(prefs.valueForKey("matchCheck") as! String == "NeverMatched"){
+                    self.performSegueWithIdentifier("goto_menteesignup", sender: self)
+                } else if (prefs.valueForKey("matchCheck") as! String == "MatchedPreviously"){
+                    self.performSegueWithIdentifier("goto_loginhome2", sender: self)
+                }
+            }
+            }
         }
         
     }
