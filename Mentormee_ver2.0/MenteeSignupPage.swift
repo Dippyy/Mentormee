@@ -358,7 +358,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         
                         var postID: NSString = "userID=\(userID)"
                         NSLog("PostData: %@",postID);
-                        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createNewAccount.php")!
+                        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createNewAccountMentee.php")!
                         var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLengthID:NSString = String( postDataID.length )
                         var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)
