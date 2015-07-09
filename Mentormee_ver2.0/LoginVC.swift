@@ -486,12 +486,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         NSLog("TIME TO UPDATE PRIMARY CAPABILITY")
                 
                         let primaryCapability: String = prefs.valueForKey("Capability ID") as! String
+//                        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//                        let userID = prefs.valueForKey("userID") as! String
                         
-                        var postID2: NSString = "primaryCapabilityID=\(primaryCapability)"
+                        var postID2: NSString = "primaryCapabilityID=\(primaryCapability)&userID=\(userID)"
                         NSLog("PostData: %@",postID2);
                         var urlID2:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createPrimaryCapabilityEntry.php")!
-                        var postDataID2:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
-                        var postLengthID2:NSString = String( postDataID.length )
+                        var postDataID2:NSData = postID2.dataUsingEncoding(NSASCIIStringEncoding)!
+                        var postLengthID2:NSString = String( postDataID2.length )
                         var requestID2:NSMutableURLRequest = NSMutableURLRequest(URL: urlID2)
                         
                         requestID2.HTTPMethod = "POST"
@@ -503,19 +505,19 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         var responseErrorID2: NSError?
                         var responseID2: NSURLResponse?
                         
-                        var urlDataID2: NSData? = NSURLConnection.sendSynchronousRequest(requestID2, returningResponse:&responseID, error:&responseErrorID2)
+                        var urlDataID2: NSData? = NSURLConnection.sendSynchronousRequest(requestID2, returningResponse:&responseID2, error:&responseErrorID2)
                         
-                        if(urlDataID != nil){
-                            let res = responseID as! NSHTTPURLResponse!
+                        if(urlDataID2 != nil){
+                            let res = responseID2 as! NSHTTPURLResponse!
                             NSLog("Response code: %ld", res.statusCode)
                             
                             if(res.statusCode >= 200 && res.statusCode < 300){
                                 
-                                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                                var responseData: NSString = NSString(data: urlDataID2!, encoding: NSUTF8StringEncoding)!
                                 NSLog("Response ==> %@", responseData)
                                 var error:NSError?
                                 
-                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                let jsonDataID: NSDictionary = NSJSONSerialization.JSONObjectWithData(urlDataID2!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
                                 
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
