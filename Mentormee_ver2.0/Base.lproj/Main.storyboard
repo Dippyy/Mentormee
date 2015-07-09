@@ -134,6 +134,42 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook: Mark Dewford" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9qk-hb-ruW">
+                                <rect key="frame" x="48" y="441" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skype: Marky221" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wSg-hI-Xm1">
+                                <rect key="frame" x="43" y="466" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone: 416-888-8888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2vc-wK-NEA">
+                                <rect key="frame" x="43" y="491" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ael-3d-6xh">
+                                <rect key="frame" x="45" y="416" width="230" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.88791749340000004" green="0.59898753140000005" blue="0.24500831710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h7G-VS-JbI">
+                                <rect key="frame" x="50" y="416" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -147,6 +183,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundLabel" destination="ael-3d-6xh" id="rno-SF-zbi"/>
                         <outlet property="fullNameLabel" destination="UXX-hU-3Kn" id="2Q6-Jg-gbf"/>
                         <outlet property="myImageView" destination="Da2-m2-dTd" id="tGO-R5-wnH"/>
                         <outlet property="programLabel" destination="nX2-na-iMi" id="SWn-Xq-txj"/>
@@ -155,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izy-R3-9kV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2209" y="-78"/>
+            <point key="canvasLocation" x="-2275" y="-100"/>
         </scene>
         <!--Home ScreenVC-->
         <scene sceneID="ufC-wZ-h7g">
@@ -260,6 +297,7 @@
                         <segue destination="qUE-nw-BRk" kind="modal" identifier="goto_login" id="8R1-gO-Zd5"/>
                         <segue destination="OlU-Be-t0S" kind="modal" identifier="goto_profileupdate" modalTransitionStyle="crossDissolve" id="YLa-RA-Fux"/>
                         <segue destination="rCk-k0-5hu" kind="modal" identifier="goto_reviews" id="aSD-Sy-9S5"/>
+                        <segue destination="DtC-tz-rad" kind="modal" identifier="goto_mentee" id="m1x-ll-sqe"/>
                         <segue destination="Fjg-RR-oS4" kind="modal" identifier="goto_TEMPSEGUE" id="C4b-vu-hHJ"/>
                     </connections>
                 </viewController>
@@ -525,7 +563,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YMc-AL-zUB">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XCY-ND-voS">
@@ -716,6 +754,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLf-r4-Nk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1679" y="-839"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bUA-9C-HEl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DtC-tz-rad" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b2p-yO-qP7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pxf-1j-VEU" kind="relationship" relationship="rootViewController" id="BIy-wG-lRc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f7h-LW-9b3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1679" y="-100"/>
         </scene>
         <!--Mentormee-->
         <scene sceneID="Pqh-wg-UJo">
@@ -1945,14 +2001,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="gS0-pF-ied"/>
+        <segue reference="BtB-FH-9tE"/>
+        <segue reference="YT3-P1-PZI"/>
         <segue reference="U3N-Il-7VV"/>
         <segue reference="c5c-Zz-6gF"/>
         <segue reference="nGd-Ql-9TB"/>
-        <segue reference="YT3-P1-PZI"/>
-        <segue reference="kPv-Uq-54L"/>
         <segue reference="t72-7f-jSn"/>
-        <segue reference="YLa-RA-Fux"/>
-        <segue reference="gS0-pF-ied"/>
+        <segue reference="kPv-Uq-54L"/>
+        <segue reference="HnO-rq-onT"/>
         <segue reference="ZVp-Ir-Fwn"/>
     </inferredMetricsTieBreakers>
 </document>
