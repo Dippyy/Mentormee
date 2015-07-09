@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension NSString {
+    var isEmail: Bool {
+        let emailStr = self as? String
+        let range = NSMakeRange(0, self.length)
+        let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+        let emailBool = NSPredicate(format: "SELF MATCHES %@", regex).evaluateWithObject(self)
+        return emailBool
+    }
+}
+
 class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
