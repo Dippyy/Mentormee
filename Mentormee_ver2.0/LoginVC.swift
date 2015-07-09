@@ -444,8 +444,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         
                         let prefs = NSUserDefaults.standardUserDefaults()
                         let userID = prefs.valueForKey("userID") as! String
-//                        let userID = jsonData[0]?.valueForKey("userID") as! String
-//                        let IDToSend = userID.toInt()
                         
                         var postID: NSString = "userID=\(userID)"
                         NSLog("PostData: %@",postID);
@@ -471,6 +469,48 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             
                             if(res.statusCode >= 200 && res.statusCode < 300){
                                 
+                                var responseData: NSString = NSString(data: urlDataID!, encoding: NSUTF8StringEncoding)!
+                                NSLog("Response ==> %@", responseData)
+                                var error:NSError?
+                                
+                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlDataID!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                
+                                let primaryID = jsonDataID[0].valueForKey("Capability_id") as! String
+                                prefs.setObject(primaryID, forKey: "Capability ID")
+//
+//                                prefs.setObject("MentorLoggedIn", forKey: "Status")
+//                                self.performSegueWithIdentifier("goto_mentorhome", sender: self)
+                            }
+                        }
+                        
+                        NSLog("TIME TO UPDATE PRIMARY CAPABILITY")
+                
+                        let primaryCapability: String = prefs.valueForKey("Capability ID") as! String
+                        
+                        var postID2: NSString = "primaryCapabilityID=\(primaryCapability)"
+                        NSLog("PostData: %@",postID2);
+                        var urlID2:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createPrimaryCapabilityEntry.php")!
+                        var postDataID2:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
+                        var postLengthID2:NSString = String( postDataID.length )
+                        var requestID2:NSMutableURLRequest = NSMutableURLRequest(URL: urlID2)
+                        
+                        requestID2.HTTPMethod = "POST"
+                        requestID2.HTTPBody = postDataID2
+                        requestID2.setValue(postLengthID2 as String, forHTTPHeaderField: "Content-Length")
+                        requestID2.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                        requestID2.setValue("application/json", forHTTPHeaderField: "Accept")
+                        
+                        var responseErrorID2: NSError?
+                        var responseID2: NSURLResponse?
+                        
+                        var urlDataID2: NSData? = NSURLConnection.sendSynchronousRequest(requestID2, returningResponse:&responseID, error:&responseErrorID2)
+                        
+                        if(urlDataID != nil){
+                            let res = responseID as! NSHTTPURLResponse!
+                            NSLog("Response code: %ld", res.statusCode)
+                            
+                            if(res.statusCode >= 200 && res.statusCode < 300){
+                                
                                 var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
                                 NSLog("Response ==> %@", responseData)
                                 var error:NSError?
@@ -479,9 +519,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
-//                                prefs.setObject(jsonDataID[0].valueForKey("ID"), forKey: "userID")
-//                                println(prefs.valueForKey("userID") as! String)
-//                                self.dismissViewControllerAnimated(true, completion: nil)
                                 prefs.setObject("MentorLoggedIn", forKey: "Status")
                                 self.performSegueWithIdentifier("goto_mentorhome", sender: self)
                             }

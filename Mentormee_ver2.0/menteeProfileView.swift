@@ -106,7 +106,7 @@ class menteeProfileView: UIViewController {
         self.performSegueWithIdentifier("goto_menteeprofileupdate", sender: self)
     }
     @IBAction func logoutTapped(sender: AnyObject) {
-        
+        self.performSegueWithIdentifier("goto_menteelogout", sender: self)
     }
     @IBAction func findNewMentorTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("goto_newmatch", sender: self)

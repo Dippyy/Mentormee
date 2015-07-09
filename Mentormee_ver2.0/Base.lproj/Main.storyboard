@@ -516,7 +516,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell3" textLabel="YMc-AL-zUB" detailTextLabel="XCY-ND-voS" style="IBUITableViewCellStyleValue1" id="2cJ-SM-3uV">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2cJ-SM-3uV" id="b8q-tn-Lpj">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1263,6 +1263,7 @@
                         <segue destination="2Fu-LK-KWq" kind="modal" identifier="goto_menteepublicprofile" id="ENk-PV-2kt"/>
                         <segue destination="gmm-Xb-K8y" kind="modal" identifier="goto_menteeprofileupdate" id="YT3-P1-PZI"/>
                         <segue destination="rqZ-G5-Vjq" kind="modal" identifier="goto_newmatch" id="c5c-Zz-6gF"/>
+                        <segue destination="Fjg-RR-oS4" kind="modal" identifier="goto_menteelogout" id="nGd-Ql-9TB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XA-x3-po2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1967,13 +1968,14 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uhh-HS-fYT"/>
-        <segue reference="Xdx-pW-bqc"/>
+        <segue reference="c5c-Zz-6gF"/>
         <segue reference="U3N-Il-7VV"/>
-        <segue reference="ZVp-Ir-Fwn"/>
-        <segue reference="YLa-RA-Fux"/>
+        <segue reference="nGd-Ql-9TB"/>
+        <segue reference="YT3-P1-PZI"/>
         <segue reference="kPv-Uq-54L"/>
         <segue reference="8R1-gO-Zd5"/>
+        <segue reference="YLa-RA-Fux"/>
         <segue reference="gS0-pF-ied"/>
+        <segue reference="ZVp-Ir-Fwn"/>
     </inferredMetricsTieBreakers>
 </document>
