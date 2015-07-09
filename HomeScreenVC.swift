@@ -32,15 +32,12 @@ class HomeScreenVC: UIViewController {
         LogoutButton.alpha = 0
         signUpLabelToSignup.hidden = true
         
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible=false
-        
-        
-        
+    
         UIView.animateWithDuration(1, animations: {
             self.profileImageView.alpha = 1.0
             self.fullNameLabel.alpha = 1.0
@@ -50,7 +47,6 @@ class HomeScreenVC: UIViewController {
             self.SetUpProfileButton.alpha = 1.0
             self.LogoutButton.alpha = 1.0
         })
-        
         
         let prefs1: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
@@ -251,8 +247,6 @@ class HomeScreenVC: UIViewController {
         
         let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-//        clearAllKeys.removeObjectForKey("ISLOGGEDIN")
-//        clearAllKeys.setObject("MentorLoggedOut", forKey: "Status")
         clearAllKeys.removeObjectForKey("Status")
         clearAllKeys.removeObjectForKey("ProfileImage")
 
