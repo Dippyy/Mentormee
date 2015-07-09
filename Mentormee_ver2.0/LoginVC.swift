@@ -181,7 +181,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         var email:NSString = emailField.text
         var password:NSString = passwordField.text
         
-        if ( email.isEqualToString("") || password.isEqualToString("") ) {
+        if ( email.isEmail != true || email.isEqualToString("") || password.isEqualToString("") ) {
             
             var alertView:UIAlertView = UIAlertView()
             alertView.title = "Sign in Failed!"
@@ -318,6 +318,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     // signup -> gives the DB email/password/password and mentor status
     // fetches the userID of the mentor based on the email
     // creates a row in Capabilities/Mentor/Mentee and inputs the userID into the row in the corresponding column
@@ -329,11 +330,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         var passwordConfirm: NSString = passwordConfirmField.text as NSString
         var mentorStatus:NSString = "Mentor"
         
-        if (email.isEqualToString("") || password.isEqualToString("") || passwordConfirm.isEqualToString("")) {
+        if (email.isEmail != true || password.isEqualToString("") || passwordConfirm.isEqualToString("")) {
             
             var alertView:UIAlertView = UIAlertView()
             alertView.title = "Sign Up Failed!"
-            alertView.message = "Please Fill the Required Fields"
+            alertView.message = "Please Fill the Required Fields With Valid Information."
             alertView.delegate = self
             alertView.addButtonWithTitle("OK")
             alertView.show()
