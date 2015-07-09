@@ -12,11 +12,18 @@ class FirstPageVC: UIViewController {
 
     @IBAction func MentorButton(sender: AnyObject) {
     }
+    @IBAction func menteeButtonTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_menteelogin", sender: self)
+    }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if let status = prefs.valueForKey("Status") as? String {
         
+         println(status)
+            
         if(status == "MentorLoggedIn"){
             self.performSegueWithIdentifier("goto_mentorhome2", sender: self)
         } else if(status == "MentorLoggedOut"){
@@ -24,15 +31,13 @@ class FirstPageVC: UIViewController {
         } else if(status == "MenteeLoggedIn"){
             println("Go to mentee profile page")
         } else if(status == "MenteeLoggedOut"){
-            println("Go to mentee login")
+            self.performSegueWithIdentifier("goto_menteelogin", sender: self)
         }
     } else {
         println("NEW USER")
     }
 }
     
-
-
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -184,6 +184,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
                                 prefs.setObject(email, forKey: "email")
+                                prefs.setObject("MentorLoggedIn", forKey: "Status")
                                 println(prefs.valueForKey("userID") as! String)
                                 self.performSegueWithIdentifier("goto_loginhome", sender: self)
                             }
@@ -310,7 +311,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         
                         var post: NSString = "email=\(emailToSend)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID2.php")!
+                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID3.php")!
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -344,6 +345,8 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 prefs.setObject(email, forKey: "email")
                                 println(prefs.valueForKey("userID") as! String)
                                 prefs.setObject("MatchedPreviously", forKey: "matchCheck")
+                                prefs.setObject("MenteeLoggedIn", forKey: "Status")
+
                                 //                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
                         }

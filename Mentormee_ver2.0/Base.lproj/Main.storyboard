@@ -810,7 +810,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="99Q-oA-NBe" kind="modal" id="JPv-bt-8hP"/>
+                                    <action selector="menteeButtonTapped:" destination="Fjg-RR-oS4" eventType="touchUpInside" id="ZYw-YU-BbC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LIh-bK-t7o">
@@ -829,6 +829,7 @@
                     </view>
                     <connections>
                         <segue destination="SC7-b4-MeQ" kind="modal" identifier="goto_mentorhome2" id="kPv-Uq-54L"/>
+                        <segue destination="99Q-oA-NBe" kind="modal" identifier="goto_menteelogin" id="VUr-jk-0ng"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUz-M4-Afj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1968,12 +1969,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c5c-Zz-6gF"/>
         <segue reference="U3N-Il-7VV"/>
+        <segue reference="c5c-Zz-6gF"/>
         <segue reference="nGd-Ql-9TB"/>
         <segue reference="YT3-P1-PZI"/>
         <segue reference="kPv-Uq-54L"/>
-        <segue reference="8R1-gO-Zd5"/>
+        <segue reference="t72-7f-jSn"/>
         <segue reference="YLa-RA-Fux"/>
         <segue reference="gS0-pF-ied"/>
         <segue reference="ZVp-Ir-Fwn"/>
