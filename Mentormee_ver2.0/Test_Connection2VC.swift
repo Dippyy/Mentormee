@@ -315,10 +315,18 @@ class Test_Connection2VC: UIViewController {
                             
                             println("LISTEN UP \(mentorConnected)")
                             
-                            var post:NSString = "mentorUserID=\(mentorUserID)"
+                            let newMenteeConnectedCount: Int = mentorConnectedInt + 1
+                            
+                            println("THIS IS THE COUNT \(newMenteeConnectedCount)")
+                            
+                            let newMenteeCount: String = String(newMenteeConnectedCount)
+                            
+                            let userID = prefs.valueForKey("userID") as! String
+                            
+                            var post:NSString = "menteeCount=\(newMenteeCount)&userID=\(userID)"
                             NSLog("PostData: %@", post)
                             
-                            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/fetchCurrentMenteeConnected.php")!
+                            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateMenteeCount.php")!
                             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                             var postLength:NSString = String(postData.length)
                             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -343,10 +351,8 @@ class Test_Connection2VC: UIViewController {
                                     var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
                                     NSLog("Response ==> %@", responseData)
                                     var error:NSError?
-                                    let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                    let jsonData: NSDictionary = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSDictionary)!
                                     
-                                    let mentorConnected: String = jsonData[0].valueForKey("Mentee_Connected") as! String
-                                    println("LISTEN UP \(mentorConnected)")
                                     
                                 }
                             }
