@@ -37,18 +37,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         existingUserButton.alpha = 1.0
         loginButton.alpha = 0
         backButton.alpha = 0
-//        mentormeeLogo.alpha = 1.0
-        
-        let clearAllKeys: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
-//        clearAllKeys.removeObjectForKey("picture")
-//        clearAllKeys.removeObjectForKey("ProfileImage")
-//        clearAllKeys.removeObjectForKey("Full_Name_Selected")
-//        clearAllKeys.removeObjectForKey("University")
-//        clearAllKeys.removeObjectForKey("Faculty")
-//        clearAllKeys.removeObjectForKey("Program")
-//        clearAllKeys.removeObjectForKey("Year_Selected")
-//        clearAllKeys.removeObjectForKey("Gender_Selected")
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         
@@ -115,41 +103,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 //        mentormeeLogo.alpha = 1.0
         self.scrollView.setContentOffset(CGPointZero, animated: true)
     }
-    
-    // when the mentor button is tapped the cooresponding textfields and buttons will appear
-
-//    @IBAction func mentorButtonTapped(sender: UIButton) {
-//        
-//        // an animation function
-//        
-//        sender.highlighted = false
-//        UIView.animateWithDuration(0,
-//            delay: 0,
-//            options: .CurveLinear & .AllowUserInteraction & .BeginFromCurrentState,
-//            animations: {
-//                sender.alpha = 0
-//            }, completion: nil)
-//        
-//        // toggles the transparency of corresponding textfields and buttons
-//        
-//        UIView.animateWithDuration(0, animations: {
-//            self.emailField.alpha = 1.0
-//            self.passwordField.alpha = 1.0
-//            self.passwordConfirmField.alpha = 1.0
-//            self.signupButton.alpha = 1.0
-//            self.existingUserButton.alpha = 1.0
-//        })
-// 
-//        menteeButton.alpha = 0
-//        passwordField.alpha = 1
-//        passwordConfirmField.alpha = 1
-//        
-//        signupButton.alpha = 1
-//        existingUserButton.alpha = 1
-//        
-//    }
-    
-    // performs a seague to test connection
     
     
     // toggles transparency
@@ -223,11 +176,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
                     NSLog("Success: %ld", success);
                     
-
-
                     if(success == 1){
-                        
-                        NSLog("Login SUCCESS");
                         
                         NSLog("LOGIN SUCCESS time to FETCH USERID")
                         
@@ -265,20 +214,16 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
+                                //SET MENTOR USERID AND EMAIL TO THE CACHE
+                                
                                 prefs.setObject(jsonData[0].valueForKey("ID"), forKey: "userID")
                                 prefs.setObject(email, forKey: "email")
-//                                prefs.setObject("Mentor", forKey: "Status")
-//                                println(prefs.valueForKey("userID") as! String)
+
                                 prefs.setObject("MentorLoggedIn", forKey: "Status")
                                 self.performSegueWithIdentifier("goto_mentorhome", sender: self)
                             }
                         }
-//                        var prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-//                        prefs.setObject(email, forKey: "email")
-//                        
-//                        prefs.setInteger(1, forKey: "ISLOGGEDIN")
-//                        prefs.synchronize()
-//                        self.dismissViewControllerAnimated(true, completion: nil)
+
                         
                     } else {
                         var error_msg:NSString
@@ -433,9 +378,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 prefs.setObject(email, forKey: "email")
                                 println(prefs.valueForKey("userID") as! String)
                                 
-                                prefs.setObject("MentorLoggedIn", forKey: "Status")
-
-//                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
                         }
                         
@@ -477,9 +419,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 
                                 let primaryID = jsonDataID[0].valueForKey("Capability_id") as! String
                                 prefs.setObject(primaryID, forKey: "Capability ID")
-//
-//                                prefs.setObject("MentorLoggedIn", forKey: "Status")
-//                                self.performSegueWithIdentifier("goto_mentorhome", sender: self)
+
                             }
                         }
                         
@@ -487,11 +427,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 
                         let primaryCapability: String = prefs.valueForKey("Capability ID") as! String
                         
-                        var postID2: NSString = "primaryCapabilityID=\(primaryCapability)"
+                        var postID2: NSString = "primaryCapabilityID=\(primaryCapability)&userID=\(userID)"
                         NSLog("PostData: %@",postID2);
                         var urlID2:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createPrimaryCapabilityEntry.php")!
-                        var postDataID2:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
-                        var postLengthID2:NSString = String( postDataID.length )
+                        var postDataID2:NSData = postID2.dataUsingEncoding(NSASCIIStringEncoding)!
+                        var postLengthID2:NSString = String( postDataID2.length )
                         var requestID2:NSMutableURLRequest = NSMutableURLRequest(URL: urlID2)
                         
                         requestID2.HTTPMethod = "POST"
@@ -503,19 +443,19 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         var responseErrorID2: NSError?
                         var responseID2: NSURLResponse?
                         
-                        var urlDataID2: NSData? = NSURLConnection.sendSynchronousRequest(requestID2, returningResponse:&responseID, error:&responseErrorID2)
+                        var urlDataID2: NSData? = NSURLConnection.sendSynchronousRequest(requestID2, returningResponse:&responseID2, error:&responseErrorID2)
                         
-                        if(urlDataID != nil){
-                            let res = responseID as! NSHTTPURLResponse!
+                        if(urlDataID2 != nil){
+                            let res = responseID2 as! NSHTTPURLResponse!
                             NSLog("Response code: %ld", res.statusCode)
                             
                             if(res.statusCode >= 200 && res.statusCode < 300){
                                 
-                                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                                var responseData: NSString = NSString(data: urlDataID2!, encoding: NSUTF8StringEncoding)!
                                 NSLog("Response ==> %@", responseData)
                                 var error:NSError?
                                 
-                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                let jsonDataID: NSDictionary = NSJSONSerialization.JSONObjectWithData(urlDataID2!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
                                 
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 

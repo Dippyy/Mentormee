@@ -328,9 +328,6 @@ func test (mentor_id:AnyObject, comparisonField:NSArray) -> Int {
     return -1
 }
 
-
-
-
 func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     //Takes in an available mentor from Algorithm_filterOnCapacity + Comparison Fields and spits out the top three rated mentors' Account_ID
     
@@ -378,8 +375,6 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     
     /*------- Use PrimaryCapability to get Mentor's [Program, Faculty, University] -----------*/
     
-    
-    
     post = "PrimaryCapability_id=\(PrimaryCapability_id)"
     url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract.php")!
     postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -395,7 +390,6 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     var response2: NSURLResponse?
     
     urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response2, error:&reponseError2)
-    
     
     
     if ( urlData != nil ) {

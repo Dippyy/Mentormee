@@ -15,8 +15,6 @@ class menteeProfileView: UIViewController {
     @IBOutlet weak var highschoolLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,10 +31,6 @@ class menteeProfileView: UIViewController {
         
         
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-//        menteeFullNameLabel.text = prefs.valueForKey("fullNameMentee") as? String
-//        highschoolLabel.text = prefs.valueForKey("highSchool") as? String
-//        gradeLabel.text = prefs.valueForKey("gradeOfStudy") as? String
-//        menteeProfileImageView.image = UIImage(named: prefs.valueForKey("menteeProfilePicture") as! String)
         
         let mentorID = prefs.valueForKey("userID") as! String
         
@@ -106,6 +100,8 @@ class menteeProfileView: UIViewController {
         self.performSegueWithIdentifier("goto_menteeprofileupdate", sender: self)
     }
     @IBAction func logoutTapped(sender: AnyObject) {
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject("MentorLoggedOut", forKey: "Status")
         self.performSegueWithIdentifier("goto_menteelogout", sender: self)
     }
     @IBAction func findNewMentorTapped(sender: AnyObject) {

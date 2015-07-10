@@ -12,11 +12,18 @@ class FirstPageVC: UIViewController {
 
     @IBAction func MentorButton(sender: AnyObject) {
     }
+    @IBAction func menteeButtonTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("goto_menteelogin", sender: self)
+    }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if let status = prefs.valueForKey("Status") as? String {
         
+         println(status)
+            
         if(status == "MentorLoggedIn"){
             self.performSegueWithIdentifier("goto_mentorhome2", sender: self)
         } else if(status == "MentorLoggedOut"){
@@ -24,7 +31,7 @@ class FirstPageVC: UIViewController {
         } else if(status == "MenteeLoggedIn"){
             println("Go to mentee profile page")
         } else if(status == "MenteeLoggedOut"){
-            println("Go to mentee login")
+            self.performSegueWithIdentifier("goto_menteelogin", sender: self)
         }
     } else {
         println("NEW USER")
@@ -32,32 +39,12 @@ class FirstPageVC: UIViewController {
 }
     
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         prefs.setObject("NeverMatched", forKey: "matchCheck")
-//        prefs.setInteger(1, forKey: "ISLOGGEDIN")
-//        let isLoggedIn = prefs.valueForKey("ISLOGGEDIN") as! Int
-//        if let status = prefs.valueForKey("Status") as? String {
-//        
-//        if(isLoggedIn == 1 && status == "Mentor") {
-//            self.performSegueWithIdentifier("goto_mentorhome2", sender: self)
-//        } else if (isLoggedIn == 1 && status == "Mentee") {
-//            self.performSegueWithIdentifier("", sender: self)
-//        } else if (isLoggedIn == 0 && status == "Mentor"){
-//            self.performSegueWithIdentifier("goto_mentorhome", sender: self)
-//        } else if (isLoggedIn == 0 && status == "Mentee"){
-//            self.performSegueWithIdentifier("", sender: self)
-//        }
-//            
-//        } else {
-//            println("no account!")
-//        }
-        
 
         // Do any additional setup after loading the view.
     }

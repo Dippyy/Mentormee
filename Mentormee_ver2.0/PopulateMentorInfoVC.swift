@@ -22,7 +22,6 @@ class PopulateMentorInfoVC: UIViewController {
         
         //This is an array of values that I am assuming will already be populated
         
-
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var InputData:String = prefs.valueForKey("MentorMatched") as! String
         prefs.setObject(InputData, forKey: "mentorUserID")
