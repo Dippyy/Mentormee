@@ -192,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izy-R3-9kV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2275" y="-100"/>
+            <point key="canvasLocation" x="-2411" y="-100"/>
         </scene>
         <!--Home ScreenVC-->
         <scene sceneID="ufC-wZ-h7g">
@@ -297,7 +297,6 @@
                         <segue destination="qUE-nw-BRk" kind="modal" identifier="goto_login" id="8R1-gO-Zd5"/>
                         <segue destination="OlU-Be-t0S" kind="modal" identifier="goto_profileupdate" modalTransitionStyle="crossDissolve" id="YLa-RA-Fux"/>
                         <segue destination="rCk-k0-5hu" kind="modal" identifier="goto_reviews" id="aSD-Sy-9S5"/>
-                        <segue destination="DtC-tz-rad" kind="modal" identifier="goto_mentee" id="m1x-ll-sqe"/>
                         <segue destination="Fjg-RR-oS4" kind="modal" identifier="goto_TEMPSEGUE" id="C4b-vu-hHJ"/>
                     </connections>
                 </viewController>
@@ -449,7 +448,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="Nsm-vJ-sdg" detailTextLabel="EhD-B1-sDT" style="IBUITableViewCellStyleValue1" id="dgm-og-GUb">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dgm-og-GUb" id="cTv-VG-GGU">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -511,7 +510,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" id="yFG-e2-icx">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yFG-e2-icx" id="bSa-x4-jZq">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -554,7 +553,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell3" textLabel="YMc-AL-zUB" detailTextLabel="XCY-ND-voS" style="IBUITableViewCellStyleValue1" id="2cJ-SM-3uV">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2cJ-SM-3uV" id="b8q-tn-Lpj">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -755,28 +754,10 @@
             </objects>
             <point key="canvasLocation" x="-1679" y="-839"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="bUA-9C-HEl">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DtC-tz-rad" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b2p-yO-qP7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="pxf-1j-VEU" kind="relationship" relationship="rootViewController" id="BIy-wG-lRc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f7h-LW-9b3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1679" y="-100"/>
-        </scene>
         <!--Mentormee-->
         <scene sceneID="Pqh-wg-UJo">
             <objects>
-                <viewController id="ta8-TI-8F3" sceneMemberID="viewController">
+                <viewController id="ta8-TI-8F3" customClass="FindMentorLoginViewController" customModule="Mentormee_ver2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hyT-iw-szy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -789,7 +770,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qUE-nw-BRk" kind="modal" id="KAk-Oc-z3g"/>
+                                    <action selector="loginButtonTapped:" destination="ta8-TI-8F3" eventType="touchUpInside" id="g9L-2r-ZMB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nfd-hE-SJo">
@@ -808,6 +789,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Mentormee" id="mMY-uE-HhE"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="ZPM-N5-R1A" kind="modal" identifier="goto_menteeloginfromstartup" id="Gav-1B-Ue4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RcR-sT-3vC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1164,7 +1148,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XgX-Ps-P9H">
-                                        <rect key="frame" x="16" y="456" width="288" height="52"/>
+                                        <rect key="frame" x="16" y="336" width="288" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -1443,7 +1427,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell4" textLabel="06z-71-p8B" detailTextLabel="fjm-re-Txn" style="IBUITableViewCellStyleValue1" id="rOP-DO-eG9">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rOP-DO-eG9" id="2qe-V1-Gy2">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1984,7 +1968,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeR-OI-eWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1595" y="-78"/>
+            <point key="canvasLocation" x="-1631" y="-100"/>
         </scene>
     </scenes>
     <resources>
@@ -2003,13 +1987,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="gS0-pF-ied"/>
         <segue reference="BtB-FH-9tE"/>
-        <segue reference="YT3-P1-PZI"/>
         <segue reference="U3N-Il-7VV"/>
-        <segue reference="c5c-Zz-6gF"/>
+        <segue reference="Gav-1B-Ue4"/>
         <segue reference="nGd-Ql-9TB"/>
-        <segue reference="t72-7f-jSn"/>
         <segue reference="kPv-Uq-54L"/>
-        <segue reference="HnO-rq-onT"/>
+        <segue reference="t72-7f-jSn"/>
+        <segue reference="R3W-iO-eX4"/>
+        <segue reference="uhh-HS-fYT"/>
         <segue reference="ZVp-Ir-Fwn"/>
     </inferredMetricsTieBreakers>
 </document>

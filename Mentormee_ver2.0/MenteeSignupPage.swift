@@ -26,6 +26,16 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         tapGesture.cancelsTouchesInView = false
         myScrollView.addGestureRecognizer(tapGesture)
         buttonToLogin.alpha = 0
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let loginCheck: String = prefs.valueForKey("MenteeLogin") as! String
+        
+        if(loginCheck == "LoadMenteeLogin"){
+            fullNameTextField.alpha = 0
+            passwordConfirmTextField.alpha = 0
+            signupButton.alpha = 0
+            loginButton.alpha = 0
+            buttonToLogin.alpha = 1.0
+        }
 
     }
     

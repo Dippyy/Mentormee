@@ -376,6 +376,7 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     /*------- Use PrimaryCapability to get Mentor's [Program, Faculty, University] -----------*/
     
     post = "PrimaryCapability_id=\(PrimaryCapability_id)"
+    println(post)
     url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract.php")!
     postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
     postLength = String( postData.length )
@@ -399,7 +400,7 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
         if (res.statusCode >= 200 && res.statusCode < 300) {
             
             var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-    //        NSLog("Response ==> %@", responseData);
+            NSLog("Response ==> %@", responseData);
             var error: NSError?
             let jsonData2: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
             mentor_Program_ID  = jsonData2[0].valueForKey("Program_id") as! NSString
@@ -439,7 +440,7 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
         if (res.statusCode >= 200 && res.statusCode < 300) {
             
             var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-   //         NSLog("Response ==> %@", responseData);
+            NSLog("Response ==> %@", responseData);
             var error: NSError?
             let jsonData3: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
             mentor_Program  = jsonData3[0].valueForKey("Program") as! NSString

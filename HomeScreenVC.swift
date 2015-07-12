@@ -214,8 +214,8 @@ class HomeScreenVC: UIViewController {
 
         
         //Checks to see if the user has logged in before, if not it will take the user to the login screen
-        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
+//        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//        var isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
         
 //        if (isLoggedIn != 1) {
 //            self.performSegueWithIdentifier("goto_login", sender: self)
