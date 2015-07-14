@@ -102,11 +102,6 @@ class PublicProfileVC: UIViewController {
                     prefs.setObject(progID, forKey: "progID")
                 }
                 
-//                var universityID: String = jsonData[1].valueForKey("University_id") as! String // converts the strings to ints
-//                var programID: String = jsonData[1].valueForKey("Program_id") as! String
-//                let uniID: Int? = universityID.toInt()
-//                let progID: Int? = programID.toInt()
-                
                 let uniID = prefs.valueForKey("uniID") as! Int
                 let progID = prefs.valueForKey("progID") as! Int
                 
@@ -143,7 +138,7 @@ class PublicProfileVC: UIViewController {
                         var program: String = jsonData[1].valueForKey("Program") as! String
                         println(program)
                         if(program != ""){
-                            programLabel.text = program
+                            programLabel.text = program + " Engineering"
                             println(program)
                         } else {
                             programLabel.text = "Program of Study"

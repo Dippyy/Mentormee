@@ -44,7 +44,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         mentorButton.alpha = 0
         
         signupButton.alpha = 1.0
-        existingUserButton.alpha = 0
+        existingUserButton.alpha = 1.0
         loginButton.alpha = 0
         backButton.alpha = 0
         

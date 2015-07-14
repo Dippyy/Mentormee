@@ -101,7 +101,7 @@ class menteeProfileView: UIViewController {
     }
     @IBAction func logoutTapped(sender: AnyObject) {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        prefs.setObject("MentorLoggedOut", forKey: "Status")
+        prefs.setObject("MenteeLoggedOut", forKey: "Status")
         self.performSegueWithIdentifier("goto_menteelogout", sender: self)
     }
     @IBAction func findNewMentorTapped(sender: AnyObject) {

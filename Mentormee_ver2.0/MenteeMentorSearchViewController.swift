@@ -46,6 +46,10 @@ class MenteeMentorSearchViewController: UIViewController{
     //program = faculty
     // specialization = program
     
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         if(userSelectionField != nil){
             switch(userSelectionField){

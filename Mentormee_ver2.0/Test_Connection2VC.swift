@@ -247,141 +247,18 @@ class Test_Connection2VC: UIViewController {
             let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
             let mentorUserID:AnyObject = mentorArray[0]
             let mentorUserIDString: String = String(mentorUserID as! NSString)
-        
-            var post:NSString = "menteeUserID=\(menteeUserID)&mentorUserID=\(mentorUserID)"
-            NSLog("PostData: %@", post)
-        
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/createMentorshipJoin.php")!
-            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-            var postLength:NSString = String(postData.length)
-            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
-        
-            request.HTTPMethod = "POST"
-            request.HTTPBody = postData
-            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-            var responseError: NSError?
-            var response: NSURLResponse?
-        
-            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
-        
-            if(urlData != nil){
-        
-                let res = response as! NSHTTPURLResponse!
-                NSLog("Response code: %ld", res.statusCode)
-        
-                if(res.statusCode >= 200 && res.statusCode < 300){
-                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
-                    NSLog("Response ==> %@", responseData)
-                    var error:NSError?
-                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
-                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
-                    NSLog("Success %ld", success)
-        
-                    if(success == 1){
-        
-                        let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
-                        let mentorUserID:AnyObject = mentorArray[0]
-                        let mentorUserIDString: String = String(mentorUserID as! NSString)
-                        prefs.setObject(mentorUserIDString, forKey: "MentorIDForMatch")
-        
-                        var post:NSString = "mentorUserID=\(mentorUserID)"
-                        NSLog("PostData: %@", post)
-        
-                        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/fetchCurrentMenteeConnected.php")!
-                        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-                        var postLength:NSString = String(postData.length)
-                        var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
-        
-                        request.HTTPMethod = "POST"
-                        request.HTTPBody = postData
-                        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-                        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-                        var responseError: NSError?
-                        var response: NSURLResponse?
-        
-                        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
-        
-                        if(urlData != nil){
-        
-                            let res = response as! NSHTTPURLResponse!
-                            NSLog("Response code: %ld", res.statusCode)
-        
-                            if(res.statusCode >= 200 && res.statusCode < 300){
-                                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
-                                NSLog("Response ==> %@", responseData)
-                                var error:NSError?
-                                let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
-        
-                                let mentorConnected: String = jsonData[0].valueForKey("Mentee_Connected") as! String
-                                let mentorConnectedInt: Int = mentorConnected.toInt()!
-        
-                                println("LISTEN UP \(mentorConnected)")
-        
-                                let newMenteeConnectedCount: Int = mentorConnectedInt + 1
-        
-                                println("THIS IS THE COUNT \(newMenteeConnectedCount)")
-        
-                                let newMenteeCount: String = String(newMenteeConnectedCount)
-        
-                                let userID = prefs.valueForKey("MentorIDForMatch") as! String
-        
-                                if(newMenteeConnectedCount <= 3) {
-        
-                                var post:NSString = "menteeCount=\(newMenteeCount)&userID=\(userID)"
-                                NSLog("PostData: %@", post)
-        
-                                var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateMenteeCount2.php")!
-                                var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-                                var postLength:NSString = String(postData.length)
-                                var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
-        
-                                request.HTTPMethod = "POST"
-                                request.HTTPBody = postData
-                                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-                                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                                request.setValue("application/json", forHTTPHeaderField: "Accept")
-        
-                                var responseError: NSError?
-                                var response: NSURLResponse?
-        
-                                var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
-        
-                                if(urlData != nil){
-        
-                                let res = response as! NSHTTPURLResponse!
-                                NSLog("Response code: %ld", res.statusCode)
-        
-                                if(res.statusCode >= 200 && res.statusCode < 300){
-                                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
-                                    NSLog("Response ==> %@", responseData)
-                                    var error:NSError?
-                                    let jsonData: NSDictionary = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSDictionary)!
-        
-        
-                                    }
-                                }
-                            } else {
-                                println("MENTOR CAPACITY IS FULL :(")
-                        }
-                    }
-                }
-        
-                prefs.setObject(mentorUserIDString, forKey: "MentorMatched")
-        
-                prefs.setObject("MentorLoggedIn", forKey: "Status")
-                if(prefs.valueForKey("matchCheck") as! String == "NeverMatched"){
-                    self.performSegueWithIdentifier("goto_menteesignup", sender: self)
-                } else if (prefs.valueForKey("matchCheck") as! String == "MatchedPreviously"){
-                    self.performSegueWithIdentifier("goto_loginhome2", sender: self)
-                }
+            prefs.setObject(mentorUserIDString, forKey: "Mentor Selected")
+            
+            prefs.setObject(mentorUserIDString, forKey: "MentorMatched")
+            
+            prefs.setObject("LoadMenteeSignup", forKey: "MenteeLogin")
+            
+            prefs.setObject("MentorLoggedIn", forKey: "Status")
+            if(prefs.valueForKey("matchCheck") as! String == "NeverMatched"){
+                self.performSegueWithIdentifier("goto_menteesignup", sender: self)
+            } else if (prefs.valueForKey("matchCheck") as! String == "MatchedPreviously"){
+                self.performSegueWithIdentifier("goto_loginhome2", sender: self)
             }
-        }
-    }
         
         }))
         

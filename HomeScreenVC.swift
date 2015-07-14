@@ -131,6 +131,7 @@ class HomeScreenVC: UIViewController {
                     alertView.show()
                     
                 } else {
+                                    
                     let universityID: String = jsonData[1].valueForKey("University_id") as! String
                     let uniID: Int? = universityID.toInt()
                     prefs.setObject(uniID, forKey: "uniID")
@@ -182,7 +183,7 @@ class HomeScreenVC: UIViewController {
                         var program: String = jsonData[1].valueForKey("Program") as! String
                         println(program)
                         if(program != ""){
-                            programNameLabel.text = program
+                            programNameLabel.text = program + " Engineering"
                             println(program)
                         } else {
                             programNameLabel.text = "Program of Study"
