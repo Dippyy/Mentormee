@@ -50,6 +50,11 @@ class MenteeViewVC: UIViewController {
         universityLabel2.alpha = 0
         programLabel2.alpha = 0
         
+        myImageView3.alpha = 0
+        fullNameLabel3.alpha = 0
+        universityLabel3.alpha = 0
+        programLabel3.alpha = 0
+        
     }
     
     override func viewDidAppear(animated: Bool) {

@@ -11,7 +11,7 @@ import UIKit
 
 class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
-    var updateCategories = ["Profile Picture","Full Name","High School","Grade","Contact Info","Current Situation","Future Options","Whatsup","Interests"]
+    var updateCategories = ["Profile Picture","Full Name","High School","Grade","Contact Info","Current Situation","Future Options","What's Up","Interests"]
     let textCellIdentifier = "cell4"
     
     @IBOutlet weak var myTableView: UITableView!
@@ -99,7 +99,7 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
                     prefs.setObject(profilePic, forKey: "Profile Picture Mentee")
                 }
                 
-                if let whatsUp: String = jsonData[1].valueForKey("WhatsUp") as? String {
+                if let whatsUp: String = jsonData[1].valueForKey("What's Up") as? String {
                     prefs.setObject(jsonData[1].valueForKey("WhatsUp"), forKey: "Whatsup Mentee")
                 }
                 
@@ -150,7 +150,7 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
             } else {
                 cell.detailTextLabel?.text = "Where did you go to HS?"
             }
-        } else if(cell.textLabel?.text == "Whatsup"){
+        } else if(cell.textLabel?.text == "What's Up"){
             if(prefs.valueForKey("Whatsup Mentee") as? String != ""){
                 cell.detailTextLabel?.text = "Whatsup Set"
             } else {
@@ -225,7 +225,7 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
         } else if (cell.textLabel?.text == "Future Options"){
             prefs.setObject(cell.textLabel?.text, forKey: "Selection")
             self.performSegueWithIdentifier("goto_textUpdate", sender: self)
-        } else if (cell.textLabel?.text == "Whatsup"){
+        } else if (cell.textLabel?.text == "What's Up"){
             prefs.setObject(cell.textLabel?.text, forKey: "Selection")
             self.performSegueWithIdentifier("goto_textUpdate", sender: self)
         } else if (cell.textLabel?.text == "Interests"){

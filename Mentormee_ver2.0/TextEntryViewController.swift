@@ -33,7 +33,7 @@ class TextEntryViewController: UIViewController {
             shortTextfield.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Future Options")){
             shortTextfield.alpha = 0.0
-        } else if(prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("What's Up")){
             shortTextfield.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Interests")){
             shortTextfield.alpha = 0.0
@@ -80,7 +80,7 @@ class TextEntryViewController: UIViewController {
         }
         
         if let whatsUp: String = prefs.valueForKey("Selection") as? String {
-            if (prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
+            if (prefs.valueForKey("Selection")!.isEqualToString("What's Up")){
                 self.longTextField.text = prefs.valueForKey("Whatsup Mentee") as! String
             }
         }
@@ -175,7 +175,7 @@ class TextEntryViewController: UIViewController {
             update_table_info(urlToSend, userID: userID, updateField: currentInfo, updateVariable: updateInfo)
             
             // updates the whatsup
-        } else if(prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("What's Up")){
             
             var whatsupMentee: String = longTextField.text as String
             var updateInfo: String = "whatsUpMentee"

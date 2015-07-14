@@ -34,17 +34,7 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
         if (senderField == "Specialization"){
             getDataFromURL(url, searchField: "Program")
         }
-        
-        /*if(senderField == "Program"){
-            println("sender field is Program")
-            getDataFromURL(url, searchField: "Faculty")
-        } else if (senderField == "Specialization"){
-            getDataFromURL(url, searchField: "Program")
-        }else if(senderField == "University"){
-            getDataFromURL(url, searchField: "University")
-        }else if (senderField == "Hometown"){
-            getDataFromURL(url, searchField: "Hometown")
-        }*/
+
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

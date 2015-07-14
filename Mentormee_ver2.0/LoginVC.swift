@@ -56,6 +56,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         scrollView.addGestureRecognizer(tapGesture)
 
     }
+    
+    @IBAction func backButtonPressed2(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         self.registerForKeyboardNotifications()
@@ -303,7 +308,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             alertView.addButtonWithTitle("OK")
             alertView.show()
             
-        } else if(password.length <= 8){
+        } else if(password.length <= 6){
             
             var alertView:UIAlertView = UIAlertView()
             alertView.title = "Sign Up Failed!"

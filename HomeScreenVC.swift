@@ -37,6 +37,11 @@ class HomeScreenVC: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible=false
+        
+//        var tabArray = self.tabBarController?.tabBar.items as NSArray!
+//        var tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
+//        tabItem.badgeValue = "2"
+        
     
         UIView.animateWithDuration(1, animations: {
             self.profileImageView.alpha = 1.0
@@ -58,7 +63,7 @@ class HomeScreenVC: UIViewController {
         
         var post: NSString = "userID=\(userID)"
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/homeScreenUpdate2.php")!
+        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/homeScreenUpdate3.php")!
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -85,6 +90,11 @@ class HomeScreenVC: UIViewController {
                 var error:NSError?
                 
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                
+//                var menteeCount:String = jsonData[2].valueForKey("Mentee_Connected") as! String
+//                var tabArray = self.tabBarController?.tabBar.items as NSArray!
+//                var tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
+//                tabItem.badgeValue = menteeCount
                 
                 // ERROR HANDLER FOR FULL NAME
 

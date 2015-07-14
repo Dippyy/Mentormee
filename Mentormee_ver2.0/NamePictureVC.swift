@@ -43,7 +43,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 self.fullNameTextField.alpha = 1.0
             
             })
-        } else if (prefs.valueForKey("Selection")!.isEqual("Whatsup")){
+        } else if (prefs.valueForKey("Selection")!.isEqual("What's Up")){
             self.whatsupTextField.text = prefs.valueForKey("Whatsup") as! String
             UIView.animateWithDuration(0, animations: {
                 self.whatsupTextField.alpha = 1.0
@@ -139,7 +139,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                 }
             }
             
-        } else if(prefs.valueForKey("Selection")!.isEqualToString("Whatsup")){
+        } else if(prefs.valueForKey("Selection")!.isEqualToString("What's Up")){
             
             var whatsupMentor: String = whatsupTextField.text as String
             var updateInfo: String = "whatsUpMentor"
@@ -370,7 +370,6 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     
 }
-
 
     extension NSMutableData {
         func appendString(string: String) {

@@ -132,7 +132,7 @@ class mentorProfileView: UIViewController {
                         var program: String = jsonData[1].valueForKey("Program") as! String
                         println(program)
                         if(program != ""){
-                            programTextField.text = program
+                            programTextField.text = program + " Engineering"
                             println(program)
                         } else {
                             programTextField.text = "Program of Study"

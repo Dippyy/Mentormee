@@ -276,7 +276,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
             alertView.addButtonWithTitle("OK")
             alertView.show()
             
-        } else if(count(password) <= 8){
+        } else if(count(password) <= 6){
             
             var alertView:UIAlertView = UIAlertView()
             alertView.title = "Sign Up Failed!"
@@ -364,7 +364,6 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 prefs.setObject("MatchedPreviously", forKey: "matchCheck")
                                 prefs.setObject("MenteeLoggedIn", forKey: "Status")
 
-                                //                                self.dismissViewControllerAnimated(true, completion: nil)
                             }
                         }
                         

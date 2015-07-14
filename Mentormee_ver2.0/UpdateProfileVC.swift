@@ -12,7 +12,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var myTableView: UITableView!
     
-    let profileUpdate = ["Profile Picture","Full Name","Contact Info","University", "Faculty", "Program","Whatsup", "Year","Gender"]
+    let profileUpdate = ["Profile Picture","Full Name","Contact Info","University", "Faculty", "Program","What's Up", "Year","Gender"]
     let textCellIdentifier = "cell"
     
     override func viewDidLoad() {
@@ -199,7 +199,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             } else {
                 cell.detailTextLabel?.text = "Set Contact Info"
             }
-        } else if(cell.textLabel?.text == "Whatsup"){
+        } else if(cell.textLabel?.text == "What's Up"){
             if(prefs.valueForKey("Whatsup") as? String != ""){
                 cell.detailTextLabel?.text = "Set"
             } else {
@@ -244,7 +244,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         } else if (cell.textLabel?.text == "Full Name"){
             prefs.setObject(cell.textLabel?.text, forKey: "Selection")
             self.performSegueWithIdentifier("goto_namepicture", sender: self)
-        } else if (cell.textLabel?.text == "Whatsup"){
+        } else if (cell.textLabel?.text == "What's Up"){
             prefs.setObject(cell.textLabel?.text, forKey: "Selection")
             self.performSegueWithIdentifier("goto_namepicture", sender: self)
         }
@@ -318,12 +318,6 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                         error_msg = "Unknown Error"
                     }
                         self.performSegueWithIdentifier("goto_homepage", sender: self)
-//                    var alertView:UIAlertView = UIAlertView()
-//                    alertView.title = "Signup Failed"
-//                    alertView.message = error_msg as String
-//                    alertView.delegate = self
-//                    alertView.addButtonWithTitle("OK")
-//                    alertView.show()
                 }
             } else {
                 var alertView:UIAlertView = UIAlertView()

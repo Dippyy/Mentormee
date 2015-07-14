@@ -138,7 +138,7 @@ class PopulateMentorInfoVC: UIViewController {
                         var program: String = jsonData[1].valueForKey("Program") as! String
                         println(program)
                         if(program != ""){
-                            programTextLabel.text = program
+                            programTextLabel.text = program + " Engineering"
                             println(program)
                         } else {
                             programTextLabel.text = "Program of Study"
