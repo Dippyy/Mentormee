@@ -89,6 +89,20 @@ class MenteeMentorSearchViewController: UIViewController{
         
 //        myActivityIndicator.startAnimating()
         
+        println(userSelectionText)
+        
+        if(userSelectionText == nil){
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Select A Specialization"
+            alertView.message = "Please select a specialization!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+        } else {
+        
+        
         if ((self.userSelectionText) != nil) {
         tempcomparisonField.insert(userSelectionText, atIndex: 0)
         } else {
@@ -99,8 +113,12 @@ class MenteeMentorSearchViewController: UIViewController{
         tempcomparisonField.insert("University of Toronto", atIndex: 2)
         comparisonField = tempcomparisonField
         tempcomparisonField = []
-        
+            
         lets_connect_you_with_a_mentor(userSelectionText)
+        performSegueWithIdentifier("goto_top3mentors", sender: self)
+            
+        }
+
     }
     
     

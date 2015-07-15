@@ -108,7 +108,22 @@ class menteeProfileView: UIViewController {
         
     }
     @IBAction func findNewMentorTapped(sender: AnyObject) {
-        self.performSegueWithIdentifier("goto_newmatch", sender: self)
+        
+        var refreshAlert = UIAlertController(title: "Beta Version", message: "We are currently only allowing Mentee's to connect with a single mentor! Would you be willing to pay for additional connections? Let us know!", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action: UIAlertAction!) in
+            println("Handle Cancel Logic here")
+
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "No way", style: .Default, handler: { (action: UIAlertAction!) in
+            println("Handle Cancel Logic here")
+        }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
+            
+        
+//        self.performSegueWithIdentifier("goto_newmatch", sender: self)
     }
     
 }

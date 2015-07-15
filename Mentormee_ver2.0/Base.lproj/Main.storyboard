@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="guk-9l-LTX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1147" y="-839"/>
+            <point key="canvasLocation" x="-445" y="-799"/>
         </scene>
         <!--Mentee ViewVC-->
         <scene sceneID="v65-Xz-wbi">
@@ -195,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izy-R3-9kV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2411" y="-100"/>
+            <point key="canvasLocation" x="-1387" y="-86"/>
         </scene>
         <!--Home ScreenVC-->
         <scene sceneID="ufC-wZ-h7g">
@@ -313,7 +313,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-993" y="-78"/>
+            <point key="canvasLocation" x="-445" y="-78"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="pL8-oD-6CY">
@@ -432,7 +432,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiJ-FE-0pw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="182" y="-78"/>
+            <point key="canvasLocation" x="430" y="-78"/>
         </scene>
         <!--Update ProfileVC-->
         <scene sceneID="kFK-mM-8S4">
@@ -498,7 +498,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcG-hO-f3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1241" y="655"/>
+            <point key="canvasLocation" x="-445" y="655"/>
         </scene>
         <!--Detail UpdateTVC-->
         <scene sceneID="ZEP-bu-Gvl">
@@ -537,7 +537,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncw-Bo-SLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="655"/>
+            <point key="canvasLocation" x="430" y="655"/>
         </scene>
         <!--Static TablesVC-->
         <scene sceneID="GaG-xn-UVI">
@@ -595,7 +595,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxM-3g-SXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="1378"/>
+            <point key="canvasLocation" x="-6" y="1414"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UDJ-9M-E5U">
@@ -613,7 +613,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ef-RI-div" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1679" y="655"/>
+            <point key="canvasLocation" x="-859" y="655"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Boz-Fu-rf0">
@@ -631,7 +631,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1no-ta-KtG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-715" y="655"/>
+            <point key="canvasLocation" x="-6" y="655"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="deo-a4-eCF">
@@ -649,7 +649,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hmr-7d-sTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-715" y="1378"/>
+            <point key="canvasLocation" x="-439" y="1406"/>
         </scene>
         <!--Name PictureVC-->
         <scene sceneID="vaM-Lp-r5u">
@@ -716,7 +716,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgY-jk-GPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="2070"/>
+            <point key="canvasLocation" x="-1295" y="1414"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lGX-Bc-lbP">
@@ -734,7 +734,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvV-Xe-lXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-715" y="2070"/>
+            <point key="canvasLocation" x="-859" y="1406"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Pk-7d-Jjo">
@@ -752,7 +752,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLf-r4-Nk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1679" y="-839"/>
+            <point key="canvasLocation" x="-895" y="-799"/>
         </scene>
         <!--Mentormee-->
         <scene sceneID="Pqh-wg-UJo">
@@ -763,9 +763,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="i6f-NC-Tv2">
-                                <rect key="frame" x="10" y="245" width="300" height="44"/>
+                                <rect key="frame" x="16" y="395" width="288" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Login">
+                                <state key="normal" image="LoginButton">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -774,9 +774,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nfd-hE-SJo">
-                                <rect key="frame" x="10" y="193" width="300" height="44"/>
+                                <rect key="frame" x="16" y="321" width="288" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Find a Mentor">
+                                <state key="normal" image="FindaMentorButton">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -784,6 +784,13 @@
                                     <segue destination="rqZ-G5-Vjq" kind="modal" id="ZVV-cG-BKG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome! Lets find you a mentor that can answer all of your questions!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2cE-IN-sMt">
+                                <rect key="frame" x="16" y="172" width="288" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -869,46 +876,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zge-cJ-nfk">
-                                <rect key="frame" x="10" y="362" width="300" height="44"/>
+                                <rect key="frame" x="16" y="348" width="288" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="FIND A MENTOR NOW!">
+                                <state key="normal" image="FindaMentorButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="FindMentorButtonTapped:" destination="rqZ-G5-Vjq" eventType="touchUpInside" id="nn6-1H-8i5"/>
-                                    <segue destination="xie-eF-rRe" kind="modal" id="ef1-BI-2Fl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rly-HV-IfP">
-                                <rect key="frame" x="86" y="154" width="149" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Program: Engineering">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ahL-vd-sgd">
-                                <rect key="frame" x="0.0" y="203" width="320" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select Specialization">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="specButtonTapped:" destination="rqZ-G5-Vjq" eventType="touchUpInside" id="RKR-we-slX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9G6-gY-0MR">
-                                <rect key="frame" x="51" y="250" width="218" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="University: University of Toronto">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select Specialization. The Program and University are present in Beta mode." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vRI-Pc-4g3">
-                                <rect key="frame" x="10" y="73" width="300" height="73"/>
+                                <rect key="frame" x="16" y="206" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Program: Engineering">
+                                    <color key="titleColor" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9G6-gY-0MR">
+                                <rect key="frame" x="16" y="161" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="University: University of Toronto">
+                                    <color key="titleColor" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What type of engineering are you interested in? Select your favourite ! (Engineer mentors available for beta)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vRI-Pc-4g3">
+                                <rect key="frame" x="16" y="65" width="288" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="cIj-oa-twa">
@@ -916,6 +916,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ahL-vd-sgd">
+                                <rect key="frame" x="11" y="249" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Select Specialization">
+                                    <color key="titleColor" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="specButtonTapped:" destination="rqZ-G5-Vjq" eventType="touchUpInside" id="RKR-we-slX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -936,11 +948,12 @@
                         <outlet property="myActivityIndicator" destination="cIj-oa-twa" id="c7v-Dx-Lng"/>
                         <outlet property="specButton" destination="ahL-vd-sgd" id="AaE-Fh-Gl8"/>
                         <segue destination="MWT-hG-ZkY" kind="modal" identifier="goto_programspec" id="4Tv-TT-IVM"/>
+                        <segue destination="xie-eF-rRe" kind="modal" identifier="goto_top3mentors" id="tgo-Gw-QCB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuE-zW-xbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2674" y="-78"/>
+            <point key="canvasLocation" x="2226" y="-78"/>
         </scene>
         <!--MentorMee-->
         <scene sceneID="Ux7-QV-Hth">
@@ -951,22 +964,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" id="5ti-wP-cHa">
-                                <rect key="frame" x="0.0" y="153" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="203" width="320" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specialization" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z6x-Ro-q1W">
-                                <rect key="frame" x="107" y="61" width="107" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your specialization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z6x-Ro-q1W">
+                                <rect key="frame" x="16" y="130" width="288" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="cRZ-xE-dSB"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -977,7 +988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIG-Vr-nrz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1134" y="649"/>
+            <point key="canvasLocation" x="2226" y="693"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IGx-Rs-TWK">
@@ -1126,7 +1137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSp-Th-tr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3641" y="-90"/>
+            <point key="canvasLocation" x="3193" y="-78"/>
         </scene>
         <!--Mentee Signup Page-->
         <scene sceneID="Rbi-FV-xfH">
@@ -1234,7 +1245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjF-om-oKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4551" y="-90"/>
+            <point key="canvasLocation" x="4147" y="-78"/>
         </scene>
         <!--Mentee Profile-->
         <scene sceneID="hAn-Dh-uCd">
@@ -1338,7 +1349,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3XA-x3-po2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2865" y="-1223"/>
+            <point key="canvasLocation" x="2985" y="-987"/>
         </scene>
         <!--Mentee Public ProfileVC-->
         <scene sceneID="mgb-Zs-WR5">
@@ -1464,7 +1475,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIZ-rC-Myu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4187" y="-1135"/>
+            <point key="canvasLocation" x="3911" y="-987"/>
         </scene>
         <!--Update Mentee ProfileVC-->
         <scene sceneID="Ljs-J5-917">
@@ -1524,7 +1535,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C94-Nr-rCs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5449" y="239"/>
+            <point key="canvasLocation" x="5149" y="271"/>
         </scene>
         <!--Profile PictureVC-->
         <scene sceneID="jwc-Oe-Ayz">
@@ -1582,7 +1593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kbj-RH-WlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6315" y="239"/>
+            <point key="canvasLocation" x="6059" y="271"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eL3-F8-S1p">
@@ -1600,7 +1611,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HQx-GK-Rjm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4139" y="-90"/>
+            <point key="canvasLocation" x="3667" y="-78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cVh-k6-Gt6">
@@ -1618,7 +1629,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mYa-K5-YEp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5011" y="239"/>
+            <point key="canvasLocation" x="4671" y="271"/>
         </scene>
         <!--Mentor Match-->
         <scene sceneID="W6e-R9-MLt">
@@ -1699,7 +1710,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsJ-Rj-62Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5449" y="-463"/>
+            <point key="canvasLocation" x="5149" y="-495"/>
         </scene>
         <!--Mentor Profile View-->
         <scene sceneID="gpS-FQ-iCW">
@@ -1777,7 +1788,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yu-Ie-Rd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6315" y="-463"/>
+            <point key="canvasLocation" x="6059" y="-495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="J4K-Xh-oNa">
@@ -1795,7 +1806,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwH-6Q-t6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5907" y="239"/>
+            <point key="canvasLocation" x="5631" y="271"/>
         </scene>
         <!--Text Entry View Controller-->
         <scene sceneID="7FI-LE-oRi">
@@ -1837,7 +1848,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBF-o0-NTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4187" y="933"/>
+            <point key="canvasLocation" x="4671" y="1009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Hx-RW-8lO">
@@ -1855,7 +1866,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfA-yG-YFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3779" y="933"/>
+            <point key="canvasLocation" x="5155" y="965"/>
         </scene>
         <!--Static Table UpdateVC-->
         <scene sceneID="Fzi-7N-PsF">
@@ -1913,7 +1924,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4S-4I-m4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4187" y="1581"/>
+            <point key="canvasLocation" x="4123" y="1009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="w8K-yL-MFr">
@@ -1931,7 +1942,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zse-yn-ex6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3779" y="1581"/>
+            <point key="canvasLocation" x="3631" y="1009"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5zo-Tp-bHb">
@@ -1950,7 +1961,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zev-Sz-IBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5011" y="-463"/>
+            <point key="canvasLocation" x="4671" y="-495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oXo-zD-okG">
@@ -1968,7 +1979,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cf-y6-dit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5907" y="-463"/>
+            <point key="canvasLocation" x="5631" y="-495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BLk-sn-wO5">
@@ -1986,7 +1997,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKk-c2-I5s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3779" y="-1135"/>
+            <point key="canvasLocation" x="3439" y="-987"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="zdF-Ct-VjK">
@@ -2005,7 +2016,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeR-OI-eWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1687" y="-90"/>
+            <point key="canvasLocation" x="-867" y="-86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mh2-nW-8VG">
@@ -2023,7 +2034,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJn-hi-ib8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3166" y="-90"/>
+            <point key="canvasLocation" x="2682" y="-78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NhM-9X-mGe">
@@ -2041,11 +2052,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Mg-HP-vzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-490" y="-78"/>
+            <point key="canvasLocation" x="-6" y="-78"/>
         </scene>
     </scenes>
     <resources>
         <image name="ConnectButton" width="123" height="45"/>
+        <image name="FindaMentorButton" width="364" height="67"/>
+        <image name="LoginButton" width="364" height="61"/>
         <image name="Logo [Front Page]" width="249" height="176"/>
         <image name="Mentee_Button" width="364" height="61"/>
         <image name="Mentor_Button" width="364" height="60"/>
@@ -2058,15 +2071,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="YLa-RA-Fux"/>
-        <segue reference="Lfx-qB-WZt"/>
-        <segue reference="8R1-gO-Zd5"/>
+        <segue reference="BtB-FH-9tE"/>
         <segue reference="gS0-pF-ied"/>
-        <segue reference="YT3-P1-PZI"/>
-        <segue reference="qWt-W3-Yai"/>
-        <segue reference="2GE-cb-jLv"/>
-        <segue reference="0K5-dH-Xaz"/>
-        <segue reference="nGd-Ql-9TB"/>
+        <segue reference="f09-AU-fLd"/>
+        <segue reference="8R1-gO-Zd5"/>
+        <segue reference="C4b-vu-hHJ"/>
+        <segue reference="LL6-qy-h4P"/>
+        <segue reference="vcc-Ju-SNB"/>
         <segue reference="ZVp-Ir-Fwn"/>
+        <segue reference="TTk-4P-q1z"/>
+        <segue reference="0K5-dH-Xaz"/>
     </inferredMetricsTieBreakers>
 </document>
