@@ -18,6 +18,7 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var SetUpProfileButton: UIButton!
     @IBOutlet weak var LogoutButton: UIButton!
     @IBOutlet weak var signUpLabelToSignup: UILabel!
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
@@ -31,12 +32,17 @@ class HomeScreenVC: UIViewController {
         SetUpProfileButton.alpha = 0
         LogoutButton.alpha = 0
         signUpLabelToSignup.hidden = true
+        myActivityIndicator.startAnimating()
+        
+
         
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible=false
+
+        myActivityIndicator.stopAnimating()
+        myActivityIndicator.hidden = true
         
 //        var tabArray = self.tabBarController?.tabBar.items as NSArray!
 //        var tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
@@ -90,6 +96,11 @@ class HomeScreenVC: UIViewController {
                 var error:NSError?
                 
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                
+                if(jsonData.count == 1){
+                    self.performSegueWithIdentifier("goto_TEMPSEGUE", sender: self)
+                    
+                } else {
                 
 //                var menteeCount:String = jsonData[2].valueForKey("Mentee_Connected") as! String
 //                var tabArray = self.tabBarController?.tabBar.items as NSArray!
@@ -210,6 +221,7 @@ class HomeScreenVC: UIViewController {
                         
                     }
                 }
+            }
             }
         }
         

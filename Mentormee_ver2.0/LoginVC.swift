@@ -28,9 +28,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var existingUserButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var mentorButton: UIButton!
-    @IBOutlet weak var menteeButton: UIButton!
-    @IBOutlet weak var ConnectTestButton: UIButton!
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+
 
     override func viewDidLoad() {
         
@@ -39,9 +38,6 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailField.alpha = 1.0
         passwordField.alpha = 1.0
         passwordConfirmField.alpha = 1.0
-        
-        menteeButton.alpha = 0
-        mentorButton.alpha = 0
         
         signupButton.alpha = 1.0
         existingUserButton.alpha = 1.0
@@ -146,6 +142,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        myActivityIndicator.startAnimating()
+        
         var email:NSString = emailField.text
         var password:NSString = passwordField.text
         

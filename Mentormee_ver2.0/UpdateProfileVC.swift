@@ -252,7 +252,29 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @IBAction func backToProfileTapped(sender: AnyObject) {
-        self.performSegueWithIdentifier("goto_homepage", sender: self)
+        
+        let storedData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let universityName: String = storedData.valueForKey("University") as! String
+        println(universityName)
+        let programName: String = storedData.valueForKey("Program") as! String
+        println(programName)
+        let facultyName: String = storedData.valueForKey("Faculty") as! String
+        println(facultyName)
+        
+        if(universityName == "University" || programName == "Program" || facultyName == "Faculty"){
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Wait!"
+            alertView.message = "We need you to fill out your educational information before you continue!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+            
+        }else {
+            self.performSegueWithIdentifier("goto_homepage", sender: self)
+            }
         }
     
 //----------------------------- saves the image url to the database under Picture -----------------------------------------
@@ -260,6 +282,21 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBAction func backButtonPressed(sender: AnyObject) {
         
         let storedData: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let universityName: String = storedData.valueForKey("University") as! String
+        let programName: String = storedData.valueForKey("Program") as! String
+        let facultyName: String = storedData.valueForKey("Faculty") as! String
+        
+        if(universityName == "University" || programName == "Program" || facultyName == "Faculty"){
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Wait!"
+            alertView.message = "We need you to fill out your educational information before you continue!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+        } else {
         
         if(storedData.valueForKey("ProfileImage") != nil) {
             let imageURL = storedData.valueForKey("ProfileImage") as! String
@@ -338,6 +375,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             alertView.addButtonWithTitle("OK")
             alertView.show()
             }
+        }
     }
     
 

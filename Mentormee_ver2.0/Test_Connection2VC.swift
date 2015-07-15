@@ -24,7 +24,10 @@ class Test_Connection2VC: UIViewController {
     @IBOutlet weak var textBoxThree2: UILabel!
     @IBOutlet weak var textBoxThree3: UILabel!
     
+    @IBOutlet weak var myActivityIndicator1: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         let pref: NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -49,7 +52,48 @@ class Test_Connection2VC: UIViewController {
         textBoxThree2.text = mentorThreeArray[1] as? String
         textBoxThree3.text = mentorThreeArray[2] as? String
         
-
+        if let menteeID = pref.valueForKey("userID") as? String {
+            println("THE MENTEE ID IS : \(menteeID) SEND ALERT")
+        } else {
+            println("This is the first run through")
+        }
+        
+//        let menteeID = pref.valueForKey("userID") as! String
+//        println(menteeID)
+//        
+//        var post:NSString = "mentorID=\(menteeID)"
+//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/checkMenteeMatchHistory.php")!
+//        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+//        var postLength:NSString = String( postData.length )
+//        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+//        request.HTTPMethod = "POST"
+//        request.HTTPBody = postData
+//        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+//        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//        request.setValue("application/json", forHTTPHeaderField: "Accept")
+//        
+//        var reponseError: NSError?
+//        var response: NSURLResponse?
+//        
+//        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+//        
+//        if ( urlData != nil ) {
+//            
+//            let res = response as! NSHTTPURLResponse!
+//            if (res.statusCode >= 200 && res.statusCode < 300) {
+//                var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+//                NSLog("Response ==> %@", responseData);
+//                var error: NSError?
+//                let jsonData: NSDictionary = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSDictionary)!
+//                
+//                if(responseData != "[]"){
+//                    println("ALERT!")
+//                } else {
+//                    println("NO MATCH YET")
+//                }
+//
+//            }
+//        }
         
         
         
@@ -237,6 +281,7 @@ class Test_Connection2VC: UIViewController {
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         prefs.setObject("LoadMenteeSignup", forKey: "MenteeLogin")
+        myActivityIndicator1.startAnimating()
         
         var refreshAlert = UIAlertController(title: "Confirm Connect", message: "Are you sure you would like to connect?", preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -270,6 +315,82 @@ class Test_Connection2VC: UIViewController {
 
 
         }
+    
+    @IBAction func connectButtonTapped2(sender: AnyObject) {
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject("LoadMenteeSignup", forKey: "MenteeLogin")
+        myActivityIndicator1.startAnimating()
+        
+        var refreshAlert = UIAlertController(title: "Confirm Connect", message: "Are you sure you would like to connect?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            
+            println("Handle Ok logic here")
+            let menteeUserID = prefs.valueForKey("userID") as! String
+            let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
+            let mentorUserID:AnyObject = mentorArray[1]
+            let mentorUserIDString: String = String(mentorUserID as! NSString)
+            prefs.setObject(mentorUserIDString, forKey: "Mentor Selected")
+            
+            prefs.setObject(mentorUserIDString, forKey: "MentorMatched")
+            
+            prefs.setObject("LoadMenteeSignup", forKey: "MenteeLogin")
+            
+            prefs.setObject("MentorLoggedIn", forKey: "Status")
+            if(prefs.valueForKey("matchCheck") as! String == "NeverMatched"){
+                self.performSegueWithIdentifier("goto_menteesignup", sender: self)
+            } else if (prefs.valueForKey("matchCheck") as! String == "MatchedPreviously"){
+                self.performSegueWithIdentifier("goto_loginhome2", sender: self)
+            }
+            
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            println("Handle Cancel Logic here")
+        }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func connectButtonTapped3(sender: AnyObject) {
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject("LoadMenteeSignup", forKey: "MenteeLogin")
+        myActivityIndicator1.startAnimating()
+        
+        var refreshAlert = UIAlertController(title: "Confirm Connect", message: "Are you sure you would like to connect?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            
+            println("Handle Ok logic here")
+            let menteeUserID = prefs.valueForKey("userID") as! String
+            let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
+            let mentorUserID:AnyObject = mentorArray[2]
+            let mentorUserIDString: String = String(mentorUserID as! NSString)
+            prefs.setObject(mentorUserIDString, forKey: "Mentor Selected")
+            
+            prefs.setObject(mentorUserIDString, forKey: "MentorMatched")
+            
+            prefs.setObject("LoadMenteeSignup", forKey: "MenteeLogin")
+            
+            prefs.setObject("MentorLoggedIn", forKey: "Status")
+            if(prefs.valueForKey("matchCheck") as! String == "NeverMatched"){
+                self.performSegueWithIdentifier("goto_menteesignup", sender: self)
+            } else if (prefs.valueForKey("matchCheck") as! String == "MatchedPreviously"){
+                self.performSegueWithIdentifier("goto_loginhome2", sender: self)
+            }
+            
+        }))
+        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            println("Handle Cancel Logic here")
+        }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
+    }
+    
     
     
     

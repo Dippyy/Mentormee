@@ -30,6 +30,8 @@ class MenteeMentorSearchViewController: UIViewController{
     
     @IBOutlet weak var hometownButton: UIButton!
     
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    
     //var mentorList
     let userdefaults = NSUserDefaults.standardUserDefaults()
     
@@ -84,6 +86,9 @@ class MenteeMentorSearchViewController: UIViewController{
     
     @IBAction func FindMentorButtonTapped(sender: AnyObject) {
         //"Find A Mentor Now" button clicked
+        
+//        myActivityIndicator.startAnimating()
+        
         if ((self.userSelectionText) != nil) {
         tempcomparisonField.insert(userSelectionText, atIndex: 0)
         } else {
@@ -221,6 +226,8 @@ class MenteeMentorSearchViewController: UIViewController{
 
 func Algorithm_filterOnCapacity(url:String) -> NSArray {
     //Returns an array with mentors who are currently available
+    myActivityIndicator.startAnimating()
+
     
     let urlToSend = NSURL(string:url)
     let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()  //NSUserDefault = Dictionary
