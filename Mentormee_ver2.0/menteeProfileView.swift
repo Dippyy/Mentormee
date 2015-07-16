@@ -21,12 +21,12 @@ class menteeProfileView: UIViewController {
         //This setups the imageview so it appears circular
         
         menteeProfileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
-        menteeProfileImageView.contentMode = UIViewContentMode.ScaleAspectFit
+       menteeProfileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         menteeProfileImageView.layer.borderWidth = 1.5
         menteeProfileImageView.layer.masksToBounds = false
         menteeProfileImageView.layer.borderColor = UIColor.orangeColor().CGColor
-        menteeProfileImageView.layer.cornerRadius = menteeProfileImageView.frame.height/2
+//        menteeProfileImageView.layer.cornerRadius = menteeProfileImageView.frame.height/2
         menteeProfileImageView.clipsToBounds = true
         
         

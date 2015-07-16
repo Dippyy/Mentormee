@@ -288,7 +288,7 @@ class Test_Connection2VC: UIViewController {
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
         
             println("Handle Ok logic here")
-            let menteeUserID = prefs.valueForKey("userID") as! String
+            //let menteeUserID = prefs.valueForKey("userID") as! String
             let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
             let mentorUserID:AnyObject = mentorArray[0]
             let mentorUserIDString: String = String(mentorUserID as! NSString)
@@ -327,7 +327,7 @@ class Test_Connection2VC: UIViewController {
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             
             println("Handle Ok logic here")
-            let menteeUserID = prefs.valueForKey("userID") as! String
+           // let menteeUserID = prefs.valueForKey("userID") as! String
             let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
             let mentorUserID:AnyObject = mentorArray[1]
             let mentorUserIDString: String = String(mentorUserID as! NSString)
@@ -365,7 +365,7 @@ class Test_Connection2VC: UIViewController {
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             
             println("Handle Ok logic here")
-            let menteeUserID = prefs.valueForKey("userID") as! String
+            //let menteeUserID = prefs.valueForKey("userID") as! String
             let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
             let mentorUserID:AnyObject = mentorArray[2]
             let mentorUserIDString: String = String(mentorUserID as! NSString)

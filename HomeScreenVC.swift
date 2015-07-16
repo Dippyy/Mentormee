@@ -232,7 +232,7 @@ class HomeScreenVC: UIViewController {
         profileImageView.layer.borderWidth = 1.5
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.orangeColor().CGColor
-        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+//        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
 
         

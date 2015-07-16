@@ -249,6 +249,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let emailReceived = prefs.valueForKey("email") as! String
+        println("THIS IS THE EMAIL ! \(emailReceived)")
         
         let param = ["email" : emailReceived]
         
