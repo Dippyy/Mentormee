@@ -10,15 +10,18 @@ import UIKit
 
 class MenteeViewVC: UIViewController {
 
+    
     @IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var universityLabel: UILabel!
     @IBOutlet weak var programLabel: UILabel!
     
+    
     @IBOutlet weak var myImageView2: UIImageView!
     @IBOutlet weak var fullNameLabel2: UILabel!
     @IBOutlet weak var universityLabel2: UILabel!
     @IBOutlet weak var programLabel2: UILabel!
+    
     
     @IBOutlet weak var myImageView3: UIImageView!
     @IBOutlet weak var fullNameLabel3: UILabel!
@@ -112,7 +115,8 @@ class MenteeViewVC: UIViewController {
                     if(jsonData.count == 1) {
                 
                         let menteeUserID1: String = jsonData[0].valueForKey("Mentee_id") as! String
-                        prefs.setObject(menteeUserID1, forKey: "MenteeID1")
+                        prefs.setObject(menteeUserID1, forKey: "MenteeID11")
+                        prefs.setObject(jsonData.count, forKey: "MenteeIDToSend")
                         
                         UIView.animateWithDuration(0, animations: {
                             
@@ -122,6 +126,7 @@ class MenteeViewVC: UIViewController {
                             self.programLabel.alpha = 0
                             
                             })
+                        
                         
                         var post: NSString = "menteeUserID1=\(menteeUserID1)"
                         NSLog("PostData: %@",post);
@@ -177,7 +182,8 @@ class MenteeViewVC: UIViewController {
                     } else if(jsonData.count == 2) {
                     
                         let menteeUserID1: String = jsonData[0].valueForKey("Mentee_id") as! String
-//                        prefs.setObject(menteeUserID1, forKey: "MenteeID1")
+                        prefs.setObject(menteeUserID1, forKey: "MenteeID21")
+                        prefs.setObject(jsonData.count, forKey: "MenteeIDToSend")
                         
                         myImageView.layer.borderWidth = 1.5
                         myImageView.layer.masksToBounds = false
@@ -195,7 +201,7 @@ class MenteeViewVC: UIViewController {
                         })
 
                         let menteeUserID2: String = jsonData[1].valueForKey("Mentee_id") as! String
-//                        prefs.setObject(menteeUserID1, forKey: "MenteeID2")
+                        prefs.setObject(menteeUserID2, forKey: "MenteeID22")
                         
                         myImageView2.layer.borderWidth = 1.5
                         myImageView2.layer.masksToBounds = false
@@ -291,7 +297,9 @@ class MenteeViewVC: UIViewController {
                     } else if(jsonData.count == 3){
                         println("Three Mentors")
                         let menteeUserID1: String = jsonData[0].valueForKey("Mentee_id") as! String
-                        //                        prefs.setObject(menteeUserID1, forKey: "MenteeID1")
+                        prefs.setObject(menteeUserID1, forKey: "MenteeID31")
+                        prefs.setObject(jsonData.count, forKey: "MenteeIDToSend")
+
                         
                         myImageView.layer.borderWidth = 1.5
                         myImageView.layer.masksToBounds = false
@@ -309,6 +317,7 @@ class MenteeViewVC: UIViewController {
                         })
                         
                         let menteeUserID2: String = jsonData[1].valueForKey("Mentee_id") as! String
+                        prefs.setObject(menteeUserID2, forKey: "MenteeID31")
                         
                         myImageView2.layer.borderWidth = 1.5
                         myImageView2.layer.masksToBounds = false
@@ -326,6 +335,7 @@ class MenteeViewVC: UIViewController {
                         })
                         
                         let menteeUserID3: String = jsonData[2].valueForKey("Mentee_id") as! String
+                        prefs.setObject(menteeUserID3, forKey: "MenteeID31")
                         
                         myImageView3.layer.borderWidth = 1.5
                         myImageView3.layer.masksToBounds = false
@@ -448,6 +458,18 @@ class MenteeViewVC: UIViewController {
             }
         }
         
+    }
+    
+    
+    @IBAction func backgroundButton1(sender: AnyObject) {
+        
+        
+    }
+    
+    @IBAction func backgroundButton2(sender: AnyObject) {
+    }
+    
+    @IBAction func backgroundButton3(sender: AnyObject) {
     }
 
     override func didReceiveMemoryWarning() {

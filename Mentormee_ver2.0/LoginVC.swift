@@ -141,7 +141,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+//        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         myActivityIndicator.startAnimating()
         

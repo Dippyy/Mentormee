@@ -1,27 +1,28 @@
 //
-//  MenteePublicProfileVC.swift
-//  MenteeProfilePage
+//  MenteePublicProfileMentor.swift
+//  Mentormee_ver2.0
 //
-//  Created by Robert D'Ippolito on 2015-06-30.
+//  Created by Robert D'Ippolito on 2015-07-16.
 //  Copyright (c) 2015 Robert D'Ippolito. All rights reserved.
 //
 
 import UIKit
 
-class MenteePublicProfileVC: UIViewController {
+class MenteePublicProfileMentor: UIViewController {
     
     @IBOutlet weak var menteeProfileImageView: UIImageView!
     @IBOutlet weak var menteeFullNameLabel: UILabel!
     @IBOutlet weak var highschoolLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     
-    @IBOutlet weak var whatsupTextField: UITextView!
-    @IBOutlet weak var interestsTextField: UITextView!
-    @IBOutlet weak var futureConsiderationsTextField: UITextView!
-    @IBOutlet weak var currentSituationTextField: UITextView!
-
     @IBOutlet weak var myScrollView: UIScrollView!
     
+    @IBOutlet weak var currentSituationLabel: UITextView!
+    @IBOutlet weak var futureConsiderationLabel: UITextView!
+    @IBOutlet weak var whatsupLabel: UITextView!
+    @IBOutlet weak var interestsLabel: UITextView!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,10 +39,10 @@ class MenteePublicProfileVC: UIViewController {
         menteeProfileImageView.layer.cornerRadius = menteeProfileImageView.frame.height/2
         menteeProfileImageView.clipsToBounds = true
         
-        // Call the DB to set up the profile 
+        // Call the DB to set up the profile
         
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-
+        
         let menteeID: String = prefs.valueForKey("userID") as! String
         
         var post: NSString = "userID=\(menteeID)"
@@ -92,47 +93,43 @@ class MenteePublicProfileVC: UIViewController {
                 }
                 
                 if let interests: String = jsonData[0].valueForKey("Interests") as? String {
-                    interestsTextField.text = interests
+                    interestsLabel.text = interests
                 }
                 
                 if let profilePicture: String = jsonData[0].valueForKey("Picture") as? String {
                     if (profilePicture != ""){
-                    let url2 = NSURL(string: profilePicture)
-                    let data = NSData(contentsOfURL: url2!)
-                    menteeProfileImageView.image = UIImage(data: data!)
+                        let url2 = NSURL(string: profilePicture)
+                        let data = NSData(contentsOfURL: url2!)
+                        menteeProfileImageView.image = UIImage(data: data!)
                     } else {
                         menteeProfileImageView.image = UIImage(named: "profile_default.jpg")
-
+                        
                     }
-                } 
+                }
                 if let whatsUp: String = jsonData[1].valueForKey("WhatsUp") as? String {
-                    whatsupTextField.text = whatsUp
+                    whatsupLabel.text = whatsUp
                 }
                 
                 if let gradeYear: String = jsonData[1].valueForKey("GraduationYear") as? String {
-                   gradeLabel.text = gradeYear
+                    gradeLabel.text = gradeYear
                 }
                 
                 if let currentSituation: String = jsonData[1].valueForKey("CurrentSituation") as? String {
-                    currentSituationTextField.text = currentSituation
+                    currentSituationLabel.text = currentSituation
                 }
                 
                 if let futureOptions: String = jsonData[1].valueForKey("FutureOptions") as? String {
-                    futureConsiderationsTextField.text = futureOptions
+                    futureConsiderationLabel.text = futureOptions
                 }
                 
             }
         }
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func backButtonTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

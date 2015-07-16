@@ -41,6 +41,7 @@
 		E1E1D4F81B4B10FE00C9D010 /* mentorProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4F71B4B10FE00C9D010 /* mentorProfileView.swift */; };
 		E1E1D4FA1B4B12B800C9D010 /* MenteePublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4F91B4B12B800C9D010 /* MenteePublicProfileVC.swift */; };
 		E1E1D4FC1B503A1200C9D010 /* FindMentorLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4FB1B503A1200C9D010 /* FindMentorLoginViewController.swift */; };
+		E1E5247F1B584DED00F9159A /* MenteePublicProfileMentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		E1E1D4F71B4B10FE00C9D010 /* mentorProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mentorProfileView.swift; sourceTree = "<group>"; };
 		E1E1D4F91B4B12B800C9D010 /* MenteePublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteePublicProfileVC.swift; sourceTree = "<group>"; };
 		E1E1D4FB1B503A1200C9D010 /* FindMentorLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMentorLoginViewController.swift; sourceTree = "<group>"; };
+		E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteePublicProfileMentor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			children = (
 				CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */,
 				E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */,
+				E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */,
 				E162BD921B30C03500968EE0 /* MenteeViewVC.swift */,
 				E162BD901B309BD300968EE0 /* PublicProfileVC.swift */,
 				E162BD8C1B2CC7E200968EE0 /* NamePictureVC.swift */,
@@ -315,6 +318,7 @@
 			files = (
 				E1E1D4EE1B4B009F00C9D010 /* UpdateMenteeProfileVC.swift in Sources */,
 				E1E1D4F21B4B05F000C9D010 /* TextEntryViewController.swift in Sources */,
+				E1E5247F1B584DED00F9159A /* MenteePublicProfileMentor.swift in Sources */,
 				CB075A4D1B3B7A24001385C1 /* Test_Connection2VC.swift in Sources */,
 				E162BD5B1B28A51900968EE0 /* AppDelegate.swift in Sources */,
 				E1E1D4F81B4B10FE00C9D010 /* mentorProfileView.swift in Sources */,

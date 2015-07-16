@@ -90,9 +90,22 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         if(prefs.valueForKey("Selection")!.isEqualToString("Full Name")){
             
             var fullName: String = fullNameTextField.text as String
+            
             var userID = prefs.valueForKey("userID") as! String
                     
             var fullNameArr = split(fullName) {$0 == " "}
+            
+            if(fullNameTextField.text.isEmpty){
+                
+                var alertView:UIAlertView = UIAlertView()
+                alertView.title = "Full Name"
+                alertView.message = "Please fill out your full name!"
+                alertView.delegate = self
+                alertView.addButtonWithTitle("OK")
+                alertView.show()
+                
+            } else {
+                
             var firstName: String = fullNameArr[0]
             println("THE FIRST NAME IS \(firstName)")
             var lastName: String! = fullNameArr.count > 1 ? fullNameArr[1] : ""
@@ -138,6 +151,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
                     }
                 }
             }
+        }
             
         } else if(prefs.valueForKey("Selection")!.isEqualToString("What's Up")){
             

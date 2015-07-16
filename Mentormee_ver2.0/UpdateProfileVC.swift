@@ -262,7 +262,10 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         let facultyName: String = storedData.valueForKey("Faculty") as! String
         println(facultyName)
         
-        if(universityName == "University" || programName == "Program" || facultyName == "Faculty"){
+        let fullName: String = storedData.valueForKey("Full Name") as! String
+        println(facultyName)
+        
+        if(universityName == "University" || programName == "Program" || facultyName == "Faculty" || fullName == ""){
             
             var alertView:UIAlertView = UIAlertView()
             alertView.title = "Wait!"
