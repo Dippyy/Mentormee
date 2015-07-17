@@ -317,7 +317,7 @@ class MenteeViewVC: UIViewController {
                         })
                         
                         let menteeUserID2: String = jsonData[1].valueForKey("Mentee_id") as! String
-                        prefs.setObject(menteeUserID2, forKey: "MenteeID31")
+                        prefs.setObject(menteeUserID2, forKey: "MenteeID32")
                         
                         myImageView2.layer.borderWidth = 1.5
                         myImageView2.layer.masksToBounds = false
@@ -335,7 +335,7 @@ class MenteeViewVC: UIViewController {
                         })
                         
                         let menteeUserID3: String = jsonData[2].valueForKey("Mentee_id") as! String
-                        prefs.setObject(menteeUserID3, forKey: "MenteeID31")
+                        prefs.setObject(menteeUserID3, forKey: "MenteeID33")
                         
                         myImageView3.layer.borderWidth = 1.5
                         myImageView3.layer.masksToBounds = false
@@ -462,14 +462,84 @@ class MenteeViewVC: UIViewController {
     
     
     @IBAction func backgroundButton1(sender: AnyObject) {
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let menteeCheck: Int = prefs.valueForKey("MenteeIDToSend") as! Int
         
+//        if(menteeCheck == 1){
         
+            if((prefs.valueForKey("MenteeID11")) != nil){
+                println(prefs.valueForKey("MenteeID11"))
+                var idToSend: String = prefs.valueForKey("MenteeID11") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+                
+            } else if((prefs.valueForKey("MenteeID21")) != nil){
+                println(prefs.valueForKey("MenteeID21"))
+                var idToSend: String = prefs.valueForKey("MenteeID21") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+                
+            } else if((prefs.valueForKey("MenteeID31")) != nil){
+                println(prefs.valueForKey("MenteeID31"))
+                var idToSend: String = prefs.valueForKey("MenteeID31") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+            }
+        
+        self.performSegueWithIdentifier("goto_menteeprofilementor", sender: self)
+
+//        }
     }
     
     @IBAction func backgroundButton2(sender: AnyObject) {
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let menteeCheck: Int = prefs.valueForKey("MenteeIDToSend") as! Int
+        
+//        if(menteeCheck == 2){
+        
+            if((prefs.valueForKey("MenteeID12")) != nil){
+                println(prefs.valueForKey("MenteeID12"))
+                var idToSend: String = prefs.valueForKey("MenteeID12") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+                
+            } else if((prefs.valueForKey("MenteeID22")) != nil){
+                println(prefs.valueForKey("MenteeID22"))
+                var idToSend: String = prefs.valueForKey("MenteeID22") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+                
+            } else if((prefs.valueForKey("MenteeID32")) != nil){
+                println(prefs.valueForKey("MenteeID32"))
+                var idToSend: String = prefs.valueForKey("MenteeID32") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+            }
+        
+        self.performSegueWithIdentifier("goto_menteeprofilementor", sender: self)
+
+//        }
     }
     
     @IBAction func backgroundButton3(sender: AnyObject) {
+        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let menteeCheck: Int = prefs.valueForKey("MenteeIDToSend") as! Int
+        
+//        if(menteeCheck == 3){
+        
+            if((prefs.valueForKey("MenteeID13")) != nil){
+                println(prefs.valueForKey("MenteeID13"))
+                var idToSend: String = prefs.valueForKey("MenteeID13") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+                
+            } else if((prefs.valueForKey("MenteeID23")) != nil){
+                println(prefs.valueForKey("MenteeID23"))
+                var idToSend: String = prefs.valueForKey("MenteeID23") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+                
+            } else if((prefs.valueForKey("MenteeID33")) != nil){
+                println(prefs.valueForKey("MenteeID33"))
+                var idToSend: String = prefs.valueForKey("MenteeID33") as! String
+                prefs.setObject(idToSend, forKey: "MenteeClicked")
+            }
+        
+        self.performSegueWithIdentifier("goto_menteeprofilementor", sender: self)
+        
+//        }
     }
 
     override func didReceiveMemoryWarning() {

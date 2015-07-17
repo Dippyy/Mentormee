@@ -21,6 +21,13 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = false

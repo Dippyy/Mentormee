@@ -30,6 +30,12 @@ class Test_Connection2VC: UIViewController {
         
         super.viewDidLoad()
         
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
         let pref: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         let topThreeMentors:NSArray = pref.valueForKey("topThreeMentors")! as! NSArray

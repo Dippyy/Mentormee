@@ -26,6 +26,12 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Black
+        nav?.tintColor = UIColor.yellowColor()
+            
+
         userDataPickerView.dataSource = self
         userDataPickerView.delegate = self
         
@@ -35,6 +41,12 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
             getDataFromURL(url, searchField: "Program")
         }
 
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Black
+        nav?.tintColor = UIColor.yellowColor()
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -120,9 +132,16 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Segue is underway, update destination ViewController with value set earlier
         
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject(senderField, forKey: "fieldToSend")
+        prefs.setObject(selectedItem, forKey: "specToSend")
+        
+        
         if let vc = segue.destinationViewController as? MenteeMentorSearchViewController {
             vc.userSelectionField = senderField
             vc.userSelectionText = selectedItem
+            
+            
         }
     }
     

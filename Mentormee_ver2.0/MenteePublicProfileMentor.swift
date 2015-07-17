@@ -26,6 +26,8 @@ class MenteePublicProfileMentor: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         myScrollView.contentSize.height = 750
         
         //This setups the imageview so it appears circular
@@ -43,7 +45,11 @@ class MenteePublicProfileMentor: UIViewController {
         
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        let menteeID: String = prefs.valueForKey("userID") as! String
+        let menteeID = prefs.valueForKey("MenteeClicked") as! String
+        println(menteeID)
+        
+        
+//        let menteeID: String = prefs.valueForKey("userID") as! String
         
         var post: NSString = "userID=\(menteeID)"
         println(post)
@@ -127,6 +133,11 @@ class MenteePublicProfileMentor: UIViewController {
         // Do any additional setup after loading the view.
 
     }
+    
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
