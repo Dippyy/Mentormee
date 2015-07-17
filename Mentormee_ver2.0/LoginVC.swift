@@ -35,6 +35,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         super.viewDidLoad()
  
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
         emailField.alpha = 1.0
         passwordField.alpha = 1.0
         passwordConfirmField.alpha = 1.0

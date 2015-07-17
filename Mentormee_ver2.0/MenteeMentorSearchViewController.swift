@@ -53,21 +53,47 @@ class MenteeMentorSearchViewController: UIViewController{
     }
     
     override func viewDidLoad() {
-        if(userSelectionField != nil){
-            switch(userSelectionField){
-            case "Program":
-                programButton.setTitle("Program: \(userSelectionText)", forState: UIControlState.Normal)
-            case "Specialization":
-                specButton.setTitle("Specialization: \(userSelectionText)", forState: UIControlState.Normal)
-            case "University":
-                univButton.setTitle("University: \(userSelectionText)", forState: UIControlState.Normal)
-            case "Hometown":
-                hometownButton.setTitle("Hometown: \(userSelectionText)", forState: UIControlState.Normal)
-            default:
-                userSelectionField = nil
-                userSelectionText = nil
-            }
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
+//        var nav = self.navigationController?.navigationBar
+//        nav?.barStyle = UIBarStyle.
+//        nav?.tintColor = UIColor.yellowColor()
+        
+        if let selectionText: String = prefs.valueForKey("specToSend") as? String {
             
+            let senderField: String = prefs.valueForKey("fieldToSend") as! String
+            
+            println("selectionText = \(selectionText) senderField = \(senderField)")
+//            if(userSelectionField != nil){
+            
+            if (senderField.isEmpty) {
+
+                println("SenderField is empty!!")
+                
+            } else {
+                
+                switch(senderField){
+                case "Program":
+                    programButton.setTitle("Program: \(userSelectionText)", forState: UIControlState.Normal)
+                case "Specialization":
+                    //                  specButton.setTitle("Specialization: \(userSelectionText)", forState: UIControlState.Normal)
+                    specButton.setTitle("Specialization: \(selectionText)", forState: UIControlState.Normal)
+                case "University":
+                    univButton.setTitle("University: \(userSelectionText)", forState: UIControlState.Normal)
+                case "Hometown":
+                    hometownButton.setTitle("Hometown: \(userSelectionText)", forState: UIControlState.Normal)
+                default:
+                    userSelectionField = nil
+                    userSelectionText = nil
+                }
+            }
         }
         
     }
@@ -89,9 +115,10 @@ class MenteeMentorSearchViewController: UIViewController{
         
 //        myActivityIndicator.startAnimating()
         
-        println(userSelectionText)
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let selectionText: String = prefs.valueForKey("specToSend") as! String
         
-        if(userSelectionText == nil){
+        if(selectionText == "Specialization: "){
             
             var alertView:UIAlertView = UIAlertView()
             alertView.title = "Select A Specialization"
@@ -102,11 +129,13 @@ class MenteeMentorSearchViewController: UIViewController{
             
         } else {
         
+        let selectionTest: String = prefs.valueForKey("specToSend") as! String
         
-        if ((self.userSelectionText) != nil) {
-        tempcomparisonField.insert(userSelectionText, atIndex: 0)
-        } else {
+        if ((selectionText).isEmpty) {
             tempcomparisonField.insert("nil", atIndex: 0)
+        } else {
+            tempcomparisonField.insert(selectionText, atIndex: 0)
+
         }
         
         tempcomparisonField.insert("Engineering", atIndex: 1)
@@ -114,7 +143,16 @@ class MenteeMentorSearchViewController: UIViewController{
         comparisonField = tempcomparisonField
         tempcomparisonField = []
             
-        lets_connect_you_with_a_mentor(userSelectionText)
+            let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let userSelection: String = prefs.valueForKey("specToSend") as! String
+            
+//        lets_connect_you_with_a_mentor(userSelectionText)
+        
+        lets_connect_you_with_a_mentor(userSelection)
+            
+        prefs.removeObjectForKey("specToSend")
+        prefs.removeObjectForKey("fieldToSend")
+            
         performSegueWithIdentifier("goto_top3mentors", sender: self)
             
         }

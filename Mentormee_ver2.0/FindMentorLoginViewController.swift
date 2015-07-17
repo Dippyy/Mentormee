@@ -21,8 +21,21 @@ class FindMentorLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+//        nav?.tintColor = UIColor.yellowColor()
+        
+//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
+//        imageView.contentMode = .ScaleAspectFit
+        let image = UIImage(named: "NavbarImage")
+
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
+        
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
