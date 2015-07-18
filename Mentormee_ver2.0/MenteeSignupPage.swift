@@ -19,6 +19,8 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var buttonToLogin: UIButton!
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,12 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         myScrollView.addGestureRecognizer(tapGesture)
         buttonToLogin.alpha = 0
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let backButtonCheck = prefs.valueForKey("MenteeLogin") as! String
+        
+        if(backButtonCheck != "LoadMenteeLogin"){
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
         let loginCheck: String = prefs.valueForKey("MenteeLogin") as! String
         
         if(loginCheck == "LoadMenteeLogin"){
@@ -51,6 +59,11 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
             buttonToLogin.alpha = 0
         }
 
+    }
+    
+    
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

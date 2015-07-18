@@ -26,6 +26,11 @@ class MenteePublicProfileMentor: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
         
         
         myScrollView.contentSize.height = 750

@@ -24,6 +24,12 @@ class mentorProfileView: UIViewController {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let mentorID = prefs.valueForKey("mentorUserID") as! String
         
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
         mentorProfileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         mentorProfileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         

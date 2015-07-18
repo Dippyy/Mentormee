@@ -16,6 +16,13 @@ class ProfilePictureVC: UIViewController, UIImagePickerControllerDelegate, UINav
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -212,10 +219,3 @@ class ProfilePictureVC: UIViewController, UIImagePickerControllerDelegate, UINav
 
 }
 
-//extension NSMutableData {
-//    func appendString(string: String) {
-//        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-//        appendData(data!)
-//    }
-
-//}

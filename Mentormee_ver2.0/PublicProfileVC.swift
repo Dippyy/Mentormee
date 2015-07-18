@@ -23,7 +23,14 @@ class PublicProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myScrollView.contentSize.height = 750
+//        myScrollView.contentSize.height = 750
+        
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+
         
 // MAKES IMAGEVIEW CIRCULAR
         

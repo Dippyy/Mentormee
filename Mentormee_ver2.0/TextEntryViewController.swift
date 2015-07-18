@@ -19,6 +19,12 @@ class TextEntryViewController: UIViewController {
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
         // this sets the transparency of the textfields (i.e. short textfield should appear for name, highschool, contact info but the long textfield should appear when the user needs to write more then one line (whatsup, current situation, etc..))
         
         if(prefs.valueForKey("Selection")!.isEqualToString("Full Name")){

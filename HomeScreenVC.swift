@@ -34,8 +34,6 @@ class HomeScreenVC: UIViewController {
         signUpLabelToSignup.hidden = true
         myActivityIndicator.startAnimating()
         
-
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -60,6 +58,11 @@ class HomeScreenVC: UIViewController {
         })
         
         let prefs1: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        prefs1.removeObjectForKey("imageToSend")
+        prefs1.removeObjectForKey("Profile Picture")
+        prefs1.removeObjectForKey("ProfileImage")
+
         
         if(prefs1.valueForKey("userID") == nil){
             self.performSegueWithIdentifier("goto_login", sender: self)
@@ -124,7 +127,11 @@ class HomeScreenVC: UIViewController {
                 // ERROR HANDLER FOR PROFILE PICTURE
                     if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
                 
-                        profileImageView.image = UIImage(named: "profile_default.jpg")
+//                        profileImageView.image = UIImage(named: "profile_default.jpg")
+                        var email: String = jsonData[0].valueForKey("Email") as! String
+                        var firstChar = Array(email)[0]
+                        println(firstChar)
+                        profileImageView.image = UIImage(named: "\(firstChar)DefaultLetter")
 
                     }   else {
                 
@@ -150,6 +157,8 @@ class HomeScreenVC: UIViewController {
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
+                    
+                    SetUpProfileButton.backgroundColor = UIColor.orangeColor()
                     
                 } else {
                                     
@@ -229,20 +238,12 @@ class HomeScreenVC: UIViewController {
         profileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         profileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
-        profileImageView.layer.borderWidth = 1.5
+        profileImageView.layer.borderWidth = 2.5
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.orangeColor().CGColor
-//        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
 
-        
-        //Checks to see if the user has logged in before, if not it will take the user to the login screen
-//        let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-//        var isLoggedIn:Int = prefs.integerForKey("ISLOGGEDIN") as Int
-        
-//        if (isLoggedIn != 1) {
-//            self.performSegueWithIdentifier("goto_login", sender: self)
-//        }
         }
     }
 

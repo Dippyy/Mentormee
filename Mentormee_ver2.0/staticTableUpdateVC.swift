@@ -22,6 +22,12 @@ class staticTableUpdateVC: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         myTableView.delegate = self
         myTableView.dataSource = self
+        
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
     }
 
     override func didReceiveMemoryWarning() {

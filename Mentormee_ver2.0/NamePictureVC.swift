@@ -24,6 +24,13 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         selectPhotoButton.alpha = 0
         whatsupTextField.alpha = 0
         
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+
+        
         
     }
     

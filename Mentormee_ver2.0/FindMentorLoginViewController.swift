@@ -20,6 +20,10 @@ class FindMentorLoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        prefs.setObject("LoadMenteeSignup", forKey: "MenteeLogin")
+
 
         var nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Default

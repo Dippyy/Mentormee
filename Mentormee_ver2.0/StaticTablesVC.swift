@@ -22,6 +22,13 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.alpha = 0
+        
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+
     }
     
     override func viewDidAppear(animated: Bool) {

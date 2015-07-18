@@ -21,6 +21,13 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         myTableView.delegate = self
         myTableView.dataSource = self
         
+        var nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.Default
+        let image = UIImage(named: "NavbarImage")
+        self.navigationController!.navigationBar.setBackgroundImage(image,
+            forBarMetrics: .Default)
+        
+        
 //------------------------ Updates the detail text fields of the user update screen ------------------------------------------
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
