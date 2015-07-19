@@ -40,7 +40,7 @@ class MenteePublicProfileMentor: UIViewController {
         menteeProfileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         menteeProfileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
-        menteeProfileImageView.layer.borderWidth = 1.5
+        menteeProfileImageView.layer.borderWidth = 2.5
         menteeProfileImageView.layer.masksToBounds = false
         menteeProfileImageView.layer.borderColor = UIColor.orangeColor().CGColor
         menteeProfileImageView.layer.cornerRadius = menteeProfileImageView.frame.height/2
@@ -113,7 +113,13 @@ class MenteePublicProfileMentor: UIViewController {
                         let data = NSData(contentsOfURL: url2!)
                         menteeProfileImageView.image = UIImage(data: data!)
                     } else {
-                        menteeProfileImageView.image = UIImage(named: "profile_default.jpg")
+                        
+                        var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                        var lowerFirstName = firstName.lowercaseString
+                        var firstChar = Array(lowerFirstName)[0]
+                        println(firstChar)
+                        menteeProfileImageView.image = UIImage(named: "\(firstChar)DefaultLetter")
+//                        menteeProfileImageView.image = UIImage(named: "profile_default.jpg")
                         
                     }
                 }

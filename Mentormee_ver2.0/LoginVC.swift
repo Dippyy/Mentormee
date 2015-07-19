@@ -481,7 +481,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
                                 prefs.setObject("MentorLoggedIn", forKey: "Status")
-                                self.performSegueWithIdentifier("goto_mentorhome", sender: self)
+//                                self.performSegueWithIdentifier("goto_mentorhome", sender: self)
+                                self.performSegueWithIdentifier("goto_signupDetail", sender: self)
+
                             }
                         }
 

@@ -33,7 +33,7 @@ class mentorProfileView: UIViewController {
         mentorProfileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         mentorProfileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
-        mentorProfileImageView.layer.borderWidth = 1.5
+        mentorProfileImageView.layer.borderWidth = 2.5
         mentorProfileImageView.layer.masksToBounds = false
         mentorProfileImageView.layer.borderColor = UIColor.orangeColor().CGColor
         mentorProfileImageView.layer.cornerRadius = mentorProfileImageView.frame.height/2

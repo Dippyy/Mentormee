@@ -37,7 +37,7 @@ class PublicProfileVC: UIViewController {
         profileImageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         profileImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
-        profileImageView.layer.borderWidth = 1.5
+        profileImageView.layer.borderWidth = 2.5
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.orangeColor().CGColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
@@ -169,7 +169,10 @@ class PublicProfileVC: UIViewController {
                 
                 if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
                     
-                    profileImageView.image = UIImage(named: "profile_default.jpg")
+                    var email: String = jsonData[0].valueForKey("Email") as! String
+                    var firstChar = Array(email)[0]
+                    println(firstChar)
+                    profileImageView.image = UIImage(named: "\(firstChar)DefaultLetter")
                     
                 } else {
                     

@@ -116,18 +116,7 @@ class MenteeMentorSearchViewController: UIViewController{
 //        myActivityIndicator.startAnimating()
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let selectionText: String = prefs.valueForKey("specToSend") as! String
-        
-        if(selectionText == "Specialization: "){
-            
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Select A Specialization"
-            alertView.message = "Please select a specialization!"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-            
-        } else {
+        if let selectionText: String = prefs.valueForKey("specToSend") as? String {
         
         let selectionTest: String = prefs.valueForKey("specToSend") as! String
         
@@ -154,6 +143,15 @@ class MenteeMentorSearchViewController: UIViewController{
         prefs.removeObjectForKey("fieldToSend")
             
         performSegueWithIdentifier("goto_top3mentors", sender: self)
+            
+        } else {
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Select A Specialization"
+            alertView.message = "Please select a specialization!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
             
         }
 
