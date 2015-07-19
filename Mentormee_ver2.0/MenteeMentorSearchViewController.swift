@@ -114,6 +114,13 @@ class MenteeMentorSearchViewController: UIViewController{
         //"Find A Mentor Now" button clicked
         
 //        myActivityIndicator.startAnimating()
+//        
+//        UIView.animateWithDuration(1, animations: {
+//            self.specButton.alpha = 0
+//            self.programButton.alpha = 0
+//            self.univButton.alpha = 0
+//
+//        })
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if let selectionText: String = prefs.valueForKey("specToSend") as? String {
@@ -161,6 +168,17 @@ class MenteeMentorSearchViewController: UIViewController{
     func lets_connect_you_with_a_mentor(Program:String) -> NSArray{
         
         // uses allMentorList & comparisonField to identify the top three mentors in an NSArray
+        
+        
+        myActivityIndicator.startAnimating()
+        
+        UIView.animateWithDuration(1, animations: {
+            self.specButton.alpha = 0
+            self.programButton.alpha = 0
+            self.univButton.alpha = 0
+            
+        })
+        
     
         let allMentorList:NSArray = (Algorithm_filterOnCapacity("http://mentormee.info/dbTestConnect/Algorithm_filterOnCapacity.php"))
         
@@ -280,9 +298,9 @@ class MenteeMentorSearchViewController: UIViewController{
 
 func Algorithm_filterOnCapacity(url:String) -> NSArray {
     //Returns an array with mentors who are currently available
-    myActivityIndicator.startAnimating()
-
     
+//    myActivityIndicator.startAnimating()
+
     let urlToSend = NSURL(string:url)
     let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()  //NSUserDefault = Dictionary
     
@@ -395,7 +413,7 @@ func test (mentor_id:AnyObject, comparisonField:NSArray) -> Int {
 
 func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     //Takes in an available mentor from Algorithm_filterOnCapacity + Comparison Fields and spits out the top three rated mentors' Account_ID
-    
+
     
     /*------- Extracting PrimaryCapacity --------------*/
     

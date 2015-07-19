@@ -42,6 +42,7 @@
 		E1E1D4FA1B4B12B800C9D010 /* MenteePublicProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4F91B4B12B800C9D010 /* MenteePublicProfileVC.swift */; };
 		E1E1D4FC1B503A1200C9D010 /* FindMentorLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4FB1B503A1200C9D010 /* FindMentorLoginViewController.swift */; };
 		E1E5247F1B584DED00F9159A /* MenteePublicProfileMentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */; };
+		E1E604331B5C1DF700AD47B9 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E604321B5C1DF700AD47B9 /* EmailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E1E1D4F91B4B12B800C9D010 /* MenteePublicProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteePublicProfileVC.swift; sourceTree = "<group>"; };
 		E1E1D4FB1B503A1200C9D010 /* FindMentorLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMentorLoginViewController.swift; sourceTree = "<group>"; };
 		E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteePublicProfileMentor.swift; sourceTree = "<group>"; };
+		E1E604321B5C1DF700AD47B9 /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				E162BD7A1B28A59600968EE0 /* HomeScreenVC.swift */,
 				E162BD7C1B28A9E300968EE0 /* LoginVC.swift */,
 				E162BD5E1B28A51900968EE0 /* Main.storyboard */,
+				E1E604321B5C1DF700AD47B9 /* EmailViewController.swift */,
 				E1E1D4FB1B503A1200C9D010 /* FindMentorLoginViewController.swift */,
 				E1E1D4F91B4B12B800C9D010 /* MenteePublicProfileVC.swift */,
 				E1E1D4F71B4B10FE00C9D010 /* mentorProfileView.swift */,
@@ -335,6 +338,7 @@
 				E162BD8B1B2B908400968EE0 /* StaticTablesVC.swift in Sources */,
 				CB64B43D1B47269500F37A7B /* FirstPageVC.swift in Sources */,
 				E162BD8D1B2CC7E200968EE0 /* NamePictureVC.swift in Sources */,
+				E1E604331B5C1DF700AD47B9 /* EmailViewController.swift in Sources */,
 				E1E1D4FA1B4B12B800C9D010 /* MenteePublicProfileVC.swift in Sources */,
 				E162BD891B2B81D500968EE0 /* DetailUpdateTVC.swift in Sources */,
 				CB0EB6781B39ECBC000851A7 /* MenteeMentorSearchViewController.swift in Sources */,

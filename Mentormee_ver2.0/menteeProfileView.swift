@@ -15,8 +15,16 @@ class menteeProfileView: UIViewController {
     @IBOutlet weak var highschoolLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+    
+    override func viewDidAppear(animated: Bool) {
+        myActivityIndicator.stopAnimating()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myActivityIndicator.startAnimating()
         
         //This setups the imageview so it appears circular
         

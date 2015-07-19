@@ -225,6 +225,50 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 prefs.setObject(email, forKey: "email")
                                 prefs.setObject("MentorLoggedIn", forKey: "Status")
                                 println(prefs.valueForKey("userID") as! String)
+                                
+                                NSLog("USERID RECEIVED NOW SEARCH FOR MENTORS")
+                                
+                                let userID = jsonData[0].valueForKey("ID") as! String
+                                
+                                var post: NSString = "userID=\(userID)"
+                                NSLog("PostData: %@",post);
+                                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/retrieveMentorID.php")!
+                                var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+                                var postLength:NSString = String( postData.length )
+                                var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+                                
+                                request.HTTPMethod = "POST"
+                                request.HTTPBody = postData
+                                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+                                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                                
+                                var responseError: NSError?
+                                var response: NSURLResponse?
+                                
+                                var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+                                
+                                if(urlData != nil){
+                                    let res = response as! NSHTTPURLResponse!
+                                    NSLog("Response code: %ld", res.statusCode)
+                                    
+                                    if(res.statusCode >= 200 && res.statusCode < 300){
+                                        
+                                        var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                                        NSLog("Response ==> %@", responseData)
+                                        var error:NSError?
+                                        
+                                        let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                        
+                                        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                                        
+                                        let mentorMatchedID = jsonData[0].valueForKey("Mentor_id") as! String
+                                        println(mentorMatchedID)
+                                        prefs.setObject(mentorMatchedID, forKey: "MentorMatched") 
+
+                                    }
+                                }
+                                
                                 self.performSegueWithIdentifier("goto_loginhome", sender: self)
                             }
                         }

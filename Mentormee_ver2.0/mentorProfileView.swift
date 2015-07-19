@@ -16,6 +16,8 @@ class mentorProfileView: UIViewController {
     @IBOutlet weak var programTextField: UILabel!
     @IBOutlet weak var universityTextField: UILabel!
     @IBOutlet weak var whatsupTextField: UITextView!
+    @IBOutlet weak var connectButton: UIButton!
+    
     
     override func viewDidLoad() {
         
@@ -71,6 +73,11 @@ class mentorProfileView: UIViewController {
                 let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                 
                 var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                
+                connectButton.setTitle("Connect with \(firstName)", forState: UIControlState.Normal)
+                
+//                connectButton.titleLabel?.text = "Connect with \(firstName  )"
+                
                 var lastName: String = jsonData[0].valueForKey("LastName") as! String
                 var fullName: String = firstName + " " + lastName
                 
@@ -177,6 +184,13 @@ class mentorProfileView: UIViewController {
         }
         
     }
+    
+    @IBAction func connectButtonTapped(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("goto_emailconnect", sender: self)
+        
+    }
+    
 
     @IBAction func backButtonTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
