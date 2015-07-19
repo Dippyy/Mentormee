@@ -50,6 +50,14 @@ class MenteePublicProfileMentor: UIViewController {
         
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
+        prefs.removeObjectForKey("MenteeID11")
+        prefs.removeObjectForKey("MenteeID21")
+        prefs.removeObjectForKey("MenteeID22")
+        prefs.removeObjectForKey("MenteeID31")
+        prefs.removeObjectForKey("MenteeID32")
+        prefs.removeObjectForKey("MenteeID33")
+
+        
         let menteeID = prefs.valueForKey("MenteeClicked") as! String
         println(menteeID)
         
