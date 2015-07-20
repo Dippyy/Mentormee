@@ -16,8 +16,6 @@ class FirstPageVC: UIViewController {
         self.performSegueWithIdentifier("goto_menteelogin", sender: self)
     }
     
-    
-    
     override func viewDidAppear(animated: Bool) {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         

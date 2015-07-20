@@ -16,6 +16,8 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var selectPhotoButton: UIButton!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var whatsupTextField: UITextView!
+    @IBOutlet weak var whatsupTextFieldBorder: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +25,13 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
         profilePictureImageView.alpha = 0
         selectPhotoButton.alpha = 0
         whatsupTextField.alpha = 0
+        whatsupTextFieldBorder.alpha = 0
         
         var nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Default
         let image = UIImage(named: "NavbarImage")
         self.navigationController!.navigationBar.setBackgroundImage(image,
             forBarMetrics: .Default)
-
-        
-        
     }
     
 //--------- Based on the selection made from the previous view controller the corresponding ------------------
@@ -54,6 +54,7 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             self.whatsupTextField.text = prefs.valueForKey("Whatsup") as! String
             UIView.animateWithDuration(0, animations: {
                 self.whatsupTextField.alpha = 1.0
+                self.whatsupTextFieldBorder.alpha = 1.0
             })
         } else if (prefs.valueForKey("Selection")!.isEqual("Skype")){
             self.fullNameTextField.text = prefs.valueForKey("Skype") as! String

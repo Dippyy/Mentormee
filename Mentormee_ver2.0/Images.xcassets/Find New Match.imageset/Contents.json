@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Find New Match.png"
+      "filename" : "findNewMatch.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Find New Match@2x.png"
+      "filename" : "findNewMatch@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Find New Match@3x.png"
+      "filename" : "findNewMatch@3x.png"
     }
   ],
   "info" : {

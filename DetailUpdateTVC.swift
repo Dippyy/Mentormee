@@ -18,6 +18,7 @@ class DetailUpdateTVC: UITableViewController {
         
         var nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Default
+        nav?.barTintColor = UIColor.whiteColor()
         let image = UIImage(named: "NavbarImage")
         self.navigationController!.navigationBar.setBackgroundImage(image,
             forBarMetrics: .Default)

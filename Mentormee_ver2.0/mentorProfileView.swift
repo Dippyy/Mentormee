@@ -169,7 +169,11 @@ class mentorProfileView: UIViewController {
                 
                 if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
                     
-                    mentorProfileImageView.image = UIImage(named: "profile_default.jpg")
+                    var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                    var lowerFirstName = firstName.lowercaseString
+                    var firstChar = Array(lowerFirstName)[0]
+                    println(firstChar)
+                    mentorProfileImageView.image = UIImage(named: "\(firstChar)DefaultLetter")
                     
                 } else {
                     

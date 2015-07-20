@@ -162,6 +162,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             alertView.delegate = self
             alertView.addButtonWithTitle("OK")
             alertView.show()
+            myActivityIndicator.stopAnimating()
+
         } else {
             
             var post:NSString = "email=\(email)&password=\(password)"
@@ -258,6 +260,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         alertView.delegate = self
                         alertView.addButtonWithTitle("OK")
                         alertView.show()
+                        myActivityIndicator.stopAnimating()
+
                     }
                     
                 } else {
@@ -267,6 +271,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
+                    myActivityIndicator.stopAnimating()
+
                 }
             } else {
                 var alertView:UIAlertView = UIAlertView()
@@ -278,6 +284,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                 alertView.delegate = self
                 alertView.addButtonWithTitle("OK")
                 alertView.show()
+                myActivityIndicator.stopAnimating()
+
             }
         }
         

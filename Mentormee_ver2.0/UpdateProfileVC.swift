@@ -175,9 +175,18 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if(cell.textLabel?.text == "University"){
             cell.detailTextLabel?.text = prefs.valueForKey("University") as? String
+            if(cell.detailTextLabel?.text == "University"){
+                cell.detailTextLabel?.textColor = UIColor.redColor()
+            }
         } else if(cell.textLabel?.text == "Faculty"){
             cell.detailTextLabel?.text = prefs.valueForKey("Faculty") as? String
+            if(cell.detailTextLabel?.text == "Faculty"){
+                cell.detailTextLabel?.textColor = UIColor.redColor()
+            }
         } else if(cell.textLabel?.text == "Program"){
+            if(cell.detailTextLabel?.text == "Program"){
+                cell.detailTextLabel?.textColor = UIColor.redColor()
+            }
             cell.detailTextLabel?.text = prefs.valueForKey("Program") as? String
         }  else if(cell.textLabel?.text == "Gender"){
             cell.detailTextLabel?.text = prefs.valueForKey("Gender") as? String

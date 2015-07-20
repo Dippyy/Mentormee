@@ -12,6 +12,8 @@ class TextEntryViewController: UIViewController {
     
     @IBOutlet weak var shortTextfield: UITextField!
     @IBOutlet weak var longTextField: UITextView!
+    @IBOutlet weak var longTextFieldBorder: UIImageView!
+    
 
     override func viewDidLoad() {
         
@@ -29,10 +31,13 @@ class TextEntryViewController: UIViewController {
         
         if(prefs.valueForKey("Selection")!.isEqualToString("Full Name")){
             longTextField.alpha = 0.0
+            longTextFieldBorder.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("High School")){
             longTextField.alpha = 0.0
+            longTextFieldBorder.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Grade")){
             longTextField.alpha = 0.0
+            longTextFieldBorder.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Contact Info")){
             shortTextfield.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Current Situation")){
@@ -45,12 +50,16 @@ class TextEntryViewController: UIViewController {
             shortTextfield.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Facebook")){
             longTextField.alpha = 0.0
+            longTextFieldBorder.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Skype")){
             longTextField.alpha = 0.0
+            longTextFieldBorder.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Email")){
             longTextField.alpha = 0.0
+            longTextFieldBorder.alpha = 0.0
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Phone")){
             longTextField.alpha = 0.0
+            longTextFieldBorder.alpha = 0.0
         }
     }
     

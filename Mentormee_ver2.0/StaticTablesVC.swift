@@ -69,9 +69,11 @@ class StaticTablesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         let row = indexPath.row
         if(prefs.valueForKey("Selection")!.isEqualToString("Gender")){
             cell.textLabel?.text = genderTable[row]
+            cell.detailTextLabel?.text = ""
             return cell
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Year")){
             cell.textLabel?.text = yearOfStudy[row]
+            cell.detailTextLabel?.text = ""
             return cell
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Contact Info")){
             cell.textLabel?.text = contactInfo[row]

@@ -85,7 +85,6 @@ class menteeProfileView: UIViewController {
                     let data = NSData(contentsOfURL: url2!)
                     menteeProfileImageView.image = UIImage(data: data!)
                     } else {
-//                        menteeProfileImageView.image = UIImage(named: "profile_default.jpg")
                         var firstName: String = jsonData[0].valueForKey("FirstName") as! String
                         var lowerFirstName = firstName.lowercaseString
                         var firstChar = Array(lowerFirstName)[0]
@@ -94,7 +93,11 @@ class menteeProfileView: UIViewController {
                     }
                 }
                 if let gradYear: String = jsonData[1].valueForKey("GraduationYear") as? String {
+                    if(gradYear == "0"){
+                        gradeLabel.text = ""
+                    } else {
                     gradeLabel.text = gradYear
+                    }
                 }
             }
         }
