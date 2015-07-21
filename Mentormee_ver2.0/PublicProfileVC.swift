@@ -170,7 +170,8 @@ class PublicProfileVC: UIViewController {
                 if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
                     
                     var email: String = jsonData[0].valueForKey("Email") as! String
-                    var firstChar = Array(email)[0]
+                    var emailLower: String = email.lowercaseString
+                    var firstChar = Array(emailLower)[0]
                     println(firstChar)
                     profileImageView.image = UIImage(named: "\(firstChar)DefaultLetter")
                     

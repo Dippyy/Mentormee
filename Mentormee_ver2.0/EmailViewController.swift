@@ -14,6 +14,7 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var instructionLabel: UILabel!
     
     var emailAddress = "info@mentormee.com"
     override func viewDidLoad() {
@@ -68,9 +69,10 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
         var info: Dictionary = notification.userInfo!
         var keyboardSize: CGSize = (info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size)!
         var buttonOrigin: CGPoint = self.connectButton.frame.origin;
-        var buttonHeight: CGFloat = self.connectButton.frame.size.height;
+        var buttonHeight: CGFloat = self.connectButton.frame.size.height/2;
         var visibleRect: CGRect = self.view.frame
         visibleRect.size.height -= keyboardSize.height
+        instructionLabel.hidden = true
         
         if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
             var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)

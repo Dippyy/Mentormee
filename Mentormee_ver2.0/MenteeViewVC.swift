@@ -398,7 +398,11 @@ class MenteeViewVC: UIViewController {
                                     var imgData = NSData(contentsOfURL: url!)
                                     myImageView.image = UIImage(data: imgData!)
                                 } else {
-                                    myImageView.image = UIImage(named: "profile_default.jpg")
+//                                    myImageView.image = UIImage(named: "profile_default.jpg")
+                                    var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                                    var lowerFirstName: String = firstName.lowercaseString
+                                    var firstChar = Array(lowerFirstName)[0]
+                                    myImageView3.image = UIImage(named: "\(firstChar)DefaultLetter")
                                 }
                             }
                             
@@ -424,7 +428,11 @@ class MenteeViewVC: UIViewController {
                                     var imgData = NSData(contentsOfURL: url!)
                                     myImageView2.image = UIImage(data: imgData!)
                                 } else {
-                                    myImageView2.image = UIImage(named: "profile_default.jpg")
+//                                    myImageView2.image = UIImage(named: "profile_default.jpg")
+                                    var firstName: String = jsonData[1].valueForKey("FirstName") as! String
+                                    var lowerFirstName: String = firstName.lowercaseString
+                                    var firstChar = Array(lowerFirstName)[0]
+                                    myImageView3.image = UIImage(named: "\(firstChar)DefaultLetter")
                                 }
                             }
                             
@@ -435,21 +443,25 @@ class MenteeViewVC: UIViewController {
                                 
                                 if(fullName != ""){
                                     var fullName: String = fullName
-                                    fullNameLabel.text = fullName
+                                    fullNameLabel3.text = fullName
                                 } else {
-                                    fullNameLabel.text = "Full Name"
+                                    fullNameLabel3.text = "Full Name"
                                 }
                                 
                                 var highschoolName: String = jsonData[2].valueForKey("HighSchool") as! String
-                                universityLabel.text = highschoolName
+                                universityLabel3.text = highschoolName
                                 
-                                if(jsonData[0].valueForKey("Picture") as! String != ""){
+                             if(jsonData[2].valueForKey("Picture") as! String != "") {
                                     var imgURL: String = jsonData[2].valueForKey("Picture") as! String
                                     var url = NSURL(string: imgURL)
                                     var imgData = NSData(contentsOfURL: url!)
-                                    myImageView.image = UIImage(data: imgData!)
+                                    myImageView3.image = UIImage(data: imgData!)
                                 } else {
-                                    myImageView.image = UIImage(named: "profile_default.jpg")
+//                                    myImageView3.image = UIImage(named: "profile_default.jpg")
+                                    var firstName: String = jsonData[2].valueForKey("FirstName") as! String
+                                    var lowerFirstName: String = firstName.lowercaseString
+                                    var firstChar = Array(lowerFirstName)[0]
+                                    myImageView3.image = UIImage(named: "\(firstChar)DefaultLetter")
                                 }
                             }
                         }

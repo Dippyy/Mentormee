@@ -32,6 +32,8 @@ class MenteeMentorSearchViewController: UIViewController{
     
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var searchLabel: UILabel!
+    
     //var mentorList
     let userdefaults = NSUserDefaults.standardUserDefaults()
     
@@ -61,6 +63,15 @@ class MenteeMentorSearchViewController: UIViewController{
         let image = UIImage(named: "NavbarImage")
         self.navigationController!.navigationBar.setBackgroundImage(image,
             forBarMetrics: .Default)
+        
+        if let selectionText: String = prefs.valueForKey("specToSend") as? String {
+            println("getting here")
+            searchLabel.hidden = false
+        } else {
+            println("no way getting here")
+            searchLabel.hidden = true
+            
+        }
         
 //        var nav = self.navigationController?.navigationBar
 //        nav?.barStyle = UIBarStyle.

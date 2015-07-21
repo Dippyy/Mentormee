@@ -20,6 +20,8 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonToLogin: UIButton!
     
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var instructionLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +104,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         var buttonHeight: CGFloat = self.loginButton.frame.size.height;
         var visibleRect: CGRect = self.view.frame
         visibleRect.size.height -= keyboardSize.height
+        instructionLabel.hidden = true
         
         if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
             var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
@@ -264,7 +267,9 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                         
                                         let mentorMatchedID = jsonData[0].valueForKey("Mentor_id") as! String
                                         println(mentorMatchedID)
-                                        prefs.setObject(mentorMatchedID, forKey: "MentorMatched") 
+                                        prefs.setObject(mentorMatchedID, forKey: "MentorMatched")
+                                        prefs.setInteger(0, forKey: "ISLOGGEDIN")
+                                        prefs.synchronize()
 
                                     }
                                 }
