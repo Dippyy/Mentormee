@@ -90,53 +90,67 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
     }
     
     @IBAction func emailButtonTapped(sender: AnyObject) {
-        if(MFMailComposeViewController.canSendMail()){
-            let mailComposeViewController = configuredMailComposeViewController()
-            if MFMailComposeViewController.canSendMail() {
-                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-            } else {
-                self.showSendMailErrorAlert()
-            }
-        } else{
-            println("no email account found!")
-        }
+        
+        //SEND ALERT , ARE YOU SURE YOU WANT TO EMAIL THIS TO YOUR MENTOR?
+        
+        //Create a record in the database for message, mentee email, mentor email
+        // -> Send mentee ID and mentor ID to database and retreive emails
+        // -> Send emails and message to new table in DB
+        
+        //Package information into email format, textfield = BODY, static = subject, to = mentor, from = mentee
+        //  -> Dynamic content: Body, From
+        //  -> Static content: Subject, To
+
+        
+        
+        
+//        if(MFMailComposeViewController.canSendMail()){
+//            let mailComposeViewController = configuredMailComposeViewController()
+//            if MFMailComposeViewController.canSendMail() {
+//                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+//            } else {
+//                self.showSendMailErrorAlert()
+//            }
+//        } else{
+//            println("no email account found!")
+//        }
         
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-        
-        mailComposerVC.setToRecipients([emailAddress])
-       
-        mailComposerVC.setSubject("First Connection")
-        mailComposerVC.setMessageBody(textField.text, isHTML: true)
-        
-        return mailComposerVC
+//        let mailComposerVC = MFMailComposeViewController()
+//        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+//        
+//        mailComposerVC.setToRecipients([emailAddress])
+//       
+//        mailComposerVC.setSubject("First Connection")
+//        mailComposerVC.setMessageBody(textField.text, isHTML: true)
+//        
+//        return mailComposerVC
     }
     
     func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
-        sendMailErrorAlert.show()
+//        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+//        sendMailErrorAlert.show()
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
         
-        switch result.value{
-        case MFMailComposeResultCancelled.value:
-            println("cancelled!")
-        case MFMailComposeResultFailed.value:
-            println("failed!")
-        case MFMailComposeResultSaved.value:
-            println("saved!")
-        case MFMailComposeResultSent.value:
-            println("sent!")
-        default:
-            println("default!")
-        }
-        controller.dismissViewControllerAnimated(false, completion: nil)
+//        switch result.value{
+//        case MFMailComposeResultCancelled.value:
+//            println("cancelled!")
+//        case MFMailComposeResultFailed.value:
+//            println("failed!")
+//        case MFMailComposeResultSaved.value:
+//            println("saved!")
+//        case MFMailComposeResultSent.value:
+//            println("sent!")
+//        default:
+//            println("default!")
+//        }
+//        controller.dismissViewControllerAnimated(false, completion: nil)
 
     }
     

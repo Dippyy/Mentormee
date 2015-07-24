@@ -318,17 +318,12 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
     @IBAction func signupButtonTapped(sender: AnyObject) {
         
         var fullName: String = fullNameTextField.text as String
-        
-        var fullNameArr = split(fullName) {$0 == " "}
-        var firstName: String = fullNameArr[0]
-        println("THE FIRST NAME IS \(firstName)")
-        var lastName: String! = fullNameArr.count > 1 ? fullNameArr[1] : ""
-        println("THE LAST NAME IS \(lastName)")
         var email:String = emailTextField.text as String
         var password:String = passwordTextField.text as String
         var passwordConfirm: String = passwordConfirmTextField.text as String
         var mentorStatus:String = "Mentee"
         
+
         if (email == "" || password == "" || passwordConfirm == "") {
             
             var alertView:UIAlertView = UIAlertView()
@@ -358,6 +353,13 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
             
             
         }else {
+            
+            var fullNameArr = split(fullName) {$0 == " "}
+            var firstName: String = fullNameArr[0]
+            println("THE FIRST NAME IS \(firstName)")
+            var lastName: String! = fullNameArr.count > 1 ? fullNameArr[1] : ""
+            println("THE LAST NAME IS \(lastName)")
+
             
             var post:NSString = "email=\(email)&password=\(password)&password_c=\(passwordConfirm)&mentorStatus=\(mentorStatus)&firstName=\(firstName)&lastName=\(lastName)"
             NSLog("PostData: %@", post)
