@@ -29,7 +29,6 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        
         if(prefs.valueForKey("ISLOGGEDIN")!.isEqualToNumber(1)){
             
             var alertView:UIAlertView = UIAlertView()
@@ -120,9 +119,7 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
                 if let whatsUp: String = jsonData[1].valueForKey("GraduationYear") as? String {
                     prefs.setObject(jsonData[1].valueForKey("GraduationYear"), forKey: "Graduation Year Mentee")
                 }
-
             }
-            
         }
 
         // Do any additional setup after loading the view.

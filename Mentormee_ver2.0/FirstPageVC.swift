@@ -18,7 +18,7 @@ class FirstPageVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
+                
         //THIS IS FOR TESTING PURPOSES! 
         prefs.setObject("new", forKey: "Status")
         

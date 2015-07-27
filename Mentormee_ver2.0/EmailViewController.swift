@@ -9,16 +9,18 @@
 import UIKit
 import MessageUI
 
-class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate{
+class EmailViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var emailButton: UIButton!
     
     var emailAddress = "info@mentormee.com"
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
         var nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Default
@@ -68,8 +70,8 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
     func keyboardWasShown(notification: NSNotification) {
         var info: Dictionary = notification.userInfo!
         var keyboardSize: CGSize = (info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size)!
-        var buttonOrigin: CGPoint = self.connectButton.frame.origin;
-        var buttonHeight: CGFloat = self.connectButton.frame.size.height/2;
+        var buttonOrigin: CGPoint = self.emailButton.frame.origin;
+        var buttonHeight: CGFloat = self.emailButton.frame.size.height/2;
         var visibleRect: CGRect = self.view.frame
         visibleRect.size.height -= keyboardSize.height
         instructionLabel.hidden = true
@@ -84,75 +86,137 @@ class EmailViewController: UIViewController, MFMailComposeViewControllerDelegate
     // functions to control how the keyboard behaves when the textfields are tapped
     
     func hideKeyboard() {
-        connectButton.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
+        
+        emailButton.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
         textField.resignFirstResponder()
         self.scrollView.setContentOffset(CGPointZero, animated: true)
     }
     
-    @IBAction func emailButtonTapped(sender: AnyObject) {
+    
+    
+    @IBAction func sendMessageButtonTapped(sender: AnyObject) {
         
         //SEND ALERT , ARE YOU SURE YOU WANT TO EMAIL THIS TO YOUR MENTOR?
         
+        var alertMessage: String = "Are you sure you want to send this message to your mentor?"
+        sendAlert(alertMessage)
+        
         //Create a record in the database for message, mentee email, mentor email
+        
         // -> Send mentee ID and mentor ID to database and retreive emails
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        let mentee: String = prefs.valueForKey("userID") as! String
+        
+        let mentor: String = prefs.valueForKey("MentorMatched") as! String
+        
+        let menteeEmail = grabEmail(mentee)
+        let mentorEmail = grabEmail(mentor)
+        
         // -> Send emails and message to new table in DB
+        
+        let menteeMessage: String = textField.text
+        
+        create_message_record(menteeEmail, mentorEmail: mentorEmail, menteeMessage: menteeMessage)
         
         //Package information into email format, textfield = BODY, static = subject, to = mentor, from = mentee
         //  -> Dynamic content: Body, From
         //  -> Static content: Subject, To
-
         
-        
-        
-//        if(MFMailComposeViewController.canSendMail()){
-//            let mailComposeViewController = configuredMailComposeViewController()
-//            if MFMailComposeViewController.canSendMail() {
-//                self.presentViewController(mailComposeViewController, animated: true, completion: nil)
-//            } else {
-//                self.showSendMailErrorAlert()
-//            }
-//        } else{
-//            println("no email account found!")
-//        }
         
     }
     
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
+    func create_message_record(menteeEmail: String, mentorEmail: String, menteeMessage: String){
         
-//        let mailComposerVC = MFMailComposeViewController()
-//        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
-//        
-//        mailComposerVC.setToRecipients([emailAddress])
-//       
-//        mailComposerVC.setSubject("First Connection")
-//        mailComposerVC.setMessageBody(textField.text, isHTML: true)
-//        
-//        return mailComposerVC
+    // Takes the mentor/mentee email and the mentee message and puts it into the database under MentormeeMessage
+        
+        var postID: NSString = "menteeEmail=\(menteeEmail)&mentorEmail=\(mentorEmail)&menteeMessage=\(menteeMessage)"
+        NSLog("PostData: %@",postID);
+        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createMessageRecord.php")!
+        var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLengthID:NSString = String( postDataID.length )
+        var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)
+        
+        requestID.HTTPMethod = "POST"
+        requestID.HTTPBody = postDataID
+        requestID.setValue(postLengthID as String, forHTTPHeaderField: "Content-Length")
+        requestID.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        requestID.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseErrorID: NSError?
+        var responseID: NSURLResponse?
+        
+        var urlDataID: NSData? = NSURLConnection.sendSynchronousRequest(requestID, returningResponse:&responseID, error:&responseErrorID)
+        
+        if(urlDataID != nil){
+            let res = responseID as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                
+                var responseData: NSString = NSString(data: urlDataID!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+                                
+                }
+            }
     }
     
-    func showSendMailErrorAlert() {
-//        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
-//        sendMailErrorAlert.show()
+    func grabEmail(userID: String) -> String {
+        
+        // A userID is sent into this function, the email of the corresponding userID is returned
+        
+        var postID: NSString = "userID=\(userID)"
+        NSLog("PostData: %@",postID);
+        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/grabEmailFromID.php")!
+        var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLengthID:NSString = String( postDataID.length )
+        var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)
+        
+        requestID.HTTPMethod = "POST"
+        requestID.HTTPBody = postDataID
+        requestID.setValue(postLengthID as String, forHTTPHeaderField: "Content-Length")
+        requestID.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        requestID.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseErrorID: NSError?
+        var responseID: NSURLResponse?
+        
+        var urlDataID: NSData? = NSURLConnection.sendSynchronousRequest(requestID, returningResponse:&responseID, error:&responseErrorID)
+        
+        if(urlDataID != nil){
+            let res = responseID as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                
+                var responseData: NSString = NSString(data: urlDataID!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+                
+                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlDataID!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                
+                let emailReturned = jsonDataID[0].valueForKey("Email") as! String
+                return emailReturned
+            }
+        }
+        
+        return "did not find"
     }
     
-    // MARK: MFMailComposeViewControllerDelegate Method
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func sendAlert(alertMessage: String) -> UIAlertView {
         
-//        switch result.value{
-//        case MFMailComposeResultCancelled.value:
-//            println("cancelled!")
-//        case MFMailComposeResultFailed.value:
-//            println("failed!")
-//        case MFMailComposeResultSaved.value:
-//            println("saved!")
-//        case MFMailComposeResultSent.value:
-//            println("sent!")
-//        default:
-//            println("default!")
-//        }
-//        controller.dismissViewControllerAnimated(false, completion: nil)
-
+        var alertView:UIAlertView = UIAlertView()
+        alertView.title = "Confirm"
+        alertView.message = alertMessage
+        alertView.delegate = self
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
+        
+        return alertView
     }
+    
     
     @IBAction func backButtonTapped(sender: AnyObject) {
         

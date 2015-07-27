@@ -42,6 +42,7 @@
 		E1E1D4FC1B503A1200C9D010 /* FindMentorLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1D4FB1B503A1200C9D010 /* FindMentorLoginViewController.swift */; };
 		E1E5247F1B584DED00F9159A /* MenteePublicProfileMentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */; };
 		E1E604331B5C1DF700AD47B9 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E604321B5C1DF700AD47B9 /* EmailViewController.swift */; };
+		E1EC78451B657D160058603E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EC78441B657D160058603E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		E1E1D4FB1B503A1200C9D010 /* FindMentorLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindMentorLoginViewController.swift; sourceTree = "<group>"; };
 		E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenteePublicProfileMentor.swift; sourceTree = "<group>"; };
 		E1E604321B5C1DF700AD47B9 /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		E1EC78441B657D160058603E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		E162BD571B28A51900968EE0 /* Mentormee_ver2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				E1EC78441B657D160058603E /* Constants.swift */,
 				CB0EB6741B39ECBC000851A7 /* MenteeMentorSearchViewController.swift */,
 				E1E1D4E71B4AF3E300C9D010 /* MentorUserDataSearchController.swift */,
 				E1E5247E1B584DEC00F9159A /* MenteePublicProfileMentor.swift */,
@@ -344,6 +347,7 @@
 				E162BD7D1B28A9E300968EE0 /* LoginVC.swift in Sources */,
 				E1E1D4EC1B4AFDD600C9D010 /* MenteeSignupPage.swift in Sources */,
 				E1E1D4F41B4B07AE00C9D010 /* staticTableUpdateVC.swift in Sources */,
+				E1EC78451B657D160058603E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +389,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E162BD721B28A51900968EE0 /* Debug */ = {
+		E1EC78461B657E480058603E /* DebugStaging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -427,9 +431,46 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = DebugStaging;
 		};
-		E162BD731B28A51900968EE0 /* Release */ = {
+		E1EC78471B657E480058603E /* DebugStaging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Mentormee_ver2.0/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DDebug -DStaging";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Mentormee_ver2.0/Mentormee_ver2.0-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = DebugStaging;
+		};
+		E1EC78481B657E480058603E /* DebugStaging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Mentormee_ver2.0Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mentormee_ver2.0.app/Mentormee_ver2.0";
+			};
+			name = DebugStaging;
+		};
+		E1EC78491B657E540058603E /* ReleaseProduction */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -464,9 +505,9 @@
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = ReleaseProduction;
 		};
-		E162BD751B28A51900968EE0 /* Debug */ = {
+		E1EC784A1B657E540058603E /* ReleaseProduction */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -475,49 +516,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Mentormee_ver2.0/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Mentormee_ver2.0/Mentormee_ver2.0-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		E162BD761B28A51900968EE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = Mentormee_ver2.0/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-DRelease -DProduction";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mentormee_ver2.0/Mentormee_ver2.0-Bridging-Header.h";
 			};
-			name = Release;
+			name = ReleaseProduction;
 		};
-		E162BD781B28A51900968EE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = Mentormee_ver2.0Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mentormee_ver2.0.app/Mentormee_ver2.0";
-			};
-			name = Debug;
-		};
-		E162BD791B28A51900968EE0 /* Release */ = {
+		E1EC784B1B657E540058603E /* ReleaseProduction */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -531,7 +537,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mentormee_ver2.0.app/Mentormee_ver2.0";
 			};
-			name = Release;
+			name = ReleaseProduction;
 		};
 /* End XCBuildConfiguration section */
 
@@ -539,29 +545,29 @@
 		E162BD501B28A51900968EE0 /* Build configuration list for PBXProject "Mentormee_ver2.0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E162BD721B28A51900968EE0 /* Debug */,
-				E162BD731B28A51900968EE0 /* Release */,
+				E1EC78461B657E480058603E /* DebugStaging */,
+				E1EC78491B657E540058603E /* ReleaseProduction */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = DebugStaging;
 		};
 		E162BD741B28A51900968EE0 /* Build configuration list for PBXNativeTarget "Mentormee_ver2.0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E162BD751B28A51900968EE0 /* Debug */,
-				E162BD761B28A51900968EE0 /* Release */,
+				E1EC78471B657E480058603E /* DebugStaging */,
+				E1EC784A1B657E540058603E /* ReleaseProduction */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = DebugStaging;
 		};
 		E162BD771B28A51900968EE0 /* Build configuration list for PBXNativeTarget "Mentormee_ver2.0Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E162BD781B28A51900968EE0 /* Debug */,
-				E162BD791B28A51900968EE0 /* Release */,
+				E1EC78481B657E480058603E /* DebugStaging */,
+				E1EC784B1B657E540058603E /* ReleaseProduction */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = DebugStaging;
 		};
 /* End XCConfigurationList section */
 	};

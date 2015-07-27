@@ -182,8 +182,6 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                     let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
                     NSLog("Success: %ld", success);
                     
-                    
-                    
                     if(success == 1){
                         
                         NSLog("Login SUCCESS");
@@ -321,7 +319,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         var email:String = emailTextField.text as String
         var password:String = passwordTextField.text as String
         var passwordConfirm: String = passwordConfirmTextField.text as String
-        var mentorStatus:String = "Mentee"
+        var mentorStatus:String = "Inactive Mentee"
         
 
         if (email == "" || password == "" || passwordConfirm == "") {
@@ -470,11 +468,11 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                             
                             if(res.statusCode >= 200 && res.statusCode < 300){
                                 
-                                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                                var responseData: NSString = NSString(data: urlDataID!, encoding: NSUTF8StringEncoding)!
                                 NSLog("Response ==> %@", responseData)
                                 var error:NSError?
                                 
-                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlDataID!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                                 
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
@@ -521,7 +519,9 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                     let mentorArray:NSArray = prefs.valueForKey("topThreeMentors") as! NSArray
                                     let mentorUserID:AnyObject = mentorArray[0]
                                     let mentorUserIDString: String = String(mentorUserID as! NSString)
-                                    prefs.setObject(mentorUserIDString, forKey: "MentorIDForMatch")
+//                                    prefs.setObject(mentorUserIDString, forKey: "MentorIDForMatch")
+                                    prefs.setObject(mentorUserIDString, forKey: "MentorMatched")
+
                                     
                                     var post:NSString = "mentorUserID=\(mentorUserID)"
                                     NSLog("PostData: %@", post)
@@ -564,7 +564,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                             
                                             let newMenteeCount: String = String(newMenteeConnectedCount)
                                             
-                                            let userID = prefs.valueForKey("MentorIDForMatch") as! String
+                                            let userID = prefs.valueForKey("MentorMatched") as! String
                                             
                                             if(newMenteeConnectedCount <= 3) {
                                                 

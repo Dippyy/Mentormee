@@ -64,45 +64,6 @@ class Test_Connection2VC: UIViewController {
             println("This is the first run through")
         }
         
-//        let menteeID = pref.valueForKey("userID") as! String
-//        println(menteeID)
-//        
-//        var post:NSString = "mentorID=\(menteeID)"
-//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/checkMenteeMatchHistory.php")!
-//        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-//        var postLength:NSString = String( postData.length )
-//        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-//        request.HTTPMethod = "POST"
-//        request.HTTPBody = postData
-//        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-//        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//        request.setValue("application/json", forHTTPHeaderField: "Accept")
-//        
-//        var reponseError: NSError?
-//        var response: NSURLResponse?
-//        
-//        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
-//        
-//        if ( urlData != nil ) {
-//            
-//            let res = response as! NSHTTPURLResponse!
-//            if (res.statusCode >= 200 && res.statusCode < 300) {
-//                var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-//                NSLog("Response ==> %@", responseData);
-//                var error: NSError?
-//                let jsonData: NSDictionary = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSDictionary)!
-//                
-//                if(responseData != "[]"){
-//                    println("ALERT!")
-//                } else {
-//                    println("NO MATCH YET")
-//                }
-//
-//            }
-//        }
-        
-        
-        
                // Do any additional setup after loading the view.
     }
 

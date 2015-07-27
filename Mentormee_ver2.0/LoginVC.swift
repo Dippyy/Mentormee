@@ -169,7 +169,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)"
             NSLog("PostData: %@",post);
             
-            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginTest.php")!
+//            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginTest.php")!
+            var url:NSURL = NSURL(string: loginTest)!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String( postData.length )
             var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -206,7 +207,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         
                         var post: NSString = "email=\(emailToSend)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID.php")!
+//                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID.php")!
+                        var url:NSURL = NSURL(string:fetchUserID)!
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -301,7 +303,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         var email:NSString = emailField.text as NSString
         var password:NSString = passwordField.text as NSString
         var passwordConfirm: NSString = passwordConfirmField.text as NSString
-        var mentorStatus:NSString = "Mentor"
+        var mentorStatus:NSString = "Inactive Mentor"
         
         if (email.isEmail != true || password.isEqualToString("") || passwordConfirm.isEqualToString("")) {
             
@@ -336,7 +338,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)&password_c=\(passwordConfirm)&mentorStatus=\(mentorStatus)"
             NSLog("PostData: %@", post)
             
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScript4.php")!
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScript4.php")!
+            var url:NSURL = NSURL(string: signupScript4)!
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -373,7 +376,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         
                         var post: NSString = "email=\(emailToSend)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID2.php")!
+//                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID2.php")!
+                        var url:NSURL = NSURL(string:fetchUserID2)!
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -418,7 +422,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         
                         var postID: NSString = "userID=\(userID)"
                         NSLog("PostData: %@",postID);
-                        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createNewAccount.php")!
+//                        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createNewAccount.php")!
+                        var urlID:NSURL = NSURL(string:createNewAccount)!
                         var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLengthID:NSString = String( postDataID.length )
                         var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)
@@ -458,7 +463,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         
                         var postID2: NSString = "primaryCapabilityID=\(primaryCapability)&userID=\(userID)"
                         NSLog("PostData: %@",postID2);
-                        var urlID2:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createPrimaryCapabilityEntry.php")!
+//                        var urlID2:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createPrimaryCapabilityEntry.php")!
+                        var urlID2:NSURL = NSURL(string:createPrimaryCapabilityEntry)!
                         var postDataID2:NSData = postID2.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLengthID2:NSString = String( postDataID2.length )
                         var requestID2:NSMutableURLRequest = NSMutableURLRequest(URL: urlID2)
