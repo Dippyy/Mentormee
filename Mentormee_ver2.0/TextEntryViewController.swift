@@ -142,7 +142,10 @@ class TextEntryViewController: UIViewController {
             // sends the userID, first name and last name to the DB to update the record
 
             var post: NSString = "userID=\(userID)&firstName=\(firstName)&lastName=\(lastName)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateName.php")!
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateName.php")!
+            
+            var url:NSURL = NSURL(string: updateName)!
+
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -183,7 +186,10 @@ class TextEntryViewController: UIViewController {
             var highSchool: String = shortTextfield.text as String
             var updateInfo: String = "highSchool"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateHighSchool.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateHighSchool.php"
+            
+            var urlToSend: String = updateHighSchool
+
             update_table_info(urlToSend, userID: userID, updateField: highSchool, updateVariable: updateInfo)
 
             // updates the contact info
@@ -192,7 +198,10 @@ class TextEntryViewController: UIViewController {
             var currentInfo: String = longTextField.text as String
             var updateInfo: String = "currentInfo"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateCurrentSituation.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateCurrentSituation.php"
+            
+            var urlToSend: String = updateCurrentSituation
+
             update_table_info(urlToSend, userID: userID, updateField: currentInfo, updateVariable: updateInfo)
             
             // updates the whatsup
@@ -201,7 +210,10 @@ class TextEntryViewController: UIViewController {
             var whatsupMentee: String = longTextField.text as String
             var updateInfo: String = "whatsUpMentee"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateWhatsupMentee.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateWhatsupMentee.php"
+            
+            var urlToSend: String = updateWhatsupMentee
+
             update_table_info(urlToSend, userID: userID, updateField: whatsupMentee, updateVariable: updateInfo)
 
             // updates the future options
@@ -210,7 +222,10 @@ class TextEntryViewController: UIViewController {
             var futureOptions: String = longTextField.text as String
             var updateInfo: String = "updateFutureOptions"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateFutureOptions.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateFutureOptions.php"
+            
+            var urlToSend: String = updateFutureOptions
+
             update_table_info(urlToSend, userID: userID, updateField: futureOptions, updateVariable: updateInfo)
             
             // updates the interests
@@ -219,7 +234,10 @@ class TextEntryViewController: UIViewController {
             var interests: String = longTextField.text as String
             var updateInfo: String = "InterestsMentee"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateMenteeInterest.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateMenteeInterest.php"
+            
+            var urlToSend: String = updateMenteeInterest
+
             update_table_info(urlToSend, userID: userID, updateField: interests, updateVariable: updateInfo)
             
             // updates the Facebook
@@ -228,7 +246,10 @@ class TextEntryViewController: UIViewController {
             var facebookID: String = shortTextfield.text as String
             var updateInfo: String = "FacebookID"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateFacebookID.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateFacebookID.php"
+            
+            var urlToSend: String = updateFacebookID
+
             update_table_info(urlToSend, userID: userID, updateField: facebookID, updateVariable: updateInfo)
             
             // updates the Skype
@@ -237,7 +258,10 @@ class TextEntryViewController: UIViewController {
             var skypeID: String = shortTextfield.text as String
             var updateInfo: String = "skypeID"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateSkypeID.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateSkypeID.php"
+            
+            var urlToSend: String = updateSkypeID
+
             update_table_info(urlToSend, userID: userID, updateField: skypeID, updateVariable: updateInfo)
             
             // updates the email
@@ -246,7 +270,10 @@ class TextEntryViewController: UIViewController {
             var emailID: String = shortTextfield.text as String
             var updateInfo: String = "emailID"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateEmailID.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateEmailID.php"
+            
+            var urlToSend: String = updateEmailID
+
             update_table_info(urlToSend, userID: userID, updateField: emailID, updateVariable: updateInfo)
             let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
             prefs.setObject(emailID, forKey: "email")

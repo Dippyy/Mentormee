@@ -24,7 +24,9 @@ class DetailUpdateTVC: UITableViewController {
             forBarMetrics: .Default)
 
         
-        get_data_from_url("http://mentormee.info/dbTestConnect/programUpdate.php")
+//        get_data_from_url("http://mentormee.info/dbTestConnect/programUpdate.php")
+        get_data_from_url(programUpdate)
+
 
     }
 
@@ -124,7 +126,10 @@ class DetailUpdateTVC: UITableViewController {
             
             println(post)
             
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateUniversityName2.php")! //need to update university_id
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateUniversityName2.php")! //need to update university_id
+            
+            var url:NSURL = NSURL(string: updateUniversityName2)! //need to update university_id
+
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -173,7 +178,10 @@ class DetailUpdateTVC: UITableViewController {
             println(facultyID)
             
             var post: NSString = "userID=\(userID)&faculty=\(facultyID)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateFacultyName2.php")! //update program_id
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateFacultyName2.php")! //update program_id
+            
+            var url:NSURL = NSURL(string: updateFacultyName2)! //update program_id
+
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -220,7 +228,10 @@ class DetailUpdateTVC: UITableViewController {
             var userID = prefs.valueForKey("userID") as! String
             
             var post: NSString = "userID=\(userID)&program=\(programID)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProgramName2.php")! //update program_id
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateProgramName2.php")! //update program_id
+            
+            var url:NSURL = NSURL(string: updateProgramName2)! //update program_id
+
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

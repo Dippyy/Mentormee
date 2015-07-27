@@ -72,7 +72,9 @@ class HomeScreenVC: UIViewController {
         
         var post: NSString = "userID=\(userID)"
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/homeScreenUpdate3.php")!
+//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/homeScreenUpdate3.php")!
+        var url:NSURL = NSURL(string:homeScreenUpdate3)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -183,7 +185,9 @@ class HomeScreenVC: UIViewController {
                 
                 var post: NSString = "universityID=\(uniID)&programID=\(progID)"
                 NSLog("PostData: %@",post);
-                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+//                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+                var url:NSURL = NSURL(string:universityLookup)!
+
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                 var postLength:NSString = String( postData.length )
                 var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)

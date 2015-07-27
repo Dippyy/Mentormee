@@ -153,7 +153,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)"
             NSLog("PostData: %@",post);
             
-            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginTest.php")!
+//            var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/loginTest.php")!
+            
+            var url:NSURL = NSURL(string:loginTest)!
+
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String( postData.length )
             var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -192,7 +195,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         
                         var post: NSString = "email=\(emailToSend)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID.php")!
+//                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID.php")!
+                        
+                        var url:NSURL = NSURL(string:fetchUserID)!
+
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -233,7 +239,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 
                                 var post: NSString = "userID=\(userID)"
                                 NSLog("PostData: %@",post);
-                                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/retrieveMentorID.php")!
+//                                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/retrieveMentorID.php")!
+                                
+                                var url:NSURL = NSURL(string: retrieveMentorID)!
+
                                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                                 var postLength:NSString = String( postData.length )
                                 var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -362,7 +371,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
             var post:NSString = "email=\(email)&password=\(password)&password_c=\(passwordConfirm)&mentorStatus=\(mentorStatus)&firstName=\(firstName)&lastName=\(lastName)"
             NSLog("PostData: %@", post)
             
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScriptMentee.php")!
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/signupScriptMentee.php")!
+            
+            var url:NSURL = NSURL(string: signupScriptMentee)!
+
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -399,7 +411,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         
                         var post: NSString = "email=\(emailToSend)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID3.php")!
+//                        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/fetchUserID3.php")!
+                        
+                        var url:NSURL = NSURL(string: fetchUserID3)!
+
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -446,7 +461,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         
                         var postID: NSString = "userID=\(userID)"
                         NSLog("PostData: %@",postID);
-                        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createNewAccountMentee.php")!
+//                        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createNewAccountMentee.php")!
+                        
+                        var urlID:NSURL = NSURL(string: createNewAccountMentee)!
+
                         var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLengthID:NSString = String( postDataID.length )
                         var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)
@@ -472,7 +490,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 NSLog("Response ==> %@", responseData)
                                 var error:NSError?
                                 
-                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlDataID!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+//                                let jsonDataID: NSArray = (NSJSONSerialization.JSONObjectWithData(urlDataID!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                                 
                                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                                 
@@ -485,7 +503,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         var post2:NSString = "menteeUserID=\(menteeUserID)&mentorUserID=\(mentorUserID)"
                         NSLog("PostData: %@", post2)
                         
-                        var url2:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/createMentorshipJoin.php")!
+//                        var url2:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/createMentorshipJoin.php")!
+                        
+                        var url2:NSURL = NSURL(string: createMentorshipJoin)!
+
                         var postData2:NSData = post2.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength2:NSString = String(postData2.length)
                         var request2: NSMutableURLRequest = NSMutableURLRequest(URL:url2)
@@ -526,7 +547,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                     var post:NSString = "mentorUserID=\(mentorUserID)"
                                     NSLog("PostData: %@", post)
                                     
-                                    var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/fetchCurrentMenteeConnected.php")!
+//                                    var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/fetchCurrentMenteeConnected.php")!
+                                    
+                                    var url:NSURL = NSURL(string: fetchCurrentMenteeConnected)!
+                                    
                                     var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                                     var postLength:NSString = String(postData.length)
                                     var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -571,7 +595,9 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                                 var post:NSString = "menteeCount=\(newMenteeCount)&userID=\(userID)"
                                                 NSLog("PostData: %@", post)
                                                 
-                                                var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateMenteeCount2.php")!
+//                                                var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateMenteeCount2.php")!
+                                                var url:NSURL = NSURL(string: updateMenteeCount2)!
+                                                
                                                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                                                 var postLength:NSString = String(postData.length)
                                                 var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

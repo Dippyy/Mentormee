@@ -69,7 +69,10 @@ class MenteeViewVC: UIViewController {
         
         var post: NSString = "mentorUserID=\(userID)"
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMentee3.php")!
+//        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMentee3.php")!
+        
+        var url:NSURL = NSURL(string: pullMentee3)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -130,7 +133,10 @@ class MenteeViewVC: UIViewController {
                         
                         var post: NSString = "menteeUserID1=\(menteeUserID1)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMenteeInformation.php")!
+//                        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMenteeInformation.php")!
+                        
+                        var url:NSURL = NSURL(string: pullMenteeInformation)!
+
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -220,7 +226,10 @@ class MenteeViewVC: UIViewController {
                         
                         var post: NSString = "menteeUserID1=\(menteeUserID1)&menteeUserID2=\(menteeUserID2)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMenteeInformation.php")!
+//                        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMenteeInformation.php")!
+                        
+                        var url:NSURL = NSURL(string: pullMenteeInformation)!
+
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -354,7 +363,10 @@ class MenteeViewVC: UIViewController {
                         
                         var post: NSString = "menteeUserID1=\(menteeUserID1)&menteeUserID2=\(menteeUserID2)&menteeUserID3=\(menteeUserID3)"
                         NSLog("PostData: %@",post);
-                        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMenteeInformation.php")!
+//                        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/pullMenteeInformation.php")!
+                        
+                        var url:NSURL = NSURL(string: pullMenteeInformation)!
+
                         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                         var postLength:NSString = String( postData.length )
                         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

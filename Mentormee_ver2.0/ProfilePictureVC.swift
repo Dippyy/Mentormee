@@ -58,7 +58,10 @@ class ProfilePictureVC: UIViewController, UIImagePickerControllerDelegate, UINav
                 
         var post: NSString = "userID=\(userID)&imageURL=\(imageURL)"
         
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/saveUserInfo.php")!
+//        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/saveUserInfo.php")!
+        
+        var url:NSURL = NSURL(string: saveUserInfo)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -136,7 +139,10 @@ class ProfilePictureVC: UIViewController, UIImagePickerControllerDelegate, UINav
     
     func myImageUploadRequest(){
         
-        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload4.php")
+//        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload4.php")
+        
+        let myUrl = NSURL(string: imageUpload4)
+
         let request = NSMutableURLRequest(URL:myUrl!)
         request.HTTPMethod = "POST"
         

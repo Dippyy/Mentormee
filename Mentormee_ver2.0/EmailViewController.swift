@@ -133,7 +133,10 @@ class EmailViewController: UIViewController {
         
         var postID: NSString = "menteeEmail=\(menteeEmail)&mentorEmail=\(mentorEmail)&menteeMessage=\(menteeMessage)"
         NSLog("PostData: %@",postID);
-        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createMessageRecord.php")!
+//        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/createMessageRecord.php")!
+        
+        var urlID:NSURL = NSURL(string: createMessageRecord)!
+
         var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLengthID:NSString = String( postDataID.length )
         var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)
@@ -169,7 +172,10 @@ class EmailViewController: UIViewController {
         
         var postID: NSString = "userID=\(userID)"
         NSLog("PostData: %@",postID);
-        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/grabEmailFromID.php")!
+//        var urlID:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/grabEmailFromID.php")!
+        
+        var urlID:NSURL = NSURL(string:grabEmailFromID)!
+
         var postDataID:NSData = postID.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLengthID:NSString = String( postDataID.length )
         var requestID:NSMutableURLRequest = NSMutableURLRequest(URL: urlID)

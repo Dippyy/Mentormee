@@ -44,7 +44,10 @@ class menteeProfileView: UIViewController {
         
         var post: NSString = "userID=\(mentorID)"
         println(post)
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updatePublicProfileMentee.php")!
+//        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updatePublicProfileMentee.php")!
+        
+        var url:NSURL = NSURL(string: updatePublicProfileMentee)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

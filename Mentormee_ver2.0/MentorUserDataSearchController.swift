@@ -17,7 +17,10 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
     var selectedItem:String!
     
     var cars = [String]()
-    var url = "http://mentormee.info/dbTestConnect/programUpdate.php"
+//    var url = "http://mentormee.info/dbTestConnect/programUpdate.php"
+    
+    var url = programUpdate
+
     
     @IBOutlet weak var userDataPickerView: UIPickerView!
     

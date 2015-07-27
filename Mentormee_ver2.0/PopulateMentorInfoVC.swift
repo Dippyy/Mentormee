@@ -49,7 +49,10 @@ class PopulateMentorInfoVC: UIViewController {
                 
                 var post: NSString = "universityID=\(uniID)&programID=\(progID)"
                 NSLog("PostData: %@",post);
-                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+//                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+        
+                var url:NSURL = NSURL(string: universityLookup)!
+
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                 var postLength:NSString = String( postData.length )
                 var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -102,7 +105,10 @@ class PopulateMentorInfoVC: UIViewController {
         
         var post: NSString = "userID=\(inputID)"
         println(post)
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updatePublicProfile3.php")!
+//        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updatePublicProfile3.php")!
+        
+        var url:NSURL = NSURL(string: updatePublicProfile3)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

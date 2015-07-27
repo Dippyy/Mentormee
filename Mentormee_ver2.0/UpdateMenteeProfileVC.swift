@@ -46,7 +46,10 @@ class UpdateMenteeProfileVC: UIViewController, UITableViewDelegate, UITableViewD
         var post: NSString = "userID=\(userIDToSend!)"
         
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/populateSelectionTableMentee.php")!
+//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/populateSelectionTableMentee.php")!
+        
+        var url:NSURL = NSURL(string: populateSelectionTableMentee)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)

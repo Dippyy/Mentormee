@@ -89,7 +89,10 @@ class Test_Connection2VC: UIViewController {
         var mentor_Univeristy_ID:NSString = ""
         
         var post:NSString = "mentorID=\(mentorID)"
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_PrimaryCapability.php")!
+//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_PrimaryCapability.php")!
+        
+        var url:NSURL = NSURL(string:Algorithm_rating_PrimaryCapability)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -122,7 +125,10 @@ class Test_Connection2VC: UIViewController {
         
         
         post = "PrimaryCapability_id=\(PrimaryCapability_id)"
-        url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract.php")!
+//        url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract.php")!
+        
+        url = NSURL(string:Algorithm_rating_dataExtract)!
+
         postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         postLength = String( postData.length )
         request = NSMutableURLRequest(URL: url)
@@ -136,8 +142,6 @@ class Test_Connection2VC: UIViewController {
         var response2: NSURLResponse?
         
         urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response2, error:&reponseError2)
-        
-        
         
         if ( urlData != nil ) {
             
@@ -162,7 +166,10 @@ class Test_Connection2VC: UIViewController {
         
         
         post = "mentor_Program_ID=\(mentor_Program_ID)"
-        url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract2.php")!
+//        url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract2.php")!
+        
+        url = NSURL(string:Algorithm_rating_dataExtract2)!
+
         postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         postLength = String( postData.length )
         request = NSMutableURLRequest(URL: url)
@@ -205,7 +212,10 @@ class Test_Connection2VC: UIViewController {
         
         
         post = "mentor_University_ID=\(mentor_Univeristy_ID)"
-        url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract3.php")!
+//        url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract3.php")!
+        
+        url = NSURL(string: Algorithm_rating_dataExtract3)!
+
         postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         postLength = String( postData.length )
         request = NSMutableURLRequest(URL: url)

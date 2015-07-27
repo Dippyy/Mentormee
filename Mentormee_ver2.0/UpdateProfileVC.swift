@@ -39,7 +39,9 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         var post: NSString = "userID=\(userID)"
 
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/populateSelectionTable.php")!
+//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/populateSelectionTable.php")!
+        var url:NSURL = NSURL(string:populateSelectionTable)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -110,7 +112,9 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 var post: NSString = "universityID=\(uniID)&programID=\(progID)"
                 NSLog("PostData: %@",post);
-                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+//                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+                var url:NSURL = NSURL(string:universityLookup)!
+
                 var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                 var postLength:NSString = String( postData.length )
                 var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -333,7 +337,9 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         var post: NSString = "userID=\(userID)&imageURL=\(imageURL)"
 
-        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/saveUserInfo.php")!
+//        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/saveUserInfo.php")!
+        var url:NSURL = NSURL(string: saveUserInfo)!
+
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length)
         var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)

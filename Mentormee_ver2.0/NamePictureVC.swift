@@ -120,7 +120,10 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             println("THE LAST NAME IS \(lastName)")
 
             var post: NSString = "userID=\(userID)&firstName=\(firstName)&lastName=\(lastName)"
-            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateName.php")!
+//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateName.php")!
+                
+            var url:NSURL = NSURL(string: updateName)!
+
             var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
             var postLength:NSString = String(postData.length)
             var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -166,52 +169,11 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             var whatsupMentor: String = whatsupTextField.text as String
             var updateInfo: String = "whatsUpMentor"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateWhatsup2.php"
-            update_table_info(urlToSend, userID: userID, updateField: whatsupMentor, updateVariable: updateInfo)
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateWhatsup2.php"
             
-//            var whatsUp = whatsupTextField.text as String
-//            var userID = prefs.valueForKey("userID") as! String
-//            
-//            var post: NSString = "userID=\(userID)&whatsup=\(whatsUp)"
-//            var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updateWhatsup2.php")!
-//            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-//            var postLength:NSString = String(postData.length)
-//            var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
-//            
-//            request.HTTPMethod = "POST"
-//            request.HTTPBody = postData
-//            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-//            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-//            request.setValue("application/json", forHTTPHeaderField: "Accept")
-//            
-//            var responseError: NSError?
-//            var response: NSURLResponse?
-//            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
-//            
-//            if(urlData != nil){
-//                
-//                let res = response as! NSHTTPURLResponse!
-//                NSLog("Response code: %ld", res.statusCode)
-//                
-//                if(res.statusCode >= 200 && res.statusCode < 300){
-//                    
-//                    var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
-//                    NSLog("Response ==> %@", responseData)
-//                    var error:NSError?
-//                    let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
-//                    let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
-//                    NSLog("Success %ld", success)
-//                    
-//                    if(success == 0){
-//                        self.performSegueWithIdentifier("goto_overview3", sender: self)
-//                    }
-//                    
-//                    if(success == 1){
-//                        NSLog("Update SUCCESS!")
-//                        self.performSegueWithIdentifier("goto_overview3", sender: self)
-//                    }
-//                }
-//            }
+            var urlToSend: String = updateWhatsup2
+
+            update_table_info(urlToSend, userID: userID, updateField: whatsupMentor, updateVariable: updateInfo)
             
             
         } else if(prefs.valueForKey("Selection")!.isEqualToString("Facebook")){
@@ -219,7 +181,10 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             var facebookID: String = fullNameTextField.text as String
             var updateInfo: String = "FacebookID"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateFacebookID.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateFacebookID.php"
+            
+            var urlToSend: String = updateFacebookID
+
             update_table_info(urlToSend, userID: userID, updateField: facebookID, updateVariable: updateInfo)
             
             // updates the Skype
@@ -228,7 +193,10 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             var skypeID: String = fullNameTextField.text as String
             var updateInfo: String = "skypeID"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateSkypeID.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateSkypeID.php"
+            
+            var urlToSend: String = updateSkypeID
+
             update_table_info(urlToSend, userID: userID, updateField: skypeID, updateVariable: updateInfo)
             
             // updates the email
@@ -237,7 +205,10 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
             var emailID: String = fullNameTextField.text as String
             var updateInfo: String = "emailID"
             var userID = prefs.valueForKey("userID") as! String
-            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateEmailID.php"
+//            var urlToSend: String = "http://mentormee.info/dbTestConnect/updateEmailID.php"
+            
+            var urlToSend: String = updateEmailID
+
             update_table_info(urlToSend, userID: userID, updateField: emailID, updateVariable: updateInfo)
             let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
             prefs.setObject(emailID, forKey: "email")
@@ -265,7 +236,10 @@ class NamePictureVC: UIViewController, UIImagePickerControllerDelegate, UINaviga
     
     func myImageUploadRequest(){
         
-        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload4.php")
+//        let myUrl = NSURL(string: "http://mentormee.info/dbTestConnect/imageUpload4.php")
+        
+        let myUrl = NSURL(string: imageUpload4)
+
         let request = NSMutableURLRequest(URL:myUrl!)
         request.HTTPMethod = "POST"
         

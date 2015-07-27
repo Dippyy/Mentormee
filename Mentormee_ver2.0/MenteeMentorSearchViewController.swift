@@ -44,11 +44,9 @@ class MenteeMentorSearchViewController: UIViewController{
     var senderDetail:String!
     var userSelectionText:String!
     var userSelectionField:String!
-    var URL = "http://mentormee.info/dbTestConnect/programUpdate.php"
+//    var URL = "http://mentormee.info/dbTestConnect/programUpdate.php"
     
-    //get_data_from_url("http://mentormee.info/dbTestConnect/programUpdate.php")
-    //program = faculty
-    // specialization = program
+    var URL = programUpdate
     
     @IBAction func backButtonTapped(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -191,7 +189,9 @@ class MenteeMentorSearchViewController: UIViewController{
         })
         
     
-        let allMentorList:NSArray = (Algorithm_filterOnCapacity("http://mentormee.info/dbTestConnect/Algorithm_filterOnCapacity.php"))
+//        let allMentorList:NSArray = (Algorithm_filterOnCapacity("http://mentormee.info/dbTestConnect/Algorithm_filterOnCapacity.php"))
+        
+        let allMentorList:NSArray = (Algorithm_filterOnCapacity(Algorithm_filterOnCapacity2))
         
         for (var i=0; i<allMentorList.count; i++) {
             
@@ -380,7 +380,10 @@ func test (mentor_id:AnyObject, comparisonField:NSArray) -> Int {
     var post:NSString = "mentorID=\(mentorID)&Program=\(Program)&Faculty=\(Faculty)&University=\(University)"
     //  NSLog("PostData: %@",post);
     
-    var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating.php")!
+//    var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating.php")!
+    
+    var url:NSURL = NSURL(string:Algorithm_rating)!
+
     var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
     var postLength:NSString = String( postData.length )
     var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -439,7 +442,10 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     var mentor_Univeristy_ID:NSString = ""
     
     var post:NSString = "mentorID=\(mentorID)"
-    var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_PrimaryCapability.php")!
+//    var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_PrimaryCapability.php")!
+    
+    var url:NSURL = NSURL(string:Algorithm_rating_PrimaryCapability)!
+
     var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
     var postLength:NSString = String( postData.length )
     var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -471,7 +477,10 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     
     post = "PrimaryCapability_id=\(PrimaryCapability_id)"
     println(post)
-    url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract.php")!
+//    url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract.php")!
+    
+    url = NSURL(string: Algorithm_rating_dataExtract)!
+
     postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
     postLength = String( postData.length )
     request = NSMutableURLRequest(URL: url)
@@ -510,7 +519,10 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     
     
     post = "mentor_Program_ID=\(mentor_Program_ID)"
-    url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract2.php")!
+//    url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract2.php")!
+    
+    url = NSURL(string: Algorithm_rating_dataExtract2)!
+
     postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
     postLength = String( postData.length )
     request = NSMutableURLRequest(URL: url)
@@ -553,7 +565,10 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     
     
     post = "mentor_University_ID=\(mentor_Univeristy_ID)"
-    url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract3.php")!
+//    url = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_dataExtract3.php")!
+    
+    url = NSURL(string: Algorithm_rating_dataExtract3)!
+
     postData = post.dataUsingEncoding(NSASCIIStringEncoding)!
     postLength = String( postData.length )
     request = NSMutableURLRequest(URL: url)
