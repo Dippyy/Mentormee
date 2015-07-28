@@ -296,6 +296,14 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             
         }else {
+            
+            let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            
+            let mentorStatus: String = "Profile Set Mentor"
+            let userID = prefs.valueForKey("userID") as! String
+            
+            updateMentorStatus(mentorStatus, userID: userID)
+        
             self.performSegueWithIdentifier("goto_homepage", sender: self)
             }
         }
@@ -320,6 +328,12 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             alertView.show()
             
         } else {
+            
+            
+        let mentorStatus: String = "Profile Set Mentor"
+        let userID2 = storedData.valueForKey("userID") as! String
+            
+        updateMentorStatus(mentorStatus, userID: userID2)
         
         if(storedData.valueForKey("ProfileImage") != nil) {
             let imageURL = storedData.valueForKey("ProfileImage") as! String
@@ -403,6 +417,48 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    
+    func updateMentorStatus(mentorStatus: String, userID: String) {
+        
+        var post: NSString = "mentorStatus=\(mentorStatus)&userID=\(userID)"
+        println(post)
+        var url:NSURL = NSURL(string: updateMentorStatusString)!
+        
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length)
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+        
+        if(urlData != nil){
+            
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                
+                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                
+                let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                NSLog("Success %ld", success)
+                
+                if(success == 1){
+                    println("Status Updated")
+                }
+            }
+        }
+    }
 
 
 }

@@ -328,7 +328,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         var email:String = emailTextField.text as String
         var password:String = passwordTextField.text as String
         var passwordConfirm: String = passwordConfirmTextField.text as String
-        var mentorStatus:String = "Inactive Mentee"
+        var mentorStatus:String = "Active Mentee"
         
 
         if (email == "" || password == "" || passwordConfirm == "") {
@@ -542,7 +542,10 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                     let mentorUserIDString: String = String(mentorUserID as! NSString)
 //                                    prefs.setObject(mentorUserIDString, forKey: "MentorIDForMatch")
                                     prefs.setObject(mentorUserIDString, forKey: "MentorMatched")
-
+                                    
+                                    let mentorStatus: String = "Active Mentor"
+                                    
+                                    updateMentorStatus(mentorStatus, userID: mentorUserID as! String)
                                     
                                     var post:NSString = "mentorUserID=\(mentorUserID)"
                                     NSLog("PostData: %@", post)
@@ -679,5 +682,45 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         
     }
     
-
+    func updateMentorStatus(mentorStatus: String, userID: String) {
+        
+        var post: NSString = "mentorStatus=\(mentorStatus)&userID=\(userID)"
+        println(post)
+        var url:NSURL = NSURL(string: updateMentorStatusString)!
+        
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length)
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+        
+        if(urlData != nil){
+            
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                
+                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+                
+                let success:NSInteger = jsonData.valueForKey("success") as! NSInteger
+                NSLog("Success %ld", success)
+                
+                if(success == 1){
+                    println("Status Updated")
+                }
+            }
+        }
+    }
 }

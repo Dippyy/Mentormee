@@ -13,8 +13,12 @@ class DetailUpdateTVC: UITableViewController {
     var UserData:Array< String > = Array < String >()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        // NAV BAR PROPERTIES
         
         var nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Default
@@ -22,10 +26,21 @@ class DetailUpdateTVC: UITableViewController {
         let image = UIImage(named: "NavbarImage")
         self.navigationController!.navigationBar.setBackgroundImage(image,
             forBarMetrics: .Default)
-
         
-//        get_data_from_url("http://mentormee.info/dbTestConnect/programUpdate.php")
-        get_data_from_url(programUpdate)
+        // POPULATE TABLE VIEW
+        
+
+        let selection = prefs.valueForKey("Selection") as! String
+        
+        if(selection == "University"){
+            get_data_from_university(universityUpdate)
+        } else if(selection == "Program" || selection == "Faculty"){
+            
+            
+            //        get_data_from_url("http://mentormee.info/dbTestConnect/programUpdate.php")
+            get_data_from_url(programUpdate)
+            
+        }
 
 
     }
@@ -57,6 +72,53 @@ class DetailUpdateTVC: UITableViewController {
         let urlToSend = NSURL(string:url)
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let userInput = prefs.valueForKey("Selection") as! String
+        let universityName = prefs.valueForKey("UniID") as! String
+        var post: NSString = "selection=\(userInput)&universityID=\(universityName)"
+        NSLog("PostData: %@",post);
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String( postData.length )
+        
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL: urlToSend!)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+        
+        if(urlData != nil){
+            
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response Code: %ld", res.statusCode)
+            var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+            NSLog("Response ==> %@", responseData)
+            var error: NSError?
+            
+            let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+    
+            for (var i = 0; i < jsonData.count; i++){
+                if let jsonData_obj = jsonData[i] as? NSDictionary
+                {
+                    if let userInformation = jsonData_obj[userInput] as? String
+                    {
+                        UserData.append(userInformation)
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    func get_data_from_university(url: String) {
+        
+        let urlToSend = NSURL(string:url)
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let userInput = prefs.valueForKey("Selection") as! String
         var post: NSString = "selection=\(userInput)"
         NSLog("PostData: %@",post);
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -84,12 +146,7 @@ class DetailUpdateTVC: UITableViewController {
             var error: NSError?
             
             let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
-        
-//            println("this array contains: \(jsonData.count)")
-//            println(jsonData[0].valueForKey("University") as! String)
-//            println(jsonData[1].valueForKey("Faculty") as! String)
-//            println(jsonData[1].valueForKey("Program") as! String)
-//            
+            
             for (var i = 0; i < jsonData.count; i++){
                 if let jsonData_obj = jsonData[i] as? NSDictionary
                 {
@@ -100,9 +157,7 @@ class DetailUpdateTVC: UITableViewController {
                     }
                 }
             }
-        
-        } else{
-            println("url data is empty")
+            
         }
         
     }
@@ -267,14 +322,6 @@ class DetailUpdateTVC: UITableViewController {
                 }
             }
         }
-        
-//        
-//        let userInput = prefs.valueForKey("Selection") as! String
-//                
-//        var identifier:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-//        identifier.setObject(selection, forKey:userInput)
-//        
-//        self.performSegueWithIdentifier("goto_overview", sender: self)
     }
     
     @IBAction func backButtonTapped(sender: AnyObject) {
