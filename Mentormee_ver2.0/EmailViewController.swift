@@ -15,10 +15,13 @@ class EmailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var sendMessageLabel: UILabel!
     
     var emailAddress = "info@mentormee.com"
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        sendMessageLabel.alpha = 0
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
@@ -87,7 +90,7 @@ class EmailViewController: UIViewController {
     
     func hideKeyboard() {
         
-        emailButton.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
+//        emailButton.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
         textField.resignFirstResponder()
         self.scrollView.setContentOffset(CGPointZero, animated: true)
     }
@@ -98,8 +101,9 @@ class EmailViewController: UIViewController {
         
         //SEND ALERT , ARE YOU SURE YOU WANT TO EMAIL THIS TO YOUR MENTOR?
         
-        var alertMessage: String = "Are you sure you want to send this message to your mentor?"
-        sendAlert(alertMessage)
+        var refreshAlert = UIAlertController(title: "Confirm Message", message: "Are you sure you want to send this message to your mentor?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
         
         //Create a record in the database for message, mentee email, mentor email
         
@@ -111,19 +115,27 @@ class EmailViewController: UIViewController {
         
         let mentor: String = prefs.valueForKey("MentorMatched") as! String
         
-        let menteeEmail = grabEmail(mentee)
-        let mentorEmail = grabEmail(mentor)
+        let menteeEmail = self.grabEmail(mentee)
+        let mentorEmail = self.grabEmail(mentor)
         
         // -> Send emails and message to new table in DB
         
-        let menteeMessage: String = textField.text
+        let menteeMessage: String = self.textField.text
         
-        create_message_record(menteeEmail, mentorEmail: mentorEmail, menteeMessage: menteeMessage)
+        self.create_message_record(menteeEmail, mentorEmail: mentorEmail, menteeMessage: menteeMessage)
+            
+        UIView.animateWithDuration(1, animations: {
+            self.textField.alpha = 0
+            self.instructionLabel.alpha = 0
+            self.emailButton.alpha = 0
+            self.sendMessageLabel.alpha = 1.0
+                })
+            
+        }))
         
-        //Package information into email format, textfield = BODY, static = subject, to = mentor, from = mentee
-        //  -> Dynamic content: Body, From
-        //  -> Static content: Subject, To
-        
+        refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            println("Handle Cancel Logic here")
+        }))
         
     }
     

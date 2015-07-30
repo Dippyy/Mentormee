@@ -283,10 +283,4 @@ class HomeScreenVC: UIViewController {
 
     }
     
-//    func checkMentorActiveStatus(mentorID: String) -> Bool {
-//        
-//    }
-    
-    
-
 }

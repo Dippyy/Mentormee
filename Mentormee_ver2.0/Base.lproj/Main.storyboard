@@ -2654,18 +2654,30 @@
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LabelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-8F-dfy">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LabelBorder" translatesAutoresizingMaskIntoConstraints="NO" id="eHs-8F-dfy">
                                         <rect key="frame" x="16" y="161" width="288" height="180"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Write here!" translatesAutoresizingMaskIntoConstraints="NO" id="Kag-XX-8hu">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Write here!" translatesAutoresizingMaskIntoConstraints="NO" id="Kag-XX-8hu">
                                         <rect key="frame" x="16" y="161" width="288" height="180"/>
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pon-i5-HMe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You message has been sent!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbh-eO-D1G">
+                                        <rect key="frame" x="23" y="213" width="275" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="75" id="lQ9-RE-q7r"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pon-i5-HMe">
                                         <rect key="frame" x="16" y="349" width="288" height="37"/>
                                         <color key="backgroundColor" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="46p-0b-JJG"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <state key="normal" title="Send Message">
                                             <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2677,14 +2689,23 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="cbh-eO-D1G" firstAttribute="top" secondItem="bvv-YZ-xw0" secondAttribute="bottom" constant="66" id="0VB-mr-7dN"/>
                                     <constraint firstItem="bvv-YZ-xw0" firstAttribute="trailing" secondItem="j9J-LF-NyM" secondAttribute="trailingMargin" constant="-8" id="CCn-C4-bX3"/>
                                     <constraint firstItem="eHs-8F-dfy" firstAttribute="trailing" secondItem="bvv-YZ-xw0" secondAttribute="trailing" id="Hf3-Fs-OQ5"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="leading" secondItem="eHs-8F-dfy" secondAttribute="leading" id="JOk-Hg-FCB"/>
+                                    <constraint firstItem="cbh-eO-D1G" firstAttribute="leading" secondItem="j9J-LF-NyM" secondAttribute="leading" constant="23" id="OAM-1z-BNe"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="eHs-8F-dfy" secondAttribute="bottom" constant="8" symbolic="YES" id="P2E-L2-jKw"/>
                                     <constraint firstItem="Kag-XX-8hu" firstAttribute="leading" secondItem="eHs-8F-dfy" secondAttribute="leading" id="W4X-qj-AbY"/>
                                     <constraint firstItem="Kag-XX-8hu" firstAttribute="trailing" secondItem="eHs-8F-dfy" secondAttribute="trailing" id="agh-Kd-qB1"/>
+                                    <constraint firstAttribute="bottom" secondItem="cbh-eO-D1G" secondAttribute="bottom" constant="286" id="cXu-yi-m14"/>
                                     <constraint firstItem="eHs-8F-dfy" firstAttribute="top" secondItem="bvv-YZ-xw0" secondAttribute="bottom" constant="14" id="iyN-D0-gCH"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="Kag-XX-8hu" secondAttribute="bottom" constant="8" symbolic="YES" id="kbO-ad-j2t"/>
                                     <constraint firstItem="Kag-XX-8hu" firstAttribute="top" secondItem="eHs-8F-dfy" secondAttribute="top" id="lSL-mc-Cr3"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="j9J-LF-NyM" secondAttribute="top" constant="349" id="ngc-ud-d0m"/>
+                                    <constraint firstItem="cbh-eO-D1G" firstAttribute="centerX" secondItem="Kag-XX-8hu" secondAttribute="centerX" id="qDZ-ck-2vj"/>
                                     <constraint firstItem="bvv-YZ-xw0" firstAttribute="top" secondItem="j9J-LF-NyM" secondAttribute="top" constant="72" id="uVw-QI-Mpp"/>
                                     <constraint firstItem="eHs-8F-dfy" firstAttribute="centerX" secondItem="j9J-LF-NyM" secondAttribute="centerX" id="vlJ-Wj-JEQ"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="trailing" secondItem="Kag-XX-8hu" secondAttribute="trailing" id="x7f-6B-Trw"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2709,6 +2730,7 @@
                         <outlet property="emailButton" destination="Pon-i5-HMe" id="WuT-0t-1KR"/>
                         <outlet property="instructionLabel" destination="bvv-YZ-xw0" id="RBv-Wf-pWo"/>
                         <outlet property="scrollView" destination="j9J-LF-NyM" id="LCW-gT-Kjd"/>
+                        <outlet property="sendMessageLabel" destination="cbh-eO-D1G" id="gVx-LH-ZWn"/>
                         <outlet property="textField" destination="Kag-XX-8hu" id="qGo-EJ-MeY"/>
                     </connections>
                 </viewController>

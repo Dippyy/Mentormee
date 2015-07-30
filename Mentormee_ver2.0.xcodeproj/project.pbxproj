@@ -270,6 +270,11 @@
 					E162BD541B28A51900968EE0 = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = LFX6Q25TT4;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					E162BD691B28A51900968EE0 = {
 						CreatedOnToolsVersion = 6.3.2;

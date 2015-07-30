@@ -19,7 +19,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UITabBar.appearance().tintColor = UIColor.orangeColor()
         
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
         return true
+    }
+
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        
+        let myViewController = window?.rootViewController as UIViewController!
+        
+        if let fetchViewController = myViewController as? FirstPageVC {
+                
+                let checkStatus = fetchViewController.checkForStatusChange()
+//                println(checkStatus)
+            
+                if(checkStatus == "1") {
+//                    println("GETTING HERE")
+                    fetchViewController.updateNotification()
+                    completionHandler(.NewData)
+                } else {
+//                    println("GETTING HERE failing")
+                    completionHandler(.NoData)
+                }
+            fetchViewController.updateMmStatusPostSwipe()
+
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

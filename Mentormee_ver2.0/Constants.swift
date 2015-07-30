@@ -10,6 +10,7 @@ import Foundation
 
 #if Staging
     
+    let programUpdate2 = "http://mentormee.info/dbTestConnect/programUpdate2.php"
     let grabProgramID = "http://mentormee.info/dbTestConnect/grabProgramID.php"
     let universityUpdate = "http://mentormee.info/dbTestConnect/universityUpdate.php"
     let updateMentorStatusString = "http://mentormee.info/dbTestConnect/updateMentorStatus.php"
