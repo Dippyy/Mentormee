@@ -73,6 +73,15 @@ class DetailUpdateTVC: UITableViewController {
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let userInput = prefs.valueForKey("Selection") as! String
         let universityName = prefs.valueForKey("UniID") as! String
+        
+        if let facultyText = prefs.valueForKey("Faculty") as? String {
+            prefs.setObject(facultyText, forKey: "Faculty")
+//            let facultyText = prefs.valueForKey("Faculty") as! String
+        } else {
+            prefs.setObject("Faculty", forKey: "Faculty")
+//            let facultyText = "Faculty"
+        }
+        
         let facultyText = prefs.valueForKey("Faculty") as! String
         
         var post: NSString = "selection=\(userInput)&universityID=\(universityName)&facultyText=\(facultyText)"
@@ -335,12 +344,54 @@ class DetailUpdateTVC: UITableViewController {
                 var error:NSError?
                 let jsonData:NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSArray
                 
-                    NSLog("Update SUCCESS!")
-                    return jsonData[0].valueForKey("Program_id") as! String
+                NSLog("Update SUCCESS!")
+                return jsonData[0].valueForKey("Program_id") as! String
             }
             
         }
         return "oops"
     }
+
+    
+//    func updateFaculty(userSelection: String){
+//        
+//        var prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+//        var userID = prefs.valueForKey("userID") as! String
+//        
+//        var post: NSString = "userID=\(userID)&faculty=\(userSelection)"
+//        println(post)
+//        
+//        var url:NSURL = NSURL(string: updateFacultyScript)!
+//        
+//        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+//        var postLength:NSString = String(postData.length)
+//        var request: NSMutableURLRequest = NSMutableURLRequest(URL:url)
+//        
+//        request.HTTPMethod = "POST"
+//        request.HTTPBody = postData
+//        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+//        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+//        request.setValue("application/json", forHTTPHeaderField: "Accept")
+//        
+//        var responseError: NSError?
+//        var response: NSURLResponse?
+//        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+//        
+//        if(urlData != nil){
+//            
+//            let res = response as! NSHTTPURLResponse!
+//            NSLog("Response code: %ld", res.statusCode)
+//            
+//            if(res.statusCode >= 200 && res.statusCode < 300){
+//                
+//                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+//                NSLog("Response ==> %@", responseData)
+//                var error:NSError?
+//                let jsonData:NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSArray
+//                
+//                    NSLog("Update SUCCESS!")
+//            }
+//        }
+//    }
 
 }

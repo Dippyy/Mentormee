@@ -80,6 +80,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 prefs.setObject(jsonData[0].valueForKey("Picture"), forKey: "Profile Picture")
                 prefs.setObject(jsonData[0].valueForKey("Gender"), forKey: "Gender")
+                prefs.setObject(jsonData[0].valueForKey("Mm_Status"), forKey: "Mentor_Status2")
                 
                 prefs.setObject(jsonData[1].valueForKey("WhatsUp"), forKey: "Whatsup")
                 prefs.setObject(jsonData[1].valueForKey("GraduationYear"), forKey: "Graduation Year")
@@ -143,7 +144,12 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                         let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
                         
                         prefs.setObject(jsonData[0].valueForKey("University"), forKey: "University")
-//                        prefs.setObject(jsonData[1].valueForKey("Faculty"), forKey: "Faculty")
+                        let universitySelection = jsonData[0].valueForKey("University") as! NSString
+                        
+                        if (universitySelection.isEqualToString("University")) {
+                            println("shit no faculty")
+                            prefs.setObject(jsonData[1].valueForKey("Faculty"), forKey: "Faculty")
+                        }
                         prefs.setObject(jsonData[1].valueForKey("Program"), forKey: "Program")
 
                     }
@@ -298,15 +304,22 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }else {
             
             let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            
-            let mentorStatus: String = "Profile Set Mentor"
-            let userID = prefs.valueForKey("userID") as! String
-            
-            updateMentorStatus(mentorStatus, userID: userID)
-        
-            self.performSegueWithIdentifier("goto_homepage", sender: self)
+            let mentorStatusChecker = prefs.valueForKey("Mentor_Status2") as! NSString
+            if(mentorStatusChecker.isEqualToString("Profile Set Mentor")){
+                
+                let mentorStatus = prefs.valueForKey("Mentor_Status2") as! String
+                let userID = prefs.valueForKey("userID") as! String
+                
+                updateMentorStatus(mentorStatus, userID: userID)
+                self.performSegueWithIdentifier("goto_homepage", sender: self)
+                
+            } else {
+                self.performSegueWithIdentifier("goto_homepage", sender: self)
             }
         }
+    }
+    
+    
     
 //----------------------------- saves the image url to the database under Picture -----------------------------------------
 //---------------- Note: MOVE THIS LOGIC TO THE NamePictureVC WHEN THE 'SAVE' BUTTON IS PRESSED -----------------------
@@ -329,11 +342,30 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             
         } else {
             
+            let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            let mentorStatusChecker = prefs.valueForKey("Mentor_Status2") as! NSString
+            if(mentorStatusChecker.isEqualToString("Profile Set Mentor")){
+                
+                let mentorStatus = prefs.valueForKey("Mentor_Status2") as! String
+                let userID = prefs.valueForKey("userID") as! String
+                
+                updateMentorStatus(mentorStatus, userID: userID)
+                self.performSegueWithIdentifier("goto_homepage", sender: self)
+                
+            } else if (mentorStatusChecker.isEqualToString("Inactive Mentor")){
+                
+                let mentorStatus = "Profile Set Mentor"
+                let userID = prefs.valueForKey("userID") as! String
             
-        let mentorStatus: String = "Profile Set Mentor"
-        let userID2 = storedData.valueForKey("userID") as! String
+                updateMentorStatus(mentorStatus, userID: userID)
+                self.performSegueWithIdentifier("goto_homepage", sender: self)
+            }
             
-        updateMentorStatus(mentorStatus, userID: userID2)
+            
+//        let mentorStatus: String = "Profile Set Mentor"
+//        let userID2 = storedData.valueForKey("userID") as! String
+//            
+//        updateMentorStatus(mentorStatus, userID: userID2)
         
         if(storedData.valueForKey("ProfileImage") != nil) {
             let imageURL = storedData.valueForKey("ProfileImage") as! String

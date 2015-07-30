@@ -107,10 +107,6 @@ class HomeScreenVC: UIViewController {
                     
                 } else {
                 
-//                var menteeCount:String = jsonData[2].valueForKey("Mentee_Connected") as! String
-//                var tabArray = self.tabBarController?.tabBar.items as NSArray!
-//                var tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
-//                tabItem.badgeValue = menteeCount
                 
                 // ERROR HANDLER FOR FULL NAME
 
@@ -138,11 +134,43 @@ class HomeScreenVC: UIViewController {
 
                     }   else {
                 
+                            println("GETTING HERE PICTURE")
                             let imageString: String = jsonData[0].valueForKey("Picture") as! String
                             let url2 = NSURL(string: imageString)
                             let data = NSData(contentsOfURL: url2!)
                             profileImageView.image = UIImage(data: data!)
                     }
+                    
+                    if let mm_Status = jsonData[0].valueForKey("Mm_Status") as? NSString {
+                        
+                        let updateStatus: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                        updateStatus.setObject(mm_Status, forKey: "Mentor_Status")
+                        
+                    }
+                    
+                    let preferences: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+                    let mm_Status = preferences.valueForKey("Mentor_Status") as! NSString
+                    
+                        if(mm_Status.isEqualToString("Inative Mentor")){
+                            
+                            println("PROFILE NOT SET UP")
+                        
+                        } else if(mm_Status.isEqualToString("Profile Set Mentor")) {
+                            
+                            updateMmStatus()
+                        
+                            var alertView:UIAlertView = UIAlertView()
+                            alertView.title = "Profile Set"
+                            alertView.message = "Thank you for registering, you are now eligible to receive a match. Expect to be matched within the next 2-4 days"
+                            alertView.delegate = self
+                            alertView.addButtonWithTitle("OK")
+                            alertView.show()
+                            
+                            
+
+                        } else {
+                            println("NOTICE SENT AND MENTOR RECEIVED NOTICE")
+                        }
                 
                 let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
                 
@@ -250,6 +278,45 @@ class HomeScreenVC: UIViewController {
         profileImageView.clipsToBounds = true
 
         }
+    }
+    
+    func updateMmStatus() {
+        
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let userID = prefs.valueForKey("userID") as! String
+        
+        var post: NSString = "userID=\(userID)"
+        NSLog("PostData: %@",post);
+        //                var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/universityLookup.php")!
+        var url:NSURL = NSURL(string: updateMmStatusScript)!
+        
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String( postData.length )
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
+        
+        if(urlData != nil){
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response code: %ld", res.statusCode)
+            
+            if(res.statusCode >= 200 && res.statusCode < 300){
+                
+                var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+                NSLog("Response ==> %@", responseData)
+                var error:NSError?
+            }
+        }
+    
     }
 
     override func didReceiveMemoryWarning() {

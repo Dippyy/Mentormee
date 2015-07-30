@@ -544,6 +544,7 @@
                         <outlet property="universityLabel2" destination="kYY-wf-sRk" id="mR4-ld-hLN"/>
                         <outlet property="universityLabel3" destination="haN-MI-942" id="lTT-lr-A27"/>
                         <segue destination="VMd-Gp-zho" kind="modal" identifier="goto_menteeprofilementor" id="g2d-Mp-8vB"/>
+                        <segue destination="SC7-b4-MeQ" kind="modal" identifier="goto_profilefrommentee" id="r0i-uz-RKo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izy-R3-9kV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2622,7 +2623,7 @@
                         <outlet property="programTextField" destination="7Kb-j4-Uo8" id="VQZ-T6-SjB"/>
                         <outlet property="universityTextField" destination="DUk-30-h4e" id="00k-g3-1J6"/>
                         <outlet property="whatsupTextField" destination="YU8-S1-e7p" id="Jed-j2-GKS"/>
-                        <segue destination="VKT-7U-zTs" kind="modal" identifier="goto_emailconnect" id="ejW-gG-ssN"/>
+                        <segue destination="VKT-7U-zTs" kind="modal" identifier="goto_emailconnect" id="Csb-xs-uyo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7yu-Ie-Rd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2672,19 +2673,18 @@
                                         <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pon-i5-HMe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pon-i5-HMe">
                                         <rect key="frame" x="16" y="349" width="288" height="37"/>
                                         <color key="backgroundColor" red="1" green="0.62685797160000001" blue="0.26879503890000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="46p-0b-JJG"/>
+                                            <constraint firstAttribute="height" constant="37" id="Hl0-XY-8Iw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <state key="normal" title="Send Message">
                                             <color key="titleColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="sendMessageButtonTapped:" destination="yGd-6n-dpl" eventType="touchUpInside" id="bf8-mQ-vlS"/>
+                                            <action selector="sendMessageButtonTapped:" destination="yGd-6n-dpl" eventType="touchUpInside" id="XTE-eg-fRU"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2692,20 +2692,20 @@
                                     <constraint firstItem="cbh-eO-D1G" firstAttribute="top" secondItem="bvv-YZ-xw0" secondAttribute="bottom" constant="66" id="0VB-mr-7dN"/>
                                     <constraint firstItem="bvv-YZ-xw0" firstAttribute="trailing" secondItem="j9J-LF-NyM" secondAttribute="trailingMargin" constant="-8" id="CCn-C4-bX3"/>
                                     <constraint firstItem="eHs-8F-dfy" firstAttribute="trailing" secondItem="bvv-YZ-xw0" secondAttribute="trailing" id="Hf3-Fs-OQ5"/>
-                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="leading" secondItem="eHs-8F-dfy" secondAttribute="leading" id="JOk-Hg-FCB"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="leading" secondItem="Kag-XX-8hu" secondAttribute="leading" id="L0d-Jb-ms8"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="j9J-LF-NyM" secondAttribute="top" constant="349" id="M57-2V-OjH"/>
                                     <constraint firstItem="cbh-eO-D1G" firstAttribute="leading" secondItem="j9J-LF-NyM" secondAttribute="leading" constant="23" id="OAM-1z-BNe"/>
-                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="eHs-8F-dfy" secondAttribute="bottom" constant="8" symbolic="YES" id="P2E-L2-jKw"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="eHs-8F-dfy" secondAttribute="bottom" constant="8" symbolic="YES" id="R20-B6-a8K"/>
                                     <constraint firstItem="Kag-XX-8hu" firstAttribute="leading" secondItem="eHs-8F-dfy" secondAttribute="leading" id="W4X-qj-AbY"/>
                                     <constraint firstItem="Kag-XX-8hu" firstAttribute="trailing" secondItem="eHs-8F-dfy" secondAttribute="trailing" id="agh-Kd-qB1"/>
                                     <constraint firstAttribute="bottom" secondItem="cbh-eO-D1G" secondAttribute="bottom" constant="286" id="cXu-yi-m14"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="trailing" secondItem="eHs-8F-dfy" secondAttribute="trailing" id="iap-RA-xvn"/>
                                     <constraint firstItem="eHs-8F-dfy" firstAttribute="top" secondItem="bvv-YZ-xw0" secondAttribute="bottom" constant="14" id="iyN-D0-gCH"/>
-                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="Kag-XX-8hu" secondAttribute="bottom" constant="8" symbolic="YES" id="kbO-ad-j2t"/>
                                     <constraint firstItem="Kag-XX-8hu" firstAttribute="top" secondItem="eHs-8F-dfy" secondAttribute="top" id="lSL-mc-Cr3"/>
-                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="j9J-LF-NyM" secondAttribute="top" constant="349" id="ngc-ud-d0m"/>
                                     <constraint firstItem="cbh-eO-D1G" firstAttribute="centerX" secondItem="Kag-XX-8hu" secondAttribute="centerX" id="qDZ-ck-2vj"/>
                                     <constraint firstItem="bvv-YZ-xw0" firstAttribute="top" secondItem="j9J-LF-NyM" secondAttribute="top" constant="72" id="uVw-QI-Mpp"/>
                                     <constraint firstItem="eHs-8F-dfy" firstAttribute="centerX" secondItem="j9J-LF-NyM" secondAttribute="centerX" id="vlJ-Wj-JEQ"/>
-                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="trailing" secondItem="Kag-XX-8hu" secondAttribute="trailing" id="x7f-6B-Trw"/>
+                                    <constraint firstItem="Pon-i5-HMe" firstAttribute="top" secondItem="Kag-XX-8hu" secondAttribute="bottom" constant="8" symbolic="YES" id="w9H-z0-NSo"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2728,10 +2728,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="emailButton" destination="Pon-i5-HMe" id="WuT-0t-1KR"/>
-                        <outlet property="instructionLabel" destination="bvv-YZ-xw0" id="RBv-Wf-pWo"/>
-                        <outlet property="scrollView" destination="j9J-LF-NyM" id="LCW-gT-Kjd"/>
+                        <outlet property="instructionLabel" destination="bvv-YZ-xw0" id="GLF-XF-sZb"/>
+                        <outlet property="scrollView" destination="j9J-LF-NyM" id="4Ns-Rk-EvW"/>
                         <outlet property="sendMessageLabel" destination="cbh-eO-D1G" id="gVx-LH-ZWn"/>
-                        <outlet property="textField" destination="Kag-XX-8hu" id="qGo-EJ-MeY"/>
+                        <outlet property="textField" destination="Kag-XX-8hu" id="KMR-pb-ZSo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M9h-PW-GBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2994,7 +2994,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeR-OI-eWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-335" y="-86"/>
+            <point key="canvasLocation" x="-373" y="-86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mh2-nW-8VG">
@@ -3115,15 +3115,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="C4b-vu-hHJ"/>
-        <segue reference="f09-AU-fLd"/>
-        <segue reference="BtB-FH-9tE"/>
-        <segue reference="gS0-pF-ied"/>
-        <segue reference="8R1-gO-Zd5"/>
         <segue reference="ZVV-cG-BKG"/>
+        <segue reference="C4b-vu-hHJ"/>
+        <segue reference="r0i-uz-RKo"/>
+        <segue reference="8R1-gO-Zd5"/>
         <segue reference="0K5-dH-Xaz"/>
         <segue reference="qWt-W3-Yai"/>
         <segue reference="uhh-HS-fYT"/>
         <segue reference="FOr-bu-49h"/>
+        <segue reference="BtB-FH-9tE"/>
+        <segue reference="gS0-pF-ied"/>
     </inferredMetricsTieBreakers>
 </document>

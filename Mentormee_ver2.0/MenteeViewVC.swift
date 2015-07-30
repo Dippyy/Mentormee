@@ -107,6 +107,8 @@ class MenteeViewVC: UIViewController {
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
                     
+                    self.performSegueWithIdentifier("goto_profilefrommentee", sender: self)
+                    
                 } else {
                 
                     let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!

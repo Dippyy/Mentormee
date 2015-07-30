@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MessageUI
+//import MessageUI
 
 class EmailViewController: UIViewController {
     
@@ -31,59 +31,61 @@ class EmailViewController: UIViewController {
         self.navigationController!.navigationBar.setBackgroundImage(image,
             forBarMetrics: .Default)
         
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
+//        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "hideKeyboard")
         
         // prevents the scroll view from swallowing up the touch event of child buttons
-        tapGesture.cancelsTouchesInView = false
+//        tapGesture.cancelsTouchesInView = false
         
-        scrollView.addGestureRecognizer(tapGesture)
+//        scrollView.addGestureRecognizer(tapGesture)
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        self.registerForKeyboardNotifications()
+//        self.registerForKeyboardNotifications()
         
     }
     override func viewWillDisappear(animated: Bool) {
-        self.deregisterFromKeyboardNotifications()
-        super.viewWillDisappear(true)
+//        self.deregisterFromKeyboardNotifications()
+//        super.viewWillDisappear(true)
         
     }
     
     // functions to control how the keyboard behaves when the textfields are tapped
     
     func registerForKeyboardNotifications() -> Void {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillShowNotification, object: nil)
         
     }
     
     // functions to control how the keyboard behaves when the textfields are tapped
     
     func deregisterFromKeyboardNotifications() -> Void {
-        println("Deregistering!")
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidHideNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillHideNotification, object: nil)
+//        println("Deregistering!")
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidHideNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
     // functions to control how the keyboard behaves when the textfields are tapped
     
     func keyboardWasShown(notification: NSNotification) {
-        var info: Dictionary = notification.userInfo!
-        var keyboardSize: CGSize = (info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size)!
-        var buttonOrigin: CGPoint = self.emailButton.frame.origin;
-        var buttonHeight: CGFloat = self.emailButton.frame.size.height/2;
-        var visibleRect: CGRect = self.view.frame
-        visibleRect.size.height -= keyboardSize.height
-        instructionLabel.hidden = true
         
-        if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
-            var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
-            self.scrollView.setContentOffset(scrollPoint, animated: true)
-            
-        }
+//        var info: Dictionary = notification.userInfo!
+//        var keyboardSize: CGSize = (info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue().size)!
+//        var buttonOrigin: CGPoint = self.emailButton.frame.origin;
+//        var buttonHeight: CGFloat = self.emailButton.frame.size.height/2;
+//        var visibleRect: CGRect = self.view.frame
+//        visibleRect.size.height -= keyboardSize.height
+//        instructionLabel.hidden = true
+//        
+//        if (!CGRectContainsPoint(visibleRect, buttonOrigin)) {
+//            var scrollPoint: CGPoint = CGPointMake(0.0, buttonOrigin.y - visibleRect.size.height + buttonHeight + 4)
+//            self.scrollView.setContentOffset(scrollPoint, animated: true)
+//            
+//        }
+        
     }
     
     // functions to control how the keyboard behaves when the textfields are tapped
@@ -91,8 +93,9 @@ class EmailViewController: UIViewController {
     func hideKeyboard() {
         
 //        emailButton.resignFirstResponder()   //FirstResponder's must be resigned for hiding keyboard.
-        textField.resignFirstResponder()
-        self.scrollView.setContentOffset(CGPointZero, animated: true)
+//        textField.resignFirstResponder()
+//        self.scrollView.setContentOffset(CGPointZero, animated: true)
+        
     }
     
     
@@ -100,7 +103,7 @@ class EmailViewController: UIViewController {
     @IBAction func sendMessageButtonTapped(sender: AnyObject) {
         
         //SEND ALERT , ARE YOU SURE YOU WANT TO EMAIL THIS TO YOUR MENTOR?
-        
+                
         var refreshAlert = UIAlertController(title: "Confirm Message", message: "Are you sure you want to send this message to your mentor?", preferredStyle: UIAlertControllerStyle.Alert)
         
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
@@ -136,6 +139,9 @@ class EmailViewController: UIViewController {
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
             println("Handle Cancel Logic here")
         }))
+        
+        presentViewController(refreshAlert, animated: true, completion: nil)
+
         
     }
     
