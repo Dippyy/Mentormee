@@ -182,7 +182,11 @@ class MenteeViewVC: UIViewController {
                                     var imgData = NSData(contentsOfURL: url!)
                                     myImageView.image = UIImage(data: imgData!)
                                 } else {
-                                    myImageView.image = UIImage(named: "profile_default.jpg")
+                                    var email: String = jsonData[0].valueForKey("FirstName") as! String
+                                    var emailLower: String = email.lowercaseString
+                                    var firstChar = Array(emailLower)[0]
+                                    println(firstChar)
+                                    myImageView.image = UIImage(named: "\(firstChar)DefaultLetter")
                                 }
                             }
                         }
@@ -275,8 +279,11 @@ class MenteeViewVC: UIViewController {
                                     var imgData = NSData(contentsOfURL: url!)
                                     myImageView.image = UIImage(data: imgData!)
                                 } else {
-                                    myImageView.image = UIImage(named: "profile_default.jpg")
-                                }
+                                    var firstName: String = jsonData[0].valueForKey("FirstName") as! String
+                                    var firstNameLower: String = firstName.lowercaseString
+                                    var firstChar = Array(firstNameLower)[0]
+                                    println(firstChar)
+                                    myImageView.image = UIImage(named: "\(firstChar)DefaultLetter")                                }
                             }
                         
                         if let firstName:String = jsonData[1].valueForKey("FirstName") as? String {
@@ -301,8 +308,11 @@ class MenteeViewVC: UIViewController {
                                 var imgData = NSData(contentsOfURL: url!)
                                 myImageView2.image = UIImage(data: imgData!)
                             } else {
-                                myImageView2.image = UIImage(named: "profile_default.jpg")
-                            }
+                                var firstName: String = jsonData[1].valueForKey("FirstName") as! String
+                                var firstNameLower: String = firstName.lowercaseString
+                                var firstChar = Array(firstNameLower)[1]
+                                println(firstChar)
+                                myImageView2.image = UIImage(named: "\(firstChar)DefaultLetter")                            }
                             }
                         }
                     } else if(jsonData.count == 3){
@@ -416,7 +426,7 @@ class MenteeViewVC: UIViewController {
                                     var firstName: String = jsonData[0].valueForKey("FirstName") as! String
                                     var lowerFirstName: String = firstName.lowercaseString
                                     var firstChar = Array(lowerFirstName)[0]
-                                    myImageView3.image = UIImage(named: "\(firstChar)DefaultLetter")
+                                    myImageView.image = UIImage(named: "\(firstChar)DefaultLetter")
                                 }
                             }
                             
@@ -446,7 +456,7 @@ class MenteeViewVC: UIViewController {
                                     var firstName: String = jsonData[1].valueForKey("FirstName") as! String
                                     var lowerFirstName: String = firstName.lowercaseString
                                     var firstChar = Array(lowerFirstName)[0]
-                                    myImageView3.image = UIImage(named: "\(firstChar)DefaultLetter")
+                                    myImageView2.image = UIImage(named: "\(firstChar)DefaultLetter")
                                 }
                             }
                             
