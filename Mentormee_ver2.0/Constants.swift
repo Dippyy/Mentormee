@@ -10,12 +10,18 @@ import Foundation
 
 #if Staging
     
+    
+    let urlFiller = "http://mentormee.info/dbTestConnection/userprofilepic/uploads/2015/"
+    
+    let checkMentorMatchField = "http://mentormee.info/dbTestConnect/checkMentorMatchField.php"
+    let updateMmStatusPostNotification = "http://mentormee.info/dbTestConnect/updateMmStatusPostNotification.php"
     let updateMmStatusScript = "http://mentormee.info/dbTestConnect/updateMmStatusScript.php"
     let updateFacultyScript = "http://mentormee.info/dbTestConnect/updateFacultyScript.php"
     let programUpdate2 = "http://mentormee.info/dbTestConnect/programUpdate2.php"
     let grabProgramID = "http://mentormee.info/dbTestConnect/grabProgramID.php"
     let universityUpdate = "http://mentormee.info/dbTestConnect/universityUpdate.php"
     let updateMentorStatusString = "http://mentormee.info/dbTestConnect/updateMentorStatus.php"
+    
     let programUpdate = "http://mentormee.info/dbTestConnect/programUpdate.php"
     let Algorithm_filterOnCapacity2 = "http://mentormee.info/dbTestConnect/Algorithm_filterOnCapacity.php"
     let Algorithm_rating = "http://mentormee.info/dbTestConnect/Algorithm_rating.php"
@@ -69,6 +75,16 @@ import Foundation
 #endif
 
 #if Production
+    
+    let checkMentorMatchField = "http://mentormee.info/dbProduction/checkMentorMatchField.php"
+    let updateMmStatusPostNotification = "http://mentormee.info/dbProduction/updateMmStatusPostNotification.php"
+    let urlFiller = "http://mentormee.info/dbProduction/userprofilepic/uploads/2015/"
+    let updateMmStatusScript = "http://mentormee.info/dbProduction/updateMmStatusScript.php"
+    let updateFacultyScript = "http://mentormee.info/dbProduction/updateFacultyScript.php"
+    let programUpdate2 = "http://mentormee.info/dbProduction/programUpdate2.php"
+    let grabProgramID = "http://mentormee.info/dbProduction/grabProgramID.php"
+    let universityUpdate = "http://mentormee.info/dbProduction/universityUpdate.php"
+    let updateMentorStatusString = "http://mentormee.info/dbProduction/updateMentorStatus.php"
     
     let programUpdate = "http://mentormee.info/dbProduction/programUpdate.php"
     let Algorithm_filterOnCapacity2 = "http://mentormee.info/dbProduction/Algorithm_filterOnCapacity.php"

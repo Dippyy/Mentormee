@@ -17,13 +17,13 @@ class HomeScreenVC: UIViewController {
     @IBOutlet weak var ViewProfileButton: UIButton!
     @IBOutlet weak var SetUpProfileButton: UIButton!
     @IBOutlet weak var LogoutButton: UIButton!
-    @IBOutlet weak var signUpLabelToSignup: UILabel!
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         profileImageView.alpha = 0
         fullNameLabel.alpha = 0
         universityNameLabel.alpha = 0
@@ -31,7 +31,8 @@ class HomeScreenVC: UIViewController {
         ViewProfileButton.alpha = 0
         SetUpProfileButton.alpha = 0
         LogoutButton.alpha = 0
-        signUpLabelToSignup.hidden = true
+        
+        
         myActivityIndicator.startAnimating()
         
     }
@@ -179,8 +180,6 @@ class HomeScreenVC: UIViewController {
                 if(jsonData[1].valueForKey("University_id")!.isEqualToString("0")){
                     let universityID = 1
                     prefs.setObject(universityID, forKey: "uniID")
-                    
-                    signUpLabelToSignup.hidden = false
                     
                     var alertView:UIAlertView = UIAlertView()
                     alertView.title = "First Login Mentor"

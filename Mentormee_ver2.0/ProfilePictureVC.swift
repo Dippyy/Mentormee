@@ -202,7 +202,10 @@ class ProfilePictureVC: UIViewController, UIImagePickerControllerDelegate, UINav
         let filename = "user-profile-\(email).jpg"
         let fileName = NSUserDefaults.standardUserDefaults()
         //        fileName.setObject(filename, forKey: "imageURL")
-        let fullImageUrl = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(filename)" as String
+//        let fullImageUrl = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/\(filename)" as String
+        
+        let fullImageUrl = "\(urlFiller)\(filename)" as String
+
         fileName.setObject(fullImageUrl, forKey: "ProfileImage")
         
         //        println("the image url should be \(fileName.valueForKey("ProfileImage"))")

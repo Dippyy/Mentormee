@@ -67,7 +67,10 @@ class FirstPageVC: UIViewController {
         
         var post: NSString = "userID=\(userID)"
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/checkMentorMatchField.php")!
+//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/checkMentorMatchField.php")!
+        
+        var url:NSURL = NSURL(string:checkMentorMatchField)!
+
         
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )
@@ -117,8 +120,9 @@ class FirstPageVC: UIViewController {
         
         let notification = UILocalNotification()
         //        notification.fireDate = NSDate(timeIntervalSinceNow: 10)
-        notification.alertBody = "HEY YOU SWIPE ME"
-        notification.alertAction = "Be Awesome"
+        notification.alertTitle = "Mentormee"
+        notification.alertBody = "You Have Been Matched!"
+        notification.alertAction = "Lets Check It Out"
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.userInfo = ["MentorStatusCheck":"0"]
         
@@ -134,7 +138,9 @@ class FirstPageVC: UIViewController {
         
         var post: NSString = "userID=\(userID)"
         NSLog("PostData: %@",post);
-        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/updateMmStatusPostNotification.php")!
+//        var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/updateMmStatusPostNotification.php")!
+        var url:NSURL = NSURL(string: updateMmStatusPostNotification)!
+
         
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String( postData.length )

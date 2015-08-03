@@ -149,7 +149,7 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                         if (universitySelection.isEqualToString("University")) {
                             println("shit no faculty")
                             prefs.setObject(jsonData[1].valueForKey("Faculty"), forKey: "Faculty")
-                        }
+                        } 
                         prefs.setObject(jsonData[1].valueForKey("Program"), forKey: "Program")
 
                     }
@@ -343,24 +343,25 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         } else {
             
             let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            let mentorStatusChecker = prefs.valueForKey("Mentor_Status2") as! NSString
-            if(mentorStatusChecker.isEqualToString("Profile Set Mentor")){
+            if let mentorStatusChecker = prefs.valueForKey("Mentor_Status2") as? NSString {
                 
-                let mentorStatus = prefs.valueForKey("Mentor_Status2") as! String
-                let userID = prefs.valueForKey("userID") as! String
+                if(mentorStatusChecker.isEqualToString("Profile Set Mentor")){
                 
-                updateMentorStatus(mentorStatus, userID: userID)
-                self.performSegueWithIdentifier("goto_homepage", sender: self)
+                    let mentorStatus = prefs.valueForKey("Mentor_Status2") as! String
+                    let userID = prefs.valueForKey("userID") as! String
                 
-            } else if (mentorStatusChecker.isEqualToString("Inactive Mentor")){
+                    updateMentorStatus(mentorStatus, userID: userID)
+                    self.performSegueWithIdentifier("goto_homepage", sender: self)
                 
-                let mentorStatus = "Profile Set Mentor"
-                let userID = prefs.valueForKey("userID") as! String
+                } else if (mentorStatusChecker.isEqualToString("Inactive Mentor")){
+                
+                    let mentorStatus = "Profile Set Mentor"
+                    let userID = prefs.valueForKey("userID") as! String
             
-                updateMentorStatus(mentorStatus, userID: userID)
-                self.performSegueWithIdentifier("goto_homepage", sender: self)
+                    updateMentorStatus(mentorStatus, userID: userID)
+                    self.performSegueWithIdentifier("goto_homepage", sender: self)
+                }
             }
-            
             
 //        let mentorStatus: String = "Profile Set Mentor"
 //        let userID2 = storedData.valueForKey("userID") as! String
