@@ -179,6 +179,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.timeoutInterval = 5
             
             
             var reponseError: NSError?
@@ -218,6 +219,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("application/json", forHTTPHeaderField: "Accept")
+                        request.timeoutInterval = 5
                         
                         var responseError: NSError?
                         var response: NSURLResponse?
@@ -349,6 +351,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.timeoutInterval = 5
             
             var responseError: NSError?
             var response: NSURLResponse?
@@ -387,6 +390,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("application/json", forHTTPHeaderField: "Accept")
+                        request.timeoutInterval = 5
                         
                         var responseError: NSError?
                         var response: NSURLResponse?
@@ -433,6 +437,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         requestID.setValue(postLengthID as String, forHTTPHeaderField: "Content-Length")
                         requestID.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         requestID.setValue("application/json", forHTTPHeaderField: "Accept")
+                        requestID.timeoutInterval = 5
+
                         
                         var responseErrorID: NSError?
                         var responseID: NSURLResponse?
@@ -474,6 +480,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         requestID2.setValue(postLengthID2 as String, forHTTPHeaderField: "Content-Length")
                         requestID2.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         requestID2.setValue("application/json", forHTTPHeaderField: "Accept")
+                        requestID2.timeoutInterval = 5
                         
                         var responseErrorID2: NSError?
                         var responseID2: NSURLResponse?

@@ -46,17 +46,17 @@ class MenteeViewVC: UIViewController {
         myImageView.alpha = 0
         fullNameLabel.alpha = 0
         universityLabel.alpha = 0
-        programLabel.alpha = 0
+//        programLabel.alpha = 0
         
         myImageView2.alpha = 0
         fullNameLabel2.alpha = 0
         universityLabel2.alpha = 0
-        programLabel2.alpha = 0
+//        programLabel2.alpha = 0
         
         myImageView3.alpha = 0
         fullNameLabel3.alpha = 0
         universityLabel3.alpha = 0
-        programLabel3.alpha = 0
+//        programLabel3.alpha = 0
         
     }
     
@@ -128,7 +128,7 @@ class MenteeViewVC: UIViewController {
                             self.myImageView.alpha =  1.0
                             self.fullNameLabel.alpha = 1.0
                             self.universityLabel.alpha = 1.0
-                            self.programLabel.alpha = 0
+//                            self.programLabel.alpha = 0
                             
                             })
                         
@@ -208,7 +208,7 @@ class MenteeViewVC: UIViewController {
                             self.myImageView.alpha =  1.0
                             self.fullNameLabel.alpha = 1.0
                             self.universityLabel.alpha = 1.0
-                            self.programLabel.alpha = 0
+//                            self.programLabel.alpha = 0
                             
                         })
 
@@ -226,7 +226,7 @@ class MenteeViewVC: UIViewController {
                             self.myImageView2.alpha =  1.0
                             self.fullNameLabel2.alpha = 1.0
                             self.universityLabel2.alpha = 1.0
-                            self.programLabel2.alpha = 0
+//                            self.programLabel2.alpha = 0
                             
                         })
                         
@@ -333,7 +333,7 @@ class MenteeViewVC: UIViewController {
                             self.myImageView.alpha =  1.0
                             self.fullNameLabel.alpha = 1.0
                             self.universityLabel.alpha = 1.0
-                            self.programLabel.alpha = 0
+//                            self.programLabel.alpha = 0
                             
                         })
                         
@@ -351,7 +351,7 @@ class MenteeViewVC: UIViewController {
                             self.myImageView2.alpha =  1.0
                             self.fullNameLabel2.alpha = 1.0
                             self.universityLabel2.alpha = 1.0
-                            self.programLabel2.alpha = 0
+//                            self.programLabel2.alpha = 0
                             
                         })
                         
@@ -369,7 +369,7 @@ class MenteeViewVC: UIViewController {
                             self.myImageView3.alpha =  1.0
                             self.fullNameLabel3.alpha = 1.0
                             self.universityLabel3.alpha = 1.0
-                            self.programLabel3.alpha = 0
+//                            self.programLabel3.alpha = 0
                             
                         })
                         

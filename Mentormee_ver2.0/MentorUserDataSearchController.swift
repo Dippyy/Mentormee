@@ -13,13 +13,19 @@ import QuartzCore
 class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var senderField:String!
+    var secondarySenderField:String!
+    var tertiarySenderField: String!
+    
     var temp_array:Array< String > = Array < String >()
     var selectedItem:String!
+    
+    var supportedPrograms: NSArray = ["Program", "Engineering", "Life Science"]
     
     var cars = [String]()
 //    var url = "http://mentormee.info/dbTestConnect/programUpdate.php"
     
     var url = programUpdate2
+    var specURL = programUpdate3
 
     
     @IBOutlet weak var userDataPickerView: UIPickerView!
@@ -38,12 +44,19 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
         userDataPickerView.dataSource = self
         userDataPickerView.delegate = self
         
-        cars=["BMW", "Audi", "Toyota"]
         println("Printing VAL!! \(senderField)")
-        if (senderField == "Specialization"){
-            getDataFromURL(url, searchField: "Program")
+        
+        if(senderField == "University") {
+            getDataFromURL(url, searchField: "University")
+        } else if(senderField == "Program") {
+            for (var i=0; i<supportedPrograms.count;i++) {
+                if let program_data = supportedPrograms[i] as? String {
+                    temp_array.append(program_data)
+                }
+            }
+        } else if (senderField == "Specialization"){
+            selectCorrectProgram(specURL, university: tertiarySenderField, program: secondarySenderField)
         }
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -80,6 +93,7 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
     
     
     func getDataFromURL(var url:String, var searchField:String){
+        
         println("sender detail: ")
         let urlToSend = NSURL(string:url)
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()  //NSUserDefault = Dictionary
@@ -120,15 +134,58 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
         } else{
             println("url data is empty")
         }
-        /**if(searchField == "Program"){
         
-        } else if (searchField == "Faculty"){
+    }
+    
+    func selectCorrectProgram(var url:String, var university:String, var program:String){
         
-        }else if(searchField == "University"){
+        let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         
-        }else if(senderField == "Hometown"){
+        if(university == "University of Toronto") {
+            prefs.setObject("2", forKey: "uniID")
+        } else if(university == "Ryerson University"){
+            prefs.setObject("3", forKey: "uniID")
+        } else if(university == "Queens University") {
+            prefs.setObject("4", forKey: "uniID")
+        }
         
-        }*/
+        let uniID = prefs.valueForKey("uniID") as! String
+                
+        let urlToSend = NSURL(string:url)
+        var post: NSString = "universityID=\(uniID)&facultyText=\(program)"
+        println("post is: \(post)")
+        var postData: NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength : NSString = String(postData.length)
+        
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL: urlToSend!)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.timeoutInterval = 5
+        
+        
+        var responseError: NSError?
+        var response: NSURLResponse?
+        
+        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &responseError)
+        if(urlData != nil){
+            
+            let res = response as! NSHTTPURLResponse!
+            NSLog("Response Code: %ld", res.statusCode)
+            var responseData: NSString = NSString(data: urlData!, encoding: NSUTF8StringEncoding)!
+            NSLog("Response ==> %@", responseData)
+            var error: NSError?
+            
+            let jsonData: NSArray = (NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSArray)!
+            
+            for (var i=0; i<jsonData.count;i++) {
+                if let jsonData_obj = jsonData[i].valueForKey("Program") as? String {
+                    temp_array.append(jsonData_obj)
+                }
+            }
+        }
         
     }
     
@@ -138,6 +195,15 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         prefs.setObject(senderField, forKey: "fieldToSend")
         prefs.setObject(selectedItem, forKey: "specToSend")
+        
+        if(senderField == "University") {
+            prefs.setObject(selectedItem, forKey: "UniversityToSend")
+        }
+        
+        if(senderField == "Program") {
+            prefs.setObject(selectedItem, forKey: "ProgramToSend")
+            println("Setting this value")
+        }
         
         
         if let vc = segue.destinationViewController as? MenteeMentorSearchViewController {

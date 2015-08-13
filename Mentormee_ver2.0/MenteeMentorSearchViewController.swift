@@ -44,6 +44,8 @@ class MenteeMentorSearchViewController: UIViewController{
     var senderDetail:String!
     var userSelectionText:String!
     var userSelectionField:String!
+    var selectedItem: String!
+    
 //    var URL = "http://mentormee.info/dbTestConnect/programUpdate.php"
     
     var URL = programUpdate
@@ -55,6 +57,18 @@ class MenteeMentorSearchViewController: UIViewController{
     override func viewDidLoad() {
         
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let universityTitle: String = prefs.valueForKey("University_Button_Title") as? String {
+            univButton.setTitle(universityTitle, forState: UIControlState.Normal)
+        } else {
+            univButton.setTitle("University:", forState: UIControlState.Normal)
+        }
+        
+        if let programTitle: String = prefs.valueForKey("Program_Button_Title") as? String {
+            programButton.setTitle(programTitle, forState: UIControlState.Normal)
+        } else {
+            programButton.setTitle("Program: ", forState: UIControlState.Normal)
+        }
         
         var nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.Default
@@ -68,16 +82,14 @@ class MenteeMentorSearchViewController: UIViewController{
         } else {
             println("no way getting here")
             searchLabel.hidden = true
-            
         }
-        
-//        var nav = self.navigationController?.navigationBar
-//        nav?.barStyle = UIBarStyle.
-//        nav?.tintColor = UIColor.yellowColor()
         
         if let selectionText: String = prefs.valueForKey("specToSend") as? String {
             
             let senderField: String = prefs.valueForKey("fieldToSend") as! String
+            
+            
+//            let secondarySenderField: String
             
             println("selectionText = \(selectionText) senderField = \(senderField)")
 //            if(userSelectionField != nil){
@@ -89,19 +101,27 @@ class MenteeMentorSearchViewController: UIViewController{
             } else {
                 
                 switch(senderField){
-                case "Program":
-                    programButton.setTitle("Program: \(userSelectionText)", forState: UIControlState.Normal)
-                case "Specialization":
-                    //                  specButton.setTitle("Specialization: \(userSelectionText)", forState: UIControlState.Normal)
-                    specButton.setTitle("Specialization: \(selectionText)", forState: UIControlState.Normal)
-                case "University":
-                    univButton.setTitle("University: \(userSelectionText)", forState: UIControlState.Normal)
-                case "Hometown":
-                    hometownButton.setTitle("Hometown: \(userSelectionText)", forState: UIControlState.Normal)
-                default:
-                    userSelectionField = nil
-                    userSelectionText = nil
-                }
+                    
+                    case "Program":
+//                      programButton.setTitle("Program: \(userSelectionText)", forState: UIControlState.Normal)
+                        prefs.setObject(selectionText, forKey: "Program_Button_Title")
+                        programButton.setTitle("Program: \(selectionText)", forState: UIControlState.Normal)
+                    
+                    case "Specialization":
+                        //                  specButton.setTitle("Specialization: \(userSelectionText)", forState: UIControlState.Normal)
+                        specButton.setTitle("Specialization: \(selectionText)", forState: UIControlState.Normal)
+                    
+                    case "University":
+                        prefs.setObject(selectionText, forKey: "University_Button_Title")
+                        univButton.setTitle("University: \(selectionText)", forState: UIControlState.Normal)
+                    
+                    case "Hometown":
+                        hometownButton.setTitle("Hometown: \(userSelectionText)", forState: UIControlState.Normal)
+                    
+                    default:
+                        userSelectionField = nil
+                        userSelectionText = nil
+                    }
             }
         }
         
@@ -111,10 +131,36 @@ class MenteeMentorSearchViewController: UIViewController{
         
         var field = userdefaults.valueForKey("buttonClicked") as! String
         
-        if let vc = segue.destinationViewController as? MentorUserDataSearchController {
-            vc.senderField = field
-            println("Printing valuee!! \(vc.senderField)")
+        if(field == "University") {
+            
+            if let vc = segue.destinationViewController as? MentorUserDataSearchController {
+                vc.senderField = field
+                println("Printing valuee!! \(vc.senderField)")
+            }
+            
+        } else if(field == "Program"){
+            
+//            var secondaryField = userdefaults.valueForKey("SecondarySenderField") as! String
+//            
+            if let vc = segue.destinationViewController as? MentorUserDataSearchController {
+                vc.senderField = field
+            }
+            
+        } else if(field == "Specialization") {
+            
+            var secondaryField = userdefaults.valueForKey("ProgramToSend") as! String
+            var tertiaryField = userdefaults.valueForKey("UniversityToSend") as! String
+            
+            if let vc = segue.destinationViewController as? MentorUserDataSearchController {
+                vc.senderField = field
+                vc.secondarySenderField = secondaryField
+                vc.tertiarySenderField = tertiaryField
+                
+                println("Secondary Sender Field: \(vc.secondarySenderField) Tertiary Sender Field: \(vc.tertiarySenderField)")
+            }
         }
+        
+
     }
     
     // =========================================  //
@@ -143,8 +189,11 @@ class MenteeMentorSearchViewController: UIViewController{
 
         }
         
+//-----------------------------NEED TO UPDATE THESE FIELDS FOR ALGORITHEM -----------------------
         tempcomparisonField.insert("Engineering", atIndex: 1)
         tempcomparisonField.insert("University of Toronto", atIndex: 2)
+//-----------------------------------------------------------------------------------------------
+            
         comparisonField = tempcomparisonField
         tempcomparisonField = []
             
@@ -177,7 +226,6 @@ class MenteeMentorSearchViewController: UIViewController{
     func lets_connect_you_with_a_mentor(Program:String) -> NSArray{
         
         // uses allMentorList & comparisonField to identify the top three mentors in an NSArray
-        
         
         myActivityIndicator.startAnimating()
         
@@ -245,14 +293,25 @@ class MenteeMentorSearchViewController: UIViewController{
     //program button clicked
     @IBAction func programButtonTapped(sender: AnyObject) {
         
-        let buttonClicked = "Program"
-        userdefaults.setValue(buttonClicked, forKey:"buttonClicked")
-        var buttonTest = userdefaults.valueForKey("buttonClicked") as! String
-        userdefaults.synchronize()
-        println("Printing valie!! \(buttonTest)")
+        if(univButton.titleLabel?.text == "Select University") {
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Select A University"
+            alertView.message = "Please select a University first!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+        } else {
+            
+            let buttonClicked = "Program"
+            userdefaults.setValue(buttonClicked, forKey:"buttonClicked")
+            var buttonTest = userdefaults.valueForKey("buttonClicked") as! String
+            userdefaults.synchronize()
+            println("Printing valie!! \(buttonTest)")
         //        println("Printing value!! " \( userdefaults.valueForKey("buttonClicked") as! String?))
-        
-        self.performSegueWithIdentifier("goto_programspec", sender: self)
+            self.performSegueWithIdentifier("goto_programspec", sender: self)
+        }
         
         //programButton.setTitle("Program: /(userSelectionText)", forState: <#UIControlState#>)
     }
@@ -260,11 +319,25 @@ class MenteeMentorSearchViewController: UIViewController{
     
     //specialization button clicked
     @IBAction func specButtonTapped(sender: AnyObject) {
-        let buttonClicked = "Specialization"
-        let userdefaults = NSUserDefaults.standardUserDefaults()
-        userdefaults.setValue(buttonClicked, forKey:"buttonClicked")
-        userdefaults.synchronize()
-        self.performSegueWithIdentifier("goto_programspec", sender: self)
+        
+        if((univButton.titleLabel?.text == "Select University") || (programButton.titleLabel?.text == "Select Program")) {
+            
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Select"
+            alertView.message = "Please select a University and/or Program!"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
+        } else {
+            
+            let buttonClicked = "Specialization"
+            let userdefaults = NSUserDefaults.standardUserDefaults()
+            userdefaults.setValue(buttonClicked, forKey:"buttonClicked")
+            userdefaults.synchronize()
+            self.performSegueWithIdentifier("goto_programspec", sender: self)
+            
+        }
     }
     
     //university button clicked
@@ -272,6 +345,7 @@ class MenteeMentorSearchViewController: UIViewController{
         let buttonClicked = "University"
         let userdefaults = NSUserDefaults.standardUserDefaults()
         userdefaults.setValue(buttonClicked, forKey:"buttonClicked")
+        userdefaults.setValue(univButton.titleLabel?.text, forKey: "SecondarySenderField")
         userdefaults.synchronize()
         self.performSegueWithIdentifier("goto_programspec", sender: self)
         
@@ -291,21 +365,6 @@ class MenteeMentorSearchViewController: UIViewController{
     }
     
     
-//    @IBAction func findMentorClicked(sender: AnyObject) {
-//        
-//        //generate mentors based on list of variables
-//        useAlexAlgorithm("", b:"", c:"")
-//        //get list of mentors and information in an array
-//        //display list of mentors and info in table view
-//    }
-    
-    
-    
-//    func useAlexAlgorithm(a: String, b: String, c: String){
-//        
-//    }
-//    
-//}
 
 func Algorithm_filterOnCapacity(url:String) -> NSArray {
     //Returns an array with mentors who are currently available

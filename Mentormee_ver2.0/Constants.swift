@@ -10,8 +10,9 @@ import Foundation
 
 #if Staging
     
+    let programUpdate3 = "http://mentormee.info/dbTestConnect/programUpdate3.php"
     
-    let urlFiller = "http://mentormee.info/dbTestConnection/userprofilepic/uploads/2015/"
+    let urlFiller = "http://mentormee.info/dbTestConnect/userprofilepic/uploads/2015/"
     
     let checkMentorMatchField = "http://mentormee.info/dbTestConnect/checkMentorMatchField.php"
     let updateMmStatusPostNotification = "http://mentormee.info/dbTestConnect/updateMmStatusPostNotification.php"
@@ -76,6 +77,8 @@ import Foundation
 
 #if Production
     
+    let programUpdate3 = "http://mentormee.info/dbProduction/programUpdate3.php"
+        
     let checkMentorMatchField = "http://mentormee.info/dbProduction/checkMentorMatchField.php"
     let updateMmStatusPostNotification = "http://mentormee.info/dbProduction/updateMmStatusPostNotification.php"
     let urlFiller = "http://mentormee.info/dbProduction/userprofilepic/uploads/2015/"

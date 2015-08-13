@@ -165,6 +165,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
             request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.timeoutInterval = 5
             
             
             var reponseError: NSError?
@@ -208,6 +209,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("application/json", forHTTPHeaderField: "Accept")
+                        request.timeoutInterval = 5
                         
                         var responseError: NSError?
                         var response: NSURLResponse?
@@ -252,6 +254,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                 request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                                 request.setValue("application/json", forHTTPHeaderField: "Accept")
+                                request.timeoutInterval = 5
                                 
                                 var responseError: NSError?
                                 var response: NSURLResponse?
@@ -384,6 +387,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
             request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
+            request.timeoutInterval = 5
             
             var responseError: NSError?
             var response: NSURLResponse?
@@ -424,6 +428,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request.setValue("application/json", forHTTPHeaderField: "Accept")
+                        request.timeoutInterval = 5
                         
                         var responseError: NSError?
                         var response: NSURLResponse?
@@ -474,6 +479,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         requestID.setValue(postLengthID as String, forHTTPHeaderField: "Content-Length")
                         requestID.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         requestID.setValue("application/json", forHTTPHeaderField: "Accept")
+                        requestID.timeoutInterval = 5
                         
                         var responseErrorID: NSError?
                         var responseID: NSURLResponse?
@@ -516,6 +522,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                         request2.setValue(postLength2 as String, forHTTPHeaderField: "Content-Length")
                         request2.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                         request2.setValue("application/json", forHTTPHeaderField: "Accept")
+                        request2.timeoutInterval = 5
                         
                         var responseError2: NSError?
                         var response2: NSURLResponse?
@@ -563,6 +570,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                     request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                                     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                                     request.setValue("application/json", forHTTPHeaderField: "Accept")
+                                    request.timeoutInterval = 5
                                     
                                     var responseError: NSError?
                                     var response: NSURLResponse?
@@ -610,6 +618,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
                                                 request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
                                                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                                                 request.setValue("application/json", forHTTPHeaderField: "Accept")
+                                                request.timeoutInterval = 5
                                                 
                                                 var responseError: NSError?
                                                 var response: NSURLResponse?
@@ -682,6 +691,9 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    
+    
     func updateMentorStatus(mentorStatus: String, userID: String) {
         
         var post: NSString = "mentorStatus=\(mentorStatus)&userID=\(userID)"
@@ -697,6 +709,7 @@ class MenteeSignupPage: UIViewController, UITextFieldDelegate {
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.timeoutInterval = 5
         
         var responseError: NSError?
         var response: NSURLResponse?
