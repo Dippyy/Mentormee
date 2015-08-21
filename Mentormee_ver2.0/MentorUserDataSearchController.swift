@@ -19,7 +19,7 @@ class MentorUserDataSearchController:UIViewController, UIPickerViewDataSource, U
     var temp_array:Array< String > = Array < String >()
     var selectedItem:String!
     
-    var supportedPrograms: NSArray = ["Program", "Engineering", "Life Science"]
+    var supportedPrograms: NSArray = ["Program", "Engineering"]
     
     var cars = [String]()
 //    var url = "http://mentormee.info/dbTestConnect/programUpdate.php"
