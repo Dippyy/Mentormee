@@ -168,15 +168,6 @@ class MenteeMentorSearchViewController: UIViewController{
     @IBAction func FindMentorButtonTapped(sender: AnyObject) {
         //"Find A Mentor Now" button clicked
         
-//        myActivityIndicator.startAnimating()
-//        
-//        UIView.animateWithDuration(1, animations: {
-//            self.specButton.alpha = 0
-//            self.programButton.alpha = 0
-//            self.univButton.alpha = 0
-//
-//        })
-        
         let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
         if let selectionText: String = prefs.valueForKey("specToSend") as? String {
         
@@ -186,12 +177,14 @@ class MenteeMentorSearchViewController: UIViewController{
             tempcomparisonField.insert("nil", atIndex: 0)
         } else {
             tempcomparisonField.insert(selectionText, atIndex: 0)
-
         }
+            
+        var secondaryField = userdefaults.valueForKey("ProgramToSend") as! String
+        var tertiaryField = userdefaults.valueForKey("UniversityToSend") as! String
         
 //-----------------------------NEED TO UPDATE THESE FIELDS FOR ALGORITHEM -----------------------
-        tempcomparisonField.insert("Engineering", atIndex: 1)
-        tempcomparisonField.insert("University of Toronto", atIndex: 2)
+        tempcomparisonField.insert(secondaryField, atIndex: 1)
+        tempcomparisonField.insert(tertiaryField, atIndex: 2)
 //-----------------------------------------------------------------------------------------------
             
         comparisonField = tempcomparisonField
@@ -199,8 +192,6 @@ class MenteeMentorSearchViewController: UIViewController{
             
             let prefs: NSUserDefaults = NSUserDefaults.standardUserDefaults()
             let userSelection: String = prefs.valueForKey("specToSend") as! String
-            
-//        lets_connect_you_with_a_mentor(userSelectionText)
         
         lets_connect_you_with_a_mentor(userSelection)
             
@@ -283,11 +274,8 @@ class MenteeMentorSearchViewController: UIViewController{
         
         return topThreeMentors
     }
+    // uses allMentorList & comparisonField to identify the top three mentors in an NSArray
 
-    
-    
-    
-    // =====================================  //
     
     
     //program button clicked
@@ -417,76 +405,11 @@ func Algorithm_filterOnCapacity(url:String) -> NSArray {
     var empty:NSArray = []
     return empty
     
-}
-
-
-
-}
-
-
-
-func test (mentor_id:AnyObject, comparisonField:NSArray) -> Int {
-    //Takes in an available mentors from Algorithm_filterOnCapacity + Comparison Fields and spits out the top three rated mentors' Account_ID
-    
-    
-    /*------- comparisonField ----[Program, Faculty, university] -----------*/
-    
-    var mentorID:NSString = mentor_id as! NSString
-    var Program:NSString = comparisonField[0] as! NSString
-    var Faculty:NSString = comparisonField[1] as! NSString
-    var University:NSString = comparisonField[2] as! NSString
-    
-    var post:NSString = "mentorID=\(mentorID)&Program=\(Program)&Faculty=\(Faculty)&University=\(University)"
-    //  NSLog("PostData: %@",post);
-    
-//    var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating.php")!
-    
-    var url:NSURL = NSURL(string:Algorithm_rating)!
-
-    var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-    var postLength:NSString = String( postData.length )
-    var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-    request.HTTPMethod = "POST"
-    request.HTTPBody = postData
-    request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-    request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-    request.setValue("application/json", forHTTPHeaderField: "Accept")
-    
-    
-    var reponseError: NSError?
-    var response: NSURLResponse?
-    
-    var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
-    
-    if ( urlData != nil ) {
-        
-        let res = response as! NSHTTPURLResponse!;
-        //    NSLog("Response code: %ld", res.statusCode);
-        
-        if (res.statusCode >= 200 && res.statusCode < 300) {
-            var responseData:NSString  = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-            //         NSLog("Response ==> %@", responseData);
-            let Rating:NSInteger = responseData.integerValue
-            //        println(Rating)
-            return Rating
-            //                var error: NSError?
-            //                let jsonData:NSDictionary = NSJSONSerialization.JSONObjectWithData(urlData!, options:NSJSONReadingOptions.MutableContainers , error: &error) as! NSDictionary
-            ////                let Rating:NSInteger = jsonData.valueForKey("Rating") as! NSInteger
-            ////                NSLog("Rating: %ld", Rating);
-            ////                return Rating
-            
-        } else {
-            println("omg...")  }
-        
-    }
-    else { println("url data is empty") }
-    println("PROBLEM!! :( ")
-    return -1
+}  //Returns an array with mentors who are currently available
 }
 
 func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
-    //Takes in an available mentor from Algorithm_filterOnCapacity + Comparison Fields and spits out the top three rated mentors' Account_ID
-
+    //Takes in an available mentor from Algorithm_filterOnCapacity + Comparison Fields and spits out the rating of the mentor (mentor_id)
     
     /*------- Extracting PrimaryCapacity --------------*/
     
@@ -500,9 +423,7 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     var mentor_Program_ID:NSString = ""
     var mentor_Univeristy_ID:NSString = ""
     
-    var post:NSString = "mentorID=\(mentorID)"
-//    var url:NSURL = NSURL(string:"http://mentormee.info/dbTestConnect/Algorithm_rating_PrimaryCapability.php")!
-    
+    var post:NSString = "mentorID=\(mentorID)"    
     var url:NSURL = NSURL(string:Algorithm_rating_PrimaryCapability)!
 
     var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
@@ -676,5 +597,7 @@ func Algorithm_rating(mentor_id:AnyObject, comparisonField:NSArray) -> Int{
     
     return Rating
 }
+//Takes an available mentor's id from Algorithm_filterOnCapacity, compares its capabilties against "ComparisonFields" and spits out the rating of the mentor (mentor_id)
+
 
 
