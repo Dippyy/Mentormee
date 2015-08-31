@@ -237,7 +237,7 @@ class MenteeMentorSearchViewController: UIViewController{
         })
         
     
-//        let allMentorList:NSArray = (Algorithm_filterOnCapacity("http://mentormee.info/dbTestConnect/Algorithm_filterOnCapacity.php"))
+//        let allMentorList:NSArray = (send me("http://mentormee.info/dbTestConnect/Algorithm_filterOnCapacity.php"))
         
         let allMentorList:NSArray = (Algorithm_filterOnCapacity(Algorithm_filterOnCapacity2))
         
