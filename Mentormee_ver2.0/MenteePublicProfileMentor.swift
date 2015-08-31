@@ -61,9 +61,6 @@ class MenteePublicProfileMentor: UIViewController {
         let menteeID = prefs.valueForKey("MenteeClicked") as! String
         println(menteeID)
         
-        
-//        let menteeID: String = prefs.valueForKey("userID") as! String
-        
         var post: NSString = "userID=\(menteeID)"
         println(post)
 //        var url:NSURL = NSURL(string: "http://mentormee.info/dbTestConnect/updatePublicProfileMentee.php")!

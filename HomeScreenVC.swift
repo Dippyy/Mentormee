@@ -42,11 +42,6 @@ class HomeScreenVC: UIViewController {
 
         myActivityIndicator.stopAnimating()
         myActivityIndicator.hidden = true
-        
-//        var tabArray = self.tabBarController?.tabBar.items as NSArray!
-//        var tabItem = tabArray.objectAtIndex(1) as! UITabBarItem
-//        tabItem.badgeValue = "2"
-        
     
         UIView.animateWithDuration(1, animations: {
             self.profileImageView.alpha = 1.0
@@ -126,7 +121,6 @@ class HomeScreenVC: UIViewController {
                 // ERROR HANDLER FOR PROFILE PICTURE
                     if(jsonData[0].valueForKey("Picture")!.isEqualToString("")){
                 
-//                        profileImageView.image = UIImage(named: "profile_default.jpg")
                         var email: String = jsonData[0].valueForKey("Email") as! String
                         var emailLower: String = email.lowercaseString
                         var firstChar = Array(emailLower)[0]

@@ -46,17 +46,14 @@ class MenteeViewVC: UIViewController {
         myImageView.alpha = 0
         fullNameLabel.alpha = 0
         universityLabel.alpha = 0
-//        programLabel.alpha = 0
         
         myImageView2.alpha = 0
         fullNameLabel2.alpha = 0
         universityLabel2.alpha = 0
-//        programLabel2.alpha = 0
         
         myImageView3.alpha = 0
         fullNameLabel3.alpha = 0
         universityLabel3.alpha = 0
-//        programLabel3.alpha = 0
         
     }
     
@@ -124,12 +121,9 @@ class MenteeViewVC: UIViewController {
                         prefs.setObject(jsonData.count, forKey: "MenteeIDToSend")
                         
                         UIView.animateWithDuration(0, animations: {
-                            
                             self.myImageView.alpha =  1.0
                             self.fullNameLabel.alpha = 1.0
                             self.universityLabel.alpha = 1.0
-//                            self.programLabel.alpha = 0
-                            
                             })
                         
                         
@@ -204,12 +198,9 @@ class MenteeViewVC: UIViewController {
                         myImageView.clipsToBounds = true
                         
                         UIView.animateWithDuration(0, animations: {
-                            
                             self.myImageView.alpha =  1.0
                             self.fullNameLabel.alpha = 1.0
                             self.universityLabel.alpha = 1.0
-//                            self.programLabel.alpha = 0
-                            
                         })
 
                         let menteeUserID2: String = jsonData[1].valueForKey("Mentee_id") as! String
@@ -222,12 +213,9 @@ class MenteeViewVC: UIViewController {
                         myImageView2.clipsToBounds = true
                         
                         UIView.animateWithDuration(0, animations: {
-                            
                             self.myImageView2.alpha =  1.0
                             self.fullNameLabel2.alpha = 1.0
                             self.universityLabel2.alpha = 1.0
-//                            self.programLabel2.alpha = 0
-                            
                         })
                         
                         var post: NSString = "menteeUserID1=\(menteeUserID1)&menteeUserID2=\(menteeUserID2)"
@@ -329,12 +317,9 @@ class MenteeViewVC: UIViewController {
                         myImageView.clipsToBounds = true
                         
                         UIView.animateWithDuration(0, animations: {
-                            
                             self.myImageView.alpha =  1.0
                             self.fullNameLabel.alpha = 1.0
                             self.universityLabel.alpha = 1.0
-//                            self.programLabel.alpha = 0
-                            
                         })
                         
                         let menteeUserID2: String = jsonData[1].valueForKey("Mentee_id") as! String
@@ -351,8 +336,6 @@ class MenteeViewVC: UIViewController {
                             self.myImageView2.alpha =  1.0
                             self.fullNameLabel2.alpha = 1.0
                             self.universityLabel2.alpha = 1.0
-//                            self.programLabel2.alpha = 0
-                            
                         })
                         
                         let menteeUserID3: String = jsonData[2].valueForKey("Mentee_id") as! String
@@ -369,8 +352,6 @@ class MenteeViewVC: UIViewController {
                             self.myImageView3.alpha =  1.0
                             self.fullNameLabel3.alpha = 1.0
                             self.universityLabel3.alpha = 1.0
-//                            self.programLabel3.alpha = 0
-                            
                         })
                         
                         var post: NSString = "menteeUserID1=\(menteeUserID1)&menteeUserID2=\(menteeUserID2)&menteeUserID3=\(menteeUserID3)"
@@ -422,7 +403,6 @@ class MenteeViewVC: UIViewController {
                                     var imgData = NSData(contentsOfURL: url!)
                                     myImageView.image = UIImage(data: imgData!)
                                 } else {
-//                                    myImageView.image = UIImage(named: "profile_default.jpg")
                                     var firstName: String = jsonData[0].valueForKey("FirstName") as! String
                                     var lowerFirstName: String = firstName.lowercaseString
                                     var firstChar = Array(lowerFirstName)[0]
@@ -452,7 +432,6 @@ class MenteeViewVC: UIViewController {
                                     var imgData = NSData(contentsOfURL: url!)
                                     myImageView2.image = UIImage(data: imgData!)
                                 } else {
-//                                    myImageView2.image = UIImage(named: "profile_default.jpg")
                                     var firstName: String = jsonData[1].valueForKey("FirstName") as! String
                                     var lowerFirstName: String = firstName.lowercaseString
                                     var firstChar = Array(lowerFirstName)[0]
@@ -481,7 +460,6 @@ class MenteeViewVC: UIViewController {
                                     var imgData = NSData(contentsOfURL: url!)
                                     myImageView3.image = UIImage(data: imgData!)
                                 } else {
-//                                    myImageView3.image = UIImage(named: "profile_default.jpg")
                                     var firstName: String = jsonData[2].valueForKey("FirstName") as! String
                                     var lowerFirstName: String = firstName.lowercaseString
                                     var firstChar = Array(lowerFirstName)[0]
@@ -501,7 +479,6 @@ class MenteeViewVC: UIViewController {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let menteeCheck: Int = prefs.valueForKey("MenteeIDToSend") as! Int
         
-//        if(menteeCheck == 1){
         
             if((prefs.valueForKey("MenteeID11")) != nil){
                 println(prefs.valueForKey("MenteeID11"))
@@ -521,14 +498,11 @@ class MenteeViewVC: UIViewController {
         
         self.performSegueWithIdentifier("goto_menteeprofilementor", sender: self)
 
-//        }
     }
     
     @IBAction func backgroundButton2(sender: AnyObject) {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let menteeCheck: Int = prefs.valueForKey("MenteeIDToSend") as! Int
-        
-//        if(menteeCheck == 2){
         
             if((prefs.valueForKey("MenteeID12")) != nil){
                 println(prefs.valueForKey("MenteeID12"))
@@ -547,15 +521,11 @@ class MenteeViewVC: UIViewController {
             }
         
         self.performSegueWithIdentifier("goto_menteeprofilementor", sender: self)
-
-//        }
     }
     
     @IBAction func backgroundButton3(sender: AnyObject) {
         let prefs:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let menteeCheck: Int = prefs.valueForKey("MenteeIDToSend") as! Int
-        
-//        if(menteeCheck == 3){
         
             if((prefs.valueForKey("MenteeID13")) != nil){
                 println(prefs.valueForKey("MenteeID13"))
@@ -575,7 +545,6 @@ class MenteeViewVC: UIViewController {
         
         self.performSegueWithIdentifier("goto_menteeprofilementor", sender: self)
         
-//        }
     }
 
     override func didReceiveMemoryWarning() {

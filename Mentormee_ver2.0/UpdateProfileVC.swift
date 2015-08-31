@@ -362,11 +362,6 @@ class UpdateProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.performSegueWithIdentifier("goto_homepage", sender: self)
                 }
             }
-            
-//        let mentorStatus: String = "Profile Set Mentor"
-//        let userID2 = storedData.valueForKey("userID") as! String
-//            
-//        updateMentorStatus(mentorStatus, userID: userID2)
         
         if(storedData.valueForKey("ProfileImage") != nil) {
             let imageURL = storedData.valueForKey("ProfileImage") as! String
