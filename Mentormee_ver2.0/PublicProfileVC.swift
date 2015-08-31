@@ -168,7 +168,18 @@ class PublicProfileVC: UIViewController {
                     }
                 }
                 
+                //THIS CODE SETS THE SIZE OF THE TEXTVIEW TO SCALE WITH THE CONTENT INSIDE
+                
                 var extraText: String = jsonData[2].valueForKey("WhatsUp") as! String
+                
+                let fixedWidth = whatsupText.frame.size.width
+                whatsupText.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+                let newSize = whatsupText.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+                var newFrame = whatsupText.frame
+                newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+                whatsupText.frame = newFrame;
+                whatsupText.scrollEnabled = false
+                
                 whatsupText.text = extraText
                 
                 
